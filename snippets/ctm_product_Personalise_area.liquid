@@ -1,0 +1,120 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area pr-md-3 pl-0 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area ctm__personalise_content_area pr-md-3 pl-0 {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% render 'jtzuya_customizer_header', bkst: bkst %}
+
+  <div class="ctm_tab_content_inner_area px-md-3 pt-3 container-fluid pl-0 ctm_pr_md0">
+    <div class="container customize-design ctm_pl_pr_sm0">
+      <div class="row mt-md-4">
+        <div class="col-md-4 ctm_pl_pr_sm0">
+          {% comment %} <div class="ctm_personalise_img">
+            <img src="{{ "https://s3-alpha-sig.figma.com/img/68e4/7620/3b1bd732044e82c5a3b496b31a6902bd?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QzJuGWPJHIrbf7xWsP~zJJdqmk3KGrX~XgfMO6HJqcpkTJCVi2zlo8B8HZ9go8dqDne4DxcEGJrY-PmQNMKfYKH~vPNyJPuawVy9Mj2cd1FxGBBIovthHxVK0GFAHf-j-F9iVA0EjxdkW9icuwnWIknQUwl9GJTcbtkE5VeVmIeBHZKFdiK-htn1-FqRiXK8H3xYSUocyoKimKmgdhkIqv~3j652o1UKjIZIX-GRM3ZinYX4379bEncPrvlRO3pJVwvpysXS40K~Sg1uR8YZ5TUwEowv9UWexcYBouRVK48Mmj1LARyapvN7Kt8-zNnwVCqdVuxgKCc4hEfAZeWYkA__" }}" alt="{{ shop.name }}" class="" loading="lazy">
+          </div> {% endcomment %}
+          <div id="mockupBox" class="label-mockup labB-Gold labA-Gold">
+            <div class="imgcontainer" id="mockupcontainer_script" style="display: block;">
+              {% comment %} <img src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_LogoDate_500x.png?v=131239421455045747311686892841" class="date img-fluid"> {% endcomment %}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933" class="date img-fluid" data-defaultImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933">
+              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_500x.png?v=28342300526648561861686892841" class="nametrim img-fluid" data-defaultImg="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_500x.png?v=28342300526648561861686892841" data-defaultImgDigital="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johhnyone_bottle.png?v=1724647639">
+              {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/har_jessica.png?v=1724395197" class="nametrim img-fluid"> {% endcomment %}
+              {% comment %} <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="bottle img-fluid"> {% endcomment %}
+              {% comment %} <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/DemoLabel_BlankBottle_500x_d.png?v=1726826367" class="bottle img-fluid"> {% endcomment %}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/digital-bott.png?v=1727180767" class="bottle ctm__bottle img-fluid" data-ctm_foil_bottle_img="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/clear-martini_2657d56e-cead-42b1-9f4a-b00e9af9ddff.png?v=1743373211" data-ctm_digital_bottle_img="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/digital-bott.png?v=1727180767">
+              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="base">
+            </div>
+            <div class="imgcontainer" id="mockupcontainer_bold" style="display: none;">
+              {% comment %} <img src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_LogoDate_500x.png?v=131239421455045747311686892841" class="date img-fluid"> {% endcomment %}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933" class="date img-fluid">
+              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_Bold_500x.png?v=37767811398118822541686892841" class="nametrim img-fluid">
+              {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/har_jessica.png?v=1724395197" class="nametrim img-fluid"> {% endcomment %}
+              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="bottle img-fluid">
+              {% comment %} <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="base"> {% endcomment %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 ctmPersonalisedFields mt-5- mt-3 ctm_pl_pr_sm0 ctm__label_digital">
+          <div class="form-group d-flex flex-column flex-md-row flex-wrap justify-content-center align-items-md-center">
+            <label for="bottleName" class="col-md-3 p-0 text-md-left text-center">NAMES</label>
+            <div class="col-md-9 col-12 ctm_pl_pr_sm0">
+              <input type="text" name="Names" class="form-control text-center ctm_form_inputs w-100" placeholder="Bonnie & Clyde" id="bottleName">
+              <div class="ctmFormFieldError {{ bkst.errorMsgFontSize }} border-danger text-danger p-2 text-center d-none" id="eventDateError"></div>
+            </div>
+          </div>
+          <div class="d-md-flex justify-content-start align-items-center mt-md-5- mt-md-4 mt-3 ctmContentAreaColors">
+            {% comment %} <label class="col-md-3 p-0 text-md-left text-center">FOIL</label> {% endcomment %}
+            <label class="col-md-3 p-0 text-md-left text-center">FOIL NAME COLOR</label>
+            <div class="col-md-9 d-flex justify-content-md-between ctm_personalise_color mob_justi-center">
+              <label class="form-check-label ctmColorOptions" for="label-name-color1">
+                <input class="form-check-input d-none" type="radio" name="Names Colour" id="label-name-color1" value="Gold" checked onchange="onSelectColorA('Gold')" data-lab_color="labA-Gold">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-Gold_100x.png?v=132528245896805782801686892841" alt="{{ shop.name }}" loading="eager">
+                <div class=" ctm_color_label d-none">Gold</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-name-color2">
+                <input class="form-check-input d-none" type="radio" name="Names Colour" id="label-name-color2" value="Rose Gold" onchange="onSelectColorA('Rosegold')" data-lab_color="labA-Rosegold">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-RoseGold_100x.png?v=23879838268062471261686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Rose Gold</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-name-color3">
+                <input class="form-check-input d-none" type="radio" name="Names Colour" id="label-name-color3" value="Copper" onchange="onSelectColorA('Copper')" data-lab_color="labA-Copper">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-copper_100x.png?v=81798631101337488511686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Copper</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-name-color4">
+                <input class="form-check-input d-none" type="radio" name="Names Colour" id="label-name-color4" value="Silver" onchange="onSelectColorA('Silver')" data-lab_color="labA-Silver">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-Silver_100x.png?v=111087393381718096451686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Silver</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-name-color5">
+                <input class="form-check-input d-none" type="radio" name="Names Colour" id="label-name-color5" value="Black" onchange="onSelectColorA('Black')" data-lab_color="labA-Black">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-Black_100x.png?v=28249936669975551521686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Black</div>
+              </label>
+            </div>
+            {% comment %} <input type="text" name="Label Name" class="form-control text-center col-10 ctm_form_inputs" placeholder="Bonnie & Clyde" id="bottleName"> {% endcomment %}
+          </div>
+          <div class="form-group d-md-flex flex-column flex-md-row flex-md-nowrap flex-wrap justify-content-center align-items-md-center mt-md-5- mt-md-4 mt-3">
+            <label for="bottleDate" class="col-md-3 p-0 text-md-left text-center">Date or comment</label>
+            <div class="col-md-9 col-12 ctm_pl_pr_sm0">
+              <input type="date" name="Comment" class="form-control text-center ctm_form_inputs w-100 d-flex p-0 justify-content-center align-items-center py-3" placeholder="20.08.2021" id="bottleDate" max="9999-12-31" min="1900-01-01" style="min-width: 100% !important; min-height: 50px !important;">
+              <div class="ctmFormFieldError {{ bkst.errorMsgFontSize }} border-danger text-danger p-2 text-center d-none" id="eventDateError"></div>
+            </div>
+          </div>
+          <div class="d-md-flex justify-content-start align-items-center mt-md-5- mt-md-4 mt-3 ctmContentAreaColors">
+            {% comment %} <label class="col-md-3 p-0 text-md-left text-center">FOIL</label> {% endcomment %}
+            <label class="col-md-3 p-0 text-md-left text-center">FOIL DATE COLOR</label>
+            <div class="col-md-9 d-flex justify-content-md-between ctm_personalise_color mob_justi-center">
+              <label class="form-check-label ctmColorOptions" for="label-date-color1">
+                <input class="form-check-input d-none" type="radio" name="Comment Colour" id="label-date-color1" value="Gold" checked onchange="onSelectColorB('Gold')" data-lab_color="labB-Gold">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-Gold_100x.png?v=132528245896805782801686892841" alt="{{ shop.name }}" loading="eager">
+                <div class=" ctm_color_label d-none">Gold</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-date-color2">
+                <input class="form-check-input d-none" type="radio" name="Comment Colour" id="label-date-color2" value="Rose Gold" onchange="onSelectColorB('Rosegold')" data-lab_color="labB-Rosegold">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-RoseGold_100x.png?v=23879838268062471261686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Rose Gold</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-date-color3">
+                <input class="form-check-input d-none" type="radio" name="Comment Colour" id="label-date-color3" value="Copper" onchange="onSelectColorB('Copper')" data-lab_color="labB-Copper">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-copper_100x.png?v=81798631101337488511686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Copper</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-date-color4">
+                <input class="form-check-input d-none" type="radio" name="Comment Colour" id="label-date-color4" value="Silver" onchange="onSelectColorB('Silver')" data-lab_color="labB-Silver">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-Silver_100x.png?v=111087393381718096451686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Silver</div>
+              </label>
+              <label class="form-check-label ctmColorOptions" for="label-date-color5">
+                <input class="form-check-input d-none" type="radio" name="Comment Colour" id="label-date-color5" value="Black" onchange="onSelectColorB('Black')" data-lab_color="labB-Black">
+                <img src="https://threefoxes.com.au/cdn/shop/t/31/assets/Colour-Black_100x.png?v=28249936669975551521686892841" alt="{{ shop.name }}" loading="eager">
+                <div class="ctm_color_label d-none">Black</div>
+              </label>
+            </div>
+            {% comment %} <input type="text" name="Label Name" class="form-control text-center col-10 ctm_form_inputs" placeholder="Bonnie & Clyde" id="bottleName"> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center">
+      {% render 'jtzuya_customizer_buttons', bkst: bkst %}
+    </div>
+  </div>
+</div>

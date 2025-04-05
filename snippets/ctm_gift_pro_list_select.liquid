@@ -1,0 +1,30 @@
+<div class="{{ ctmClass }} ctm_pro_gifts_select_box">
+  <select id="flavourselect_1" name="{{ ctmGiftProListName }}" class="input dropdown unset">
+    <option disable="" hidden="" value="0">{{ ctmGiftpro1stOption }}</option>
+    {% if giftProducts != blank %}
+      {% for product in giftProducts %}
+        <option value="{{ product.title }}">{{ product.title }}</option>
+      {% endfor %}
+    {% endif %}
+  </select>
+</div>
+
+{% style %}
+  .ctm_pro_gifts_select_box .input.dropdown {
+    padding: 12px;
+    border: none;
+    border: 1px solid #000;
+    border-radius: 0;
+    background: transparent;
+    background: #0000 url(/cdn/shop/files/Chevron_Down_T3_v2.webp?v=1679586891) no-repeat scroll calc(5% + 3px) center/8px auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: right 1rem center;
+    background-size: 11px;
+    min-width: 250px;
+  }
+  .ctm_pro_gifts_select_box .input.dropdown.unset {
+    color: #888;
+  }
+{% endstyle %}

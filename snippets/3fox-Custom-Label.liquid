@@ -1,0 +1,619 @@
+<div class="col-12 col-lg-10 col-xl-8 mx-auto text-center pt-mini pb-3">
+  <h5 class="H5_SUBTITLE">Step 2</h5>
+  <h2 class="H2_Product">Choose your label type</h2>
+  <p class="lead mt-4">
+    Choose from either "Digital Print" or "Premium Foil". Then upload your artwork and our Designer will send you a proof for approval within 24-48hrs from order placement.
+  </p>
+  </div>
+
+<style>
+  .btngroup-labels-customise .btn span {
+    min-width: 180px;
+  }
+  .logo-list {
+	font-size: 9px;
+    text-align: center;
+  }
+  .btngroup-labels-customise label .details {
+    margin-top: 20px;
+  }
+  .btngroup-labels-customise label .details p {
+    font-size: 18px !important;
+    font-weight: 300;
+  }
+  .btngroup-labels-customise label .details .lead {
+    font-weight: 700 !important;
+  }
+  @media (max-width: 992px) {
+    .btngroup-labels-customise .btn img {
+      max-width: 230px;
+    }
+    .btngroup-labels-customise .btn span {
+      min-width: auto;
+      padding:  1rem 1.2rem;
+      font-size: 18px;
+    }  
+  }
+</style>
+
+<div class="col-12 px-0 col-lg-11 mx-auto text-center ctm__wrapper">
+  {% comment %} {{ bkst.product_list | json }} {% endcomment %}
+  <div class="btn-group btn-group-toggle btngroup-labels-customise row text-center justify-content-center" data-toggle="buttons">
+    
+      <!-- <label class="btn col-12 col-lg-4 px-4" for="labelRadioNormal">
+        <img src="{{ 'Favour_Standard_v2.png' | asset_img_url: '500x'}}" class="mb-2 img-fluid demo-img-label" style="">
+        <input id="labelRadioNormal" name="labelRadio" onchange="onUnselectCustomLabel()" type="radio">
+        <br><span>Foxtail &amp; Co</span><br>
+        <p class="col-12 mb-0 mt-1">(Free)</p>
+      </label> -->
+
+      {% for product in bkst.product_list %}
+        {% comment %} {{ product.title }}<br />
+        {% if forloop.index == 1 %} {% else %} {% endif %} {% endcomment %}
+            {% if forloop.index == 1 %}
+              {% assign labelClasses = 'active focus' %}
+              {% assign radioId = 'labelRadioCustom' %}
+              {% assign onChange = 'onSelectCobrandLabel' %}
+              {% if bkst.ctmFirstProImg != blank %}
+                {% assign proImg = bkst.ctmFirstProImg %}
+              {% else %}
+                {% assign proImg = product.featured_image %}
+              {% endif %}
+            {% else %}
+              {% assign labelClasses = '' %}
+              {% assign radioId = 'labelRadioQuote' %}
+              {% assign onChange = 'onSelectCustomLabel' %}
+              {% if bkst.ctmSecondProImg != blank %}
+                {% assign proImg = bkst.ctmSecondProImg %}
+              {% else %}
+                {% assign proImg = product.featured_image %}
+              {% endif %}
+            {% endif %}
+        {% comment %} <label class="btn col-12 col-lg-4 px-4" for="labelRadioCustom"> {% endcomment %}
+        <label class="btn col-12 col-lg-4 px-4 {{ labelClasses }}" for="{{ radioId }}">
+          {% comment %} <img src="{{ 'FOX_Digital-Print.png' | asset_img_url: '500x' }}" class="mb-2 img-fluid demo-img-label" style=""> {% endcomment %}
+           <img src="{{ proImg | img_url: 'master' }}" class="mb-2 img-fluid demo-img-label" style="">
+          <input {% if forloop.index == 1 %}checked{% endif %} id="{{ radioId }}" name="labelRadio" onchange="{{ onChange }}()" type="radio" value="{{ product.selected_or_first_available_variant.id }}">
+          <br><span>{{ product.title }}</span><br>
+          <br>
+          <p class="H5_SUBTITLE" style="font-size: 15px;">{{ product.price | money | append: ' (PER DESIGN)' }}</p>
+          <p class="H5_SUBTITLE" style="font-size: 15px;">{{ product.description }}</p>
+          <div class="details">
+          
+          </div>
+        </label>
+      {% endfor %}
+    
+      {% comment %} <label class="btn col-12 col-lg-4 px-4" for="labelRadioCustom">
+        <img src="{{ 'FOX_Digital-Print.png' | asset_img_url: '500x' }}" class="mb-2 img-fluid demo-img-label" style="">
+        <img src="{{ 'https://threefoxes.com.au/cdn/shop/t/31/assets/FOX_Digital-Print_500x.png?v=96320436142936080991686892841' }}" class="mb-2 img-fluid demo-img-label" style="">
+        <input checked id="labelRadioCustom" name="labelRadio" onchange="onSelectCobrandLabel()" type="radio" >
+        <br><span>Digital Print</span><br>
+        <br>
+        <p class="H5_SUBTITLE" style="font-size: 15px;">$150 (PER DESIGN)</p>
+        <p class="H5_SUBTITLE" style="font-size: 15px;">CMYK DIGITAL PRINT</p>
+        <div class="details">
+        
+        </div>
+      </label>
+
+      <label class="btn col-12 col-lg-4 px-4 active" for="labelRadioNormal">
+        <img src="{{ 'FOX_Premium-Foil.png' | asset_img_url: '500x'}}" class="mb-2 img-fluid demo-img-label" style="">
+        <img src="{{ 'https://threefoxes.com.au/cdn/shop/t/31/assets/FOX_Premium-Foil_500x.png?v=84015900784431142381686892841'}}" class="mb-2 img-fluid demo-img-label" style="">
+        <input id="labelRadioQuote" name="labelRadio" onchange="onSelectCustomLabel()" type="radio" selected>
+        <br><span>Premium Foil</span><br>
+        <br>
+        <p class="H5_SUBTITLE" style="font-size: 15px;">$350 (PER DESIGN)</p>
+        <p class="H5_SUBTITLE" style="font-size: 15px;">UP TO 2 COLOUR FOIL 
+        <br>PLUS CMYK PRINT</p>
+        <div class="details">
+        
+        </div>
+      </label> {% endcomment %}
+    
+      <div class="col-12 col-lg-8 mx-auto mt-mini px-lg-5 px-3">
+        <p class="lead">Label size is 115mm wide by 50mm high
+        <br>
+        <br>NOTE: The Cocktail Type, Ingredients and Mandatory Alcohol information are located on a small clear sticker on the back of the bottle.</p>
+      </div>
+    
+    
+      <!-- Specs Modal -->
+      <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="specModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header d-flex w-100 align-items-center">
+              <h5 class="H5_SUBTITLE modal-title d-none" id="specModalLabel">Label Artwork Specifications</h5>
+              <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class="fa fal fa-times"></i></span>
+              </a>
+            </div>
+            <div class="modal-body p-0">
+                
+                <!-- First\Desktop lables\titles -->
+                <table class="table d-none d-md-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-top-0"></th>
+                      <th scope="col" class="h4 border-top-0" style="font-family: 'balboa', sans-serif; font-size: 26px;">CoBranded <br><small>$250</small></th>
+                      <th scope="col" class="h4 border-top-0" style="font-family: 'balboa', sans-serif; font-size: 26px;">Customised <br><small>$350</small></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Label Size</th>
+                      <td>115mm(w) x 50mm(h)</td>
+                      <td>115mm(w) x 50mm(h)</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Bottle Width</th>
+                      <td>60mm</td>
+                      <td>60mm</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Max Artwork Size</th>
+                      <td>40mm(h) x 40mm(w)</td>
+                      <td>115mm(h) x 50mm(w)</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Up to 2 colour Foil</th>
+                      <td class="text-success"><i class="fa fas fa-check"></i></td>
+                      <td class="text-success"><i class="fa fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">CMYK Printing</th>
+                      <td class="text-danger"><i class="fa fas fa-times"></i></td>
+                      <td class="text-success"><i class="fa fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Background Colour Change</th>
+                      <td class="text-danger"><i class="fa fas fa-times"></i></td>
+                      <td class="text-success"><i class="fa fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">"Foxtails &amp; Co." <br><small>Branding Removed</small></th>
+                      <td class="text-danger align-middle"><i class="fa fas fa-times"></i></td>
+                      <td class="text-success align-middle"><i class="fa fas fa-check"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
+              
+              
+                
+                <!-- mobile layout -->
+              	<div id="specAccordion" class="d-md-none">
+                  
+                  <!-- Causing error when not here, hiding -->
+                  <div class="card d-none">
+                    <div class="card-header" id="headingA">
+                      <h5 class="mb-0">
+                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseA" aria-expanded="false" aria-controls="collapseA">
+                          <h3>Cobranded - $250</h3>
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseA" class="collapse show" aria-labelledby="headingA" data-parent="#specAccordion">
+                      <div class="card-body p-0">
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Label Size</th>
+                              <td>115mm(w) x 50mm(h)</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Bottle Width</th>
+                              <td>60mm</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Max Artwork Size</th>
+                              <td>40mm(h) x 40mm(w)</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Up to 2 colour Foil</th>
+                              <td class="text-success"><i class="fa fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">CMYK Printing</th>
+                              <td class="text-danger"><i class="fa fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Background Colour Change</th>
+                              <td class="text-danger"><i class="fa fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">"Foxtails &amp; Co." <br><small>Branding Removed</small></th>
+                              <td class="text-danger align-middle"><i class="fa fas fa-times"></i></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card">
+                    <div class="card-header" id="headingB">
+                      <h5 class="mb-0">
+                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseB" aria-expanded="false" aria-controls="collapseB">
+                          <h3>Cobranded - $250</h3>
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseB" class="collapse" aria-labelledby="headingB" data-parent="#specAccordion">
+                      <div class="card-body p-0">
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Label Size</th>
+                              <td>115mm(w) x 50mm(h)</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Bottle Width</th>
+                              <td>60mm</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Max Artwork Size</th>
+                              <td>40mm(h) x 40mm(w)</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Up to 2 colour Foil</th>
+                              <td class="text-success"><i class="fa fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">CMYK Printing</th>
+                              <td class="text-danger"><i class="fa fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Background Colour Change</th>
+                              <td class="text-danger"><i class="fa fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">"Foxtails &amp; Co." <br><small>Branding Removed</small></th>
+                              <td class="text-danger align-middle"><i class="fa fas fa-times"></i></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card">
+                    <div class="card-header" id="headingC">
+                      <h5 class="mb-0">
+                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseC" aria-expanded="false" aria-controls="collapseC">
+                          <h3>Customised - $350</h3>
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseC" class="collapse" aria-labelledby="headingC" data-parent="#specAccordion">
+                      <div class="card-body">
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Label Size</th>
+                              <td>115mm(w) x 50mm(h)</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Bottle Width</th>
+                              <td>60mm</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Max Artwork Size</th>
+                              <td>115mm(h) x 50mm(w)</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Up to 2 colour Foil</th>
+                              <td class="text-success"><i class="fa fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">CMYK Printing</th>
+                              <td class="text-success"><i class="fa fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Background Colour Change</th>
+                              <td class="text-success"><i class="fa fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">"Foxtails &amp; Co." <br><small>Branding Removed</small></th>
+                              <td class="text-success align-middle"><i class="fa fas fa-check"></i></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      
+    
+  </div>
+</div>
+
+
+<!-- Show section if Customised (labelRadioCustom) is selected -->
+<div class="col-12 LabelDetails text-center mt-med" id="customize-design">
+
+  <div class="row">
+    <div class="col-12">
+      <h2 class="H2_Product">Upload your artwork</h2>
+      <p class="lead">We accept JPG, PNG, EPS or PDF. Our designer will get back to you with a proof within 48hrs of purchase.
+      <br> If you have any question feel free to call 1300 872 306.</p>
+     
+    </div>
+  </div>
+
+  <!-- This section selects the label style -->
+  <div class="row">
+    <div class="col-11 mx-auto px-0 col-lg-8 mx-auto row text-center">
+
+        {% comment %}
+        Upload-Lift widget element container
+        {% endcomment %}
+        <div class="upload-lift"></div>
+      	<div class="logo_field w-100 pt-4"></div>
+
+    </div>
+  </div>
+
+  <!-- This section selects the label color -->
+  <div class="row mt-med mb-lg-4 d-none">
+    <div class="col-12 col-lg-10 mx-auto">
+      <h2 class="text-uppercase">CHOOSE YOUR COLOURS</h2>
+      <p class="lead">Get creative! Select up to two colours for your custom label. We'll contact you with an example of how your logo will look. If you don’t see the colour you want, give us a call and we can talk options.</p>
+    </div>
+  </div>
+
+  <div class="row mt-3 mt-md-0 d-none">
+    <div class="col-12 col-lg-6 text-center">
+      
+      <h4>Colour 1</h4>
+
+      <div class="px-lg-sml">
+        <div class="btn-group btn-group-toggle btn-group-colours row text-center px-sml px-lg-0" data-toggle="buttons">
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Gold">
+            <img src="{{ 'Colour-Gold.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Gold" name="labelNameColour" onchange="onSelectColorA('Gold')" type="radio">
+            <div class="colourname">Gold</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-RoseGold">
+            <img src="{{ 'Colour-RoseGold.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-RoseGold" name="labelNameColour" onchange="onSelectColorA('Rosegold')" type="radio">
+            <div class="colourname rosegold">Rose Gold</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Copper">
+            <img src="{{ 'Colour-copper.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Copper" name="labelNameColour" onchange="onSelectColorA('Copper')" type="radio">
+            <div class="colourname">Copper</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Silver">
+            <img src="{{ 'Colour-Silver.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Silver" name="labelNameColour" onchange="onSelectColorA('Silver')" type="radio">
+            <div class="colourname">Silver</div>
+          </label>
+          <label class="btn col-4 text-center active mb-2" for="labelNameColour-Black">
+            <img src="{{ 'Colour-Black.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input checked id="labelNameColour-Black" name="labelNameColour" onchange="onSelectColorA('Black')" type="radio">
+            <div class="colourname black">Black</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Blue">
+            <img src="{{ 'Colour-Blue.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Blue" name="labelNameColour" onchange="onSelectColorA('Blue')" type="radio">
+            <div class="colourname blue">Blue</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Red">
+            <img src="{{ 'Colour-Red.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Red" name="labelNameColour" onchange="onSelectColorA('Red')" type="radio">
+            <div class="colourname red">Red</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Green">
+            <img src="{{ 'Colour-Green.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Green" name="labelNameColour" onchange="onSelectColorA('Green')" type="radio">
+            <div class="colourname green">Green</div>
+          </label>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-12 col-lg-6 text-center mt-sml mt-lg-0">
+      
+      <h4 class="">Colour 2</h4>
+
+      <div class="px-lg-sml">
+        <div class="btn-group btn-group-toggle btn-group-colours row text-center px-sml px-lg-0" data-toggle="buttons">
+          <label class="btn col-4 text-center" for="labelNameColour-Gold">
+            <img src="{{ 'Colour-Gold.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Gold" name="labelNameColour" onchange="onSelectColorB('Gold')" type="radio">
+            <div class="colourname">Gold</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-RoseGold">
+            <img src="{{ 'Colour-RoseGold.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-RoseGold" name="labelNameColour" onchange="onSelectColorB('Rosegold')" type="radio">
+            <div class="colourname rosegold">Rose Gold</div>
+          </label>
+          <label class="btn col-4 text-center mb-2 active" for="labelNameColour-Copper">
+            <img src="{{ 'Colour-copper.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input checked id="labelNameColour-Copper" name="labelNameColour" onchange="onSelectColorB('Copper')" type="radio">
+            <div class="colourname">Copper</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Silver">
+            <img src="{{ 'Colour-Silver.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Silver" name="labelNameColour" onchange="onSelectColorB('Silver')" type="radio">
+            <div class="colourname">Silver</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Black">
+            <img src="{{ 'Colour-Black.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Black" name="labelNameColour" onchange="onSelectColorB('Black')" type="radio">
+            <div class="colourname black">Black</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Blue">
+            <img src="{{ 'Colour-Blue.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Blue" name="labelNameColour" onchange="onSelectColorB('Blue')" type="radio">
+            <div class="colourname blue">Blue</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Red">
+            <img src="{{ 'Colour-Red.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Red" name="labelNameColour" onchange="onSelectColorB('Red')" type="radio">
+            <div class="colourname red">Red</div>
+          </label>
+          <label class="btn col-4 text-center mb-2" for="labelNameColour-Green">
+            <img src="{{ 'Colour-Green.png' | asset_img_url: '100x' }}" class="mx-auto">
+            <input id="labelNameColour-Green" name="labelNameColour" onchange="onSelectColorB('Green')" type="radio">
+            <div class="colourname green">Green</div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    
+</div>
+  
+</div>
+
+
+<div class="col-11 mx-auto text-center pt-3 mt-mini">
+  <p class="lead" style="line-height: 30px;">They’re going to look great!</p>
+</div>
+<div class="col-12 mx-auto text-center">
+  <span id="step2button" style="display: inline-block;" aria-expanded="true" class="btn btn-dark btn-lrg mx-auto link" onclick="onStepTwo()" value="Continue to tags" >Next step <i class="ml-2 fa-solid fa-chevron-right"></i></span>
+  <span id="getQuoteButton" style="display: none;" class="btn btn-dark btn-lrg mx-auto link" data-toggle="modal" data-target="#quoteModal" onclick="getAQuoteLoadQtys()">Get a quote <i class="ml-2 fa-solid fa-file-alt"></i></span>
+  <!-- aria-controls="#collapse-tags" data-target="#collapse-tags" data-toggle="collapse"  -->
+</div>
+{% comment %} {% section '3fox-Custom-Notice' %} {% endcomment %}
+
+
+
+<script>
+  
+  var stepPrice = 0;
+  var isSelectCustomLabel = true;
+  var designContainer = document.getElementById("customize-design");
+  var step2button = document.getElementById("step2button");
+  var getQuoteButton = document.getElementById("getQuoteButton");
+  var labelType = "cobrand";
+  
+  function onSelectCobrandLabel() {
+    console.log("====== Selected : cobrand");
+    isSelectCustomLabel = false;
+    isSelectCobrandLabel = true;
+    if (labelType == "standard") {
+      stepPrice = 250;
+    } else if (labelType == "custom") {
+      stepPrice = -100; // If changing from custom, remove difference (100)
+    } else {
+      stepPrice = 0; // No change
+    }
+    labelType = "cobrand";
+    console.log("******Label Type = "+labelType+" : "+stepPrice);
+    //designContainer.style.display = "block";
+    step2button.style.display = "inline-block";
+    getQuoteButton.style.display = "none";
+    isSelectEnquiryForm = false;
+    updateTotalPrice(stepPrice);
+    disableOrShowButton(totalPrice);
+  }
+  
+  function onSelectCustomLabel() {
+    console.log("====== Selected : custom");
+    isSelectCustomLabel = true;
+    isSelectCobrandLabel = false;
+    if (labelType == "standard") {
+      stepPrice = 350; // from standard, add cobrand + diff for custom
+    } else if (labelType == "cobrand") {
+      stepPrice = 100; // If changing from cobrand, just add diff
+    } else {
+      stepPrice = 0; // No change
+    }
+    labelType = "custom";
+    console.log("******Label Type = "+labelType+" : "+stepPrice);
+    //designContainer.style.display = "block";
+    step2button.style.display = "inline-block";
+    getQuoteButton.style.display = "none";
+    isSelectEnquiryForm = false;
+    updateTotalPrice(stepPrice);
+    disableOrShowButton(totalPrice);
+  }
+  
+  
+
+  function onUnselectCustomLabel() {
+    console.log("====== Selected : custom");
+    isSelectCustomLabel = true;
+    if (labelType == "custom") {
+      stepPrice = -350; // from custom, make 0
+    } else if (labelType == "cobrand") {
+      stepPrice = -250; // from cobrand, make 0
+    } else {
+      stepPrice = 0; // No change
+    }
+    labelType = "standard";
+    console.log("******Label Type = "+labelType+" : "+stepPrice);
+    designContainer.style.display = "none";
+    step2button.style.display = "inline-block";
+    getQuoteButton.style.display = "none";
+    isSelectEnquiryForm = false;
+    updateTotalPrice(stepPrice);
+    disableOrShowButton(totalPrice);
+  }
+  
+  var isSelectEnquiryForm = false;
+  function onGetQuoteLabel() {
+    isSelectEnquiryForm = true;
+    designContainer.style.display = "none";
+    step2button.style.display = "none";
+    getQuoteButton.style.display = "inline-block";
+  }
+
+  
+  var colorA = "Gold"
+  function onSelectColorA(colorName) {
+    colorA = colorName;
+    console.log("labA: "+colorA);
+  }
+
+  var colorB = "Gold"
+  function onSelectColorB(colorName) {
+    colorB = colorName;
+    console.log("labB: "+colorB);
+  }
+  
+ 
+   
+  let labelScript = "Custom"
+  let labelVariant = "33187483615318" // Custom label default
+
+  
+  async function onStepTwo() {
+    let totalPriceEle = document.getElementById("total-price");
+  	totalPriceEle.innerHTML = "ADD TO CART - $" + totalPrice;
+    gotoStep3();
+  }
+  
+  
+  function getAQuoteLoadQtys() {
+    var string = "";
+    const products = {{collection.products | json}};
+    if (allCounts > 1) {
+      var string = "COCKTAILS = ";
+      products.forEach(product => {
+        const docId = "updates_" + product.id;
+        console.log("Btn: "+docId);
+        const count =  parseInt(document.getElementById(docId).value);
+        console.log("Cnt: "+count);
+        if(count > 0){
+          let title = product.title;
+          let addstring = title+" ("+count+"), ";
+          string = string.concat(addstring); 
+        }
+      });
+      let enquirymessage = document.getElementById("EnquiryFormMessage");
+      enquirymessage.innerHTML = string+"\n\n";
+    }
+  }
+  
+  
+</script>

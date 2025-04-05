@@ -1,0 +1,340 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area px-3 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area test ctm__labels_content_area px-3- {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% render 'jtzuya_customizer_header', bkst: bkst %}
+
+  <div class="{% unless bkst.enableOnlyPrints != false %}row{% endunless %} ctm_tab_content_inner_area px-md-3 ctm_tabs_label_area pt-3-">
+    {% unless bkst.enableOnlyPrints != false %}
+      <h6 class="ctmChooseLabelType mt-3 ctmSecFontUpCase ctmSecFontAvenir wd_100 txt_center desk_tab_subheading_hide">Choose your label type</h6>
+      <div class="col-md-3 d-flex flex-column justify-content-start align-items-start ctm__contentInnderTabs pt-3 pl-0 pb-3 mb-2 pr-0 pr-md-3- px-md-3 mob_dir-row mob_gap-6">
+        <h6 class="ctmChooseLabelType mb-3 ctmSecFontUpCase ctmSecFontAvenir wd_100 txt_center mob_tab_subheading_hide">Choose your label type</h6>
+        <label class="ctm_card mb-2- mb-3 d-flex flex-row justify-content-start align-items-center card py-2 w-100 mob_d-unset" for="tab_card_1" data-tab_index="tab1">
+          <input type="radio" name="ctm_tab_card" id="tab_card_1" class="d-none" data-is_personalised="true">
+          <div class="col-md-7 col-7 d-flex justify-content-between align-items-center flex-column p-0 align-items-baseline pl-3 h-100 mob_mx-full txt_center mob_pl-0">
+            <h3 class="ctmAvenirNext mt-md-2 ctmSecFontAvenir ctmLabelCardTitle ctmSecFontUpCase mob_fs-11 wd_100 txt_center">Template labels</h3>
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_custom_rs.png?v=1726827844" alt="{{ shop.name }}" class="desk_tab_subheading_hide" fetchpriority="high" loading="lazy" width="" height="">
+            <p class="ctmLabelCardCost blockquote- text-secondary mb-0 ctmSecFontAvenir ctmTextCapitalize wd_100 txt_center mob_fs-12">From $190</p>
+          </div>
+          <div class="col-md-5 col-5 mob_tab_subheading_hide">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_templates.png?v=1724129841" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_custom_rs.png?v=1726827844" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy" width="" height="">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Script-Michael-_-jacinta.png?v=1725355602" alt="{{ shop.name }}" class="" fetchpriority="high"> {% endcomment %}
+          </div>
+        </label>
+        <label class="ctm_card mb-2- mb-3 d-flex flex-row justify-content-start align-items-center ctmNoActive py-2 w-100 mob_d-unset" for="tab_card_2" data-tab_index="tab2">
+          <input type="radio" name="ctm_tab_card" id="tab_card_2" class="d-none" data-is_personalised="false">
+          <div class="col-md-7 col-7 d-flex justify-content-between align-items-center flex-column p-0 align-items-baseline pl-3 h-100 mob_mx-full txt_center mob_pl-0">
+            <h3 class="ctmAvenirNext mt-md-2 ctmSecFontAvenir ctmLabelCardTitle ctmSecFontUpCase mob_fs-11 wd_100 txt_center">Custom labels</h3>
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_custom.png?v=1724129841" alt="{{ shop.name }}" class="desk_tab_subheading_hide" fetchpriority="high" loading="lazy" width="" height="">
+            <p class="ctmLabelCardCost blockquote- text-secondary mb-0 ctmSecFontAvenir ctmTextCapitalize wd_100 txt_center mob_fs-12">From $150</p>
+          </div>
+          <div class="col-md-5 col-5 mob_tab_subheading_hide">
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_custom.png?v=1724129841" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy" width="" height="">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Digital-Print-Carlin-_-Emily.png?v=1725355602" alt="{{ shop.name }}" class="" fetchpriority="high"> {% endcomment %}
+          </div>
+        </label>
+        <label class="ctm_card mb-2- mb-3 d-flex flex-row justify-content-start align-items-center ctmNoActive py-2 w-100 mob_d-unset" for="tab_card_3" data-tab_index="tab3">
+          <input type="radio" name="ctm_tab_card" id="tab_card_3" class="d-none" data-is_personalised="false">
+          <div class="col-md-7 col-7 d-flex justify-content-between align-items-center flex-column p-0 align-items-baseline pl-3 h-100 mob_mx-full txt_center mob_pl-0">
+            <h3 class="ctmAvenirNext mt-md-2 ctmSecFontAvenir ctmLabelCardTitle ctmSecFontUpCase mob_fs-11 wd_100 txt_center">Standard lables</h3>
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_custom_rsc.png?v=1726827844" alt="{{ shop.name }}" class="desk_tab_subheading_hide" fetchpriority="high" loading="lazy" width="" height="">
+            <p class="ctmLabelCardCost blockquote- text-secondary mb-0 ctmSecFontAvenir ctmTextCapitalize wd_100 txt_center mob_fs-12">
+              <span class="mob_fs-12">$9 per pack of 24</span><br>
+              <span class="mob_fs-12 bottle_tags_price">$9</span>
+            </p>
+            {% comment %} <p class="ctmLabelCardCost blockquote- text-secondary mb-0 ctmSecFontAvenir ctmTextCapitalize wd_100 txt_center mob_fs-12">$9</p> {% endcomment %}
+          </div>
+          <div class="col-md-5 col-5 mob_tab_subheading_hide">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_free.png?v=1724129840" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/label_custom_rsc.png?v=1726827844" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy" width="" height="">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Standard-Label.png?v=1725355602" alt="{{ shop.name }}" class="" fetchpriority="high"> {% endcomment %}
+          </div>
+        </label>
+      </div>
+    {% endunless %}
+
+    {% comment %} PERSONALIZED LABELS FOR THIS https://threefoxes.com.au/pages/product-customizer IS MISSING OTHER VARIANTS {% endcomment %}
+    {% unless bkst.enableOnlyPrints != false %}
+      <div class="col-md-9 ctm__contentInnderTabsContent {% unless bkst.enableOnlyPrints != false %}ctm__tabs_content_space_eq{% endunless %} pt-3 d-none-" data-tab_index="tab1">
+        <h6 class="ctmChooseLabelType mb-3 ctmSecFontUpCase ctmSecFontAvenir wd_100 txt_center mob_tab_subheading_hide rdc-wed-label-heading">PREMIUM FOIL - $190</h6>
+        <div class="row pl-md-2 justify-centent-md-start justify-content-between ctm__label_template_wrapper">
+          <label class="col-md-4- col-md-3 col-6 mb-2 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative ctmChooseTemplatesActive" for="chooseTemplates1">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-1.png?v=1723033443" alt="{{ shop.name }}" class="position-relative"> {% endcomment %}
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/harlyjessica_foil.jpg?v=1724416494" alt="{{ shop.name }}" class="position-relative"data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/harley_jessicay_bottle.png?v=1724647092" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/harvely-date.png?v=1724654588" data-orgImgColors="labA-Rosegold labB-Silver"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/harvly_jessica_500.jpg?v=1726654900" alt="{{ shop.name }}" class="position-relative"data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/harley_jessicay_bottle.png?v=1724647092" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/harvely-date.png?v=1724654588" data-orgImgColors="labA-Rosegold labB-Silver" loading="lazy" width="" height="">
+            <div class="ctmOverlay"></div>
+            {% comment %} <div class="ctm_label_flag position-absolute">Foil</div> {% endcomment %}
+             {% comment %} SCRIPT {% endcomment %}
+            <input type="radio" name="chooseTemplates" id="chooseTemplates1" class="d-none" data-label_name="Template" data-price="{{ 19000 | money }}" data-ctm_price_no_currency="{{ 190 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="Personalized Label - Script" data-isTemplate="true" data-template_type="foil" data-checkLabelType="foil" data-templateNameCheck="harlyjessica_foil" value="33184610582614" data-is_pro_label_item="true" checked>
+
+            <p class="personalize_labels--var_price">
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 33184610582614
+                    echo var.price | money_without_trailing_zeros
+                  endif
+                endfor 
+              %}
+            </p>
+
+          </label>
+            <label class="col-md-4- col-md-3 col-6 mb-2 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative" for="chooseTemplates4">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-4.png?v=1723527703" alt="{{ shop.name }}" class="position-relative"> {% endcomment %}
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/carlin_emily_foil.jpg?v=1724416493" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/carlin_emily_bottle.png?v=1724657812" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/carlinn-date.png?v=1724657774" data-orgImgColors="labA-Black labB-Copper"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/carlin___emily_500.jpg?v=1726654900" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/carlin_emily_bottle.png?v=1724657812" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/carlinn-date.png?v=1724657774" data-orgImgColors="labA-Black labB-Copper" loading="lazy" width="" height="">
+            <div class="ctmOverlay"></div>
+            {% comment %} <div class="ctm_label_flag position-absolute">Foil</div> {% endcomment %}
+            <input type="radio" name="chooseTemplates" id="chooseTemplates4" class="d-none" data-label_name="Template" data-price="{{ 19000 | money }}" data-ctm_price_no_currency="{{ 190 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="Personalized Label - Modern" data-isTemplate="true" data-template_type="foil" data-checkLabelType="foil" data-is_label_bottle_digital="true" data-templateNameCheck="carlin_foil" value="41867343495254"
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 41867343495254
+                    if var.inventory_quantity <= 0
+                      echo 'disabled'
+                    endif
+                  endif
+                endfor 
+              %}
+            >
+            <p class="personal_label--no_qty">Not Available</p>
+
+            <p class="personalize_labels--var_price">
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 41867343495254
+                    echo var.price | money_without_trailing_zeros
+                  endif
+                endfor 
+              %}
+            </p>
+          </label>
+          <label class="col-md-4- col-md-3 col-6 mb-2 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative" for="chooseTemplates5">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-5.png?v=1723527817" alt="{{ shop.name }}" class="position-relative"> {% endcomment %}
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/bridgetjoshua_foil.jpg?v=1724416493" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/bridget-joshuay_bottle.png?v=1724647092" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Bridget-date.png?v=1724654588" data-orgImgColors="labA-Copper labB-Silver"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/bridget_joshua_500.jpg?v=1726655312" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/bridget-joshuay_bottle.png?v=1724647092" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Bridget-date.png?v=1724654588" data-orgImgColors="labA-Copper labB-Silver" loading="lazy" width="" height="">
+            <div class="ctmOverlay"></div>
+            {% comment %} <div class="ctm_label_flag position-absolute">Foil</div> {% endcomment %}
+            <input type="radio" name="chooseTemplates" id="chooseTemplates5" class="d-none" data-label_name="Template" data-price="{{ 19000 | money }}" data-ctm_price_no_currency="{{ 190 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="Personalized Label - Elegant" data-isTemplate="true" data-template_type="foil" data-checkLabelType="foil" data-templateNameCheck="bridget_foil" value="41867343429718"
+
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 41867343429718
+                    if var.inventory_quantity <= 0
+                      echo 'disabled'
+                    endif
+                  endif
+                endfor 
+              %}
+            >
+              <p class="personal_label--no_qty">Not Available</p>
+
+              <p class="personalize_labels--var_price">
+                {% liquid
+                  for var in all_products['w-label'].variants
+                    if var.id == 41867343429718
+                      echo var.price | money_without_trailing_zeros
+                    endif
+                  endfor 
+                %}
+              </p>
+              
+          </label>
+          </div>
+        <h6 class="ctmChooseLabelType mb-3 ctmSecFontUpCase ctmSecFontAvenir wd_100 txt_center mob_tab_subheading_hide rdc-heading-border rdc-wed-label-heading">DIGITAL PRINT - $150</h6>
+         <div class="row pl-md-2 justify-centent-md-start justify-content-between ctm__label_template_wrapper">
+          <label class="col-md-4- col-md-3 col-6 mb-2 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative-" for="chooseTemplates2">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-2.png?v=1723527043" alt="{{ shop.name }}" class="position-relative"> {% endcomment %}
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/jessica_foil_f9ed63d8-2ba3-4bf6-ab8c-162f2a9e09d4.jpg?v=1724416493" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/jessica_andrewy_bottle.png?v=1724647091" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/jessica-date.png?v=1724654588" data-orgImgColors="labA-Copper labB-Silver"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/jessica_andrew_500.jpg?v=1726654900" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/jessica_andrewy_bottle.png?v=1724647091" data-ctmBottleDateImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/jessica-date.png?v=1724654588" data-orgImgColors="labA-Copper labB-Silver" loading="lazy" width="" height="">
+            <div class="ctmOverlay"></div>
+            {% comment %} <div class="ctm_label_flag position-absolute">Foil</div> {% endcomment %}
+            <input type="radio" name="chooseTemplates" id="chooseTemplates2" class="d-none" data-label_name="Template" data-price="{{ 15000 | money }}" data-ctm_price_no_currency="{{ 150 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="Personalized Label - Bold" data-isTemplate="true" data-template_type="foil" data-checkLabelType="foil" data-templateNameCheck="jasica_foil" value="33184610549846"
+            >
+
+            <p class="personalize_labels--var_price">
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 33184610549846
+                    echo var.price | money_without_trailing_zeros
+                  endif
+                endfor 
+              %}
+            </p>
+            
+          </label>
+          <label class="col-md-4- col-md-3 col-6 mb-2 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative" for="chooseTemplates3">
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-3.png?v=1723527723" alt="{{ shop.name }}" class="position-relative"> {% endcomment %}
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johnnydigital.jpg?v=1724665562" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johhnyone_bottle.png?v=1724647639" data-orgImgColors=""> {% endcomment %}
+            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johnny___katie_500.jpg?v=1726654901" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johhnyone_bottle.png?v=1724647639" data-orgImgColors="" loading="lazy"> {% endcomment %}
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johnny___katie_500.jpg?v=1726654901" alt="{{ shop.name }}" class="position-relative" data-ctmBottleImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/DigitalLabel_NameTrim_500xc.png?v=1727239121" data-orgImgColors="" loading="lazy" width="" height="">
+            <div class="ctmOverlay"></div>
+            {% comment %} <div class="ctm_label_flag position-absolute">Digital</div> {% endcomment %}
+            <input type="radio" name="chooseTemplates" id="chooseTemplates3" class="d-none" data-label_name="Template" data-price="{{ 15000 | money }}" data-ctm_price_no_currency="{{ 150 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="Personalized Label - Amalfi" data-isTemplate="true" data-template_type="digital" data-checkLabelType="digital" data-templateNameCheck="johnny_foil" value="41867343462486"
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 41867343462486
+                    if var.inventory_quantity <= 0
+                      echo 'disabled'
+                    endif
+                  endif
+                endfor 
+              %}
+            >
+            <p class="personal_label--no_qty">Not Available</p>
+
+            <p class="personalize_labels--var_price">
+              {% liquid
+                for var in all_products['w-label'].variants
+                  if var.id == 41867343462486
+                    echo var.price | money_without_trailing_zeros
+                  endif
+                endfor 
+              %}
+            </p>
+
+          </label>
+           
+         
+          {% comment %} <label for="" class="col-md-3"></label>
+          <label for="" class="col-md-3"></label>
+          <label for="" class="col-md-3"></label>
+          <label for="" class="col-md-3"></label>
+          <label for="" class="col-md-3"></label>
+          <label for="" class="col-md-3"></label>
+          <label for="" class="col-md-3">
+            <div class="mob_border-top ctm_tab_content_footer text-md-right mt-3 text-center">
+              {% if bkst.nextStepBtnLabel != blank %}
+                <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0">{{ bkst.nextStepBtnLabel }}</p>
+              {% endif %}
+              {% if bkst.nextStepBtnSubLabel != blank %}
+                <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="button">{{ bkst.nextStepBtnSubLabel }}</button>
+              {% endif %}
+            </div>
+          </label> {% endcomment %}
+          {% comment %} <label class="col-md-4 mb-3 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative-" for="chooseTemplates6">
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-6.png?v=1723527872" alt="{{ shop.name }}" class="position-relative">
+            <div class="ctmOverlay"></div>
+            <input type="radio" name="chooseTemplates" id="chooseTemplates6" class="d-none" value="template-6" data-label_name="Custom Label Template" data-price="{{ 15000 | money }}" data-ctm_price_no_currency="{{ 150 }}" data-type="label" data-isTemplate="true">
+          </label>
+          <label class="col-md-4 mb-3 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative-" for="chooseTemplates7">
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-7.png?v=1723527904" alt="{{ shop.name }}" class="position-relative">
+            <div class="ctmOverlay"></div>
+            <input type="radio" name="chooseTemplates" id="chooseTemplates7" class="d-none" value="template-7" data-label_name="Custom Label Template" data-price="{{ 15000 | money }}" data-ctm_price_no_currency="{{ 150 }}" data-type="label" data-isTemplate="true">
+          </label>
+          <label class="col-md-4 mb-3 pl-0 pr-0 pl-md-2 pr-md-2 ctmChooseTemplates position-relative-" for="chooseTemplates8">
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/template-8.png?v=1723527892" alt="{{ shop.name }}" class="position-relative">
+            <div class="ctmOverlay"></div>
+            <input type="radio" name="chooseTemplates" id="chooseTemplates8" class="d-none" value="template-8" data-label_name="Custom Label Template" data-price="{{ 15000 | money }}" data-ctm_price_no_currency="{{ 150 }}" data-type="label" data-isTemplate="true">
+          </label> {% endcomment %}
+        </div>
+      </div>
+    {% endunless %}
+    
+    <div class="ctm__contentInnderTabsContent {% unless bkst.enableOnlyPrints != false %}ctm__tabs_content_space_eq{% endunless %} rdc-p-40 {% unless bkst.enableOnlyPrints != false %}col-md-9 d-none {% else %}col-md-10- col-md-12 mx-auto-{% endunless %}" data-tab_index="tab2">
+      <div class="row {% unless bkst.enableOnlyPrints != false %}pl-md-3{% endunless %}">
+        {% if bkst.ctmProductPrints != blank %}
+          {% for product in bkst.ctmProductPrints %}
+            {% assign ctmId = product.selected_or_first_available_variant.id %}
+            {% comment %} <div class="col-md-6 mb-3"> {% endcomment %}
+            <div class="col-md-6 mb-3 ctm_pl_pr_sm0 mb-md-0 px-0">
+              <label class=" d-flex flex-column align-items-center justify-content-start {% unless bkst.enableOnlyPrints == false %}{% if forloop.index == 1 %}active focus{% endif %}{% endunless %} ctmProcard" for="ctmLabelPrint_{{ ctmId }}">
+                <img src="{{ product.featured_image | img_url: '450x', crop : 'center' }}" alt="{{ product.featured_image.alt }}" class="img-fluid" loading="lazy" width="" height="">
+                <h3 class="h3 ctmAvenirNext ctmLabelProTitle">{{ product.title }}</h3>
+                <p class="H5_SUBTITLE ctmLabelProPrice rdc-fs-14">{{ product.price | money }}</p>
+                <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmId }}" class="d-none" value="{{ ctmId }}" data-label_name="Custom Label" data-price="{{ product.price | money }}" data-ctm_price_no_currency="{{ product.price | money_without_currency }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-is_pro_label_item="true" {% unless bkst.enableOnlyPrints == false %}{% if forloop.index == 1 %}checked{% endif %}{% endunless %}>
+                {% comment %} <input type="radio" name="ctmLabelPrint" value="{{ ctmId }}" id="ctmLabelPrint_{{ ctmId }}" class="d-none" data-type="label"> {% endcomment %}
+              </label>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for i in (1..2) %}
+            {% if forloop.index == 1 %}
+              {% assign ctmLabelPrintProId = '39282293735510' %}
+              {% assign ctmLabelPrintProImg = 'label_digital_print.png' %}
+              {% assign ctmLabelType = 'digital' %}
+              {% assign ctmProTitle = 'DIGITAL PRINT' %}
+              {% assign ctmProDesc = 'Enhance your bottled cocktail experience with our premium foil label, meticulously crafted on premium paper for a touch of elegance.' %}
+              {% assign ctmLabelProPrice = 15000 %}
+              {% comment %} {% assign ctmLabelPrintProImg = 'FOX_Digital-Print.png' %} {% endcomment %}
+            {% else %}
+              {% assign ctmLabelPrintProId = '39282295308374' %}
+              {% assign ctmLabelPrintProImg = 'label_custom.png' %}
+              {% assign ctmLabelType = 'foil' %}
+              {% assign ctmProTitle = 'PREMIUM FOIL' %}
+              {% assign ctmProDesc = 'Unleash your inner artist and turn your bottled cocktail into a unique masterpiece with our digital print label. It&#39s your canvas for endless creativity!' %}
+              {% assign ctmLabelProPrice = 35000 %}
+            {% endif %}
+            <div class="col-md-6 mb-3 ctm_pl_pr_sm0 mb-md-0 px-0">
+              <label class=" d-flex flex-column- align-items-center- justify-content-start- ctmProcard {% if forloop.index == 1 %}active focus{% endif %} p-2 {% if forloop.index == 1 %}mr-1{% else %}ml-1{% endif %}" for="ctmLabelPrint_{{ ctmLabelPrintProId }}">
+                {% comment %} <img src="{{ 'FOX_Digital-Print.png' | file_img_url: 'master' }}" alt="{{ shop.name }}" class="img-fluid"> {% endcomment %}
+                <div class="col-md-6- col-md-7 d-flex justify-content-between align-items-center flex-column p-0 align-items-baseline">
+                  {% comment %} <h3 class="h3 ctmAvenirNext">{{ "Digital Print" }}</h3> {% endcomment %}
+                  <h3 class="h3 ctmAvenirNext ctmLabelProTitle">{{ ctmProTitle }}</h3>
+                  <p class="ctmLabelProDesc">{{ ctmProDesc }}</p>
+                  <p class="H5_SUBTITLE m-0 ctmLabelProPrice rdc-fs-14">{{ ctmLabelProPrice | money }}</p>
+                  {% comment %} <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" value="{{ ctmLabelPrintProId }}" data-label_name="Custom Label" data-price="{{ ctmLabelProPrice | money }}" data-ctm_price_no_currency="{{ ctmLabelProPrice | money_without_currency }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-checkLabelType="{{- ctmLabelType -}}" data-is_pro_label_item="true" {% unless bkst.enableOnlyPrints == false %}{% if forloop.index == 1 %}checked{% endif %}{% endunless %}> {% endcomment %}
+                  <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" value="{{ ctmLabelPrintProId }}" data-label_name="Custom Label" data-price="{{ ctmLabelProPrice | money }}" data-ctm_price_no_currency="{{ ctmLabelProPrice | money_without_currency }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="{{ ctmProTitle }}" data-checkLabelType="{{- ctmLabelType -}}" data-is_pro_label_item="true" {% if forloop.index == 1 %}checked{% endif %}>
+                </div>
+                <div class="col-md-6- col-md-5">
+                  <img src="{{ ctmLabelPrintProImg | file_img_url: 'master' }}" alt="{{ shop.name }}" class="img-fluid mx-auto" loading="lazy" width="" height="">
+                </div>
+                {% comment %} <input type="radio" name="ctmLabelPrint" value="{{ ctmLabelPrintProId }}" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" data-type="label"> {% endcomment %}
+              </label>
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% comment %} <div class="col-md-6 mb-3">
+          <img src="{{ "" }}" alt="" srcset="">
+        </div> {% endcomment %}
+      </div>
+      <div class="row">
+        {% comment %} <div class="{% unless bkst.enableOnlyPrints != false %}col-md-9- col-md-10{% endunless %} ctm_tabs_upload mt-5- ctm_pl_pr_sm0"> {% endcomment %}
+        <div class="{% unless bkst.enableOnlyPrints != false %}col-md-12- col-md-9 col-md-8-{% endunless %} ctm_tabs_upload mt-5- pt-3 ctm_pl_pr_sm0 mob_border-top">
+         <div class="upload-btn-main rdc-d-flex rdc-fw-wrap">
+            <div class="upload-btn-box rdc-w-half rdc-mw-full pr-3">
+          <h2 class="ctmAvenirNext ctmLabelArtworkUpload rdc-fs-22 rdc-fw-600 txt_center">UPLOAD YOUR ARTWORK</h2>
+          {% comment %}
+          Upload-Lift widget element container
+          {% endcomment %}
+          <div class="upload-lift"></div>
+          <div class="logo_field w-100 pt-4- pt-2"></div>
+              <span class="tf-up-info"><span class="tf-up-info-icon">?</span>Info</span>
+            </div>
+          <div class="upload-btn-text rdc-d-none rdc-w-half rdc-mw-full pl-3">
+            <div class="tf-up-info-close-main"><span class="tf-up-info-close">x</span></div>
+          <p class="ctm_font_weight- mb-3 txt_center rdc-fs-12">Label size is 115mm wide by 50mm high. We accept JPG, PNG, EPS or PDF</p>
+          <p class="ctm_font_weight- mb-2 txt_center rdc-fs-12">Our designer will get back to you with a proof within 48hrs of purchase.If you have any question feel free to call 1300 872 306.</p>
+          <p class="ctm_font_weight- text-sm m-0 txt_center rdc-fs-12">NOTE: The Cocktail Type, Ingredients and Mandatory Alcohol information are located on a small clear sticker on the back of the bottle.</p>
+          </div>
+          </div>
+          </div>
+      </div>
+    </div>
+
+    {% unless bkst.enableOnlyPrints != false %}
+      <div class="col-md-9 ctm__contentInnderTabsContent {% unless bkst.enableOnlyPrints != false %}ctm__tabs_content_space_eq{% endunless %} pt-3 d-none" data-tab_index="tab3">
+        <label class="col-md-8- col-lg-6- ctmProLabel ctmProLabel_standred active" for="freeLabel">
+          {% comment %} <h2 class="ctmAvenirNext ctm_sub_heading2_font">Foxtail & Co</h2> {% endcomment %}
+          <h2 class="ctmAvenirNext ctm_sub_heading2_font txt_center">Foxtails & Co Premium Label</h2>
+          <div class="d-flex flex-wrap flex-row mx-auto justify-content-center align-items-center w-100 col-md-8 col-lg-6">
+            {% comment %} <img src="{{ "https://cdn.schopify.com/s/files/1/0289/0180/2070/files/free_label.png?v=1724130080" }}" alt="{{ shop.name }}" loading="lazy" class="label_img"> {% endcomment %}
+            <img src="{{ "https://cdn.shopify.com/s/files/1/0289/0180/2070/files/ESPRESSO-MARTINI.png?v=1726817388" }}" alt="{{ shop.name }}" loading="lazy" class="label_img" width="" height="">
+            {% comment %} background-color:#EAD9BB; {% endcomment %}
+            <p class="text-center ctm_paragraph1_font cus_text_normal cus_weight_normal" style="padding:20px;">We can apply all the labels for you, or if you'd like to handle it personally, we can ship the labels with the cocktails free of charge.</p>
+            {% comment %} <p class="text-center ctm_paragraph1_font">Your cocktails will have our classic branding and labels. 
+              You can add Bottle Tags to personalise them!</p> {% endcomment %}
+
+              {% comment %} 33176702746710 {% endcomment %}
+              
+              {% comment %} Free Standard Label Product  {% endcomment %}
+              <input type="radio" name="freeLabel" id="freeLabel" class="d-none" value="33176702746710" data-label_name="Custom Label Free" data-price="{{ 0 | money }}" data-ctm_price_no_currency="{{ 0 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="0" data-ctmprotitle="Standard Label" data-is_pro_item="true" checked>
+          </div>
+          {% comment %} <input type="radio" name="ctmLabelPrint-" value="{{ ctmLabelPrintProId }}" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none-"> {% endcomment %}
+        </label>
+        {% comment %} <div class="row">
+        </div> {% endcomment %}
+      </div>
+    {% endunless %}
+    </div>
+    <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center">
+      {% render 'jtzuya_customizer_buttons', bkst: bkst %}
+    </div>
+</div>

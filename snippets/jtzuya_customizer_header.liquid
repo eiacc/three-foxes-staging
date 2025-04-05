@@ -1,0 +1,19 @@
+{% if bkst.tabHeading != blank or bkst.tabSubHeading != blank %}
+  <div class="ctm-header-w-button mob_border-bottom">
+    <div class="px-md-3 pl-md-4- pr-3- rdc-p-bl2r ctm_tab_content_header d-flex align-items-center justify-content-between pb-2 flex-wrap ctm_pl_0- mr-md-3 ctm_pr_0 mob_justi-center mob_border-bottom mob_fs-h3">
+      {% if bkst.tabHeading != blank %}
+        <div class="tab_content_heading ctmFontDahlia">
+        <h3 class="rdc-m-0" {% if override_count %}data-heading-temp-store="{{ bkst.tabHeading }}"{% endif %}>{{ bkst.tabHeading }}</h3>
+        </div>
+      {% endif %}
+      {% if bkst.tabSubHeading != blank %}
+        <div class="tab_content_sub_heading ctmSecFontNormal- mob_tab_subheading_hide">
+          <p class="ctmSecFontNormal- ctmSecFontAvenir ctmSecFont600- ctm_tab_clr_blk">{{ bkst.tabSubHeading }}</p>
+        </div>
+      {% endif %}
+    </div>
+    <div class="ctm_tab_content_footer text-md-right text-center">
+      {% render 'jtzuya_customizer_buttons', action: action, bkst: bkst %}
+    </div>
+  </div>
+{% endif %}

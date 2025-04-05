@@ -1,0 +1,37 @@
+<div class="mobile-nav">
+  <div
+    class="mobile-nav--header"
+    data-mq="small"
+    {% unless settings.transitions--other %}
+      data-transition-item="y-menu"
+    {% endunless %}
+  >
+    <div class="mobile-nav--search" data-item="nav-text">
+      {% comment %} Copied from header {% endcomment %}
+    </div>
+
+    <div class="mobile-nav--account" data-item="nav-text">
+      {% comment %} Copied from header {% endcomment %}
+    </div>
+  </div>
+
+  <div class="mobile-nav--menu" data-item="nav-text">
+    {% comment %} Copied from header {% endcomment %}
+  </div>
+
+  <div
+    class="mobile-nav--footer"
+    data-mq="small"
+    {% unless settings.transitions--other %}
+      data-transition-item="y-menu"
+    {% endunless %}
+  >
+    <div class="mobile-nav--social-icons">
+      {% comment %} Copied from announcement {% endcomment %}
+    </div>
+
+    <div class="mobile-nav--localization">
+      {% comment %} Copied from announcement or header {% endcomment %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area px-3 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area ctm__cocktails_content_area ctm__gift_sets_area ctm__gift_sets_uploads_area px-3- px-0 {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  <div class="ctm__gift_sets_pro_area">
+    {% if bkst.tabHeading != blank or bkst.tabSubHeading != blank %}
+      <div class="px-md-3 pl-4 pr-3 ctm_tab_content_header d-flex align-items-end justify-content-between pb-2 flex-wrap ctm_pl_0-">
+        {% if bkst.tabHeading != blank %}
+          <div class="tab_content_heading ctmFontDahlia">
+            <h3>{{ bkst.tabHeading }}</h3>
+          </div>
+        {% endif %}
+        {% if bkst.tabSubHeading != blank %}
+          <div class="tab_content_sub_heading ctmSecFontNormal-">
+            <p class="ctmSecFontNormal- ctmSecFontAvenir ctmSecFont600- ctm_tab_clr_blk">{{ bkst.tabSubHeading }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="row ctm_tab_content_inner_area px-md-3 ctm_tabs_label_area  pt-3-"></div>
+      <div class="ctm__contentInnderTabsContent pt-3 col-md-10 mx-auto" data-tab_index="tab2">
+        <div class="row">
+          {% if bkst.ctmGiftLabelTypeProducts != blank %}
+            {% for product in bkst.ctmGiftLabelTypeProducts %}
+              {% assign ctmId = product.selected_or_first_available_variant.id %}
+              <div class="col-md-6 mb-3">
+                <label class=" d-flex flex-column align-items-center justify-content-start ctmProcard" for="ctmLabelPrint_{{ ctmId }}">
+                  <img src="{{ product.featured_image | img_url: '450x', crop : 'center' }}" alt="{{ product.featured_image.alt }}" class="img-fluid" loading="lazy">
+                  <h3 class="h3 ctmAvenirNext ctmLabelProTitle">{{ product.title }}</h3>
+                  <p class="H5_SUBTITLE ctmLabelProPrice">{{ product.price | money }}</p>
+                  <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmId }}" class="d-none" value="{{ ctmId }}" data-label_name="Custom Label" data-price="{{ product.price | money }}" data-ctm_price_no_currency="{{ product.price | money_without_currency }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-is_file_upload="{{ product.metafields.custom.is_file_upload }}" data-is_pro_item="{{ ctmIsItem }}">
+                  {% comment %} <input type="radio" name="ctmLabelPrint" value="{{ ctmId }}" id="ctmLabelPrint_{{ ctmId }}" class="d-none" data-type="label"> {% endcomment %}
+                </label>
+              </div>
+            {% endfor %}
+          {% else %}
+            {% for i in (1..3) %}
+              {% if forloop.index == 1 %}
+                {% assign ctmLabelPrintProId = 'Standred label' %}
+                {% assign ctmLabelPrintProImg = 'https://threefoxes.com.au/cdn/shop/files/QuickFoxtail.webp?v=1691376278&width=600' %}
+                {% assign ctmLabelType = '' %}
+                {% assign ctmProTitle = 'Foxtails & Co Included' %}
+                {% assign ctmIsItem = false %}
+                {% assign ctmIsFileUpload = false %}
+                {% comment %} {% assign ctmLabelPrintProImg = 'FOX_Digital-Print.png' %} {% endcomment %}
+              {% elsif forloop.index == 2 %}
+                {% assign ctmLabelPrintProId = '39282293735510' %}
+                {% assign ctmLabelPrintProImg = 'https://threefoxes.com.au/cdn/shop/files/FOX_Digital-Print_500x_5f289fe1-55a4-40fa-8487-dbf37a4ee516.webp?v=1691376183&width=600' %}
+                {% assign ctmLabelType = 'digital' %}
+                {% assign ctmProTitle = 'Digital Print' %}
+                {% assign ctmIsItem = true %}
+                {% assign ctmIsFileUpload = true %}
+                {% comment %} {% assign ctmLabelPrintProImg = 'FOX_Digital-Print.png' %} {% endcomment %}
+              {% else %}
+                {% assign ctmLabelPrintProId = '39282295308374' %}
+                {% assign ctmLabelPrintProImg = 'https://threefoxes.com.au/cdn/shop/files/FOX_Premium-Foil_500x_507b921c-213f-4c1d-a12c-bb32b9aa0a7f.webp?v=1691376177&width=600' %}
+                {% assign ctmLabelType = 'foil' %}
+                {% assign ctmProTitle = 'Premium Foil' %}
+                {% assign ctmIsItem = true %}
+                {% assign ctmIsFileUpload = true %}
+              {% endif %}
+              <div class="col-md-6- col-md-4 mb-3 ctm_pl_pr_sm0 mb-md-0">
+                <label class=" d-flex flex-column- align-items-center- justify-content-start- ctmProcard p-2" for="ctmLabelPrint_{{ ctmLabelPrintProId }}">
+                  {% comment %} <img src="{{ 'FOX_Digital-Print.png' | file_img_url: 'master' }}" alt="{{ shop.name }}" class="img-fluid"> {% endcomment %}
+                  <div class="col-md-6- col-md-7 d-flex justify-content-between align-items-center flex-column p-0 align-items-baseline">
+                    {% comment %} <h3 class="h3 ctmAvenirNext">{{ "Digital Print" }}</h3> {% endcomment %}
+                    <h3 class="h3 ctmAvenirNext ctmLabelProTitle">{{ ctmProTitle }}</h3>
+                    <p class="H5_SUBTITLE m-0 ctmLabelProPrice">{{ "35000" | money }}</p>
+                    <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" value="{{ ctmLabelPrintProId }}" data-label_name="Label" data-ctmprotitle="{{ ctmProTitle }}" data-price="{{ 35000 | money }}" data-ctm_price_no_currency="{{ 350 }}" data-type="label" data-ctmLabelType="product" {% if ctmIsItem %}data-ctm_quantity="1"{% endif %} data-checkLabelType-="{{- ctmLabelType -}}" data-is_file_upload="{{ ctmIsFileUpload }}" data-is_pro_item="{{ ctmIsItem }}">
+                  </div>
+                  <div class="col-md-6- col-md-5">
+                    {% comment %} <img src="{{ ctmLabelPrintProImg | file_img_url: 'master' }}" alt="{{ shop.name }}" class="img-fluid mx-auto" loading="lazy"> {% endcomment %}
+                    <img src="{{ ctmLabelPrintProImg }}" alt="{{ shop.name }}" class="img-fluid mx-auto" loading="lazy">
+                  </div>
+                  {% comment %} <input type="radio" name="ctmLabelPrint" value="{{ ctmLabelPrintProId }}" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" data-type="label"> {% endcomment %}
+                </label>
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% comment %} <div class="col-md-6 mb-3">
+            <img src="{{ "" }}" alt="" srcset="">
+          </div> {% endcomment %}
+        </div>
+    </div>
+    <div class="mob_border-top ctm_tab_content_footer text-md-right mt-3 text-center">
+      {% if bkst.nextStepBtnLabel != blank %}
+        <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">{{ bkst.nextStepBtnLabel }}</p>
+      {% endif %}
+      {% if bkst.nextStepBtnSubLabel != blank %}
+        <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="button">{{ bkst.nextStepBtnSubLabel }}</button>
+      {% endif %}
+    </div>
+  </div>
+  {% render 'ctm_file_uploads', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: ctmWrapClass, uploadHeading: bkst.uploadHeading, uploadSubHeading: bkst.uploadSubHeading, ctmUploadFieldName: 'Label', ctmProvideLaterText: "I Provide Label Artwork Later" %}
+</div>

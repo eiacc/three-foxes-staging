@@ -1,0 +1,49 @@
+<div class="ctm__tab_content_area ctm__summary px-3- {% unless page.template_suffix == 'giftboxes' %}pr-md-3{% endunless %} {{ ctmWrapClass }} d-none" data-tab_index="{{ section.blocks.size | plus: 1 }}" data-step_index="{{ "step_" | append: lastStep }}">
+  {% comment %} {% if bkst.tabHeading != blank or bkst.tabSubHeading != blank %}
+  {% endif %} {% endcomment %}
+    <div class="ctm-header-w-button mob_border-bottom">
+  <div class="px-3 rdc-p-bl2r ctm_tab_content_header d-flex align-items-center justify-content-between pb-2 flex-wrap ctm_pr_0 ctm_pl_sm0 mob_justi-center mob_border-bottom">
+    {% comment %} {% if bkst.tabHeading != blank %}
+    {% endif %} {% endcomment %}
+ 
+    <div class="tab_content_heading ctmFontDahlia mob_fs-h3">
+      <h3 class="rdc-m-0">Summary</h3>
+    </div>
+    
+     
+    {% comment %} {% if bkst.tabSubHeading != blank %}
+    {% endif %} {% endcomment %}
+    <div class="tab_content_sub_heading ctmSecFontNormal- mob_tab_subheading_hide">
+      <p class="ctmSecFontNormal- ctmSecFont600- ctmSecFontAvenir ctm_tab_clr_blk">{{ "Here's what you've created!" }}</p>
+    </div>
+      </div>
+      <div class="ctm_tab_content_footer text-md-right text-center">
+      <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">That's it! Let's go!</p>
+      <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="submit">Add to Cart <span>- $1,117</span> {% render 'ctm_loader', class: 'd-none' %}
+      </button>
+    </div>
+  </div>
+  <div class="row- ctm_tab_content_inner_area px-md-3 pt-3- ctm_pr_md0 ctm_pl_0">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="w-100 list-group list-group-flush mt-5- ctm__summary ctm__summary_list row flex-row position-relative justify-content-around- justify-content-between-">
+          <div class="col-md-5- col-md-6 col-12 px-0 ctm__saummary_props pt-md-5- pt-md-4- pt-4 pl-md-3- p-md-4 ctm_border_right_gray">
+          </div>
+
+          {% comment %} <div class="col-md-5 col-12 px-0 ctm__saummary_items pt-5"> {% endcomment %}
+          <div class="col-md-5- col-md-6 col-12 px-0 ctm__saummary_items pt-md-5- pt-md-4 pt-5 p-md-4">
+          </div>
+        {% comment %} <div class="list-group-item pl-0">Dapibus ac facilisis in</div>
+          <div class="list-group-item pl-0">Morbi leo risus</div>
+          <div class="list-group-item pl-0">Porta ac consectetur ac</div>
+          <div class="list-group-item pl-0">Vestibulum at eros</div> {% endcomment %}
+        </div>
+      </div>
+    </div>
+    <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center">
+      <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">That's it! Let's go!</p>
+      <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="submit">Add to Cart <span>- $1,117</span> {% render 'ctm_loader', class: 'd-none' %}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area px-3- pr-3 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area ctm__details_content_area px-3- pr-md-3 {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% render 'jtzuya_customizer_header', bkst: bkst %}
+
+  <div class="ctm_tab_content_inner_area px-md-3 pt-3- container-fluid ctm_form_contact_fields ctm_pr_md0">
+    <div class="row">
+      <div class="container p-0 mx-md-0 pt-md-3 pl-md-4">
+        <div class="form-group d-flex flex-column flex-md-row flex-wrap justify-content-between align-items-md-center mt-md-4 mt-3">
+          <div class="col-md-4 col-12 ctm_pl_pr_sm0">
+            {% comment %} <h6 class="col-2- p-0 ctmInputLabel ctmSecFontUpCase wd_100 txt_center">Email Address</h6> {% endcomment %}
+           <h6 class="col-2- p-0 ctmInputLabel ctmSecFontUpCase wd_100 txt_center ctmSecFontAvenir">Email Address</h6>
+            <p class="p ctmnInputSubLabel-- ctmInputLabel wd_100 txt_center ctmSecFontAvenir">For order updates & confirmation</p>
+          </div>
+          <div class="col-md-8 col-12 ctm_pl_pr_sm0">
+            <input type="email" name="Email" class="form-control text-center ctm_form_inputs" placeholder="Email Address" id="contactInfoEventEmail">
+            <div class="ctmFormFieldError {{ bkst.errorMsgFontSize }} border-danger text-danger p-2 text-center d-none" id="eventDateError">You must give a preferred email</div>
+          </div>
+        </div>
+        <div class="form-group d-flex flex-column flex-md-row flex-wrap justify-content-between align-items-md-center mt-md-4 mt-3">
+          <div class="col-md-4 col-12 ctm_pl_pr_sm0">
+            <h6 class="col-2- p-0 ctmInputLabel ctmSecFontUpCase wd_100 txt_center ctmSecFontAvenir">Mobile</h6>
+            <p class="p ctmnInputSubLabel-- ctmInputLabel wd_100 txt_center ctmSecFontAvenir">Delivery updates & correspondance</p>
+          </div>
+          {% comment %} <input type="tel" name="phone" class="form-control text-center col-md-8 ctm_form_inputs" placeholder="Phone Number" id="contactInfoPhone"> {% endcomment %}
+           <div class="col-md-8 col-12 ctm_pl_pr_sm0">
+             <input type="tel" name="Phone" class="form-control text-center ctm_form_inputs" placeholder="Phone Number" id="contactInfoEventPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+             <div class="ctmFormFieldError {{ bkst.errorMsgFontSize }} border-danger text-danger p-2 text-center d-none" id="eventDateError">You must give a preferred mobile</div>
+           </div>
+        </div>
+        <div class="form-group d-flex flex-column flex-md-row flex-wrap justify-content-between align-items-md-center mt-md-4 mt-3">
+          <div class="col-md-4 col-12 ctm_pl_pr_sm0">
+            <h6 class="col-2- p-0 ctmInputLabel ctmSecFontUpCase wd_100 txt_center ctmSecFontAvenir">Event date</h6>
+            <p class="p ctmnInputSubLabel-- ctmInputLabel wd_100 txt_center ctmSecFontAvenir">3-4 weeks to dispatch custom label orders.</p>
+          </div>
+          <div class="col-md-8 col-12 ctm_pl_pr_sm0">
+            <input type="date" name="Event Date" class="form-control text-center ctm_form_inputs w-100 d-flex p-0 justify-content-center align-items-center py-3" placeholder="20.08.2021" id="contactInfoEventDate" max="9999-12-31" min="1900-01-01" style="min-width: 100% !important; min-height: 50px !important;">
+            <div class="ctmFormFieldError {{ bkst.errorMsgFontSize }} border-danger text-danger p-2 text-center d-none" id="eventDateError">Your date must be at least 4 weeks away for Custom labels</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center">
+      {% render 'jtzuya_customizer_buttons', bkst: bkst %}
+    </div>
+  </div>
+</div>

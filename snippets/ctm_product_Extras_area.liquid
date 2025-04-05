@@ -1,0 +1,70 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area px-3- pr-3 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area ctm__extras_content_area px-3- pr-3 {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% render 'jtzuya_customizer_header', bkst: bkst %}
+
+  <div class="ctm_tab_content_inner_area rdc-p-in40 container-fluid ctm_pr_md0">
+    <div class="row">
+      <div class="col-md-6 ctm_final_touches ctm_label_applications rdc-p-t40 ctm_pl_pr_sm0">
+        <h6 class="ctmAvenirNext ctmExtrasProtype wd_100 txt_center">LABEL APPLICATION</h6>
+        <div class="col-md-8- col-md-10- col-md-11 p-md-0 mx-auto text-center col-12 ctmLabelTagImgs ctm_pl_pr_sm0 ctm_final_touches-inner">
+          {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/extras_label_application.png?v=1724130182" alt="{{ shop.name }}" class="mx-auto" loading="lazy"> {% endcomment %}
+          {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Digital-Template-Blank-Bottle.png?v=1726834655" alt="{{ shop.name }}" class="mx-auto" loading="eager"> {% endcomment %}
+         <div>
+          <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/With_Label.png?v=1743666528" alt="{{ shop.name }}" class="mx-auto with_label_tag" loading="eager">
+          <img loading="eager" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Without_Label.png?v=1743666528" alt="{{ shop.name }}" class="mx-auto without_label_tag d-none">
+          <p class="ctm_paragraph1_font">We can apply all the labels for you, or if you'd like to handle it
+            personally, we can ship the labels with the cocktails free of charge.
+          </p>
+           <div class="ft-item-text-box">
+          <h6 class="ctm_paragraph1_font">30 cents per bottle</h6>
+           </div>
+         </div>
+          <div class="mt-3 pb-3 d-flex flex-column">
+            <input type="radio" name="label_application" id="label_application1" class="label_application d-none" data-isLabelTag="with_label_tag" checked data-value="Do it for $0.50" data-type="product" value="41849361039446" data-ctm_quantity="1" data-ctm_price="{{ 50 | money}}" data-ctm_price_no_currency="{{ 0.50 }}" data-ctm_title="LABEL APPLICATION">
+            <label class="btn ctmBtn btn-outline-secondary btn_min_wd ctm_sub_heading1_font" for="label_application1">
+              THREE FOXES TO APPLY - <span>$0.30</span>
+            </label>
+            <input type="radio" name="label_application" id="label_application2" class="label_application d-none" data-isLabelTag="without_label_tag" data-type="no_product">
+            <label class="btn ctmBtn btn-outline-secondary btn_min_wd ctm_sub_heading1_font rdc-fs-12" for="label_application2">
+              APPLY MYSELF - FREE
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="rdc-p-in30 rdc-w-full rdc-d-none rdc-m-d-block"><div class="rdc-w-full mob_border-top"></div></div>
+      <div class="col-md-6 ctm_final_touches rdc-p-t40 ctm_bottle_tag ctm_pl_pr_sm0 ctm_final_touches-inner">
+        <h6 class="ctmAvenirNext pl-md-3 ctmExtrasProtype wd_100 txt_center">BOTTLE TAGS</h6>
+        <div class="col-md-8- col-md-10- col-md-11 p-md-0 mx-auto text-center ctmBottleTagImgs col-12 ctm_pl_pr_sm0">
+          {% comment %} <img loading="eager" src="https://threefoxes.com.au/cdn/shop/t/31/assets/Bottle_NameTags_3_600x.png?v=67771117219630029651686892841" alt="{{ shop.name }}" class="mx-auto with_label_tag"> {% endcomment %}
+         <div> 
+          <img loading="eager" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Neck-Tag_600x_14c6aa0e-c668-45ac-a353-3f1cd27a6e38.png?v=1727074016" alt="{{ shop.name }}" class="mx-auto with_label_tag">
+          {% comment %} <img loading="eager" src="https://threefoxes.com.au/cdn/shop/t/31/assets/Bottle_NameTags_none_600x.png?v=147988245309526240021686892841" alt="{{ shop.name }}" class="mx-auto without_label_tag d-none"> {% endcomment %}
+          <img loading="eager" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/ESPRESSO-MARTINI_x600_3672ca3a-5c80-4f31-81ae-bf1d262edcec.png?v=1727071676" alt="{{ shop.name }}" class="mx-auto without_label_tag d-none">
+          <p class="ctm_paragraph1_font">Our blank bottle tags allow you to personalise each bottle and
+            work great as place settings.
+          </p>
+           <div class="ft-item-text-box">
+          <h6 class="ctm_paragraph1_font">{{ '900' | money | append: ' per pack of 24 Tags' }}</h6>
+          <h6 class="ctm_paragraph1_font">With <span id="cocktail_qty" >1</span> cocktails you'll need <span id="bottle_tag_pack_qty" >1</span> Packs</h6>
+           </div>
+           </div>
+           <div class="mt-3 d-flex flex-column">
+            <input type="radio" name="bottle_tags" id="bottle_tags1" class="bottle_tags d-none" data-isBottleTag="with_label_tag" data-value="bottle tag for $9" value="33176709300310" checked data-type="product" data-ctm_quantity="1" data-ctm_price="{{ 900 | money }}" data-ctm_price_no_currency="{{ 9 }}" data-ctm_title="Bottle tag">
+            <label class="btn ctmBtn btn-outline-secondary btn_min_wd ctm_sub_heading1_font" for="bottle_tags1">
+              ADD TO ORDER 
+              {% comment %} - <span>$9</span> {% endcomment %}
+            </label>
+            <input type="radio" name="bottle_tags" id="bottle_tags2" class="bottle_tags d-none" data-isBottleTag="without_label_tag" data-value="bottle tag no thanks" value="33280155320406" data-type="product" data-ctm_quantity="0" data-ctm_price="{{ 0 | money }}" data-ctm_price_no_currency="{{ 0 }}" data-ctm_title="Bottle tag">
+            <label class="btn ctmBtn btn-outline-secondary btn_min_wd ctm_sub_heading1_font rdc-fs-12" for="bottle_tags2">
+              NO THANKS
+            </label>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center mt-3">
+      {% render 'jtzuya_customizer_buttons', bkst: bkst %}
+    </div>
+  </div>
+</div>

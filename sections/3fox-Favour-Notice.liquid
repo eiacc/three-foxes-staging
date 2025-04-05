@@ -1,0 +1,36 @@
+{% if section.settings.enable %}
+	<style>
+      #shopify-section-3fox-Favour-Notice {display: block !important;}
+	</style>
+    <div class="card border border-dark py-3 p-2 rounded-0" style="border-width: 2px !important;">
+      <h3 class="H3_Title text-uppercase text-dark mb-2">Notice:</h3>
+      <div class="">
+        {{section.settings.notice}}
+      </div>
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Favours Foxtails Notice",
+	"class": "notice mt-3 col-12 col-md-9 col-lg-6 mx-auto text-center d-none",
+    "settings": [
+		{
+            "label": "Enable?",
+            "id": "enable",
+            "type": "checkbox"
+        },
+		{
+            "label": "Notice text",
+            "id": "notice",
+            "type": "richtext"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

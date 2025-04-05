@@ -1,0 +1,202 @@
+<!-- Step 1 : Box Sleeve Upload -->
+<section class="formpanel container-fluid bg-cream px-0 d-none" id="gb_step-1" {% if ctmUploadFieldName != blank %}data-upload_input_name="{{ ctmUploadFieldName }}"{% endif %}>
+  {% if uploadHeading != blank or uploadSubHeading != blank %}
+    <div class="px-md-3 ctm_tab_content_header d-flex align-items-end justify-content-between pb-2 flex-wrap ctm_pl_0-">
+      {% if uploadHeading != blank %}
+        <div class="tab_content_heading ctmFontDahlia">
+          <h3>{{ uploadHeading }}</h3>
+        </div>
+      {% endif %}
+      {% if uploadSubHeading != blank %}
+        <div class="tab_content_sub_heading">
+          <p class="ctmSecFontNormal- ctmSecFontAvenir ctmSecFont600- ctm_tab_clr_blk">{{ uploadSubHeading }}</p>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  
+  <div class="container-fluid mt-4- mt-md-5 mt-3 px-md-3 px-0">
+
+    <div class="flex-row ctmImgUploadWrapper">
+{% comment %} 
+      <div class="col-12 text-center mt-sml mb-3">
+        <h5>STEP 1</h5>
+        <h2>Upload Gift Set Sleeve Artwork</h2>
+        <h5 class="mt-1 tradeGothic text-thin text-uppercase">(Optional)</h5>
+      </div> {% endcomment %}
+
+      <div class="col-12 text-center">
+        <p class="lead">
+          We accept JPG, PNG, EPS or PDF. Our designer will get back to you with a proof within 48hrs of purchase.
+          <br>If you have any questions feel free to call <a href="tel:1300872306">1300 872 306</a>.
+        </p>
+      </div>
+
+      <!-- This section selects the Sleeve style -->
+      <div class="col-12">
+        <div class="row">
+          <div class="col-10 col-lg-6- col-lg-7 col-12 mb-mt-5 mb-4 mx-auto px-0 mx-auto row text-center" id="upload-wrapper-sleeve">
+            {% comment %}
+            Upload-Lift widget element container
+            {% endcomment %}
+            <div class="upload-lift"></div>
+            <div class="custom-sleeve w-100 pt-md-4 pt-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 text-center my-sml checkarea">
+        <div class="mb-4 ctmFileUploadProvideLater d-flex justify-content-center align-items-baseline">
+          <input type="checkbox" class="providelaterCheckbox mr-2" id="check_later_{{ ctmUploadFieldName | downcase }}" name="{{ ctmProvideLaterText }}">
+          <label for="check_later_{{ ctmUploadFieldName | downcase }}">I'll provide the artwork to you later (We will call you to help & confirm)
+        </div>
+        <div class="btnwrapstack d-none">
+          <div class="btn btn-dark gp_btn_prev mr-1">Back</div>
+          <div class="btn mt-3 mt-xl-0 btn-primary mr-1 checkBtnNormal" id="gb_2_next">Next</div>
+          <div class="btn mt-3 mt-xl-0 btn-primary checkBtnNotice d-none" id="gb_2_next_provideLater">Next</div>
+        </div>
+      </div>
+
+      <div class="popupnotice" id="gb_2_next_provideLater_popup">
+        <div class="notice m-md-0 p-md-4 m-2 p-3">
+          <div class="flex-row">
+            <div class="col-12">
+              <h4 class="mb-4 tradeGothic ctm_sub_heading2_font ctmEmailDesign" style="font-size: 125%;">PLEASE E-MAIL YOUR DESIGN TO 
+                <a class="ctm_sub_heading2_font" href="mailto:hello@threefoxes.com.au">hello@threefoxes.com.au</a>
+              </h4>
+              <p class="lead">If we have not received a design within two weeks <Br>our designer will call you to follow up & confirm</p>
+            </div>
+            <div class="col-12 mt-3 btnwrapstack">
+              <div class="btn ctm_sub_navs_btns_font ctmBtn btn-dark mr-1 closepopup ctmSecFontUpCase ctmBtnBurgundy- ctmBtnBurgundyBorder- ctm_btn_dark ctm_popup_btns">Go back</div>
+              <div class="btn ctm_sub_navs_btns_font ctmBtn btn-outline-secondary mt-3- mt-xl-0 gp_btn_next closepopup provideLaterAgree ctm_popup_btns" id="gb_2_next_understoodlater">Agree</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+  <div class="mob_border-top ctm_tab_content_footer text-md-right text-center mt-3 ctm_nxtBtnBelowCards">
+    {% if bkst.nextStepBtnLabel != blank %}
+      <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">{{ bkst.nextStepBtnLabel }}</p>
+    {% endif %}
+    {% if bkst.nextStepBtnSubLabel != blank %}
+      <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="button">{{ bkst.nextStepBtnSubLabel }}</button>
+    {% endif %}
+  </div>
+</section>
+
+{% style %}
+  .{{ ctmWrapClass }} .cl-upload--wrapper {
+    /* height: 160px; */
+    height: 250px;
+    background: #000;
+    border-radius: 10px;
+  }
+  .{{ ctmWrapClass }} #clqjrynmocum .filepond--root .filepond--drop-label {
+      min-height: 50px;
+  }
+  .{{ ctmWrapClass }} .filepond--root, .filepond--root .filepond--drop-label {
+      height: 100%!important;
+  }
+  .{{ ctmWrapClass }} .popupnotice:not(.active),
+  .popupnotice:not(.active) {
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .{{ ctmWrapClass }} .popupnotice,
+  .popupnotice {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    pointer-events: all;
+    transition: all ease .3s;
+    opacity: 1;
+    overflow: auto;
+    position: absolute;
+  }
+  .{{ ctmWrapClass }} .popupnotice:before,
+  .popupnotice:before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: #000000b3;
+      pointer-events: all;
+      position: absolute;
+  }
+  .{{ ctmWrapClass }} .popupnotice .notice,
+  .popupnotice .notice {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      min-height: 350px;
+      padding: 2em;
+      text-align: center;
+      background: #f7f2ee;
+      display: flex;
+      align-items: center;
+  }
+  .ctm__gift_sets_pro_label_area .popupnotice .notice {
+    justify-content: center;
+  }
+
+  .ctm__gift_sets_pro_label_area .popupnotice .notice .lead {
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .{{ ctmWrapClass }} .flex-row {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      flex-shrink: 0;
+  }
+  .{{ ctmWrapClass }} .btn-dark, .btn-black {
+      background-color: #000;
+      color: #fff;
+  }
+  .{{ ctmWrapClass }} .btn:not(.ctm_tab_content_footer button) {
+      border-radius: 0!important;
+      font-family: TradeGothicLTPro,arial;
+      font-weight: 700!important;
+      text-transform: uppercase;
+      font-size: 14px;
+      line-height: 16px;
+      min-width: 250px;
+      outline: none!important;
+      box-shadow: none!important;
+      padding: 1.2em 1em .8em;
+  }
+  .{{ ctmWrapClass }} .btn-primary {
+      /* background-color: #e97b42;
+      border-color: #e97b42; */ 
+      color: var(--ctmWhite) !important;
+  }
+  .{{ ctmWrapClass }} .btn-primary:hover {
+      color: var(--ctmWhite);
+      /* background-color: #e96b02;
+      border-color: #dc6502; */
+  }
+
+  @media screen and (max-width: 768px) {
+    .{{ ctmWrapClass }} .popupnotice .notice,
+    .popupnotice .notice {
+        min-height: 220px;
+    }
+    .{{ ctmWrapClass }} .cl-upload--wrapper {
+      /* height: 160px; */
+      height: 180px;
+    }
+  }
+{% endstyle %}

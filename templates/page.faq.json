@@ -1,0 +1,289 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16324399488a55ecb4": {
+      "type": "featured-text",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "1",
+        "overline": "",
+        "heading": "FAQs",
+        "description": "",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {
+        "show-title": false,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "spacing-above": false,
+        "spacing-below": true
+      }
+    },
+    "16324397781a8be68b": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "16324397781a8be68b-0": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "How long will my order take to arrive?",
+            "description": "<p>Annoyingly vague answer...depends where you live. We find delivery takes anywhere from 2-5 business days for most metro areas. But delays can happen.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-1": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Can I pick up my order?",
+            "description": "<p>Sometimes we can arrange for you to swing by the distillery to pick up your order. Just give us a call before and we’ll let you know what works.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Can I cancel my order?",
+            "description": "<p>Maybe. Get in touch with us asap and we will see what we can do to help. But once your order has shipped it's yours.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "a6080b6f-76b2-411e-84ba-9bbd1dbedff2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Can I get a refund?",
+            "description": "<p>If your product is faulty or damaged in any way we happily offer you a refund and exchange. Get in touch with us to talk process.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "16324397781a8be68b-0",
+        "16324397781a8be68b-1",
+        "16324397781a8be68b-2",
+        "a6080b6f-76b2-411e-84ba-9bbd1dbedff2"
+      ],
+      "custom_css": [],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "Your order",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    },
+    "collapsible_rows_kGqfYi": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "collapsible_row_ByLfqY": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "description": "<p>Not today unfortunately. But one day we hope to reach the far corners of this beautiful world.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_ixiEiT": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Do you have a cellar door?",
+            "description": "<p>We are digital only. That means while our distillery is just outside Melbourne CBD, we can’t welcome you there for tastings and tours.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_BJgcEx": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Can I buy Three Foxes from anywhere else?",
+            "description": "<p>You’ll find our spirits and aperitivo in a few really great bars. But if you want to order any of our products for your lovely self, our website is the place to do this.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_aDpxym": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "My drink is out of stock! What’s the deal?",
+            "description": "<p>As we are a craft distillery that only produces small batches, sometimes our products are out of stock. You can give us your email and we’ll notify you when it's back (no gross marketing we promise). On the very rare occasion we run out before being able to fulfill your order, we’ll contact you asap and let you know what your options are (wait, refund or steal someone else's order. Jokes. Stealing is bad).</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_BR88Vc": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "What payment methods do you accept?",
+            "description": "<p>The usual suspects. Visa, Mastercard, Paypal, Apple Pay, After Pay and first borns.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_ByLfqY",
+        "collapsible_row_ixiEiT",
+        "collapsible_row_BJgcEx",
+        "collapsible_row_aDpxym",
+        "collapsible_row_BR88Vc"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "SHIPPING & PURCHASING",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    },
+    "collapsible_rows_YyXNyj": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "collapsible_row_kLGGPe": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "How big are the cocktails?",
+            "description": "<p>Each Foxtail is a full, individual serve cocktail. They are either 110ml or 100ml.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_CbXhGE": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Do you offer discounts for large orders?",
+            "description": "<p>Absolutely! We offer a bulk order discount that gets added automatically to your cart for your convenience. ﻿ ﻿Our bulk order range is for orders over 48 up to 350 bottles, after this we manually quote based on your exact order.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_LgCVQH": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "How long will the cocktails last?",
+            "description": "<p>If they are left unopened, Foxtails will last indefinitely. This means you can order in advance if you are that way inclined and they also work well for the guests who would like a keepsake.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_z4CMgm": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Do you have a minimum order?",
+            "description": "<p>There are no minimum orders however, bulk discounts on orders over 18 and over 48 bottles do apply.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_cKq3nx": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "When do I need to order them by?",
+            "description": "<p>The order fulfilment for personalised labels is about 4 weeks however we have a delivery guarantee policy which means if anything were to happen in transit we replace them free of charge. All we ask is that you order as soon as you know you final numbers to give us enough time to rectify in the event anything were to happen. To date this has only been used once in the last 3 years but we like to make our customers aware of it.<br/></p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_kLGGPe",
+        "collapsible_row_CbXhGE",
+        "collapsible_row_LgCVQH",
+        "collapsible_row_z4CMgm",
+        "collapsible_row_cKq3nx"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "WEDDING FAVOURS",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    },
+    "collapsible_rows_HkF7GL": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "collapsible_row_BAnXEW": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "How do you take your coffee?",
+            "description": "<p>Two magics please.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_dbKxND": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "How can I contact you guys?",
+            "description": "<p>Let us count the ways. Email hello@threefoxes.com.au, call 1300 872 306, chat via our website (you know that funny looking orange speech bubble that pops up in the corner of every page?) or slide into our DMs @3foxesmelb</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_BAnXEW",
+        "collapsible_row_dbKxND"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "ANYTHING ELSE",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    }
+  },
+  "order": [
+    "16324399488a55ecb4",
+    "main",
+    "16324397781a8be68b",
+    "collapsible_rows_kGqfYi",
+    "collapsible_rows_YyXNyj",
+    "collapsible_rows_HkF7GL"
+  ]
+}

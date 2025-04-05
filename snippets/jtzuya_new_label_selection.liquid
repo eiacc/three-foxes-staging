@@ -1,0 +1,44 @@
+<div data-selection_override="0" class="ctm__tab_content_area test ctm__labels_content_area px-3- {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% render 'jtzuya_customizer_header', action: action, bkst: bkst %}
+
+  <div class="{% unless bkst.enableOnlyPrints != false %}row{% endunless %} ctm_tab_content_inner_area px-md-3 ctm_tabs_label_area pt-3-">
+    <div class="selection-main">
+      <div class="selection-grid">
+        <div class="selection-grid-item">
+          <label class="ctm_card mb-2- mb-3 d-flex flex-row justify-content-start align-items-center card py-2 w-100 mob_d-unset" for="tab_card_1" data-tab_index="tab1"></label>
+          <input type="radio" name="ctm_tab_card" data-customizer-label-type="premium" id="tab_card_1" class="d-none" data-is_personalised="true" checked/>
+          <div class="selection-grid-content">
+            <p class="selection-grid-item-heading">Template Labels</p>
+            <p class="selection-grid-item-sub">Select from our range of Premium or Digital print templates...</p>
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/premium_c8067139-e813-457a-8da4-6cc1d60c4b46.png?v=1743664201" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy" width="" height="">
+          </div>
+          <p class="selection-grid-price">FROM $149</p>
+        </div>
+        <div class="selection-grid-item">
+          <label class="ctm_card mb-2- mb-3 d-flex flex-row justify-content-start align-items-center ctmNoActive py-2 w-100 mob_d-unset" for="tab_card_2" data-tab_index="tab2"></label>
+          <input type="radio" name="ctm_tab_card" data-customizer-label-type="custom" id="tab_card_2" class="d-none" data-is_personalised="false" />
+          <div class="selection-grid-content">
+            <p class="selection-grid-item-heading">Custom Labels</p>
+            <p class="selection-grid-item-sub">Upload your own artwork and we do the rest</p>
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/custom_63032f31-3e12-44e4-9e0a-56d59ec979b5.png?v=1743664201" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy" width="" height="">
+          </div>
+          <p class="selection-grid-price">FROM $229</p>
+        </div>
+        <div class="selection-grid-item">
+          <label class="ctm_card mb-2- mb-3 d-flex flex-row justify-content-start align-items-center ctmNoActive py-2 w-100 mob_d-unset" for="tab_card_3" data-tab_index="tab3"></label>
+          <input type="radio" name="ctm_tab_card" data-customizer-label-type="standard" id="tab_card_3" class="d-none" data-is_personalised="false" />
+          <div class="selection-grid-content">
+            <p class="selection-grid-item-heading">FoxTails & Co Labels</p>
+            <p class="selection-grid-item-sub">Use our classic <br> Foxtails and Co label</p>
+            <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/standard_60caadad-3f45-4714-908a-a39c21ce8622.png?v=1743664201" alt="{{ shop.name }}" class="" fetchpriority="high" loading="lazy" width="" height="">
+          </div>
+          <p class="selection-grid-price">FREE</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center">
+    {% render 'jtzuya_customizer_buttons', action: action, bkst: bkst %}
+  </div>
+</div>

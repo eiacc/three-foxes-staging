@@ -1,0 +1,1627 @@
+{{ 'jtzuya_new_selection.css' | asset_url | stylesheet_tag }}
+{% render 'ctm_pro_customizer_css', section: section %}
+{% render 'ctm_pro_customizer_fonts_css', section: section %}
+
+<section class="container-fluid bg-cream py-sml">
+  <div class="row py-mini px-sml favour-markers py-5- ctm__tab_section_elems">
+    {% comment %} <h1>{{ page.title }}</h1> {% endcomment %}
+    
+    <nav class="col-md-2 -d-none d-md-block sidebar ctm__list_group p-md-0">
+      <ul class="nav flex-row flex-nowrap flex-md-column list-group list-group-flush position-relative mb-3 ctm_pl_pr_sm0 ctm_list_progress_bar">
+        <div class="ctmBar d-none d-md-block"></div>
+        {% comment %} {{ section.blocks.last.settings.tabLabel }} {% endcomment %}
+        {% for bk in section.blocks %}
+          {% assign bkst = bk.settings %}
+          {% case bk.type %}
+            {% when 'ctmProGiftSets' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'label_selection' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'template_selection' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'proCollection' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'innerTabsArea' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmPersonalise' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmProExtras' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmProTags' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmContactDetails' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmGiftProducts' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmProductGifts_labelType' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+            {% when 'ctmProductGifts_label' %}
+              <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content {% if forloop.index == 1 %}ctm_tab_active ctmSecFont600-{% endif %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+                <span class="ctm_tabCounter">{{ forloop.index }}</span>
+                {% if bkst.tabLabel != blank %}
+                  <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+                {% endif %}
+              </li>
+          {% endcase %}
+        {% endfor %}
+
+        {% assign lastStep = section.blocks.size | plus: 1 %}
+        <li class="list-group-item ctmSecFontAvenir ctmSecFontNormal- ctmSecFont600- ctm_tab_clr_blk d-flex justify-content-start align-items-center mb-1 ctm_tab_content" data-tab_index="{{ lastStep }}" data-step_index="{{ "step_" | append: lastStep }}">
+          <span class="ctm_tabCounter">{{ lastStep }}</span>
+          {% comment %} {% if bkst.tabLabel != blank %}
+            <span class="ctm_tab_label">{{ bkst.tabLabel }}</span>
+          {% endif %} {% endcomment %}
+          <span class="ctm_tab_label">{{ "SUMMARY" }}</span>
+          {% comment %} {% if bkst.tabLabel != blank %}
+          {% endif %} {% endcomment %}
+        </li>
+      </ul>
+    </nav>
+    <div class="col-md-10">
+      {% for bk in section.blocks %}
+        {% assign bkst = bk.settings %}
+        {% assign cmtClass = 'ctmStepBlock_' | append: forloop.index %}
+        {% case bk.type %}
+          {% when 'ctmProGiftSets' %}
+            {% comment %} Current Customizer {% endcomment %}
+            {% render 'ctm_product_customizer_gift_pros', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'proCollection' %}
+            {% render 'ctm_product_customizer_collection', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'label_selection' %}
+            {% render 'jtzuya_new_label_selection', action: 'label_selection', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'template_selection' %}
+            {% render 'jtzuya_new_template_selection', action: 'template_selection', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'innerTabsArea' %}
+            {% render 'ctm_product_customizer_tabs_area', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'ctmPersonalise' %}
+            {% render 'ctm_product_Personalise_area', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'ctmProExtras' %}
+            {% render 'ctm_product_Extras_area', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'ctmProTags' %}
+            {% render 'ctm_product_Tags_area', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'ctmContactDetails' %}
+            {% render 'ctm_product_ContactDetails_area', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'ctmGiftProducts' %}
+            {% render 'ctm_ctmGiftProducts_area', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+          {% when 'ctmProductGifts_label' %}
+            {% render 'ctmProductGifts_label', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: cmtClass %}
+        {% endcase %}
+      {% endfor %}
+
+      {% assign cmtLastClass = 'ctmStepBlock_' | append: lastStep %}
+      {% render 'ctm_product_summary_area', section: section, lastStep: lastStep, ctmWrapClass: cmtLastClass %}
+
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Custom Product Customizer",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "class": "ctm_pro_customizer",
+    "settings": [
+      {
+        "type": "color",
+        "id": "sectionBgColor",
+        "label": "Section Background Color",
+        "default": "#f7f2ee"
+      },
+      {
+        "id": "title_font_family",
+        "label": "Font",
+        "type": "font_picker",
+        "default": "avenir_next_n6",
+        "info": "We have create a css class 'ctmSecFontAvenir' for apply this font family. currently we are using this font-family on 'left-side-steps', on top sub-heading, product card title or next-button with red background. Note: This font settings is not provide 'Dahlia' font. also you can check about shopify fonts by [click here](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#:~:text=Shopify's%20font%20library%20is%20a,both%20WOFF%20and%20WOFF2%20formats.)"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size",
+        "label": "Font size desktop",
+        "min": 10,
+        "max": 25,
+        "step": 1,
+        "unit": "px",
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "title_font_size_sm",
+        "label": "Font size mobile",
+        "min": 10,
+        "max": 25,
+        "step": 1,
+        "unit": "px",
+        "default": 14
+      },
+      {
+        "type": "header",
+        "content": "Custom Settings"
+      },
+      {
+        "id": "chooseLStepsSubHeadingtype",
+        "label": "Select Left steps Sub-Heading Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Sub-Heading 1",
+            "value": "SubHeading1"
+          },
+          {
+            "label": "Sub-Heading 2",
+            "value": "SubHeading2"
+          }
+        ],
+        "default": "SubHeading2"
+      },
+      {
+        "id": "chooseStepHeadingtype",
+        "label": "Select Step Heading Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Heading 1",
+            "value": "heading1"
+          },
+          {
+            "label": "Heading 2",
+            "value": "heading2"
+          },
+          {
+            "label": "Heading 3",
+            "value": "heading3"
+          },
+          {
+            "label": "Heading 4",
+            "value": "heading4"
+          }
+        ],
+        "default": "heading3"
+      },
+      {
+        "id": "chooseStepSubHeadingtype",
+        "label": "Select Step Sub-Heading Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Sub-Heading 1",
+            "value": "SubHeading1"
+          },
+          {
+            "label": "Sub-Heading 2",
+            "value": "SubHeading2"
+          }
+        ],
+        "default": "SubHeading2"
+      },
+      {
+        "id": "chooseBtnSubTexttype",
+        "label": "Select Next Button Sub-text Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Paragraph 1",
+            "value": "paragraph1"
+          },
+          {
+            "label": "Paragraph 2",
+            "value": "paragraph2"
+          },
+          {
+            "label": "Sub Navigation",
+            "value": "subNav"
+          }
+        ],
+        "default": "paragraph1"
+      },
+      {
+        "id": "chooseBtnLabeltype",
+        "label": "Select Next Button Label Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Paragraph 1",
+            "value": "paragraph1"
+          },
+          {
+            "label": "Paragraph 2",
+            "value": "paragraph2"
+          },
+          {
+            "label": "Sub Navigation",
+            "value": "subNav"
+          }
+        ],
+        "default": "subNav"
+      },
+      {
+        "type": "header",
+        "content": "Custom Settings Summary Step"
+      },
+      {
+        "id": "blockSummaryItemLabelSubHeading",
+        "label": "Select Summary Label Text",
+        "type": "select",
+        "options": [
+          {
+            "label": "Sub-Heading 1",
+            "value": "--font--nav--size"
+          },
+          {
+            "label": "Sub-Heading 2",
+            "value": "--font--nav--size_heading_2"
+          }
+        ],
+        "default": "--font--nav--size_heading_2"
+      },
+      {
+        "id": "blockSummaryItemValueParaText",
+        "label": "Select Summary Value Text",
+        "type": "select",
+        "options": [
+          {
+            "label": "Paragraph 1",
+            "value": "--font--paragraph--size"
+          },
+          {
+            "label": "Paragraph 2",
+            "value": "--font--featured-paragraph--size"
+          },
+          {
+            "label": "Sub Navigation",
+            "value": "--font--sub-nav--size"
+          }
+        ],
+        "default": "--font--paragraph--size"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Custom Gift Products List",
+        "type": "ctmGiftProducts",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "first_gift_pros_list",
+            "label": "First Gift Products List",
+            "limit": 10
+          },
+          {
+            "type": "product_list",
+            "id": "second_gift_pros_list",
+            "label": "Second Gift Products List",
+            "limit": 10
+          },
+          {
+            "type": "product_list",
+            "id": "third_gift_pros_list",
+            "label": "Third Gift Products List",
+            "limit": 10
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "select",
+            "id": "nextBtnPosition",
+            "label": "Next Button Position",
+            "default": "asCard",
+            "options": [
+              {
+                "label": "As a card after last product",
+                "value": "asCard"
+              },
+              {
+                "label": "In the right bottom after all products",
+                "value": "asBelowCards"
+              }
+            ]
+          },
+          {
+            "id": "chooseLProductShortDesctype",
+            "label": "Select Product Short Description Type",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "type": "text",
+            "id": "uploadHeading",
+            "label": "Upload Heading",
+            "default": "Upload Gift Set Sleeve Artwork"
+          },
+          {
+            "type": "text",
+            "id": "uploadSubHeading",
+            "label": "Block Sub-Heading"
+          }
+        ]
+      },
+      {
+        "name": "Label Selection (new)",
+        "type": "label_selection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "select",
+            "id": "nextBtnPosition",
+            "label": "Next Button Position",
+            "default": "asCard",
+            "options": [
+              {
+                "label": "As a card after last product",
+                "value": "asCard"
+              },
+              {
+                "label": "In the right bottom after all products",
+                "value": "asBelowCards"
+              }
+            ]
+          },
+        ]
+      },
+      {
+        "name": "Template Selection (new)",
+        "type": "template_selection",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Premium Templates",
+            "info": "to update/remove/add premium templates [visit here](https://admin.shopify.com/store/three-foxes-pty-ltd/content/metaobjects/entries/product_customizer_template)"
+          },
+          {
+            "type": "header",
+            "content": "Digital Templates",
+            "info": "to update/remove/add digital templates [visit here](https://admin.shopify.com/store/three-foxes-pty-ltd/content/metaobjects/entries/product_customizer_digital_template)"
+          },
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "select",
+            "id": "nextBtnPosition",
+            "label": "Next Button Position",
+            "default": "asCard",
+            "options": [
+              {
+                "label": "As a card after last product",
+                "value": "asCard"
+              },
+              {
+                "label": "In the right bottom after all products",
+                "value": "asBelowCards"
+              }
+            ]
+          },
+        ]
+      },
+      {
+        "name": "Product Gift Sets",
+        "type": "ctmProGiftSets",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "collection",
+            "label": "Collection",
+            "limit": 3
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "select",
+            "id": "nextBtnPosition",
+            "label": "Next Button Position",
+            "default": "asCard",
+            "options": [
+              {
+                "label": "As a card after last product",
+                "value": "asCard"
+              },
+              {
+                "label": "In the right bottom after all products",
+                "value": "asBelowCards"
+              }
+            ]
+          },
+          {
+            "id": "chooseLProductTitleText",
+            "label": "Select Product Title Type",
+            "type": "select",
+            "options": [
+              {
+                "label": "Heading 1",
+                "value": "ctm_heading1_font"
+              },
+              {
+                "label": "Heading 2",
+                "value": "ctm_heading2_font"
+              },
+              {
+                "label": "Heading 3",
+                "value": "ctm_heading3_font"
+              },
+              {
+                "label": "Heading 4",
+                "value": "ctm_heading4_font"
+              },
+            ],
+            "default": "ctm_heading3_font"
+          },
+          {
+            "id": "chooseLProductShortDesctype",
+            "label": "Select Product Short Description Type",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "type": "text",
+            "id": "uploadHeading",
+            "label": "Upload Heading",
+            "default": "Upload Gift Set Sleeve Artwork"
+          },
+          {
+            "type": "text",
+            "id": "uploadSubHeading",
+            "label": "Upload Sub-Heading"
+          },
+          {
+            "id": "blockDragNDropParaText",
+            "label": "Select File Drag & Drop Text",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--sub-nav--size"
+          },
+          {
+            "id": "blockFileUploadParaText",
+            "label": "File Upload Text Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          }
+        ]
+      },
+      {
+        "name": "Product Collection",
+        "type": "proCollection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "select",
+            "id": "nextBtnPosition",
+            "label": "Next Button Position",
+            "default": "asCard",
+            "options": [
+              {
+                "label": "As a card after last product",
+                "value": "asCard"
+              },
+              {
+                "label": "In the right bottom after all products",
+                "value": "asBelowCards"
+              }
+            ]
+          },
+          {
+            "id": "chooseLProductTitleText",
+            "label": "Select Product Title Type",
+            "type": "select",
+            "options": [
+              {
+                "label": "Heading 1",
+                "value": "ctm_heading1_font"
+              },
+              {
+                "label": "Heading 2",
+                "value": "ctm_heading2_font"
+              },
+              {
+                "label": "Heading 3",
+                "value": "ctm_heading3_font"
+              },
+              {
+                "label": "Heading 4",
+                "value": "ctm_heading4_font"
+              },
+            ],
+            "default": "ctm_heading3_font"
+          },
+          {
+            "id": "chooseLProductShortDesctype",
+            "label": "Select Product Short Description Type",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          }
+        ]
+      },
+      {
+        "name": "Tab Labels",
+        "type": "innerTabsArea",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "ctmProductPrints",
+            "label": "Product for prints",
+            "limit": 2
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings"
+          },
+          {
+            "type": "checkbox",
+            "id": "enableOnlyPrints",
+            "label": "Show only prints tab content without tabs",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "enableOnlyLabelType",
+            "label": "Show only label type without tabs",
+            "default": false
+          },
+          {
+            "type": "product_list",
+            "id": "ctmGiftLabelTypeProducts",
+            "label": "Gift Label Type products",
+            "limit": 3
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings for Label type left cards"
+          },
+          {
+            "id": "blockChooseLabeltype",
+            "label": "Select Label Type Sub-Heading",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "id": "blockLabelCardHeading",
+            "label": "Select Label Type Heading",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "id": "blockLabelCardSubHeadingCost",
+            "label": "Select Label Cost Type Sub-Heading",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings for Custom Labels"
+          },
+          {
+            "id": "blockCtmLabelProTitleHeading",
+            "label": "Select Custom Label product Title",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "id": "blockCtmLabelProPriceSubHeading",
+            "label": "Select Custom Label product Price",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          },
+          {
+            "id": "blockCtmLabelArtworkHeading",
+            "label": "Select Custom Label Artwork Heading",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "id": "blockDragNDropParaText",
+            "label": "Select Drag & Drop Text",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          },
+          {
+            "id": "blockCtmLabelArtworkParaHeading",
+            "label": "Select Custom Label Artwork Paragraph Text",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          }
+        ]
+      },
+      {
+        "name": "Custom Gift label type",
+        "type": "ctmProductGifts_labelType",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "ctmGiftLabelTypeProducts",
+            "label": "Gift Label Type products",
+            "limit": 3
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "text",
+            "id": "uploadHeading",
+            "label": "Upload Heading",
+            "default": "Upload Gift Set Sleeve Artwork"
+          },
+          {
+            "type": "text",
+            "id": "uploadSubHeading",
+            "label": "Block Sub-Heading"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings for Custom Labels"
+          },
+          {
+            "id": "blockCtmLabelProTitleHeading",
+            "label": "Select Custom Label product Title",
+            "type": "select",
+            "options": [
+              {
+                "label": "Heading 1",
+                "value": "heading1"
+              },
+              {
+                "label": "Heading 2",
+                "value": "heading2"
+              },
+              {
+                "label": "Heading 3",
+                "value": "heading3"
+              },
+              {
+                "label": "Heading 4",
+                "value": "heading4"
+              }
+            ],
+            "default": "heading4"
+          },
+          {
+            "id": "blockCtmLabelProPriceSubHeading",
+            "label": "Select Custom Label product Price",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "--font--nav--size"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "--font--nav--size_heading_2"
+              }
+            ],
+            "default": "--font--nav--size"
+          },
+          {
+            "id": "blockDragNDropParaText",
+            "label": "Select File Drag & Drop Text",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--sub-nav--size"
+          },
+          {
+            "id": "blockFileUploadParaText",
+            "label": "File Upload Text Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          }
+        ]
+      },
+      {
+        "name": "Custom Gift label",
+        "type": "ctmProductGifts_label",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "ctmGiftLabelTypeProducts",
+            "label": "Gift Label Type products",
+            "limit": 3
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "text",
+            "id": "uploadHeading",
+            "label": "Upload Heading",
+            "default": "Upload Gift Set Sleeve Artwork"
+          },
+          {
+            "type": "text",
+            "id": "uploadSubHeading",
+            "label": "Block Sub-Heading"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings for Custom Labels"
+          },
+          {
+            "id": "blockCtmLabelProTitleHeading",
+            "label": "Select Custom Label product Title",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "SubHeading1"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "SubHeading2"
+              }
+            ],
+            "default": "SubHeading2"
+          },
+          {
+            "id": "blockCtmLabelProPriceSubHeading",
+            "label": "Select Custom Label product Price",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          },
+          {
+            "id": "blockDragNDropParaText",
+            "label": "Select File Drag & Drop Text",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--sub-nav--size"
+          },
+          {
+            "id": "blockFileUploadParaText",
+            "label": "File Upload Text Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          }
+        ]
+      },
+      {
+        "name": "Custom Personalise",
+        "type": "ctmPersonalise",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "ctmProductPrints",
+            "label": "Product for prints",
+            "limit": 2
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings"
+          },
+          {
+            "id": "blockPersonalizeSubHeading",
+            "label": "Select Custom Personalize Input Label Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "--font--nav--size"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "--font--nav--size_heading_2"
+              }
+            ],
+            "default": "--font--nav--size_heading_2"
+          },
+          {
+            "id": "blockPersonalizeInputFields",
+            "label": "Select Custom Personalize Input Fields Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--sub-nav--size"
+          },
+          {
+            "id": "errorMsgFontSize",
+            "label": "Select Input Error Message Text Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "ctm_paragraph1_font"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "ctm_paragraph2_font"
+              }
+            ],
+            "default": "ctm_paragraph1_font"
+          }
+        ]
+      },
+      {
+        "name": "Custom Extras(label/tags)",
+        "type": "ctmProExtras",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "ctmProductPrints",
+            "label": "Product for prints",
+            "limit": 2
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings"
+          },
+          {
+            "id": "blockExtrasProTitleSubHeading",
+            "label": "Select Custom Personalize Input Label Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "--font--nav--size"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "--font--nav--size_heading_2"
+              }
+            ],
+            "default": "--font--nav--size_heading_2"
+          }
+        ]
+      },
+      {
+        "name": "Custom Bottle Tags",
+        "type": "ctmProTags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          }
+        ]
+      },
+      {
+        "name": "Custom Contact Details",
+        "type": "ctmContactDetails",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tabLabel",
+            "label": "Tab Label"
+          },
+          {
+            "type": "text",
+            "id": "tabHeading",
+            "label": "Tab Heading"
+          },
+          {
+            "type": "text",
+            "id": "tabSubHeading",
+            "label": "Tab Sub-Heading"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnLabel",
+            "label": "Next Button Label"
+          },
+          {
+            "type": "text",
+            "id": "nextStepBtnSubLabel",
+            "label": "Next Button Sub Label Text"
+          },
+          {
+            "type": "header",
+            "content": "Custom Settings"
+          },
+          {
+            "id": "blockContactInputLabelSubHeading",
+            "label": "Select Custom Input Label Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Sub-Heading 1",
+                "value": "--font--nav--size"
+              },
+              {
+                "label": "Sub-Heading 2",
+                "value": "--font--nav--size_heading_2"
+              }
+            ],
+            "default": "--font--nav--size_heading_2"
+          },
+          {
+            "id": "blockContactInputSubLabelSubHeading",
+            "label": "Select Custom Input Sub-Label Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          },
+          {
+            "id": "blockContactInputTextSubHeading",
+            "label": "Select Custom Input Text Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "--font--paragraph--size"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "--font--featured-paragraph--size"
+              },
+              {
+                "label": "Sub Navigation",
+                "value": "--font--sub-nav--size"
+              }
+            ],
+            "default": "--font--paragraph--size"
+          },
+          {
+            "id": "errorMsgFontSize",
+            "label": "Select Input Error Message Text Size",
+            "type": "select",
+            "options": [
+              {
+                "label": "Paragraph 1",
+                "value": "ctm_paragraph1_font"
+              },
+              {
+                "label": "Paragraph 2",
+                "value": "ctm_paragraph2_font"
+              }
+            ],
+            "default": "ctm_paragraph1_font"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Product Customizer",
+        "settings": {
+          "title_font_family" : "avenir_next_n6"
+        },
+        "blocks": [
+          {
+            "type": "proCollection",
+            "settings": {
+              "tabLabel": "COCKTAILS",
+              "tabHeading": "Choose your Foxtails",
+              "tabSubHeading": "PERSONALISE YOUR BOTTLED COCKTAILS IN JUST A FEW STEPS!",
+              "collection": "foxtails-co",
+              "nextStepBtnSubLabel": "Now let's get to the fun part!",
+              "nextStepBtnLabel": "Next, choose Labels!"
+            }
+          },
+          {
+            "type": "innerTabsArea",
+            "settings": {
+              "tabLabel": "LABELS",
+              "tabHeading": "Design Your Labels",
+              "tabSubHeading": "MATCH YOUR DESIGN TO YOUR WEDDING OR CHOOSE OUR CLASSIC FOXTAIL & CO LABELS",
+              "ctmProductPrints": [
+              ],
+              "nextStepBtnSubLabel": "They look amazing!",
+              "nextStepBtnLabel": "Next, choose Labels!"
+            }
+          },
+          {
+            "type": "ctmPersonalise",
+            "settings": {
+              "tabLabel": "PERSONALISE",
+              "tabHeading": "Personalise Your Labels",
+              "tabSubHeading": "ADD YOUR NAMES AND CUSTOM MESSAGE IN A STUNNING FOIL TO SUIT YOUR THEME.",
+              "nextStepBtnSubLabel": "These are going to look incredible!",
+              "nextStepBtnLabel": "NoW the final touches"
+            }
+          },
+          {
+            "type": "ctmProExtras",
+            "settings": {
+              "tabLabel": "EXTRAS",
+              "tabHeading": "Final Touches",
+              "tabSubHeading": "LABEL APPLICATION AND NAME TAGS FOR YOUR GUESTS NAMES • DO IT YOUR WAY.",
+              "nextStepBtnSubLabel": "We're nearly there!",
+              "nextStepBtnLabel": "Event & Order Details"
+            }
+          },
+          {
+            "type": "ctmContactDetails",
+            "settings": {
+              "tabLabel": "DETAILS",
+              "tabHeading": "Event & Contact Details",
+              "tabSubHeading": "WE JUST NEED A FEW DETAILS BEFORE WE CAN FINALISE YOUR ORDER",
+              "nextStepBtnSubLabel": "Your wedding Foxtails are going to be amazing!",
+              "nextStepBtnLabel": "Finalise Your Order"
+            }
+          },
+          // {
+          //   "type": "proCollection",
+          //   "settings": {
+          //     "tabLabel": "SUMMARY"
+          //   }
+          // }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script> {% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .ctm_popup_btns {
+    border-radius: 0.25rem !important;
+    /* min-width: fit-content; */
+    min-width: 100px;
+    padding: .375rem .75rem;
+    font-weight: 600 !important;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    line-height: unset;
+    font-family: "Avenir Next", sans-serif !important;
+  }
+  @media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .cus_pdp-card p.ctm_proshort_desc.ctmSecFontAvenir.ctm_paragraph1_font.mob_fs_12 {
+    font-size: 12px !important;
+  }
+  #shopify-section-{{ section.id }} .ctm__contentInnderTabs .ctm_card .ctmLabelCardTitle.mob_fs-11 {
+    font-size: 11px !important;
+}
+  #shopify-section-{{ section.id }} .ctm__contentInnderTabs .ctm_card .ctmLabelCardCost.mob_fs-12 {
+    font-size: 12px !important;
+}
+
+}
+{% endstyle %}

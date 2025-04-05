@@ -1,0 +1,42 @@
+/* ====== KLAVIYO FORM ====== */
+.klaviyo-form #email_signup {
+	max-width: 100%;
+}
+
+.klaviyo-form .klaviyo-form-version-cid_1 {
+	padding: 0 !important;
+}
+
+.klaviyo-form .klaviyo-form-version-cid_1 input {
+	background-color: transparent;
+	border: 1px solid #fff;
+	padding: 20px;
+}
+
+.klaviyo-form .klaviyo-form-version-cid_1 .jKTRQF {
+	width: 40px !important;
+}
+
+.klaviyo-form #email_signup {
+  max-width: 100%;
+}
+
+.klaviyo-form .klaviyo-form-version-cid_1 {
+  padding: 0 !important;
+}
+
+.klaviyo-form .klaviyo-form-version-cid_1 input {
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 20px;
+}
+
+.klaviyo-form .klaviyo-form-version-cid_1 .jKTRQF {
+  width: 40px !important;
+}
+
+@media (min-width: 992px) {
+  .klaviyo-form #email_signup {
+    max-width: 400px;
+  }
+}

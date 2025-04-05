@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": true,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "4",
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "ctm_foxtails_4WbBLg": {
+      "type": "ctm_foxtails",
+      "blocks": {
+        "ctm_collection_step_MyFYDk": {
+          "type": "ctm_collection_step",
+          "settings": {
+            "stepName": "COCKTAILS",
+            "heading": "Choose your Foxtails",
+            "subHeading": "",
+            "collection": "foxtails-co"
+          }
+        },
+        "ctm_step_9cnAEa": {
+          "type": "ctm_step",
+          "settings": {
+            "stepName": "LABELS",
+            "heading": "Choose your label type",
+            "subHeading": "Choose from either 'Digital Print' or 'Premium Foil'. Then upload your artwork and our Designer will send you a proof for approval within 24-48hrs from order placement.",
+            "product_list": [
+              "digital-print-labels",
+              "premium-foil-labels"
+            ],
+            "ctmFirstProImg": "shopify://shop_images/FOX_Digital-Print_500x_5f289fe1-55a4-40fa-8487-dbf37a4ee516.webp",
+            "ctmSecondProImg": "shopify://shop_images/FOX_Premium-Foil_500x_507b921c-213f-4c1d-a12c-bb32b9aa0a7f.webp"
+          }
+        },
+        "ctm_tagname_step_FKe7by": {
+          "type": "ctm_tagname_step",
+          "settings": {
+            "stepName": "BOTTLE TAGS",
+            "heading": "Add bottle tags",
+            "subHeading": "Personalise each bottle with our blank tags that allow you to write individual messages or names.",
+            "enableformFields": true
+          }
+        }
+      },
+      "block_order": [
+        "ctm_collection_step_MyFYDk",
+        "ctm_step_9cnAEa",
+        "ctm_tagname_step_FKe7by"
+      ],
+      "settings": {
+        "heading": "Let's get started",
+        "subHeading": "Customise your bottled cocktails in 3 easy steps",
+        "lineColor": "#aeaeae"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ctm_foxtails_4WbBLg"
+  ]
+}

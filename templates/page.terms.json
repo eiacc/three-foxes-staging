@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16324399488a55ecb4": {
+      "type": "featured-text",
+      "custom_css": [
+        "strong {font-weight: 600;}"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "1",
+        "overline": "",
+        "heading": "Terms & Conditions",
+        "description": "<p>Some important legal stuff.</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "2",
+        "spacing-above": false,
+        "spacing-below": true
+      }
+    },
+    "16324397781a8be68b": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "16324397781a8be68b-0": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Who We Are",
+            "description": "<p>This website is owned and operated by Three Foxes PTY LTD, ABN: 72 637 620 387</p><p>12 Helen Street, Heidelberg West, Victoria 3081</p><p>Victoria Liquor License No:<br/>33775997 (VIC)<br/>36159205 (VIC)</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-1": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Your Agreement",
+            "description": "<p>By using our website you agree to the following terms of use. We may change these terms of use at any time, without telling you. If we make a change, the next time you use our website, you agree to the amended terms.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Age of Consent",
+            "description": "<p>Three Foxes supports the Responsible Service of Alcohol (RSA). This means we do not offer or sell our products to anyone under the age of 18.<br/><br/>You must be 18 years of age or over to use this website or make a purchase. It is against the law to supply alcohol to, or to obtain alcohol on behalf of, a person under the age of 18 years.<br/><br/>If you do not verify that you are 18 years or over, your order will not be processed.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_9t7jB9": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Our Service",
+            "description": "<p>We may make changes to the content, products or services described on this website at any time without telling you. We may also need to stop the operation of this website, or parts of it, from time to time without telling you. However, as far as is permitted by law, we will not be held responsible for any loss or damage incurred by you as a result of any change, error or omission on our website. We make every attempt to ensure the content of this site is accurate and up to date but do not guarantee that it is.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_HXNPxh": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Cancellations",
+            "description": "<p>We reserve the right to refuse or cancel any order placed with us, as well as limit the amount of product purchased per person, per household or per billing address. This is at our sole discretion. We will attempt to notify you in as reasonable a time frame as is possible via any of the contact details you provided at point of purchase.<br/><br/>If you wish to cancel your order, please contact us immediately on <strong>hello@threefoxes.com.au</strong>. Every attempt will be made to accommodate your request, however once payment has been received, cancellation is at our discretion.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_NVFRri": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Intellectual Property",
+            "description": "<p>All the content contained in this website is subject to copyright, which we own. Sharing parts of this website via social media is cool with us, as long as we have allowed you to do so. Downloading, printing or copying content from this site is also ok if it is for personal use. Otherwise you must not download, copy, print, adapt or publish any content without written permission from us.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_EbbaGf": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Third Party Links",
+            "description": "<p>Our website may contain links that direct you to content on third party websites. We do not control the content on any of these linked websites and are not responsible for it. Whilst we aim to ensure that any content we are linking to is relevant and accurate we do not guarantee this. We encourage you to check out the privacy policies of these linked websites.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_7e3cNH": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Disclaimer",
+            "description": "<p>The products and services on our website are provided without warranties of any kind, including warranties of merchantability or fitness for purpose.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "16324397781a8be68b-0",
+        "16324397781a8be68b-1",
+        "16324397781a8be68b-2",
+        "collapsible_row_9t7jB9",
+        "collapsible_row_HXNPxh",
+        "collapsible_row_NVFRri",
+        "collapsible_row_EbbaGf",
+        "collapsible_row_7e3cNH"
+      ],
+      "custom_css": [
+        "p {padding-bottom: 10px;}",
+        "strong {font-weight: 600;}"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    },
+    "featured_text_fbJU9W": {
+      "type": "featured-text",
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading3",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "1",
+        "overline": "",
+        "heading": "Privacy & Data Collection",
+        "description": "<p>We understand the importance of privacy and any concerns you might have surrounding the security of the personal information we collect. This is why we are committed to protecting any personal data we collect and hold.</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "collapsible_rows_fjKnir": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "collapsible_row_xL9JLY": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Personal Information",
+            "description": "<p>Personal information is any information that can or does identify you. During your dealings with us, we may collect information including:</p><ul><li>Your name, address and contact details</li><li>Your interests in our products or services</li><li>Your dealings with us and details on your purchases (how, when and what was purchased)</li><li>Other information we may need to promote our goods and services</li></ul><p>To comply with liquor licensing laws, we may also record details relating to our deliveries by making copies of, or photographing items including:</p><ul><li>Form of age verification</li><li>Proof of delivery</li><li>Administration records</li></ul><p>If you give us information about another person (such as a delivery address), you should make sure that you are authorised to give us that information. You must also ensure that person is aware of who we are and that we may use their personal information according to our privacy policy.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_DaqTQm": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Use of Information",
+            "description": "<p>We collect, hold and use your personal information to provide or promote our products and services to you, manage our relationship with you and to improve our offering or website experience.<br/><br/>We may use your personal information to tell you about products or services offered by third parties which we think you may find useful or interesting.<br/><br/>We will not disclose your personal information to third parties without your consent, unless we are required to by law, or to the extent we use third parties to capture or manage your personal information on our behalf.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_HMDr8t": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Using Our Website",
+            "description": "<p>We may collect personal information from you when you use our website. This might occur when you tell us about yourself, subscribe to our newsletter, complete an online form, accept an invitation from us or when you send us an email.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_Lca9ce": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Cookies",
+            "description": "<p>When you visit our website, social media pages or click on our digital advertisements, we use cookies to collect information about the technology you use, how you use the website and what you are interested in. We will automatically record details about any computer accessing our website including the date and time of access, the IP address, domain name and relevant details of the information accessed.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_JE3qkn": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Safeguarding Your Information",
+            "description": "<p>We take reasonable steps to protect all information we hold. Generally, information is stored electronically. These storage systems may be operated by us, or by third parties.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_xjrxki": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Changes To Our Privacy Policy",
+            "description": "<p>Sometimes it will be necessary for us to update or change this privacy policy. We reserve the right to do this at any time and will notify you by making the updated version available via our website.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_eNHN9m": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Access To Your Information",
+            "description": "<p>You can request access to the personal information we hold about you at any time. Get in touch with us via <a href=\"mailto:hello@threefoxes.com.au\" target=\"_blank\" title=\"email hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>. We will do our best to deal with these requests in a timely manner.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_xL9JLY",
+        "collapsible_row_DaqTQm",
+        "collapsible_row_HMDr8t",
+        "collapsible_row_Lca9ce",
+        "collapsible_row_JE3qkn",
+        "collapsible_row_xjrxki",
+        "collapsible_row_eNHN9m"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    }
+  },
+  "order": [
+    "16324399488a55ecb4",
+    "main",
+    "16324397781a8be68b",
+    "featured_text_fbJU9W",
+    "collapsible_rows_fjKnir"
+  ]
+}

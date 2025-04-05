@@ -1,0 +1,85 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area px-md-3 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area ctm__cocktails_content_area ctm__gift_sets_area ctm__gift_sets_uploads_area px-md-3- {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  <div class="ctm__gift_sets_pro_area">
+    {% if bkst.tabHeading != blank or bkst.tabSubHeading != blank %}
+      <div class="px-md-3 ctm_tab_content_header d-flex align-items-end justify-content-between pb-2 flex-wrap ctm_pl_0- mob_justi-center mob_border-bottom">
+        {% if bkst.tabHeading != blank %}
+          <div class="tab_content_heading ctmFontDahlia mob_fs-h3">
+            <h3>{{ bkst.tabHeading }}</h3>
+          </div>
+        {% endif %}
+        {% if bkst.tabSubHeading != blank %}
+          <div class="tab_content_sub_heading">
+            <p class="ctmSecFontNormal- ctmSecFontAvenir ctmSecFont600- ctm_tab_clr_blk">{{ bkst.tabSubHeading }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="row- ctm_row_sm ctm_tab_content_inner_area px-md-3 pt-3">
+    {%- capture placeholder -%}product-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+      {% for product in bkst.collection %}
+        {% comment %} {{ product.title }}<br> {% endcomment %}
+        {% comment %} <label class="col-md-3 col-6 px-2 text-center ctm_tab_pro_card position-relative" for="ctm_tab_card_{{ product.id }}"> {% endcomment %}
+        <label class="col-sm-12 col-md-4 col-6 ctm_tab_pro_card ctm_pro__card mob_wd-100 activeWhite ctm_card_white {% if forloop.index == 1 %}ctm_tab_pro_card_active{% endif %}" for="ctm_tab_card_{{ product.id }}">
+          <div class="px-md-2 text-center position-relative activeWhite- pb-3- py-md-3">
+            <div class="img-fluid">
+              {% if product.featured_image != blank %}
+                {% comment %} <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt }}" fetchpriority="high"> {% endcomment %}
+                <img src="{{ product.featured_image | img_url: '450x450' }}" alt="{{ product.featured_image.alt }}" fetchpriority="auto" loading="eager">
+              {% else %}
+              {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <h3 class="my-1- my-2 ctmTextCapitalize ctmSecFontAvenir- ctmFontDahlia ctmProTitleFSize {{ bkst.chooseLProductTitleText }}">{{ product.title | capitalize }}</h3>
+            {% if product.metafields.ctm.custom_short_description != blank %}
+              <p class="ctm_proshort_desc ctmSecFontAvenir ctm_paragraph1_font">{{ product.metafields.ctm.custom_short_description }}</p>
+            {% else %}
+              <p class="ctm_proshort_desc ctmSecFontAvenir ctm_paragraph1_font">{{ product.description | truncatewords: 5 }}</p>
+            {% endif %}
+            {% comment %} <input type="checkbox" name="Foxtails" id="ctm_tab_card_{{ product.id }}" class="d-none" value="{{ product.selected_or_first_available_variant.id }}" data-ctm_quantity="1" data-ctm_title="{{ product.title }}" data-ctm_price="{{ product.price | money }}" data-ctm_price_no_currency="{{ product.price | divided_by: 100 }}"> {% endcomment %}
+            <input type="radio" name="Foxtails" id="ctm_tab_card_{{ product.id }}" class="d-none" value="{{ product.selected_or_first_available_variant.id }}" data-ctm_quantity="{% if forloop.index == 1 %}50{% endif %}" data-ctm_title="{{ product.title }}" data-ctm_price="{{ product.price | money }}" data-ctm_price_no_currency="{{ product.price | divided_by: 100 }}" data-is_file_upload="{{ product.metafields.custom.is_file_upload }}" {% if product.metafields.custom.min_quantity != blank %}data-is_min_quantity="{{ product.metafields.custom.min_quantity }}"{% endif %} {% if forloop.index == 1 %}checked{% endif %}>
+            {% render 'icon_circle_rounded', class: 'position-absolute ctm_tab_pro_card_icon' %}
+            {% comment %} {% form 'product', product, class: 'ctm_tab_pro_form' %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <input type="hidden" name="quantity" value="1">
+              {% render 'icon_circle_rounded' %}
+            {% endform %} {% endcomment %}
+            <div class="ctm_quatity_wrapper position-absolute">
+              <div class="qty-selector col-12 py-2">
+                <div class="ctm_quantity_corner"></div>
+                <input class="qtyminus" field="updates_{{ product.selected_or_first_available_variant.id }}" type="button" value="-">
+                {% comment %} <input class="quantity" id="updates_{{ product.selected_or_first_available_variant.id }}" max="99" min="0" name="updates[]" pattern="[0-99]*" type="number" value="1"> {% endcomment %}
+                <input class="quantity" id="updates_{{ product.selected_or_first_available_variant.id }}" max="99" min="0" name="updates[]" pattern="[0-99]*" type="number" value="{{ product.metafields.custom.min_quantity }}">
+                <input class="qtyplus" field="updates_{{ product.selected_or_first_available_variant.id }}" type="button" value="+">
+              </div>
+            </div>
+          </div>
+        </label>
+      {% endfor %}
+      {% if bkst.nextBtnPosition == 'asCard' %}
+        {% comment %} <div class="mob_border-top ctm_tab_content_footer text-md-right text-center mt-3"> {% endcomment %}
+        <div class="col-md-3 col-6 ctm_nxtBtnAsCard mob_border-top ctm_tab_content_footer text-md-right- ctm_pro__card activeWhite text-center mt-3 d-flex flex-column justify-content-center align-items-center">
+          {% if bkst.nextStepBtnLabel != blank %}
+            <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">{{ bkst.nextStepBtnLabel }}</p>
+          {% endif %}
+          {% if bkst.nextStepBtnSubLabel != blank %}
+            <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="button">{{ bkst.nextStepBtnSubLabel }}</button>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    {% if bkst.nextBtnPosition == 'asBelowCards' %}
+      <div class="mob_border-top ctm_tab_content_footer text-md-right text-center mt-3 ctm_nxtBtnBelowCards">
+        {% if bkst.nextStepBtnLabel != blank %}
+          <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">{{ bkst.nextStepBtnLabel }}</p>
+        {% endif %}
+        {% if bkst.nextStepBtnSubLabel != blank %}
+          <button class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" data-is_next_upload="true">{{ bkst.nextStepBtnSubLabel }}</button>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  {% render 'ctm_file_uploads', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmWrapClass: ctmWrapClass, uploadHeading: bkst.uploadHeading, uploadSubHeading: bkst.uploadSubHeading, ctmUploadFieldName: 'Custom Sleeve Image', ctmProvideLaterText: 'Customer will provide artwork later' %}
+</div>
+{% comment %} <div class="ctm__tab_content_area ctm__gift_sets_area ctm__gift_sets_uploads_area px-md-3 d-none {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+</div> {% endcomment %}

@@ -1,0 +1,237 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": true,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "4",
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "ctm_pro_customizer_GY8hqN": {
+      "type": "ctm_pro_customizer",
+      "blocks": {
+        "ctm_pro_gift_sets_WmzCK3": {
+          "type": "ctmProGiftSets",
+          "settings": {
+            "tabLabel": "SLEEVE",
+            "tabHeading": "Select your Gift Set sleeve type",
+            "tabSubHeading": "",
+            "collection": [
+              "gift-box-digital-sleeve",
+              "gift-box-foil-sleeve",
+              "foxtails-co-gift-set"
+            ],
+            "nextStepBtnLabel": "Now let's pick some cocktails",
+            "nextStepBtnSubLabel": "Next Step",
+            "nextBtnPosition": "asBelowCards",
+            "chooseLProductTitleText": "ctm_heading4_font",
+            "chooseLProductShortDesctype": "SubHeading2",
+            "uploadHeading": "Upload Gift Set Sleeve Artwork",
+            "uploadSubHeading": "",
+            "blockDragNDropParaText": "--font--sub-nav--size",
+            "blockFileUploadParaText": "--font--paragraph--size"
+          }
+        },
+        "pro_collection_iejb84": {
+          "type": "proCollection",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "COCKTAILS",
+            "tabHeading": "Choose your Foxtails",
+            "tabSubHeading": "PERSONALISE YOUR BOTTLED COCKTAILS IN JUST A FEW STEPS!",
+            "collection": "foxtails-co",
+            "nextStepBtnLabel": "Next, choose Labels!",
+            "nextStepBtnSubLabel": "Now let's get to the fun part!",
+            "nextBtnPosition": "asCard",
+            "chooseLProductTitleText": "ctm_heading3_font",
+            "chooseLProductShortDesctype": "SubHeading2"
+          }
+        },
+        "ctm_gift_products_KQbga9": {
+          "type": "ctmGiftProducts",
+          "settings": {
+            "tabLabel": "FOXTAILS",
+            "tabHeading": "Select your Foxtails",
+            "tabSubHeading": "",
+            "first_gift_pros_list": [
+              "g-espresso",
+              "g-martini",
+              "g-negroni",
+              "limoncello",
+              "g-cranberry-peach",
+              "g-coco-pear-pine",
+              "g-blood-orange"
+            ],
+            "second_gift_pros_list": [
+              "g-espresso",
+              "g-martini",
+              "g-negroni",
+              "limoncello",
+              "g-cranberry-peach",
+              "g-coco-pear-pine",
+              "g-blood-orange"
+            ],
+            "third_gift_pros_list": [
+              "g-espresso",
+              "g-martini",
+              "g-negroni",
+              "limoncello",
+              "g-cranberry-peach",
+              "g-coco-pear-pine",
+              "g-blood-orange"
+            ],
+            "nextStepBtnLabel": "They look great!",
+            "nextStepBtnSubLabel": "Next Step",
+            "nextBtnPosition": "asCard",
+            "chooseLProductShortDesctype": "SubHeading2",
+            "uploadHeading": "Upload Gift Set Sleeve Artwork",
+            "uploadSubHeading": ""
+          }
+        },
+        "ctm_product_gifts_label_TRjwJC": {
+          "type": "ctmProductGifts_label",
+          "settings": {
+            "tabLabel": "LABEL",
+            "tabHeading": "Design Your Labels",
+            "tabSubHeading": "",
+            "ctmGiftLabelTypeProducts": [],
+            "nextStepBtnLabel": "They look great!",
+            "nextStepBtnSubLabel": "Next Step",
+            "uploadHeading": "Upload Gift Set Sleeve Artwork",
+            "uploadSubHeading": "",
+            "blockCtmLabelProTitleHeading": "SubHeading2",
+            "blockCtmLabelProPriceSubHeading": "--font--paragraph--size",
+            "blockDragNDropParaText": "--font--sub-nav--size",
+            "blockFileUploadParaText": "--font--paragraph--size"
+          }
+        },
+        "ctm_product_gifts_label_type_zd9TQc": {
+          "type": "ctmProductGifts_labelType",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "LABELS",
+            "tabHeading": "Design Your Labels",
+            "tabSubHeading": "MATCH YOUR DESIGN TO YOUR WEDDING OR CHOOSE OUR CLASSIC FOXTAIL & CO LABELS",
+            "ctmGiftLabelTypeProducts": [],
+            "nextStepBtnLabel": "They look great!",
+            "nextStepBtnSubLabel": "Next Step",
+            "uploadHeading": "Upload Gift Set Sleeve Artwork",
+            "uploadSubHeading": "",
+            "blockCtmLabelProTitleHeading": "heading4",
+            "blockCtmLabelProPriceSubHeading": "--font--nav--size",
+            "blockDragNDropParaText": "--font--sub-nav--size",
+            "blockFileUploadParaText": "--font--paragraph--size"
+          }
+        },
+        "inner_tabs_area_jQr9n9": {
+          "type": "innerTabsArea",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "LABELS",
+            "tabHeading": "Design Your Labels",
+            "tabSubHeading": "MATCH YOUR DESIGN TO YOUR WEDDING OR CHOOSE OUR CLASSIC FOXTAIL & CO LABELS",
+            "ctmProductPrints": [],
+            "nextStepBtnLabel": "Next, choose Labels!",
+            "nextStepBtnSubLabel": "They look amazing!",
+            "enableOnlyPrints": false,
+            "enableOnlyLabelType": true,
+            "ctmGiftLabelTypeProducts": [],
+            "blockChooseLabeltype": "SubHeading2",
+            "blockLabelCardHeading": "heading4",
+            "blockLabelCardSubHeadingCost": "SubHeading2",
+            "blockCtmLabelProTitleHeading": "--font--block--size",
+            "blockCtmLabelProPriceSubHeading": "--font--nav--size",
+            "blockCtmLabelArtworkHeading": "--font--block--size",
+            "blockDragNDropParaText": "--font--paragraph--size",
+            "blockCtmLabelArtworkParaHeading": "--font--paragraph--size"
+          }
+        },
+        "ctm_personalise_zFhx36": {
+          "type": "ctmPersonalise",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "PERSONALISE",
+            "tabHeading": "Personalise Your Labels",
+            "tabSubHeading": "ADD YOUR NAMES AND CUSTOM MESSAGE IN A STUNNING FOIL TO SUIT YOUR THEME.",
+            "ctmProductPrints": [],
+            "nextStepBtnLabel": "NoW the final touches",
+            "nextStepBtnSubLabel": "These are going to look incredible!",
+            "blockPersonalizeSubHeading": "--font--nav--size_heading_2",
+            "blockPersonalizeInputFields": "--font--sub-nav--size",
+            "errorMsgFontSize": "ctm_paragraph1_font"
+          }
+        },
+        "ctm_pro_extras_RbMbG4": {
+          "type": "ctmProExtras",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "EXTRAS",
+            "tabHeading": "Final Touches",
+            "tabSubHeading": "LABEL APPLICATION AND NAME TAGS FOR YOUR GUESTS NAMES • DO IT YOUR WAY.",
+            "ctmProductPrints": [],
+            "nextStepBtnLabel": "Event & Order Details",
+            "nextStepBtnSubLabel": "We're nearly there!",
+            "blockExtrasProTitleSubHeading": "--font--nav--size_heading_2"
+          }
+        },
+        "ctm_contact_details_9jR7PG": {
+          "type": "ctmContactDetails",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "DETAILS",
+            "tabHeading": "Event & Contact Details",
+            "tabSubHeading": "WE JUST NEED A FEW DETAILS BEFORE WE CAN FINALISE YOUR ORDER",
+            "nextStepBtnLabel": "Finalise Your Order",
+            "nextStepBtnSubLabel": "Your wedding Foxtails are going to be amazing!",
+            "blockContactInputLabelSubHeading": "--font--nav--size_heading_2",
+            "blockContactInputSubLabelSubHeading": "--font--paragraph--size",
+            "blockContactInputTextSubHeading": "--font--paragraph--size",
+            "errorMsgFontSize": "ctm_paragraph1_font"
+          }
+        }
+      },
+      "block_order": [
+        "ctm_pro_gift_sets_WmzCK3",
+        "pro_collection_iejb84",
+        "ctm_gift_products_KQbga9",
+        "ctm_product_gifts_label_TRjwJC",
+        "ctm_product_gifts_label_type_zd9TQc",
+        "inner_tabs_area_jQr9n9",
+        "ctm_personalise_zFhx36",
+        "ctm_pro_extras_RbMbG4",
+        "ctm_contact_details_9jR7PG"
+      ],
+      "settings": {
+        "sectionBgColor": "#f7f2ee",
+        "title_font_family": "avenir_next_n6",
+        "title_font_size": 14,
+        "title_font_size_sm": 14,
+        "chooseLStepsSubHeadingtype": "SubHeading2",
+        "chooseStepHeadingtype": "heading3",
+        "chooseStepSubHeadingtype": "SubHeading2",
+        "chooseBtnSubTexttype": "paragraph1",
+        "chooseBtnLabeltype": "subNav",
+        "blockSummaryItemLabelSubHeading": "--font--nav--size_heading_2",
+        "blockSummaryItemValueParaText": "--font--paragraph--size"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ctm_pro_customizer_GY8hqN"
+  ]
+}

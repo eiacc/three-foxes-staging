@@ -1,0 +1,258 @@
+{%- liquid
+  assign bg_color = section.settings.background-color
+  assign description = section.settings.description
+  assign form_id = 'newsletter--' | append: section.id
+  assign heading = section.settings.heading | escape
+  assign overline = section.settings.overline
+  assign spacing_above = section.settings.spacing-above
+  assign spacing_below = section.settings.spacing-below
+  assign top_border = section.settings.top-border
+  assign white_text = section.settings.white-text
+-%}
+
+{% style %}
+  {% assign ctmHeadingType = section.settings.chooseHeadingtype %}
+  {% assign ctmParagraphType = section.settings.chooseParagraphtype %}
+  {% assign ctmSubHeadingType = section.settings.chooseSubHeadingtype %}
+  {% case ctmHeadingType %}
+    {% when 'heading1'  %}
+    {% assign headingT = '--font--banner--size' %}
+    {% assign headingTMobile = '--font--banner--mobile-size' %}
+    {% when 'heading2'  %}
+    {% assign headingT = '--font--featured--size' %}
+    {% assign headingTMobile = '--font--featured--mobile-size' %}
+    {% when 'heading3'  %}
+    {% assign headingT = '--font--section--size' %}
+    {% assign headingTMobile = '--font--section--mobile-size' %}
+    {% when 'heading4'  %}
+    {% assign headingT = '--font--block--size' %}
+    {% assign headingTMobile = '--font--block--mobile-size' %}
+  {% endcase %}
+  
+  {% case ctmParagraphType %}
+    {% when 'paragraph1'  %}
+    {% assign paraT = '--font--paragraph--size' %}
+    {% when 'paragraph2'  %}
+    {% assign paraT = '--font--featured-paragraph--size' %}
+  {% endcase %}
+
+  {% case ctmSubHeadingType %}
+    {% when 'SubHeading1'  %}
+    {% assign subHeadingT = '--font--nav--size' %}
+    {% when 'SubHeading2'  %}
+    {% assign subHeadingT = '--font--nav--size_heading_2' %}
+  {% endcase %}
+  
+  
+  #shopify-section-{{ section.id }} [data-item="overline"] {
+    font-size: var({{subHeadingT}});
+  }
+  #shopify-section-{{ section.id }} [data-item="section-heading"] {
+    font-size: var({{headingT}});
+  }
+  #shopify-section-{{ section.id }} [data-item="paragraph"],
+  #shopify-section-{{ section.id }} [data-item="paragraph"] * {
+    font-size: var({{paraT}});
+  }
+  
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} [data-item="section-heading"] {
+      font-size: var({{headingTMobile}});
+    }
+  }
+{% endstyle %}
+
+
+<div
+  class="newsletter--root"
+  data-section-id="{{ section.id }}"
+  data-background-color="{{ bg_color }}"
+  {% if white_text %}
+    data-text-color="white"
+  {% endif %}
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+  data-top-border="{{ top_border }}"
+>
+  {%-
+    render "stacked-text",
+    description: description,
+    heading_type: 'section-heading',
+    id: section.id,
+    overline: overline,
+    title: heading,
+    width: 'medium'
+  -%}
+
+  <div
+    class="newsletter--body"
+    data-container="block"
+    {% unless settings.transitions--text %}
+      data-transition-item="{{ section.id }}"
+      data-transition-type="fade-in"
+    {% endunless %}
+  >
+    {%- render 'subscribe-form', id: form_id -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "class": "section--newsletter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout and Color"
+      },
+      {
+        "id": "top-border",
+        "label": "Top border",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "id": "spacing-above",
+        "label": "Spacing above",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "spacing-below",
+        "label": "Spacing below",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "background-color",
+        "label": "Background color",
+        "type": "select",
+        "options": [
+          {
+            "label": "None",
+            "value": "none"
+          },
+          {
+            "label": "Light",
+            "value": "light"
+          },
+          {
+            "label": "Dark",
+            "value": "dark"
+          },
+          {
+            "label": "Accent 1",
+            "value": "accent-1"
+          },
+          {
+            "label": "Accent 2",
+            "value": "accent-2"
+          }
+        ],
+        "default": "none"
+      },
+      {
+        "id": "white-text",
+        "label": "Use white text color",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "id": "overline",
+        "label": "Overline",
+        "type": "text",
+        "default": "Overline text"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "<p>A short sentence describing what someone will receive by subscribing</p>"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the “accepts marketing” [customer list](/admin/customers?query=&accepts_marketing=1)"
+      },
+      {
+        "type": "header",
+        "content": "Custom Settings"
+      },
+      {
+        "id": "chooseSubHeadingtype",
+        "label": "Select custom Sub-Heading Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Sub-Heading 1",
+            "value": "SubHeading1"
+          },
+          {
+            "label": "Sub-Heading 2",
+            "value": "SubHeading2"
+          }
+        ],
+        "default": "SubHeading2"
+      },
+      {
+        "id": "chooseHeadingtype",
+        "label": "Select custom Heading Type",
+        "type": "select",
+        "info": "This will works if 'Heading Type' is 'Large'",
+        "options": [
+          {
+            "label": "Heading 1",
+            "value": "heading1"
+          },
+          {
+            "label": "Heading 2",
+            "value": "heading2"
+          },
+          {
+            "label": "Heading 3",
+            "value": "heading3"
+          },
+          {
+            "label": "Heading 4",
+            "value": "heading4"
+          }
+        ],
+        "default": "heading2"
+      },
+      {
+        "id": "chooseParagraphtype",
+        "label": "Select custom Paragraph Type",
+        "type": "select",
+        "options": [
+          {
+            "label": "Paragraph 1",
+            "value": "paragraph1"
+          },
+          {
+            "label": "Paragraph 2",
+            "value": "paragraph2"
+          }
+        ],
+        "default": "paragraph1"
+      }
+    ],
+    "blocks" : [],
+    "presets": [
+      {
+        "name": "Newsletter"
+      }
+    ],
+    "disabled_on": {
+      "groups": ["aside"]
+    }
+  }
+{% endschema %}

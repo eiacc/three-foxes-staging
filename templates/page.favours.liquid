@@ -1,0 +1,74 @@
+<a name="top"></a>
+<form action="/cart/add" enctype="multipart/form-data" id="addToCartForm" class="favours" method="post">
+  
+  <!-- Top section -->
+  <section class="container-fluid bg-light ">
+    <div class="row py-mini px-sml favour-markers">
+      <div aria-expanded="true" class="col-2 text-center p-0 section active"  onclick="gotoStep1()" id="collapse-select-heading">
+        <div class="mx-auto rounded-circle border border-dark">
+          1
+        </div>
+        <span class="H6_SUBTITLE">COCKTAILS</span>
+      </div>
+      <div class="col-3 pt-1">
+        <hr id="line2" style="border-top: 2px solid #aeaeae;"/>
+      </div>
+      <div aria-expanded="false" class="col-2 text-center p-0 section collapsed" onclick="gotoStep2()" id="collapse-labels-heading">
+        <div class="mx-auto rounded-circle border border-dark" id="step2">
+          2
+        </div>
+        <span class="H6_SUBTITLE">LABELS</span>
+      </div>
+      <div class="col-3 pt-1">
+        <hr id="line3" style="border-top: 2px solid #aeaeae;"/>
+      </div>
+      <a class="col-2 text-center p-0 section collapsed"  onclick="gotoStep3()" id="collapse-tags-heading">
+        <div class="mx-auto rounded-circle border border-dark" id="step3">
+          3
+        </div>
+        <span class="H6_SUBTITLE">BOTTLE TAGS</span>
+      </a>
+    </div>
+  </section>
+  
+  
+  <!-- Select cocktails -->
+  <section aria-labelledby="collapse-select-heading" class="container-fluid bg-cream py-sml collapse show" data-parent="#addToCartForm" id="collapse-select">
+    
+    <div class="row py-sml pb-4 pb-md-0 pt-md-0">
+      <div class="col-11 mx-auto col-lg-12 text-center">
+        <h2 class="H2_Product text-unset mb-0" style="line-height: .9em;">Create Your Foxtails Wedding Favours</h2>
+        <h5 class="H5_SUBTITLE mt-3 mb-0">Personalise your bottled cocktails in 3 easy steps</h5>
+      </div>
+    </div>
+    
+    <div class="container-fluid pt-3 pt-md-sml">
+        {% include '3fox-Favours-SelectCollection' %}
+    </div>
+    
+  </section>
+
+  <section aria-labelledby="collapse-labels-heading" class="container-fluid bg-cream pb-med collapse" data-parent="#addToCartForm" id="collapse-labels">
+    <div class="container px-0 px-md-3">
+      <div class="row">
+        {% include '3fox-Favours-Label' %}
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="collapse-tags-heading" class="container-fluid bg-cream py-med collapse" data-parent="#addToCartForm" id="collapse-tags">
+    <div class="container">
+      <div class="row">
+        {% include '3fox-Favours-Nametags' %}
+      </div>
+      <div class="row mt-sml">
+        {% render '3fox-Favours-Form' %}
+      </div>
+      <div class="row mt-sml">
+        {% render '3fox-Favours-FinalSubmit' %}
+      </div>
+    </div>
+  </section>
+</form>
+
+{{ "favours.js" | asset_url | script_tag }}

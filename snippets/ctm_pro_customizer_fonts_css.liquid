@@ -1,0 +1,297 @@
+{% style %}
+  {% assign ctmLStepsSubHeadingType = section.settings.chooseLStepsSubHeadingtype %}
+  {% assign ctmStepHeadingType = section.settings.chooseStepHeadingtype %}
+  {% assign ctmStepSubHeadingType = section.settings.chooseStepSubHeadingtype %}
+  {% assign ctmBtnSubTextType = section.settings.chooseBtnSubTexttype %}
+  {% assign ctmBtnLabelType = section.settings.chooseBtnLabeltype %}
+  
+  {% case ctmLStepsSubHeadingType %}
+    {% when 'SubHeading1'  %}
+    {% assign leftStepsT = '--font--nav--size' %}
+    {% when 'SubHeading2'  %}
+    {% assign leftStepsT = '--font--nav--size_heading_2' %}
+  {% endcase %}
+  
+  {% case ctmStepHeadingType %}
+    {% when 'heading1'  %}
+    {% assign stepHeadingT = '--font--banner--size' %}
+    {% assign stepHeadingTMobile = '--font--banner--mobile-size' %}
+    {% when 'heading2'  %}
+    {% assign stepHeadingT = '--font--featured--size' %}
+    {% assign stepHeadingTMobile = '--font--featured--mobile-size' %}
+    {% when 'heading3'  %}
+    {% assign stepHeadingT = '--font--section--size' %}
+    {% assign stepHeadingTMobile = '--font--section--mobile-size' %}
+    {% when 'heading4'  %}
+    {% assign stepHeadingT = '--font--block--size' %}
+    {% assign stepHeadingTMobile = '--font--block--mobile-size' %}
+  {% endcase %}
+  
+  {% case ctmStepSubHeadingType %}
+    {% when 'SubHeading1'  %}
+    {% assign stepSubHeadingT = '--font--nav--size' %}
+    {% when 'SubHeading2'  %}
+    {% assign stepSubHeadingT = '--font--nav--size_heading_2' %}
+  {% endcase %}
+  
+  {% case ctmBtnSubTextType %}
+    {% when 'paragraph1'  %}
+    {% assign nextBtnParaT = '--font--paragraph--size' %}
+    {% when 'paragraph2'  %}
+    {% assign nextBtnParaT = '--font--featured-paragraph--size' %}
+    {% when 'subNav'  %}
+    {% assign nextBtnParaT = '--font--sub-nav--size' %}
+  {% endcase %}
+
+  {% case ctmBtnLabelType %}
+    {% when 'paragraph1'  %}
+    {% assign nextBtnLabelT = '--font--paragraph--size' %}
+    {% when 'paragraph2'  %}
+    {% assign nextBtnLabelT = '--font--featured-paragraph--size' %}
+    {% when 'subNav'  %}
+    {% assign nextBtnLabelT = '--font--sub-nav--size' %}
+  {% endcase %}
+
+  #shopify-section-{{ section.id }} .ctm_list_progress_bar .list-group-item,
+  /* #shopify-section-{{ section.id }} .ctm_list_progress_bar .list-group-item * { */
+  #shopify-section-{{ section.id }} .ctm_list_progress_bar .list-group-item *:not(.ctm_tabCounter) {
+    font-size: var({{leftStepsT}});
+  }
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .tab_content_heading,
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .tab_content_heading * {
+    font-size: var({{stepHeadingT}});
+  }
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .tab_content_sub_heading,
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .tab_content_sub_heading * {
+    font-size: var({{stepSubHeadingT}});
+  }
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .ctm_tab_content_next_btn_sub_line,
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .ctm_tab_content_next_btn_sub_line * {
+    font-size: var({{nextBtnParaT}}) !important;
+  }
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .ctm_tab_content_next_btn,
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .ctm_tab_content_next_btn *,
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .ctm_tab_content_prev_btn,
+  #shopify-section-{{ section.id }} .ctm__tab_content_area .ctm_tab_content_prev_btn * {
+    font-size: var({{nextBtnLabelT}}) !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .ctm__tab_content_area .tab_content_heading,
+    #shopify-section-{{ section.id }} .ctm__tab_content_area .tab_content_heading * {
+      font-size: var({{stepHeadingTMobile}});
+    }
+  }
+  
+  .ctm__gift_sets_area label {
+    font-weight: unset !important;
+  }
+  {% for bk in section.blocks %}
+    {% assign bkst = bk.settings %}
+    {% assign proDuctShortDesc = bkst.chooseLProductShortDesctype %}
+    {% assign blockLabeltype = bkst.blockChooseLabeltype %}
+    {% assign blockLabelCardtype = bkst.blockLabelCardHeading %}
+    {% assign blockLabelCardCosttype = bkst.blockLabelCardSubHeadingCost %}
+    {% assign blockCtmLabelProTitletype = bkst.blockCtmLabelProTitleHeading %}
+
+    {% if proDuctShortDesc %}
+      {% case proDuctShortDesc %}
+        {% when 'SubHeading1'  %}
+        {% assign proShortDesc = '--font--nav--size' %}
+        {% when 'SubHeading2'  %}
+        {% assign proShortDesc = '--font--nav--size_heading_2' %}
+      {% endcase %}
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_proshort_desc,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_proshort_desc * {
+        font-size: var({{proShortDesc}}) !important;
+      }
+    {% endif %}
+
+    {% if blockLabeltype %}
+      {% case blockLabeltype %}
+        {% when 'SubHeading1'  %}
+        {% assign bkLabelT = '--font--nav--size' %}
+        {% when 'SubHeading2'  %}
+        {% assign bkLabelT = '--font--nav--size_heading_2' %}
+      {% endcase %}
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmChooseLabelType,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmChooseLabelType * {
+        font-size: var({{bkLabelT}}) !important;
+      }
+    {% endif %}
+
+    {% if blockLabelCardtype %}
+      {% case blockLabelCardtype %}
+        {% when 'SubHeading1'  %}
+        {% assign labelCardT = '--font--nav--size' %}
+        {% when 'SubHeading2'  %}
+        {% assign labelCardT = '--font--nav--size_heading_2' %}
+        {% endcase %}
+      
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm__contentInnderTabs .ctm_card .ctmLabelCardTitle,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm__contentInnderTabs .ctm_card .ctmLabelCardTitle * {
+        font-size: var({{labelCardT}}) !important;
+        line-height: var(--font--button--line__height) !important;
+      }
+    {% endif %}
+    
+    {% if blockLabelCardCosttype %}
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmLabelCardCost,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmLabelCardCost * {
+        font-size: var({{blockLabelCardCosttype}}) !important;
+      }
+    {% endif %}
+
+    {% if blockCtmLabelProTitletype %}
+      {% case blockCtmLabelProTitletype %}
+        {% when 'SubHeading1'  %}
+        {% assign LabelProTitleT = '--font--nav--size' %}
+        {% when 'SubHeading2'  %}
+        {% assign LabelProTitleT = '--font--nav--size_heading_2' %}
+        {% endcase %}
+  
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmProcard .ctmLabelProTitle,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmProcard .ctmLabelProTitle * {
+        font-size: var({{LabelProTitleT}}) !important;
+      }
+    {% endif %}
+    
+    {% if bkst.blockCtmLabelProPriceSubHeading %}
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmProcard .ctmLabelProPrice,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmProcard .ctmLabelProPrice * {
+        font-size: var({{bkst.blockCtmLabelProPriceSubHeading}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockCtmLabelArtworkHeading %}
+      {% case bkst.blockCtmLabelArtworkHeading %}
+        {% when 'SubHeading1'  %}
+        {% assign LabelArtworkHeading = '--font--nav--size' %}
+        {% when 'SubHeading2'  %}
+        {% assign LabelArtworkHeading = '--font--nav--size_heading_2' %}
+      {% endcase %}
+  
+
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmLabelArtworkUpload,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmLabelArtworkUpload * {
+        font-size: var({{LabelArtworkHeading}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockCtmLabelArtworkParaHeading %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_tabs_upload p,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_tabs_upload p * {
+        font-size: var({{bkst.blockCtmLabelArtworkParaHeading}}) !important;
+      }
+
+      @media screen and (min-width: 990px){
+        #shopify-section-{{ section.id }} .ctm__tab_content_area.ctmStepBlock_2 .ctm__contentInnderTabsContent .ctm_tabs_upload{
+          max-width: clamp(1px, calc(100% - 250px), 1100px);
+        }
+      }
+
+    {% endif %}
+    {% if bkst.blockDragNDropParaText %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_tabs_upload .filepond--root.cl-upload--area label,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_tabs_upload .filepond--root.cl-upload--area label * {
+        font-size: var({{bkst.blockDragNDropParaText}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockPersonalizeSubHeading %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmPersonalisedFields label,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmPersonalisedFields label *:not(input) {
+        font-size: var({{bkst.blockPersonalizeSubHeading}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockPersonalizeInputFields %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmPersonalisedFields .ctm_form_inputs,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmPersonalisedFields .ctm_form_inputs::placeholder,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmPersonalisedFields .ctm_form_inputs * {
+        font-size: var({{bkst.blockPersonalizeInputFields}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockExtrasProTitleSubHeading %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmExtrasProtype,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctmExtrasProtype * {
+        font-size: var({{bkst.blockExtrasProTitleSubHeading}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockContactInputLabelSubHeading %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctmInputLabel ,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctmInputLabel  * {
+        font-size: var({{bkst.blockContactInputLabelSubHeading}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockContactInputSubLabelSubHeading %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctmnInputSubLabel ,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctmnInputSubLabel  * {
+        font-size: var({{bkst.blockContactInputSubLabelSubHeading}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockContactInputTextSubHeading %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctm_form_inputs ,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctm_form_inputs::placeholder ,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }} .ctm_form_contact_fields .ctm_form_inputs  * {
+        font-size: var({{bkst.blockContactInputTextSubHeading}}) !important;
+      }
+    {% endif %}
+    
+    /* dragNdropText: bkst.blockDragNDropParaText, fileuploadText: bkst.blockFileUploadParaText  */
+    {% if bkst.blockDragNDropParaText %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }}.ctm__gift_sets_area .filepond--drop-label label {
+        font-size: var({{bkst.blockDragNDropParaText}}) !important;
+      }
+    {% endif %}
+
+    {% if bkst.blockFileUploadParaText %}
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }}.ctm__gift_sets_area p:not(.ctm_proshort_descmw),
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }}.ctm__gift_sets_area label {
+        font-size: var({{bkst.blockFileUploadParaText}}) !important;
+      }
+      @media screen and (max-width: 575px) {
+        #shopify-section-{{ section.id }} .ctmStepBlock_{{ forloop.index }}.ctm__gift_sets_area p:not(.ctm_proshort_descmw){
+          font-size: 12px !important;
+        }
+      }
+    {% endif %}
+
+  {% endfor %}
+  
+  {% if section.settings.blockSummaryItemLabelSubHeading %}
+    #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctm_list_item_label ,
+    #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctmSummaryTypeHeading,
+    #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctm_list_item_label  * {
+      font-size: var({{section.settings.blockSummaryItemLabelSubHeading}}) !important;
+      line-height: 24px !important;
+    }
+    /* @media screen and (max-width: 575px) {
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctm_list_item_label ,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctmSummaryTypeHeading,
+      #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctm_list_item_label  * {
+        font-size: 12px !important;
+      }
+    } */
+
+  {% endif %}
+
+  {% if section.settings.blockSummaryItemValueParaText %}
+    #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctm_list_item_value ,
+    #shopify-section-{{ section.id }} .ctmStepBlock_{{ section.blocks.size | plus: 1 }} .ctm__summary_list .ctm_list_item_value  * {
+      font-size: var({{section.settings.blockSummaryItemValueParaText}}) !important;
+      line-height: 24px !important;
+    }
+  {% endif %}
+  
+{% endstyle %}

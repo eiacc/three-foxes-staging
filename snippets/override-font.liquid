@@ -1,0 +1,21 @@
+{%- liquid
+  comment
+    When adding new font(s), make sure to add it
+    under 'initialize-custom-fonts.liquid' snippet
+
+    Fallback font is sans-serif
+    Code by http://github.com/eiacc
+  endcomment
+
+  if font == 'dahlia_medium'
+    echo 'Dahlia Medium'
+  elsif font == 'dahlia_bold'
+    echo 'Dahlia Bold'
+  elsif font == 'trade_gothic'
+    echo 'Trade Gothic'
+  elsif font == 'trade_gothic_bold'
+    echo 'Trade Gothic Bold'
+  else
+    echo 'sans-serif'
+  endif
+-%}

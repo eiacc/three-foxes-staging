@@ -1,0 +1,403 @@
+{%- liquid
+  assign checkout_t = 'cart.checkout' | t
+  assign all_items_added_t = 'cart.all_items_added' | t
+  assign continue_t = 'cart.continue' | t
+  assign empty_html_t = 'cart.empty_html' | t: collections_url: routes.all_products_collection_url
+  assign order_notes_t = 'cart.order_notes' | t
+  assign price_t = 'cart.price' | t
+  assign quantity_t = 'cart.quantity' | t
+  assign subtotal_t = 'cart.subtotal' | t
+  assign total_t = 'cart.total' | t
+  assign your_cart_t = 'cart.your_cart' | t
+
+  assign shipping_taxes_t = 'cart.shipping_taxes_not_included' | t
+  if cart.taxes_included
+    assign shipping_taxes_t = 'cart.shipping_taxes_included' | t
+  endif
+-%}
+
+<cart-root
+  class="cart--root"
+  data-section-id="{{ section.id }}"
+  data-view="{{ view }}"
+  data-has-items="{% if cart.item_count > 0 %}true{% else %}false{% endif %}"
+  {% unless settings.transitions--other %}
+    data-transition-container="cart-{{ view }}"
+    data-transition-type="fade-in"
+    data-transition-cascade="vertical"
+    data-transition-cascade-interval="250"
+  {% endunless %}
+>
+  <div class="cart--header mob_fs-h2">
+    <h2 class="cart--title" data-item="section-heading">
+      {{- your_cart_t -}}
+    </h2>
+  </div>
+
+  <form class="cart--form" action="{{ routes.cart_url }}" method="post" novalidate="">
+    <div class="cart--body">
+      {%- if view == 'desktop' -%}
+        <div class="cart--headings" data-item="nav-text">
+          <div class="cart--heading--image"></div>
+          <div class="cart--heading--title"></div>
+          <div class="cart--heading--price">
+            {{- price_t -}}
+          </div>
+          <div class="cart--heading--quantity">
+            {{- quantity_t -}}
+          </div>
+          <div class="cart--heading--total">
+            {{- total_t -}}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- for item in cart.items -%}
+        {%- liquid
+          assign preview_image = item.variant.featured_media.preview_image | default: item.product.featured_media.preview_image
+          if item.product.has_only_default_variant
+            assign preview_image = item.product.media[0].preview_image
+          endif
+        -%}
+
+        {%- capture item_image -%}
+          <div  data-hulkapps-lineitem class="cart--item--image">
+            <a href="{{ item.url }}" aria-label="{{ item.product.title }}">
+              {%- if preview_image == blank -%}
+                {%- render "placeholder", type: 'product', aspect_ratio: 1, placeholder_index: 1 -%}
+              {%- else -%}
+                {{-
+                  preview_image |
+                  image_url: width: preview_image.width |
+                  image_tag: widths: "300, 500", sizes: '250px'
+                -}}
+              {%- endif -%}
+            </a>
+          </div>
+        {%- endcapture -%}
+
+        {%- capture item_quantity -%}
+          {%- assign id = view | append: '-updates-' | append: item.key -%}
+
+          <div  data-hulkapps-lineitem class="cart--item--quantity">
+            {%-
+              render 'quantity-selector',
+              id: id,
+              type: 'cart',
+              value: item.quantity
+            -%}
+          </div>
+        {%- endcapture -%}
+
+        <div data-hulkapps-lineitem 
+          class="cart--item"
+          data-variant-id="{{ item.variant_id }}"
+          data-management="{{ item.variant.inventory_management }}"
+          data-policy="{{ item.variant.inventory_policy }}"
+          data-quantity="{{ item.variant.inventory_quantity | default: 0 }}"
+          data-line-num="{{ forloop.index }}"
+          {% unless settings.transitions--other %}
+            data-transition-item="cart-{{ view }}"
+            {%- if async -%}
+              data-transition-active="true"
+            {%- endif -%}
+          {% endunless %}
+        >
+          {%- if view == 'desktop' -%}
+            {{- item_image -}}
+
+            <div class="cart--item--title">
+              <div data-item="block-heading">
+                <a class="ctm_heading4_font rdc-fs-14" href="{{ item.url }}">{{ item.product.title }}</a>
+              </div>
+
+              {%- unless item.variant.title contains 'Default' -%}
+                <div class="cart--item--variant-name" data-item="nav-text">
+                  <a href="{{ item.url }}">{{ item.variant.title }}</a>
+                </div>
+              {%- endunless -%}
+
+              {%- if item.selling_plan_allocation -%}
+                <div class="cart--item--selling-plan" data-item="small-text">
+                  {{- item.selling_plan_allocation.selling_plan.name -}}
+                </div>
+              {%- endif -%}
+
+              {%- assign property_size = item.properties | size -%}
+
+              <div class='hulkapps-reminder' data-key='{{item.key}}'></div>              {%- if property_size > 0 -%}
+<span data-hulkapps-line-properties>
+                {%- for property in item.properties -%}
+                  {%- unless property.last == blank -%}
+                    {% unless forloop.index0 == 0 %}<br>{% endunless %}
+                    {{ property.first }}:
+                    {% comment %} Check if there was an uploaded file associated {% endcomment %}
+                    {%- if property.last contains '/uploads/' -%}
+                      <a href="{{ property.last }}">
+                        {{ property.last | split: '/' | last }}
+                      </a>
+                    {%- else -%}
+                      {{ property.last }}
+                    {%- endif -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+</span>
+<button type='button' style='display: none;' class='edit_cart_option btn btn--primary button' data-product_id='{{item.product_id}}' data-key='{{item.key}}' data-variant_id='{{item.variant_id}}' data-quantity='{{item.quantity}}'>Edit Options</button>
+              {%- endif -%}
+
+              <div class='cart--error' data-item='small-text' style='display:none;'>
+                {{- all_items_added_t -}}
+              </div>
+            </div>
+
+            <div class="cart--item--price" data-item="nav-text">
+              {%- if item.original_price != item.final_price -%}
+                <div data-item="nav-text" data-text-color="gray">
+                  <s  data-hulkapps-ci-price data-key='{{item.key}}' class="money">{{ item.original_price | money }}</s>
+                </div>
+              {%- endif -%}
+
+              <div  data-hulkapps-ci-price data-key='{{item.key}}' class="money" data-item="nav-text">
+                {{- item.final_price | money -}}
+              </div>
+
+              <div class="cart--item--unit-price-container" data-item="small-text">
+                {%- liquid
+                  if item.unit_price_measurement
+                    echo item.unit_price | money | append: '/'
+                    if item.unit_price_measurement.reference_value != 1
+                      echo item.unit_price_measurement.reference_value
+                    endif
+                    echo item.unit_price_measurement.reference_unit
+                  endif
+                -%}
+              </div>
+
+              {% if item.line_level_discount_allocations.size > 0 %}
+                <div class="money" data-item="nav-text" data-text-color="gray">
+                  {%- for discount_allocation in item.line_level_discount_allocations -%}
+                    {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+                  {%- endfor -%}
+                </div>
+              {% endif %}
+            </div>
+
+            {{- item_quantity -}}
+
+            <div class="cart--item--total" data-item="nav-text">
+              {%- if item.original_line_price != item.final_line_price -%}
+                <div data-item="nav-text" data-text-color="gray">
+                  <s  data-hulkapps-line-price data-key='{{item.key}}' class="money">{{ item.original_line_price | money }}</s>
+                </div>
+              {%- endif -%}
+
+              <div  data-hulkapps-line-price data-key='{{item.key}}' class="money">
+                {{- item.final_line_price | money -}}
+              </div>
+            </div>
+
+          {%- else -%}
+              {{- item_image -}}
+            <div class="tf-cart-info-mob">
+            <div class="cart--item--title">
+              <div data-item="block-heading">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+              </div>
+
+              <div class='cart--error' data-item='small-text' style='display:none;'>
+                {{- all_items_added_t -}}
+              </div>
+            </div>
+
+          
+
+            <div class="cart--item--info">
+              {%- unless item.variant.title contains 'Default' -%}
+                <div class="cart--item--variant-name" data-item="nav-text">
+                  <a href="{{ item.url }}">{{ item.variant.title }}</a>
+                </div>
+              {%- endunless -%}
+
+              {%- if item.selling_plan_allocation -%}
+                <div class="cart--item--selling-plan" data-item="small-text">
+                  {{- item.selling_plan_allocation.selling_plan.name -}}
+                </div>
+              {%- endif -%}
+
+              {%- assign property_size = item.properties | size -%}
+              {%- if property_size > 0 -%}
+                <div class="cart--item-properties mob_fs-h3">
+                {%- for property in item.properties -%}
+                  {%- unless property.last == blank -%}
+                    {%- unless forloop.index0 == 0 -%}<br>{% endunless %}
+                    {{ property.first }}:
+                    {% comment %} Check if there was an uploaded file associated {% endcomment %}
+                    {%- if property.last contains '/uploads/' -%}
+                      <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                    {%- else -%}
+                      {{ property.last }}
+                    {%- endif -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+                </div>
+              {%- endif -%}
+
+              <div class="cart--item--price">
+                {%- if item.original_price > item.final_price -%}
+                  <div class="cart--item--orig-price" data-item="nav-text" data-text-color="gray">
+                    <s  data-hulkapps-ci-price data-key='{{item.key}}' class="money">{{ item.original_price | money }}</s>
+                  </div>
+                {%- endif -%}
+
+                <div  data-hulkapps-ci-price data-key='{{item.key}}' class="cart--item--total money" data-item="nav-text">
+                  {{- item.final_price | money -}}
+                </div>
+
+                <div class="cart--item--unit-price-container" data-item="small-text">
+                  {%- liquid
+                    if item.unit_price_measurement
+                      echo item.unit_price | money | append: '/'
+                      if item.unit_price_measurement.reference_value != 1
+                        echo item.unit_price_measurement.reference_value
+                      endif
+                      echo item.unit_price_measurement.reference_unit
+                    endif
+                  -%}
+                </div>
+
+                {%- if item.line_level_discount_allocations.size > 0 -%}
+                  <div class="cart--item--discounts" data-item="nav-text" data-text-color="gray">
+                    {%- for discount_allocation in item.line_level_discount_allocations -%}
+                      {{ discount_allocation.discount_application.title }}&nbsp;
+                      (–<span class="money">{{ discount_allocation.amount | money }}</span>)
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              </div>
+
+              {{- item_quantity -}}
+            </div>
+            </div>
+          {%- endif -%}
+        </div>
+
+      {%- endfor -%}
+    </div>
+
+    <div
+      class="cart--footer"
+      {% unless settings.transitions--other %}
+        data-transition-item="cart-{{ view }}"
+        {%- if async -%}
+          data-transition-active="true"
+        {%- endif -%}
+      {% endunless %}
+    >
+      {%- if settings.cart--show-note -%}
+        <div class="cart--notes">
+          <label for="{{ view }}-cart-note" class="cart--notes--heading">
+            {{- order_notes_t -}}
+          </label>
+          <textarea
+            class="cart--notes--textarea"
+            id="{{ view }}-cart-note"
+            name="note"
+          >{{ cart.note }}</textarea>
+        </div>
+      {%- endif -%}
+
+      <div class="cart--totals">
+        {%- if cart.cart_level_discount_applications != blank -%}
+          <div class="cart--sub-total">
+            <div data-item="block-heading">
+              {{- subtotal_t -}}
+            </div>
+            <div class="money" data-item="nav-text">
+              {{- cart.items_subtotal_price | money -}}
+            </div>
+          </div>
+
+          <div class="cart--discounts">
+            <ul>
+              {%- for discount_application in cart.cart_level_discount_applications -%}
+                <li>
+                  <div data-item="nav-text">{{ discount_application.title }}</div>
+                  <span data-item="nav-text" data-text-color="gray">
+                    –<span class="money">{{ discount_application.total_allocated_amount | money }}
+                    </span>
+                  </span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="cart--total">
+          <div data-item="block-heading">
+            {{- total_t -}}
+          </div>
+          <div  data-hulkapps-cart-total class="cart--total--price money" data-item="nav-text">
+            {{- cart.total_price | money_with_currency -}}
+          </div>
+        </div>
+
+        <div
+          class="cart--tax-info"
+          data-item="paragraph"
+        >
+          {{- shipping_taxes_t -}}
+        </div>
+
+        <div class="cart--nav">
+          <div class="cart--continue-shopping" data-item="block-link">
+            {%- if view == 'drawer' -%}
+              <p tabindex="0" aria-label="{{ 'general.a11y.close' | t }}" data-drawer-close>
+                {{- continue_t -}}
+              </p>
+            {%- else -%}
+              <a class="rdc-fs-14" href="{{ routes.all_products_collection_url }}">
+                {{- continue_t -}}
+              </a>
+            {%- endif -%}
+          </div>
+
+          <button
+            type="submit"
+            name="checkout"
+            class="cart--checkout-button"
+            data-item="button"
+            data-text="{{- checkout_t -}}"
+            {% unless settings.transitions--buttons %}
+              data-transition-button
+            {% endunless %}
+          >
+            <span>
+              <span class="cart-button--text">
+                {{- checkout_t -}}
+              </span>
+              <span class="cart-button--spinner">
+                {%- render 'icons', icon: 'spinner' -%}
+              </span>
+            </span>
+          </button>
+        </div>
+
+        {%- if additional_checkout_buttons -%}
+          <div
+            class="cart--additional-buttons additional-checkout-buttons
+            {% unless view == 'desktop' %} additional-checkout-buttons--vertical{% endunless %}"
+          >
+            {{- content_for_additional_checkout_buttons -}}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </form>
+
+  <div
+    class="cart--no-items"
+    data-item="paragraph"
+  >
+    {{- empty_html_t -}}
+  </div>
+</cart-root>

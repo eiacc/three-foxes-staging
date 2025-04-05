@@ -1,0 +1,286 @@
+{% comment %} <script src="https://assets.cloudlift.app/api/assets/upload.js?shop=three-foxes-pty-ltd.myshopify.com"></script> {% endcomment %}
+
+<a name="top"></a>
+
+<form action="/cart/add" enctype="multipart/form-data" id="addToCartForm" class="favours" method="post">
+  
+  <!-- Top section -->
+  <section class="container-fluid bg-light ">
+    <div class="row py-mini px-sml favour-markers">
+      {% assign bkHeadingId = '' %}
+      {% for bk in section.blocks %}
+        {% assign bkst = bk.settings %}
+        {% if bk.type == 'ctm_collection_step' %}
+          {% assign bkHeadingId = 'collapse-select-heading' %}
+        {% elsif bk.type == 'ctm_step' %}
+          {% assign bkHeadingId = 'collapse-labels-heading' %}
+        {% elsif bk.type == 'ctm_tagname_step' %}
+          {% assign bkHeadingId = 'collapse-tags-heading' %}
+        {% endif %}
+        {% case bk.type %}
+          {% when 'ctm_step' %}
+          {% endcase %}
+          {% comment %} <div aria-expanded="true" class="col-2 text-center p-0 section {% if forloop.index == 1 %} active{% else %} collapsed{% endif %}"  onclick="gotoStep{{ forloop.index }}()" id="collapse-select-heading"> {% endcomment %}
+          <div aria-expanded="true" class="col-2 text-center p-0 section {% if forloop.index == 1 %} active{% else %} collapsed{% endif %}"  onclick="gotoStep{{ forloop.index }}()" id="{{ bkHeadingId }}">
+            <div class="mx-auto rounded-circle border border-dark">
+              {{ forloop.index }}
+            </div>
+            {% if bkst.stepName != blank %}
+              <span class="H6_SUBTITLE">{{ bkst.stepName }}</span>
+            {% endif %}
+          </div>
+          {% unless forloop.index == section.blocks.size %}
+            <div class="col-3 pt-1">
+              {% comment %} <hr id="line2" style="border-top: 2px solid #aeaeae;"/> {% endcomment %}
+              <hr id="line2" style="border-top: 2px solid {{ section.settings.lineColor }};"/>
+            </div>
+          {% endunless %}
+      {% endfor %}
+
+      {% comment %} <div aria-expanded="false" class="col-2 text-center p-0 section collapsed" onclick="gotoStep2()" id="collapse-labels-heading">
+        <div class="mx-auto rounded-circle border border-dark" id="step2">
+          2
+        </div>
+        <span class="H6_SUBTITLE">LABELS</span>
+      </div>
+      <div class="col-3 pt-1">
+        <hr id="line3" style="border-top: 2px solid #aeaeae;"/>
+      </div>
+
+      <div aria-expanded="false" class="col-2 text-center p-0 section collapsed"  id="collapse-tags-heading" style="cursor: not-allowed;">
+        <div class="mx-auto rounded-circle border border-dark" id="step3">
+          3
+        </div>
+        <span class="H6_SUBTITLE">BOTTLE TAGS</span>
+      </div> {% endcomment %}
+
+    </div>
+  </section>
+  
+  <!-- Select cocktails -->
+   {% for bk in section.blocks %}
+    {% assign bkst = bk.settings %}
+    {% case bk.type %}
+      {% when 'ctm_collection_step' %}
+        {% comment %} <section aria-labelledby="collapse-select-heading" class="container-fluid bg-cream py-sml collapse show" data-parent="#addToCartForm" id="collapse-select"> {% endcomment %}
+        <section aria-labelledby="{{ bkHeadingId }}" class="container-fluid bg-cream py-sml collapse show" data-parent="#addToCartForm" id="collapse-select">
+          
+          {% if section.settings.heading != blank or section.settings.subHeading != blank %}
+            <div class="row py-sml pb-4 pb-md-0 pt-md-0">
+              <div class="col-11 mx-auto col-lg-12 text-center">
+                {% if section.settings.heading != blank %}
+                  <h2 class="H2_Product text-unset mb-0">{{ section.settings.heading }}</h2>
+                {% endif %}
+                {% if section.settings.subHeading %}
+                  <h5 class="H5_SUBTITLE mt-3 mb-0">{{ section.settings.subHeading }}</h5>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          
+          <div class="container-fluid pt-3 pt-md-sml">
+              {% comment %} {% include '3fox-Custom-SelectCollection' %} {% endcomment %}
+              {% render '3fox-Custom-SelectCollection', bk: bk, bkst: bkst, forloop: forloop %}
+          </div>
+          
+        </section>
+        
+      {% when 'ctm_step' %}
+        {% comment %} {{ bk.id }} {% endcomment %}
+        {% comment %} <section aria-labelledby="collapse-labels-heading" class="container-fluid bg-cream pb-med collapse" data-parent="#addToCartForm" id="collapse-labels"> {% endcomment %}
+        <section aria-labelledby="{{ bkHeadingId }}" class="container-fluid bg-cream pb-med collapse" data-parent="#addToCartForm" id="collapse-labels">
+          <div class="container px-0 px-md-3">
+            <div class="row">
+              {% comment %} {% include '3fox-Custom-Label' %} {% endcomment %}
+              {% render '3fox-Custom-Label', bk: bk, bkst: bkst, forloop: forloop %}
+            </div>
+          </div>
+        </section>
+
+      {% when 'ctm_tagname_step' %}
+        {% comment %} <section aria-labelledby="collapse-tags-heading" class="container-fluid bg-cream py-med collapse" data-parent="#addToCartForm" id="collapse-tags"> {% endcomment %}
+        <section aria-labelledby="{{ bkHeadingId }}" class="container-fluid bg-cream py-med collapse" data-parent="#addToCartForm" id="collapse-tags">
+          <div class="container">
+            <div class="row">
+              {% comment %} {% include '3fox-Custom-Nametags' %} {% endcomment %}
+              {% render '3fox-Custom-Nametags', bk: bk, bkst: bkst, forloop: forloop %}
+            </div>
+            <div class="row mt-sml">
+              {% render '3fox-Custom-Form', bk: bk, bkst: bkst, forloop: forloop %}
+            </div>
+            <div class="row mt-sml">
+              {% render '3fox-Custom-FinalSubmit', bk: bk, bkst: bkst, forloop: forloop %}
+            </div>
+          </div>
+        </section>
+    {% endcase %}
+  {% endfor %}
+  
+</form>
+
+{% render 'customlabel-quote-form' %}
+
+{{ "favours.js" | asset_url | script_tag }}
+
+
+{% schema %}
+  {
+    "name": "Custom foxtails",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "subHeading",
+        "label": "Sub-Heading"
+      },
+      {
+        "type": "color",
+        "id": "lineColor",
+        "label": "Step Line Color",
+        "default": "#AEAEAE"
+      }
+    ],
+    "max_blocks": 3,
+    "blocks": [
+      {
+        "name": "Custom Step",
+        "type": "ctm_step",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "stepName",
+            "label": "Step Name"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "subHeading",
+            "label": "Sub-Heading"
+          },
+          {
+            "type": "product_list",
+            "id": "product_list",
+            "label": "Label Products",
+            "limit": 2
+          },
+          {
+            "type": "image_picker",
+            "id": "ctmFirstProImg",
+            "label": "Custom Image for 1st product"
+          },
+          {
+            "type": "image_picker",
+            "id": "ctmSecondProImg",
+            "label": "Custom Image for 2nd product"
+          }
+        ]
+      },
+      {
+        "name": "Custom Tagname Step",
+        "type": "ctm_tagname_step",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "stepName",
+            "label": "Step Name"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "subHeading",
+            "label": "Sub-Heading"
+          },
+          {
+            "type": "checkbox",
+            "id": "enableformFields",
+            "label": "Enable Custom Form Fields",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "Custom Collection Step",
+        "type": "ctm_collection_step",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "stepName",
+            "label": "Step Name"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "subHeading",
+            "label": "Sub-Heading"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom foxtails",
+        "settings": {
+          "heading": "Let's get started",
+          "subHeading": "Customise your bottled cocktails in 3 easy steps",
+          "lineColor": "#AEAEAE"
+        },
+        "blocks": [
+          {
+            "type": "ctm_collection_step",
+            "settings": {
+              "stepName": "COCKTAILS",
+              "heading": "Choose your Foxtails",
+              "subHeading": "",
+              "collection": "foxtails-co"
+            }
+          },
+          {
+            "type": "ctm_step",
+            "settings": {
+              "stepName": "LABELS",
+              "heading": "Choose your label type",
+              "subHeading": "Choose from either 'Digital Print' or 'Premium Foil'. Then upload your artwork and our Designer will send you a proof for approval within 24-48hrs from order placement.",
+              "ctmFirstProImg": "shopify:\/\/shop_images\/FOX_Digital-Print.png",
+              "ctmSecondProImg": "shopify:\/\/shop_images\/FOX_Premium-Foil.png"
+            }
+          },
+          {
+            "type": "ctm_tagname_step",
+            "settings": {
+              "stepName": "BOTTLE TAGS",
+              "heading": "Add bottle tags",
+              "subHeading": "Personalise each bottle with our blank tags that allow you to write individual messages or names."
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

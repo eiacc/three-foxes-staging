@@ -1,0 +1,385 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement": {
+      "type": "announcement",
+      "blocks": {
+        "announcement": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Super sale up to 40% off - discount code  BLKFRYD",
+            "link": "",
+            "hide-on-desktop": false,
+            "hide-on-mobile": false,
+            "page-enabled": false,
+            "page-url": "",
+            "countdown-enabled": true,
+            "timer-bg-color": "dark",
+            "light-number": true,
+            "expiry-date": "DD-MM-YYYY",
+            "expiry-hours": 0,
+            "expiry-minutes": 0,
+            "hide-when-expired": true
+          }
+        },
+        "announcement_hPr9yL": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "We're passionate about climate change, read about our impact.",
+            "link": "",
+            "hide-on-desktop": false,
+            "hide-on-mobile": false,
+            "page-enabled": false,
+            "page-url": "",
+            "countdown-enabled": false,
+            "timer-bg-color": "dark",
+            "light-number": true,
+            "expiry-date": "DD-MM-YYYY",
+            "expiry-hours": 0,
+            "expiry-minutes": 0,
+            "hide-when-expired": true
+          }
+        },
+        "announcement_mN6xn6": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Just dropped! Shop our latest ... collection",
+            "link": "",
+            "hide-on-desktop": false,
+            "hide-on-mobile": false,
+            "page-enabled": false,
+            "page-url": "",
+            "countdown-enabled": false,
+            "timer-bg-color": "dark",
+            "light-number": true,
+            "expiry-date": "DD-MM-YYYY",
+            "expiry-hours": 0,
+            "expiry-minutes": 0,
+            "hide-when-expired": true
+          }
+        },
+        "announcement_hq8R4N": {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE SHIPPING FOR ORDERS OVER $90 (excl WA & NT)",
+            "link": "",
+            "hide-on-desktop": false,
+            "hide-on-mobile": false,
+            "page-enabled": false,
+            "page-url": "",
+            "countdown-enabled": false,
+            "timer-bg-color": "dark",
+            "light-number": true,
+            "expiry-date": "DD-MM-YYYY",
+            "expiry-hours": 0,
+            "expiry-minutes": 0,
+            "hide-when-expired": true
+          }
+        }
+      },
+      "block_order": [
+        "announcement",
+        "announcement_hPr9yL",
+        "announcement_mN6xn6",
+        "announcement_hq8R4N"
+      ],
+      "settings": {
+        "sticky-enabled": false,
+        "top-border": false,
+        "background-color": "accent-1",
+        "white-text": true,
+        "arrows-enabled": true,
+        "rotate-frequency": 7,
+        "show-social-icons": true,
+        "show-region-selector": true,
+        "show-locale-selector": true,
+        "chooseSubHeadingtype": "SubHeading2"
+      }
+    },
+    "split-announcements": {
+      "type": "split-announcements",
+      "blocks": {
+        "store-message-2": {
+          "type": "store-message",
+          "settings": {
+            "heading": "",
+            "description": "All products are ethically sourced",
+            "link-url": "/"
+          }
+        },
+        "store-message-1": {
+          "type": "store-message",
+          "settings": {
+            "heading": "",
+            "description": "Free shipping for orders over $80",
+            "link-url": "/"
+          }
+        },
+        "store-message-3": {
+          "type": "store-message",
+          "settings": {
+            "heading": "",
+            "description": "Return postage included in your parcel",
+            "link-url": ""
+          }
+        }
+      },
+      "block_order": [
+        "store-message-2",
+        "store-message-1",
+        "store-message-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "home-page-only": false,
+        "top-border": false,
+        "background-color": "light",
+        "white-text": false,
+        "heading": "Heading",
+        "description": "Description",
+        "link-url": ""
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "blog": {
+          "type": "blog",
+          "settings": {
+            "menu-item": "blog",
+            "blog": "culture",
+            "tag-select": "pinned",
+            "image-size": "natural",
+            "show-cta": false,
+            "show-date": false,
+            "show-excerpt": false
+          }
+        },
+        "product_list_hNMpcp": {
+          "type": "product-list",
+          "settings": {
+            "menu-item": "Amaro, Bitters & Spirits",
+            "product-list": [
+              "organic-espresso-amaro",
+              "triple-bitter",
+              "organic-gin",
+              "organic-premium-vodka"
+            ]
+          }
+        },
+        "product_list_Y3daYJ": {
+          "type": "product-list",
+          "settings": {
+            "menu-item": "Sunny Arvo Aperitivo",
+            "product-list": [
+              "sunny-arvo-aperitivo",
+              "sunny-arvo-noperitivo",
+              "sunny-arvo-limocello"
+            ]
+          }
+        },
+        "image_NzEJUG": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Gift Shop",
+            "image": "shopify://shop_images/Emily-_-Carlin-LImoncello_Banner_002.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Wedding Cocktails",
+            "link-url": "shopify://pages/product-customizer",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_xLnQGx": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Gift Shop",
+            "image": "shopify://shop_images/Mimco_Cranberry-Peach.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Custom Cocktail",
+            "link-url": "shopify://pages/foxtails-custom",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_dNzijq": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Gift Shop",
+            "image": "shopify://shop_images/Giftset-Corporate-Accor1x1-01.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Custom Gift Sets",
+            "link-url": "https://threefoxes.com.au/pages/custom-giftsets",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_MqVQJ8": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "menu-item": "Gift Shop",
+            "image": "shopify://shop_images/Organic-Vodka_Alex-1x1_68209a4e-7e9d-4465-9e28-fdfd7987edd7.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Personalised Spirits",
+            "link-url": "shopify://pages/custom-spirits",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_aNFBNW": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Cocktails",
+            "image": "shopify://shop_images/Martini-01.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Single Serve Cocktails",
+            "link-url": "shopify://collections/foxtails-co",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_87BwmD": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Cocktails",
+            "image": "shopify://shop_images/Best-Sellers-Gift-Set.png",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Gift Sets",
+            "link-url": "shopify://collections/gifts-packs",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_CekmQV": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Cocktails",
+            "image": "shopify://shop_images/Custom-Page-Banner3_mobile.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Customise your cocktail",
+            "link-url": "shopify://pages/foxtails-custom",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_7edhqw": {
+          "type": "image",
+          "settings": {
+            "menu-item": "Cocktails",
+            "image": "shopify://shop_images/Bea-_-Christian.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "Wedding Cocktails",
+            "link-url": "shopify://pages/product-customizer",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        }
+      },
+      "block_order": [
+        "blog",
+        "product_list_hNMpcp",
+        "product_list_Y3daYJ",
+        "image_NzEJUG",
+        "image_xLnQGx",
+        "image_dNzijq",
+        "image_MqVQJ8",
+        "image_aNFBNW",
+        "image_87BwmD",
+        "image_CekmQV",
+        "image_7edhqw"
+      ],
+      "settings": {
+        "layout": "drawer",
+        "background-color": "accent-2",
+        "bottom-border": true,
+        "white-text": false,
+        "hover-disabled": false,
+        "sticky-enabled": true,
+        "hide-on-scroll": false,
+        "reduce-height": true,
+        "overlap-behavior": "drawer",
+        "logo": "shopify://shop_images/ThreeFoxes_logo_049b2689-bd7c-4812-9d2c-68ce909ec05a.png",
+        "logo-height": 35,
+        "mobile-logo-height": 30,
+        "transparent-enabled": true,
+        "transparent-white-text": true,
+        "menu": "test",
+        "search-enabled": true,
+        "icons-enabled": true,
+        "highlight-item": "New",
+        "highlight-color": "#dea839",
+        "modal-item": "",
+        "modal-content": "",
+        "modal-background-color": "accent-2",
+        "modal-white-text": false,
+        "show-region-selector": false,
+        "show-locale-selector": false
+      }
+    },
+    "image_with_text_fjcgEp": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": false,
+        "background-color": "none",
+        "container-width": "6",
+        "white-text": true,
+        "overlap": false,
+        "heading-type": "section-heading",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "text-position": "overlay",
+        "text-horizontal-alignment": "center",
+        "text-vertical-alignment": "bottom",
+        "text-width": "medium",
+        "text-style": "none",
+        "text-background-color": "transparent",
+        "image-display-type": "medium",
+        "aspect-ratio": 48,
+        "overlay-style": "darken-bottom",
+        "parallax-enabled": false,
+        "image": "shopify://shop_images/Wedding-Page-Banner.jpg",
+        "overline": "",
+        "title": "Wedding Favours",
+        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>",
+        "link-url": "",
+        "link-text": "START PERSONALISING",
+        "mobile-overlay": true,
+        "mobile-hide-description": false,
+        "mobile-image-display-type": "original",
+        "mobile-aspect-ratio": 134,
+        "mobile-text-alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "split-announcements",
+    "header",
+    "image_with_text_fjcgEp"
+  ]
+}

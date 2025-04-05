@@ -1,0 +1,139 @@
+
+
+  <div class="col-12 col-md-10 col-lg-8 mx-auto text-center pb-sml">
+    <h5 class="H5_SUBTITLE">Step Three</h5>
+    <h2 class="H2_Product">Add bottle tags</h2>
+    <p class="lead">
+      Personalise each bottle with our blank tags that allow you to write individual messages or names.
+    </p>
+    {% comment %} <p>
+      {{ all_products[bkst.ctmProduct] | json }}
+    </p> {% endcomment %}
+  </div>
+
+
+<div class="col-11 col-lg-5 mx-auto text-center">
+  <img id="nametagWith"
+    {% comment %} src="{{ 'Bottle_NameTags_3.png' | asset_img_url: '600x' }}" {% endcomment %}
+    src="{{ 'https://threefoxes.com.au/cdn/shop/t/31/assets/Bottle_NameTags_3_600x.png?v=67771117219630029651686892841' }}"
+    class="mx-auto img-fluid" style="display: block;"
+  />
+  <img id="nametagWithout"
+    src="{{ 'Bottle_NameTags_none.png' | asset_img_url: '600x' }}"
+    class="mx-auto img-fluid" style="display: none;"
+  />
+</div>
+
+<div class="col-12 mx-auto text-center mt-3">
+  <p class="lead">Bottle tags come in packs of 24. $9 each.</p>
+  <div id="nametagCalc" style="display: block;">
+    <p class="lead">With <span id="nametag_BottleCount">XX</span> cocktails you'll need <span id="nametag_TagCount">XX</span> Packs</p>
+  	
+  </div>
+  <div id="nametagCalc_none" style="display: none;">
+    <p class="lead">You have no bottles selected</p>
+  </div>
+</div>
+
+<div class="col-12 mx-auto text-center mt-3">
+  <div class="btn-group btn-group-stack-mob btn-group-toggle text-center" data-toggle="buttons">
+    <label
+      class="btn btn-outline-dark btn-lrg btn-outline active mx-1"
+      for="labelRadioCustom"
+    >
+      <input
+        type="radio"
+        name="labelNametags"
+        id="labelRadioCustom"
+        checked
+        autocomplete="off"
+        onchange="onSelectNameTag()"
+      />
+      <span id="nameTagBtn_comment">Bottle Tags</span> - $<span id="nametag_TagCost_Button">9</span>
+    </label>
+
+    <label
+      class="btn btn-outline-dark btn-lrg btn-outline mx-1 text-dark"
+      for="labelRadioNormal"
+    >
+      <input
+        type="radio"
+        name="labelNametags"
+        id="labelRadioNormal"
+        autocomplete="off"
+        onchange="onUnselectNameTag()"
+      />
+      No Thanks
+    </label>
+  </div>
+</div>
+
+<script>
+  
+  const nametagCalc = document.getElementById("nametagCalc");
+  const nametagCalc_none = document.getElementById("nametagCalc_none");
+  const nameTagBtn_comment = document.getElementById("nameTagBtn_comment");
+  var nametagCount = 1;
+  
+  function nametagCountUpdate() {
+    console.log("Nametags - Allcounts: "+allCounts);
+    if (allCounts > 0) {
+      nameTagBtn_comment.innerHTML = "Yes please";
+      nametagCalc.style.display = "block";
+      nametagCalc_none.style.display = "none";
+      let breakdown = allCounts/24;
+      let breakdownBottleEle = document.getElementById("nametag_BottleCount");
+      breakdownBottleEle.innerHTML = allCounts;
+      let breakdownEle = document.getElementById("nametag_TagCount");
+      let breakdownCostButtonEle = document.getElementById("nametag_TagCost_Button");
+      let nametag_qty = Math.ceil(breakdown);
+      console.log("nametag_qty :- ", nametag_qty)
+      nametagCount = Math.ceil(nametag_qty);
+      console.log("NAMETAG COUNT:: "+nametagCount);
+      breakdownEle.innerHTML = Number(nametag_qty);
+      if (nametag_qty<1) {
+      	breakdownCostButtonEle.innerHTML = 0;
+      } else {
+        breakdownCostButtonEle.innerHTML = 9*nametag_qty;
+      }
+    } else {
+      nameTagBtn_comment.innerHTML = "Add one anyway";
+      nametagCalc.style.display = "none";
+      nametagCalc_none.style.display = "block";
+      nametagCount = 1;
+    }
+  }
+  
+  var isSelectNameTag = true;
+  function onSelectNameTag() {
+    console.log("check bottel tag :- ", this)
+    nametagCountUpdate();
+    isSelectNameTag = true;
+    let nametagWith = document.getElementById("nametagWith");
+    let nametagWithout = document.getElementById("nametagWithout");
+    // nametagWith.closest('label').classList.add('active')
+    // nametagWithout.closest('label').classList.remove('active')
+    nametagWith.style.display = "block";
+    nametagWithout.style.display = "none";
+    let change = 9*nametagCount;
+    updateTotalPrice(change); // 9: the price of name tags
+    disableOrShowButton(totalPrice);
+  }
+
+  function onUnselectNameTag() {
+    console.log("check bottel tag :- ", this)
+    isSelectNameTag = false;
+    let nametagWith = document.getElementById("nametagWith");
+    let nametagWithout = document.getElementById("nametagWithout");
+    // nametagWith.closest('label').classList.remove('active')
+    // nametagWithout.closest('label').classList.add('active')
+    nametagWith.style.display = "none";
+    nametagWithout.style.display = "block";
+    let change = -Math.abs(9 * nametagCount);
+    nametagCount = 0; // calc for at least one in line above, then change nametag count to 0;
+    console.log("Change = "+change);
+    updateTotalPrice(change);
+    disableOrShowButton(totalPrice);
+  }
+  
+</script>

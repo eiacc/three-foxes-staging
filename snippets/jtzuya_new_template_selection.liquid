@@ -1,0 +1,140 @@
+<div data-selection_override="1" class="ctm__tab_content_area test ctm__labels_content_area px-3- {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% render 'jtzuya_customizer_header', override_count: 1, action: action, bkst: bkst %}
+
+  <div class="{% unless bkst.enableOnlyPrints != false %}row{% endunless %} ctm_tab_content_inner_area ctm_tabs_label_area pt-3-">
+    <div class="jtzuya-templates-wrapper">
+      <div class="jtzuya-templates jtzuya-templates--active" data-customizer-template="premium">
+        <input type="radio" name="template_selection" data-price="190" data-product-id="33184610582614" id="template_selection_premium" data-product-type="Premium" checked hidden aria-hidden="true">
+        <input type="radio" name="template_selection" data-price="150" data-product-id="33184610549846" id="template_selection_digital" data-product-type="Digital" hidden aria-hidden="true">
+
+        <!--  left  -->
+        <div class="jtzuya-templates__tab jtzuya-templates__tab--left">
+          <p class="jtzuya-templates__tab-title">CHOOSE YOUR LABEL TYPE</p>
+
+          <div class="jtzuya-templates__tab-label-types">
+            <div class="jtzuya-templates__tab-label-type" data-template-selection="premium">
+              <label for="template_selection_premium"></label>
+              <p class="font-sub-2">PREMIUM FOIL <br>TEMPLATES</p>
+              <p class="font-sub-2">$190</p>
+            </div>
+            <div class="jtzuya-templates__tab-label-type" data-template-selection="digital">
+              <label for="template_selection_digital"></label>
+              <p class="font-sub-2">DIGITAL PRINT <br>TEMPLATES</p>
+              <p class="font-sub-2">$150</p>
+            </div>
+          </div>
+        </div>
+
+        <!--  right  -->
+        <div class="jtzuya-templates__tab jtzuya-templates__tab--right">
+          <div class="jtzuya-templates__tab-selections jtzuya-templates__tab-selections--premium">
+            {% for metaobject in metaobjects["product_customizer_template"].values %}
+              <label class="jtzuya-templates__tab-selection {% if forloop.index == 1 %}jtzuya-template__tab-selection--active{% endif %}" data-img="{{ metaobject.image | image_url: width: metaobject.image.width }}" data-option="{{ metaobject.option.value }}" >{{ metaobject.title.value }}</label>
+            {% endfor %}
+          </div>
+
+          <div class="jtzuya-templates__tab-selections jtzuya-templates__tab-selections--digital">
+            {% for metaobject in metaobjects["product_customizer_digital_template"].values %}
+              <label class="jtzuya-templates__tab-selection {% if forloop.index == 1 %}jtzuya-template__tab-selection--active{% endif %}" data-img="{{ metaobject.image | image_url: width: metaobject.image.width }}" data-option="{{ metaobject.option.value }}" >{{ metaobject.title.value }}</label>
+          {% endfor %}
+          </div>
+
+          <div class="jtzuya-templates__tab-template-view">
+            {% for metaobject in metaobjects["product_customizer_template"].values %}
+              {% if forloop.index == 1 %}
+                <p>{{ metaobject.option.value }}</p>
+                {{
+                  metaobject.image.value |
+                  image_url: width: metaobject.image.value.width |
+                  image_tag:
+                    widths: "300, 500, 767, 1000, 1200, 1500",
+                    sizes: sizes,
+                    alt: metaobject.option.value
+                }}
+                {% comment %} <img src="{{ metaobject.image.value | file_url }}" width="100%" height="100%" alt="{{ metaobject.option.value }}"/> {% endcomment %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="jtzuya-templates" data-customizer-template="custom">
+        {% for i in (1..2) %}
+          {% if forloop.index == 1 %}
+            {% assign ctmLabelPrintProId = '39282293735510' %}
+            {% assign ctmLabelPrintProImg = 'label_digital_print.png' %}
+            {% assign ctmLabelType = 'digital' %}
+            {% assign ctmProTitle = 'DIGITAL PRINT' %}
+            {% assign ctmProDesc = 'Enhance your bottled cocktail experience with our premium foil label, meticulously crafted on premium paper for a touch of elegance.' %}
+            {% assign ctmLabelProPrice = 15000 %}
+            {% comment %} {% assign ctmLabelPrintProImg = 'FOX_Digital-Print.png' %} {% endcomment %}
+          {% else %}
+            {% assign ctmLabelPrintProId = '39282295308374' %}
+            {% assign ctmLabelPrintProImg = 'label_custom.png' %}
+            {% assign ctmLabelType = 'foil' %}
+            {% assign ctmProTitle = 'PREMIUM FOIL' %}
+            {% assign ctmProDesc = 'Unleash your inner artist and turn your bottled cocktail into a unique masterpiece with our digital print label. It&#39s your canvas for endless creativity!' %}
+            {% assign ctmLabelProPrice = 35000 %}
+          {% endif %}
+          <div class="col-md-6 mb-3 ctm_pl_pr_sm0 mb-md-0 px-0">
+            <label class=" d-flex flex-column- align-items-center- justify-content-start- ctmProcard {% if forloop.index == 1 %}active focus{% endif %} p-2 {% if forloop.index == 1 %}mr-1{% else %}ml-1{% endif %}" for="ctmLabelPrint_{{ ctmLabelPrintProId }}">
+              {% comment %} <img src="{{ 'FOX_Digital-Print.png' | file_img_url: 'master' }}" alt="{{ shop.name }}" class="img-fluid"> {% endcomment %}
+              <div class="col-md-6- col-md-7 d-flex justify-content-between align-items-center flex-column p-0 align-items-baseline">
+                {% comment %} <h3 class="h3 ctmAvenirNext">{{ "Digital Print" }}</h3> {% endcomment %}
+                <h3 class="h3 ctmAvenirNext ctmLabelProTitle">{{ ctmProTitle }}</h3>
+                <p class="ctmLabelProDesc">{{ ctmProDesc }}</p>
+                <p class="H5_SUBTITLE m-0 ctmLabelProPrice rdc-fs-14">{{ ctmLabelProPrice | money }}</p>
+                {% comment %} <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" value="{{ ctmLabelPrintProId }}" data-label_name="Custom Label" data-price="{{ ctmLabelProPrice | money }}" data-ctm_price_no_currency="{{ ctmLabelProPrice | money_without_currency }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-checkLabelType="{{- ctmLabelType -}}" data-is_pro_label_item="true" {% unless bkst.enableOnlyPrints == false %}{% if forloop.index == 1 %}checked{% endif %}{% endunless %}> {% endcomment %}
+                <input type="radio" name="customLabel" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" value="{{ ctmLabelPrintProId }}" data-label_name="Custom Label" data-price="{{ ctmLabelProPrice | money }}" data-ctm_price_no_currency="{{ ctmLabelProPrice | money_without_currency }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="1" data-ctmprotitle="{{ ctmProTitle }}" data-checkLabelType="{{- ctmLabelType -}}" data-is_pro_label_item="true" {% if forloop.index == 1 %}checked{% endif %}>
+              </div>
+              <div class="col-md-6- col-md-5">
+                <img src="{{ ctmLabelPrintProImg | file_img_url: 'master' }}" alt="{{ shop.name }}" class="img-fluid mx-auto" loading="lazy" width="" height="">
+              </div>
+              {% comment %} <input type="radio" name="ctmLabelPrint" value="{{ ctmLabelPrintProId }}" id="ctmLabelPrint_{{ ctmLabelPrintProId }}" class="d-none" data-type="label"> {% endcomment %}
+            </label>
+          </div>
+        {% endfor %}
+        <div class="row">
+          {% comment %} <div class="{% unless bkst.enableOnlyPrints != false %}col-md-9- col-md-10{% endunless %} ctm_tabs_upload mt-5- ctm_pl_pr_sm0"> {% endcomment %}
+          <div class="{% unless bkst.enableOnlyPrints != false %}col-md-12- col-md-9 col-md-8-{% endunless %} ctm_tabs_upload mt-5- pt-3 ctm_pl_pr_sm0 mob_border-top">
+            <div class="upload-btn-main rdc-d-flex rdc-fw-wrap">
+              <div class="upload-btn-box rdc-w-half rdc-mw-full pr-3">
+                {% comment %} <h2 class="ctmAvenirNext ctmLabelArtworkUpload rdc-fs-22 rdc-fw-600 txt_center">UPLOAD YOUR ARTWORK</h2> {% endcomment %}
+                {% comment %}
+                Upload-Lift widget element container
+                {% endcomment %}
+                <div class="upload-lift"></div>
+                <div class="logo_field w-100 pt-4- pt-2"></div>
+                <span class="tf-up-info"><span class="tf-up-info-icon">?</span>Info</span>
+              </div>
+              <div class="upload-btn-text rdc-d-none rdc-w-half rdc-mw-full pl-3">
+                <div class="tf-up-info-close-main"><span class="tf-up-info-close">x</span></div>
+                <p class="ctm_font_weight- mb-3 txt_center rdc-fs-12">Label size is 115mm wide by 50mm high. We accept JPG, PNG, EPS or PDF</p>
+                <p class="ctm_font_weight- mb-2 txt_center rdc-fs-12">Our designer will get back to you with a proof within 48hrs of purchase.If you have any question feel free to call 1300 872 306.</p>
+                <p class="ctm_font_weight- text-sm m-0 txt_center rdc-fs-12">NOTE: The Cocktail Type, Ingredients and Mandatory Alcohol information are located on a small clear sticker on the back of the bottle.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jtzuya-templates" data-customizer-template="standard">
+        <div class="col-md-9 ctm__contentInnderTabsContent {% unless bkst.enableOnlyPrints != false %}ctm__tabs_content_space_eq{% endunless %} pt-3" data-tab_index="tab3">
+          <label class="col-md-8- col-lg-6- ctmProLabel ctmProLabel_standred active" for="freeLabel">
+            <h2 class="ctmAvenirNext ctm_sub_heading2_font txt_center">Foxtails & Co Premium Label</h2>
+            <div class="d-flex flex-wrap flex-row mx-auto justify-content-center align-items-center w-100 col-md-8 col-lg-6">
+              <img src="{{ "https://cdn.shopify.com/s/files/1/0289/0180/2070/files/ESPRESSO-MARTINI.png?v=1726817388" }}" alt="{{ shop.name }}" loading="lazy" class="label_img" width="" height="">
+              <p class="text-center ctm_paragraph1_font cus_text_normal cus_weight_normal" style="padding:20px;">We can apply all the labels for you, or if you'd like to handle it personally, we can ship the labels with the cocktails free of charge.</p>
+              <input type="radio" name="freeLabel" id="freeLabel" class="d-none" value="33176702746710" data-label_name="Custom Label Free" data-price="{{ 0 | money }}" data-ctm_price_no_currency="{{ 0 }}" data-type="label" data-ctmLabelType="product" data-ctm_quantity="0" data-ctmprotitle="Standard Label" data-is_pro_item="true" checked>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctm_tab_content_footer rdc-button-next-con text-md-right text-center">
+    {% render 'jtzuya_customizer_buttons', action: action, bkst: bkst %}
+  </div>
+</div>

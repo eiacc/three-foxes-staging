@@ -1,0 +1,292 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "image",
+          "settings": {
+            "text-width": "small",
+            "text-horizontal-alignment": "right",
+            "text-vertical-alignment": "bottom",
+            "image": "shopify://shop_images/Three_foxes_Distillery-64.jpg",
+            "overline": "",
+            "title": "Aperitivo Bitter",
+            "description": "",
+            "link-url": "shopify://products/triple-bitter",
+            "link-text": "SHOP NOW",
+            "mobile-text-alignment": "center",
+            "mobile-hide-description": false
+          }
+        },
+        "slide-1": {
+          "type": "image",
+          "settings": {
+            "text-width": "small",
+            "text-horizontal-alignment": "right",
+            "text-vertical-alignment": "bottom",
+            "image": "shopify://shop_images/Three_foxes_Distillery-52-2.jpg",
+            "overline": "",
+            "title": "Sunny Arvo",
+            "description": "",
+            "link-url": "shopify://products/sunny-arvo-limocello",
+            "link-text": "LIMONCELLO",
+            "mobile-text-alignment": "center",
+            "mobile-hide-description": false
+          }
+        },
+        "slide-2": {
+          "type": "image",
+          "settings": {
+            "text-width": "small",
+            "text-horizontal-alignment": "right",
+            "text-vertical-alignment": "bottom",
+            "image": "shopify://shop_images/Three_foxes_Distillery-114.jpg",
+            "overline": "",
+            "title": "Espresso Amaro",
+            "description": "",
+            "link-url": "shopify://products/organic-espresso-amaro",
+            "link-text": "SHOP NOW",
+            "mobile-text-alignment": "center",
+            "mobile-hide-description": false
+          }
+        }
+      },
+      "block_order": [
+        "slide-0",
+        "slide-1",
+        "slide-2"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": false,
+        "spacing-around-blocks": false,
+        "arrows-enabled": false,
+        "blocks_per_slide": 1,
+        "background-color": "none",
+        "white-text": true,
+        "text-style": "none",
+        "text-background-color": "transparent",
+        "heading-type": "banner-heading",
+        "isDescriptionPara1": true,
+        "image-display-type": "x-large",
+        "aspect-ratio": 56,
+        "overlay-style": "darken-top",
+        "auto-rotate": false,
+        "rotate-frequency": 4,
+        "transition_type": "slide",
+        "mobile-image-display-type": "fit-screen",
+        "mobile-aspect-ratio": 134,
+        "blocks_per_slide_mobile": "1",
+        "mobile-overlay": true
+      }
+    },
+    "featured_text_j7W7QW": {
+      "type": "featured-text",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "1",
+        "overline": "",
+        "heading": "Slow Drinking & Aperitivo Culture",
+        "description": "<p>It isn’t about speed or excess, but about savouring the moment.</p>",
+        "link-url": "shopify://blogs/culture/choosing-flavour-over-firepower",
+        "link-text": "READ"
+      }
+    },
+    "featured-collection-slider": {
+      "type": "featured-collection",
+      "settings": {
+        "top-border": true,
+        "spacing-above": true,
+        "spacing-below": true,
+        "featured-collection--image--show": false,
+        "featured-collection--description--show": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "display-type": "grid",
+        "products-per-row--desktop": "3",
+        "products-per-row--mobile": "2",
+        "collection": "meet-the-family",
+        "max-products": 6,
+        "heading": "Meet the Family",
+        "chooseHeadingtype": "heading2",
+        "chooseProTitleHeadingtype": "heading4"
+      }
+    },
+    "2c7b2c75-a053-465f-9304-0c8a440bc6b4": {
+      "type": "testimonials",
+      "blocks": {
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-0": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "10",
+            "background_color": "accent-1",
+            "author-role": "Verified Buyer",
+            "author-name": "Jackie H.",
+            "description": "<p>Absolutely love this apertivo!</p>"
+          }
+        },
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-1": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "10",
+            "background_color": "accent-1",
+            "author-role": "VERIFIED BY SHOP PAY",
+            "author-name": "Kate",
+            "description": "<p>Love this so much!</p>"
+          }
+        },
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-2": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "10",
+            "background_color": "accent-1",
+            "author-role": "VERIFIED BUYER",
+            "author-name": "Sheelin C.",
+            "description": "<p>Great to have a natural healthy product that tastes as good as it’s less natural competitors</p>"
+          }
+        },
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-3": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "10",
+            "background_color": "accent-1",
+            "author-role": "VERIFIED BUYER",
+            "author-name": "Vartan G.",
+            "description": "<p>Simply Sensational. A brilliant variety of organic drinks</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-0",
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-1",
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-2",
+        "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-3"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "container-width": "4",
+        "image-shape": "circle",
+        "overline": "",
+        "heading": "Testimonials",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "mobile-width": "2"
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "4",
+        "tag-select": "pinned",
+        "show-cta": true,
+        "show-date": true,
+        "show-excerpt": true,
+        "blog": "culture",
+        "blog-heading": "The Bitter Affair",
+        "chooseHeadingtype": "heading2",
+        "choosePostTitleHeadingtype": "heading4",
+        "choosePostDateParatype": "subNav",
+        "chooseParagraphtype": "paragraph1",
+        "choosePostLinktype": "subNav",
+        "heading-alignment": "center",
+        "view-more-text": "View more"
+      }
+    },
+    "map": {
+      "type": "map",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "4",
+        "theme": "grayscale",
+        "heading": "Book your next event with us!",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "chooseMapLinktype": "subNav",
+        "address": "<p>14-16 Helen St<br/>Heidelberg West<br/>Victoria, Australia<br/>1300 872 306<br/><br/><a href=\"/pages/our-story\" title=\"Our story\"><strong>LEARN MORE</strong></a></p>",
+        "hours": "",
+        "image": "shopify://shop_images/Three_foxes_Distillery-15-2.jpg",
+        "api-key": "",
+        "map-address": ""
+      }
+    },
+    "featured_newsletter_8aNLc3": {
+      "type": "featured-newsletter",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "4",
+        "overline": "",
+        "heading": "Subscribe to Slow Drinking",
+        "description": "<p>Our newsletter on all things Aperitivo</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "888c0700-2b7d-4516-8312-8388f1daefac": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "overline": "",
+        "heading": "Subscribe to our newsletter",
+        "description": "<p>A short sentence describing what someone will receive by subscribing</p>",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1"
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "featured_text_j7W7QW",
+    "featured-collection-slider",
+    "2c7b2c75-a053-465f-9304-0c8a440bc6b4",
+    "featured-blog",
+    "map",
+    "featured_newsletter_8aNLc3",
+    "888c0700-2b7d-4516-8312-8388f1daefac"
+  ]
+}

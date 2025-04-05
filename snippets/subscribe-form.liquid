@@ -1,0 +1,92 @@
+{% comment %}
+{%- liquid
+  assign submit_t = 'general.mailing_list.submit' | t
+  assign placeholder_t = 'general.mailing_list.placeholder' | t
+  assign shopify_disclaimer_t = 'shopify.online_store.spam_detection.disclaimer_html' | t
+-%}
+
+<subscribe-form class="subscribe-form--root">
+  {%- form 'customer', id: id, class: 'subscribe-form', aria-busy: 'false' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter" />
+    <input
+      type="hidden"
+      name="contact[first_name]"
+      value="Newsletter"
+    />
+    <input
+      type="hidden"
+      name="contact[last_name]"
+      value="Subscriber"
+    />
+    <label for="{{ id }}_subscribe-form_email" data-item="hidden-text">
+      {{ placeholder_t }}
+    </label>
+    <input
+      class="subscribe-form--input"
+      id="{{ id }}_subscribe-form_email"
+      type="email"
+      autocomplete="email"
+      placeholder="{{ placeholder_t }}"
+      name="contact[email]"
+      data-item="nav-text"
+    />
+
+    <button
+      class="subscribe-form--submit"
+      type="submit"
+      aria-label="{{ submit_t }}"
+    >
+      {%- render 'css-icons', icon: 'next' -%}
+      {%- render 'icons', icon: 'spinner' -%}
+    </button>
+
+    {%- if form.posted_successfully? -%}
+      <script>window.location.hash = '#feedback-bar--newsletter';</script>
+    {%- endif -%}
+
+    <div data-item="hidden-text">
+      <!-- remove the below line to display reCAPTCHA badge -->
+      {{- shopify_disclaimer_t -}}
+    </div>
+  {%- endform -%}
+</subscribe-form>
+{% endcomment %}
+
+<div class="klaviyo-form">
+  
+	<form id="email_signup" class="klaviyo_styling klaviyo_gdpr_embed_WNE5z9" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+      
+      <input type="hidden" name="g" value="WNE5z9">
+      <input type="hidden" name="$fields" value="$consent">
+      <input type="hidden" name="$list_fields" value="$consent">
+
+      <div class="input-group mb-3 mr-md-3 w-100">
+        <label for="Newsletter-email" class="d-none" aria-hidden="true">Newsletter email</label>
+        <input class="form-control" style="width: auto; padding: 24px 15px;" type="email" value="" name="email" id="k_id_email" placeholder="Email address" />
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-dark btn-inline"><i class="fa-solid fa-chevron-right"></i></button> 
+        </div>
+      </div>
+
+      <div class="klaviyo_messages">
+        <div class="success_message" style="display:none;"></div>
+        <div class="error_message" style="display:none;"></div>
+      </div>
+
+  	</form>
+
+  	<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+  
+    <script type="text/javascript">
+      KlaviyoSubscribe.attachToForms('#email_signup', {
+        hide_form_on_success: true,
+        extra_properties: {
+          $source: '$embed',
+          $method_type: "Klaviyo Form",
+          $method_id: 'embed',
+          $consent_version: 'Embed default text'
+        }
+      });
+    </script>
+
+</div>

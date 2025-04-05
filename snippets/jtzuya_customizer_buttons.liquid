@@ -1,0 +1,8 @@
+{% comment %} Prev and Next Buttons {% endcomment %}
+{% if bkst.nextStepBtnLabel != blank %}
+  <p class="ctm_tab_content_next_btn_sub_line my-3 mb-md-3 mt-md-0 ctm_paragraph2_font">{{ bkst.nextStepBtnLabel }}</p>
+{% endif %}
+{% if bkst.nextStepBtnSubLabel != blank %}
+  <button class="btn btn-disable {% if forloop.index == 0 %}d-none{% endif %} ctm_tab_content_prev_btn ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="button">Back</button>
+  <button {% if action %}data-action-type="{{ action }}"{% endif %} class="btn btn-danger ctm_tab_content_next_btn ctmBtnBurgundy ctmSecFontAvenir ctmSecFontNormal- ctmTextCapitalize- ctmSecFontUpCase" type="button">{{ bkst.nextStepBtnSubLabel }}</button>
+{% endif %}

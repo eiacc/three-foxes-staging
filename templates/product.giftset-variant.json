@@ -1,0 +1,243 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {}
+        },
+        "overline_PcWXh6": {
+          "type": "overline",
+          "settings": {
+            "text": "{{ product.metafields.ctm.custom_short_description.value }}"
+          }
+        },
+        "rating_jBpjqG": {
+          "type": "rating",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapsible-row-enabled": false,
+            "heading": "Description"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "quantity_selector_DxVpRz": {
+          "type": "quantity-selector",
+          "settings": {}
+        },
+        "options": {
+          "type": "options",
+          "settings": {
+            "variant-style": "buttons",
+            "variant_metafield_interaction": true,
+            "swatches-enabled": true,
+            "size-chart-enabled": true,
+            "size-chart-option": "size",
+            "size-chart-content": ""
+          }
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "smart-payment-enabled": true
+          }
+        },
+        "pickup": {
+          "type": "pickup",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary-products": {
+          "type": "complementary-products",
+          "disabled": true,
+          "settings": {
+            "title": "Pairs well with",
+            "max-products": 2,
+            "collapsible-row-enabled": true
+          }
+        },
+        "social-sharing": {
+          "type": "social-sharing",
+          "disabled": true,
+          "settings": {
+            "facebook-enabled": true,
+            "x-enabled": true,
+            "pinterest-enabled": true,
+            "email-enabled": true,
+            "url-enabled": true
+          }
+        },
+        "collapsible_row_KrwwAw": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "PRODUCT DETAILS",
+            "description": "<p>{{ product.metafields.custom.product_details | metafield_tag }}</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "overline_PcWXh6",
+        "rating_jBpjqG",
+        "vendor",
+        "description",
+        "price",
+        "quantity_selector_DxVpRz",
+        "options",
+        "buy-buttons",
+        "pickup",
+        "complementary-products",
+        "social-sharing",
+        "collapsible_row_KrwwAw"
+      ],
+      "settings": {
+        "container-width": "3",
+        "background_color": "none",
+        "spacing-above": false,
+        "spacing-below": true,
+        "media-layout": "two",
+        "text-column-width": 40,
+        "media-gap": 8,
+        "column-spacing": "close",
+        "text-alignment": "left",
+        "thumbnail-width": 80,
+        "heading-enabled": false,
+        "heading-sizes-enabled": true,
+        "heading-size": 40,
+        "breadcrumbs-enabled": false,
+        "modal-enabled": true,
+        "variant-scroll-enabled": true,
+        "image-zoom-enabled": false,
+        "loop-enabled": false,
+        "mobile-media-layout": "slideshow"
+      }
+    },
+    "text_columns_tdUPLe": {
+      "type": "text-columns",
+      "blocks": {
+        "image_ieazWW": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "",
+            "description": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_YN74K6": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "{{ product.metafields.custom.cocktail_two_image.value }}",
+            "title": "{{ product.metafields.custom.cocktail_two_name.value }}",
+            "description": "<p>{{ product.metafields.custom.cocktail_two_recipe | metafield_tag }}</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_FjXbwM": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "{{ product.metafields.custom.cocktail_three_image.value }}",
+            "title": "{{ product.metafields.custom.cocktail_three_name.value }}",
+            "description": "<p>{{ product.metafields.custom.cocktail_three_recipe | metafield_tag }}</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_ieazWW",
+        "image_YN74K6",
+        "image_FjXbwM"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "block-spacing": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "4",
+        "width": 3,
+        "aspect-ratio": "portrait",
+        "image-width": 0,
+        "text-alignment": "center",
+        "overline": "WHATS INSIDE",
+        "heading": "{{ product.title }}",
+        "description": "",
+        "link-url": "",
+        "link-text": "",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseProTitleHeadingtype": "heading4",
+        "chooseParagraphtype": "paragraph1",
+        "mobile-width": "1"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "4",
+        "title": "You may also like"
+      }
+    },
+    "featured_newsletter_h9trRM": {
+      "type": "featured-newsletter",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "4",
+        "overline": "",
+        "heading": "Subscribe to Slow Drinking",
+        "description": "<p>Our Newsletter on all things Aperitivo</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_columns_tdUPLe",
+    "related-products",
+    "featured_newsletter_h9trRM"
+  ]
+}

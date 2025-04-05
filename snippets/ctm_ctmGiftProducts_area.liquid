@@ -1,0 +1,42 @@
+{% comment %} <div class="ctm__tab_content_area ctm__{{ bkst.tabLabel | downcase | replace: ' ', '_' }}_content_area px-md-3 {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}"> {% endcomment %}
+<div class="ctm__tab_content_area ctm__gift_products_content_area px-md-3- {{ ctmWrapClass }} {% unless forloop.index == 1 %}d-none{% endunless %}" data-tab_index="{{ forloop.index }}" data-step_index="{{ "step_" | append: forloop.index }}">
+  {% if bkst.tabHeading != blank or bkst.tabSubHeading != blank %}
+    <div class="px-md-3 ctm_tab_content_header d-flex align-items-end justify-content-between pb-2 flex-wrap ctm_pl_0- mob_justi-center mob_border-bottom">
+      {% if bkst.tabHeading != blank %}
+        <div class="tab_content_heading ctmFontDahlia mob_fs-h3">
+          <h3>{{ bkst.tabHeading }}</h3>
+        </div>
+      {% endif %}
+      {% if bkst.tabSubHeading != blank %}
+        <div class="tab_content_sub_heading">
+          <p class="ctmSecFontNormal- ctmSecFontAvenir ctmSecFont600- ctm_tab_clr_blk">{{ bkst.tabSubHeading }}</p>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+
+  <div class="row ctm_tab_content_inner_area px-md-3 pt-3">
+    <div class="d-flex- flex-column- my-3 col-md-10 px-0">
+      
+      {% if bkst.first_gift_pros_list != blank %}
+        {% render 'ctm_gift_pro_list_select', ctmGiftProListName : 'Your First Gift Product', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmGiftpro1stOption: 'Gift Product 1', giftProducts: bkst.first_gift_pros_list, ctmClass: 'mt-4 col-md-6 mx-auto' %}
+      {% endif %}
+
+      {% if bkst.second_gift_pros_list != blank %}
+        {% render 'ctm_gift_pro_list_select', ctmGiftProListName : 'Your Second Gift Product', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmGiftpro1stOption: 'Gift Product 2', giftProducts: bkst.second_gift_pros_list, ctmClass: 'mt-4 col-md-6 mx-auto' %}
+      {% endif %}
+
+      {% if bkst.third_gift_pros_list != blank %}
+        {% render 'ctm_gift_pro_list_select', ctmGiftProListName : 'Your Third Gift Product', section: section, bk: bk, bkst: bkst, forloop: forloop, ctmGiftpro1stOption: 'Gift Product 3', giftProducts: bkst.third_gift_pros_list, ctmClass: 'mt-4 col-md-6 mx-auto' %}
+      {% endif %}
+
+    </div>
+  </div>
+  
+
+  <div class="mob_border-top ctm_tab_content_footer text-md-right text-center mt-3 ctm_nxtBtnBelowCards">
+    {% comment %} {% render 'jtzuya_customizer_header', bkst: bkst %} {% endcomment %}
+    {% render 'jtzuya_customizer_buttons', bkst: bkst %}
+  </div>
+</div>

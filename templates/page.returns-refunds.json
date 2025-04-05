@@ -1,0 +1,116 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16324399488a55ecb4": {
+      "type": "featured-text",
+      "custom_css": [
+        "strong {font-weight: 600;}"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "1",
+        "overline": "",
+        "heading": "Returns & Refunds",
+        "description": "<p>We want you to be satisfied with your Three Foxes but if you aren’t, here is some helpful information about returns, refunds and cancellations.</p><p>It is your responsibility to let us know if a product has not been delivered or is faulty. Please send us an email via <a href=\"mailto:hello@threefoxes.com.au\" target=\"_blank\" title=\"Email hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>. Once we are aware of the issue, we will investigate and do everything we can to ensure a replacement is delivered and received.</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "2",
+        "spacing-above": false,
+        "spacing-below": true
+      }
+    },
+    "16324397781a8be68b": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "16324397781a8be68b-0": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Refunds",
+            "description": "<p>If your product is faulty, damaged or wrongly described we will cheerfully refund your money. You will need to provide proof of purchase and return the product(s) to us.</p><p>Refunds won't be given for late delivery, or a delivery outside our stated delivery time.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-1": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Exchanges",
+            "description": "<p>We only exchange a product if it is damaged or faulty. You will need to provide proof of purchase and return the product(s) to us.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Returns",
+            "description": "<p>The product must be unused, in the same condition that you received it.</p><p>We recommend that you return the product via registered post and that you prepay postage. You assume any risk of loss, theft or damage to goods in transit so we also advise you to insure the parcel. We will refund the cost of delivery if Three Foxes is at fault.</p><p>To organise a return please shoot an email over to our customer service crew via <a href=\"mailto:hello@threefoxes.com.au\" target=\"_blank\" title=\"Email hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "a6080b6f-76b2-411e-84ba-9bbd1dbedff2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Cancellations",
+            "description": "<p>If you wish to cancel your order, please contact us immediately on <a href=\"mailto:hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>.  Every attempt will be made to accommodate your request, however once payment has been received, cancellation is at our discretion.</p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "16324397781a8be68b-0",
+        "16324397781a8be68b-1",
+        "16324397781a8be68b-2",
+        "a6080b6f-76b2-411e-84ba-9bbd1dbedff2"
+      ],
+      "custom_css": [
+        "p {padding-bottom: 10px;}",
+        "strong {font-weight: 600;}"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "accent-2",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    }
+  },
+  "order": [
+    "16324399488a55ecb4",
+    "main",
+    "16324397781a8be68b"
+  ]
+}

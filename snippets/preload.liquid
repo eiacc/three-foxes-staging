@@ -1,0 +1,32 @@
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+{%- unless settings.typography--heading == blank -%}
+  <link
+    rel="preload"
+    href="{{ settings.typography--heading | font_url }}"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+{%- endunless -%}
+
+{%- unless settings.typography--accent == blank -%}
+  <link
+    rel="preload"
+    href="{{ settings.typography--accent | font_url }}"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+{%- endunless -%}
+
+{%- unless settings.typography--paragraph == blank -%}
+  <link
+    rel="preload"
+    href="{{ settings.typography--paragraph | font_url }}"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+{%- endunless -%}

@@ -1,0 +1,445 @@
+{%- liquid
+  assign bg_color = section.settings.background-color
+  assign blog = blogs[section.settings.blog]
+  assign blog_heading = section.settings.blog-heading | escape
+  assign container_width = section.settings.container-width
+  assign heading_alignment = section.settings.heading-alignment
+  assign selected_tag = section.settings.tag-select | downcase | escape
+  assign show_cta = section.settings.show-cta
+  assign show_date = section.settings.show-date
+  assign show_excerpt = section.settings.show-excerpt
+  assign spacing_above = section.settings.spacing-above
+  assign spacing_below = section.settings.spacing-below
+  assign view_more_text = section.settings.view-more-text | escape
+  assign top_border = section.settings.top-border
+  assign white_text = section.settings.white-text
+-%}
+
+{% style %}
+  {% assign ctmHeadingType = section.settings.chooseHeadingtype %}
+  {% assign ctmPostTitleHeadingType = section.settings.choosePostTitleHeadingtype %}
+  {% assign ctmDateType = section.settings.choosePostDateParatype %}
+  {% assign ctmParagraphType = section.settings.chooseParagraphtype %}
+  {% assign ctmLinkType = section.settings.choosePostLinktype %}
+  
+  {% case ctmHeadingType %}
+    {% when 'heading1'  %}
+    {% assign headingT = '--font--banner--size' %}
+    {% assign headingTMobile = '--font--banner--mobile-size' %}
+    {% when 'heading2'  %}
+    {% assign headingT = '--font--featured--size' %}
+    {% assign headingTMobile = '--font--featured--mobile-size' %}
+    {% when 'heading3'  %}
+    {% assign headingT = '--font--section--size' %}
+    {% assign headingTMobile = '--font--section--mobile-size' %}
+    {% when 'heading4'  %}
+    {% assign headingT = '--font--block--size' %}
+    {% assign headingTMobile = '--font--block--mobile-size' %}
+  {% endcase %}
+  
+  {% case ctmPostTitleHeadingType %}
+    {% when 'heading1'  %}
+    {% assign postTitle = '--font--banner--size' %}
+    {% assign postTitleMobile = '--font--banner--mobile-size' %}
+    {% when 'heading2'  %}
+    {% assign postTitle = '--font--featured--size' %}
+    {% assign postTitleMobile = '--font--featured--mobile-size' %}
+    {% when 'heading3'  %}
+    {% assign postTitle = '--font--section--size' %}
+    {% assign postTitleMobile = '--font--section--mobile-size' %}
+    {% when 'heading4'  %}
+    {% assign postTitle = '--font--block--size' %}
+    {% assign postTitleMobile = '--font--block--mobile-size' %}
+  {% endcase %}
+
+  {% case ctmDateType %}
+    {% when 'paragraph1'  %}
+    {% assign dateT = '--font--paragraph--size' %}
+    {% when 'paragraph2'  %}
+    {% assign dateT = '--font--featured-paragraph--size' %}
+    {% when 'subNav'  %}
+    {% assign dateT = '--font--sub-nav--size' %}
+  {% endcase %}
+
+  {% case ctmParagraphType %}
+    {% when 'paragraph1'  %}
+    {% assign paraT = '--font--paragraph--size' %}
+    {% when 'paragraph2'  %}
+    {% assign paraT = '--font--featured-paragraph--size' %}
+    {% when 'subNav'  %}
+    {% assign paraT = '--font--sub-nav--size' %}
+  {% endcase %}
+
+  {% case ctmLinkType %}
+    {% when 'paragraph1'  %}
+    {% assign linkT = '--font--paragraph--size' %}
+    {% when 'paragraph2'  %}
+    {% assign linkT = '--font--featured-paragraph--size' %}
+    {% when 'subNav'  %}
+    {% assign linkT = '--font--sub-nav--size' %}
+  {% endcase %}
+  
+  
+  #shopify-section-{{ section.id }} [data-item="section-heading"] {
+    font-size: var({{headingT}});
+  }
+  #shopify-section-{{ section.id }} .article--item--heading[data-item="block-heading"],
+  #shopify-section-{{ section.id }} .article--item--heading[data-item="block-heading"] * {
+    font-size: var({{postTitle}}) !important;
+  }
+  #shopify-section-{{ section.id }} .article--item--date {
+    font-size: var({{dateT}});
+  }
+  #shopify-section-{{ section.id }} [data-item="paragraph"] {
+    font-size: var({{paraT}});
+  }
+  #shopify-section-{{ section.id }} .article--item--read-more[data-item="block-link"] {
+    font-size: var({{linkT}});
+  }
+  
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} [data-item="section-heading"] {
+      font-size: var({{headingTMobile}});
+    }
+    #shopify-section-{{ section.id }} .article--item--heading[data-item="block-heading"],
+    #shopify-section-{{ section.id }} .article--item--heading[data-item="block-heading"] * {
+      font-size: var({{postTitleMobile}}) !important;
+    }
+  }
+{% endstyle %}
+
+
+{% comment %} View {% endcomment %}
+<div
+  class="featured-blog--root"
+  data-section-id="{{ section.id }}"
+  data-aspect-ratio="{{ settings.image--article-size }}"
+  data-background-color="{{ bg_color }}"
+  data-container-width="{{ container_width }}"
+  {% if white_text %}
+    data-text-color="white"
+  {% endif %}
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+  data-top-border="{{ top_border }}"
+>
+  <div class="featured-blog--wrapper" data-container="section">
+    {%- unless blog_heading == blank -%}
+      {%- unless blog == blank -%}
+        <a href="{{ blog.url }}">
+      {%- endunless -%}
+
+      <div
+        class="featured-blog--header"
+        data-container="block"
+        data-heading-alignment="{{ heading_alignment }}"
+      >
+        <h2 class="featured-blog--heading" data-item="section-heading">
+          {{- blog_heading -}}
+        </h2>
+      </div>
+
+      {%- unless blog == blank -%}
+        </a>
+      {%- endunless -%}
+    {%- endunless -%}
+
+    {%-
+      render 'blog-grid',
+      id: section.id,
+      blog: blog,
+      selected_tag: selected_tag,
+      show_cta: show_cta,
+      show_date: show_date,
+      show_excerpt: show_excerpt
+    -%}
+
+    {%- if view_more_text != blank -%}
+      <div class="featured-blog--footer" data-container="block">
+        <a
+          class="rdc-mi-auto"
+          data-item="{{ settings.buttons--style }}"
+          data-text="{{ view_more_text }}"
+          href="{{ blog.url }}"
+          {% unless settings.transitions--buttons %}
+            data-transition-button
+          {% endunless %}
+        >
+          <div>{{ view_more_text }}</div>
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "section--featured-blog",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style and layout"
+    },
+    {
+      "id": "top-border",
+      "label": "Top border",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "spacing-above",
+      "label": "Spacing above",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "spacing-below",
+      "label": "Spacing below",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "background-color",
+      "label": "Background color",
+      "type": "select",
+      "options": [
+        {
+          "label": "None",
+          "value": "none"
+        },
+        {
+          "label": "Light",
+          "value": "light"
+        },
+        {
+          "label": "Dark",
+          "value": "dark"
+        },
+        {
+          "label": "Accent 1",
+          "value": "accent-1"
+        },
+        {
+          "label": "Accent 2",
+          "value": "accent-2"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "white-text",
+      "label": "Use white text color",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "container-width",
+      "label": "Maximum width of container",
+      "type": "select",
+      "options": [
+        {
+          "label": "Extra small",
+          "value": "1"
+        },
+        {
+          "label": "Small",
+          "value": "2"
+        },
+        {
+          "label": "Medium",
+          "value": "3"
+        },
+        {
+          "label": "Large",
+          "value": "4"
+        },
+        {
+          "label": "Extra large",
+          "value": "5"
+        },
+        {
+          "label": "Full width",
+          "value": "6"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "id": "tag-select",
+      "label": "Filter by tag",
+      "type": "text",
+      "default": "pinned",
+      "info": "Tag articles with 'pinned' or change this to match an existing tag"
+    },
+    {
+      "id": "show-cta",
+      "label": "Show call-to-action",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "show-date",
+      "label": "Show date",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "show-excerpt",
+      "label": "Show excerpt",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "blog",
+      "label": "Choose blog",
+      "type": "blog"
+    },
+    {
+      "id": "blog-heading",
+      "label": "Heading",
+      "type": "text",
+      "default": "Blog posts"
+    },
+    {
+      "type": "header",
+      "content": "Custom Settings"
+    },
+    {
+      "id": "chooseHeadingtype",
+      "label": "Select custom Heading Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Heading 1",
+          "value": "heading1"
+        },
+        {
+          "label": "Heading 2",
+          "value": "heading2"
+        },
+        {
+          "label": "Heading 3",
+          "value": "heading3"
+        },
+        {
+          "label": "Heading 4",
+          "value": "heading4"
+        }
+      ],
+      "default": "heading2"
+    },
+    {
+      "id": "choosePostTitleHeadingtype",
+      "label": "Select custom Blog Post Heading Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Heading 1",
+          "value": "heading1"
+        },
+        {
+          "label": "Heading 2",
+          "value": "heading2"
+        },
+        {
+          "label": "Heading 3",
+          "value": "heading3"
+        },
+        {
+          "label": "Heading 4",
+          "value": "heading4"
+        }
+      ],
+      "default": "heading3"
+    },
+    {
+      "id": "choosePostDateParatype",
+      "label": "Select custom Blog Post Date Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Paragraph 1",
+          "value": "paragraph1"
+        },
+        {
+          "label": "Paragraph 2",
+          "value": "paragraph2"
+        },
+        {
+          "label": "Sub Navigation",
+          "value": "subNav"
+        }
+      ],
+      "default": "subNav"
+    },
+    {
+      "id": "chooseParagraphtype",
+      "label": "Select custom Paragraph Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Paragraph 1",
+          "value": "paragraph1"
+        },
+        {
+          "label": "Paragraph 2",
+          "value": "paragraph2"
+        },
+        {
+          "label": "Sub Navigation",
+          "value": "subNav"
+        }
+      ],
+      "default": "paragraph1"
+    },
+    {
+      "id": "choosePostLinktype",
+      "label": "Select custom Blog Post Link Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Paragraph 1",
+          "value": "paragraph1"
+        },
+        {
+          "label": "Paragraph 2",
+          "value": "paragraph2"
+        },
+        {
+          "label": "Sub Navigation",
+          "value": "subNav"
+        }
+      ],
+      "default": "subNav"
+    },
+    {
+      "id": "heading-alignment",
+      "label": "Position heading",
+      "type": "text_alignment",
+      "default": "center"
+    },
+    {
+      "id": "view-more-text",
+      "label": "View more text",
+      "type": "text",
+      "default": "View more"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog posts",
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ],
+  "disabled_on": {
+    "groups": ["aside"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": true,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "4",
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "ctm_pro_customizer_C3KcfQ": {
+      "type": "ctm_pro_customizer",
+      "blocks": {
+        "pro_collection_cB9qyt": {
+          "type": "proCollection",
+          "settings": {
+            "tabLabel": "COCKTAILS",
+            "tabHeading": "Choose your Foxtails",
+            "tabSubHeading": "Customise your bottled cocktails in just a few steps!",
+            "collection": "foxtails-co",
+            "nextStepBtnLabel": "Now let's get to the fun part",
+            "nextStepBtnSubLabel": "Next step",
+            "nextBtnPosition": "asBelowCards",
+            "chooseLProductTitleText": "ctm_heading4_font",
+            "chooseLProductShortDesctype": "SubHeading2"
+          }
+        },
+        "label_selection_GahUER": {
+          "type": "label_selection",
+          "settings": {
+            "tabLabel": "LABEL TYPE",
+            "tabHeading": "Choose Your Label Type",
+            "tabSubHeading": "",
+            "nextStepBtnLabel": "",
+            "nextStepBtnSubLabel": "Next Step",
+            "nextBtnPosition": "asCard"
+          }
+        },
+        "template_selection_mK38HY": {
+          "type": "template_selection",
+          "settings": {
+            "tabLabel": "ARTWORK",
+            "tabHeading": "Select Your Favorite Template",
+            "tabSubHeading": "",
+            "nextStepBtnLabel": "",
+            "nextStepBtnSubLabel": "Next Step",
+            "nextBtnPosition": "asCard"
+          }
+        },
+        "inner_tabs_area_6F87BU": {
+          "type": "innerTabsArea",
+          "disabled": true,
+          "settings": {
+            "tabLabel": "LABELS",
+            "tabHeading": "Design Your Labels",
+            "tabSubHeading": "Match your design to your wedding or choose our classic foxtail & co labels",
+            "ctmProductPrints": [],
+            "nextStepBtnLabel": "They look great!",
+            "nextStepBtnSubLabel": "Next Step",
+            "enableOnlyPrints": false,
+            "enableOnlyLabelType": false,
+            "ctmGiftLabelTypeProducts": [],
+            "blockChooseLabeltype": "SubHeading2",
+            "blockLabelCardHeading": "SubHeading2",
+            "blockLabelCardSubHeadingCost": "--font--paragraph--size",
+            "blockCtmLabelProTitleHeading": "SubHeading2",
+            "blockCtmLabelProPriceSubHeading": "--font--paragraph--size",
+            "blockCtmLabelArtworkHeading": "SubHeading2",
+            "blockDragNDropParaText": "--font--sub-nav--size",
+            "blockCtmLabelArtworkParaHeading": "--font--paragraph--size"
+          }
+        },
+        "ctm_personalise_JewyUJ": {
+          "type": "ctmPersonalise",
+          "settings": {
+            "tabLabel": "PERSONALISE",
+            "tabHeading": "Personalise Your Labels",
+            "tabSubHeading": "Add your names and custom message in a stunning foil to suit your theme.",
+            "ctmProductPrints": [],
+            "nextStepBtnLabel": "They look great!",
+            "nextStepBtnSubLabel": "Next Step",
+            "blockPersonalizeSubHeading": "--font--nav--size_heading_2",
+            "blockPersonalizeInputFields": "--font--paragraph--size",
+            "errorMsgFontSize": "ctm_paragraph1_font"
+          }
+        },
+        "ctm_pro_extras_iVJPmx": {
+          "type": "ctmProExtras",
+          "settings": {
+            "tabLabel": "EXTRAS",
+            "tabHeading": "Final Touches",
+            "tabSubHeading": "Label application and name tags for your guests names",
+            "ctmProductPrints": [],
+            "nextStepBtnLabel": "",
+            "nextStepBtnSubLabel": "Next Step",
+            "blockExtrasProTitleSubHeading": "--font--nav--size_heading_2"
+          }
+        },
+        "ctm_contact_details_86Q9kT": {
+          "type": "ctmContactDetails",
+          "settings": {
+            "tabLabel": "DETAILS",
+            "tabHeading": "Event & Contact Details",
+            "tabSubHeading": "We just need a few details before we can finalise your order",
+            "nextStepBtnLabel": "We are nearly there!",
+            "nextStepBtnSubLabel": "Next Step",
+            "blockContactInputLabelSubHeading": "--font--nav--size_heading_2",
+            "blockContactInputSubLabelSubHeading": "--font--paragraph--size",
+            "blockContactInputTextSubHeading": "--font--paragraph--size",
+            "errorMsgFontSize": "ctm_paragraph1_font"
+          }
+        }
+      },
+      "block_order": [
+        "pro_collection_cB9qyt",
+        "label_selection_GahUER",
+        "template_selection_mK38HY",
+        "inner_tabs_area_6F87BU",
+        "ctm_personalise_JewyUJ",
+        "ctm_pro_extras_iVJPmx",
+        "ctm_contact_details_86Q9kT"
+      ],
+      "settings": {
+        "sectionBgColor": "#f7f2ee",
+        "title_font_family": "avenir_next_n6",
+        "title_font_size": 14,
+        "title_font_size_sm": 14,
+        "chooseLStepsSubHeadingtype": "SubHeading2",
+        "chooseStepHeadingtype": "heading3",
+        "chooseStepSubHeadingtype": "SubHeading2",
+        "chooseBtnSubTexttype": "paragraph1",
+        "chooseBtnLabeltype": "subNav",
+        "blockSummaryItemLabelSubHeading": "--font--nav--size_heading_2",
+        "blockSummaryItemValueParaText": "--font--paragraph--size"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ctm_pro_customizer_C3KcfQ"
+  ]
+}

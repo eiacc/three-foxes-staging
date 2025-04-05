@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" dir="ltr">
+  <head>
+    <!-- Beyond theme - Version 4.0.1 by Troop Themes - https://troopthemes.com/ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% render 'title-head' %}
+
+    {%- if canonical_url != blank -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32 }}" type="image/png">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
+    {%- endif -%}
+
+    {%- liquid
+      render 'preload'
+      render 'meta-tags'
+      render 'fonts'
+      render 'css-variables'
+      render 'custom-styles'
+      render 'js-variables'
+      render 'js-utils'
+      render 'js-modules'
+    -%}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha512-YHQNqPhxuCY2ddskIbDlZfwY6Vx3L3w9WRbyJCY81xpqLmrM6rL2+LocBgeVHwGY9SXYfQWJ+lcEWx1fKS2s8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {%- if request.page_type contains 'customers' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+      <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+  
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {% comment %}
+      {% style %}
+        @font-face {
+          font-family: "Dahlia";
+          src: url({{ "Dahlia-MediumCondensed.woff2" | asset_url }}) format("woff2"), 
+            url({{ "Dahlia-MediumCondensed.woff" | asset_url }}) format("woff"),
+          url({{ "Dahlia-MediumCondensed.eot" | asset_url }}) format("eot");
+        }
+      {% endstyle %}
+    {% endcomment %}
+    {{ 'custom_mw.css' | asset_url | stylesheet_tag }}
+    {{ 'custom_mw2.css' | asset_url | stylesheet_tag }}
+    
+    
+    {% assign ctm_pages = page_title | handle %}
+
+    {% if ctm_pages == 'favours-custom-' or ctm_pages == 'foxtails-custom' %}
+      {{ 'custom__pages.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {{ 'rdc.css' | asset_url | stylesheet_tag }}
+    {% include 'hulk_po_vd.liquid' %}
+
+    {% render 'third-party-head' %}
+  </head>
+
+  <body
+    class="template--{{ template | split: '.' | first | remove: '_' | replace: '/', '--' }} page--{{ page_title | handle }}"
+    data-theme-id="939"
+    data-theme-name="Beyond"
+    data-theme-version="4.0.1"
+    data-theme-preset="{{ settings.preset }}"
+    data-transition-container="viewport"
+    data-logged-in="{% if customer %}true{% else %}false{% endif %}"
+    {% if settings.border--enabled %}
+      data-show-border
+    {% endif %}
+  >
+    <!--[if IE]>
+      <div style="text-align:center;padding:72px 16px;">
+        {{ 'general.browser_unsupported' | t }}
+      </div>
+      <style>
+        .layout--viewport { display: none; }
+      </style>
+    <![endif]-->
+
+    <a data-item="a11y-button" href='#main-content' id="a11y_skip">
+      {{- 'general.a11y.skip_main' | t -}}
+    </a>
+
+    <div class="layout--viewport" data-drawer-status="closed">
+      <div class="layout--main-content">
+        {%- sections 'header-group' -%}
+        {%- sections 'overlay-group' -%}
+
+        <main class="layout--template" id="main-content">
+          {{ content_for_layout }}
+        </main>
+
+        {%- sections 'footer-group' -%}
+      </div>
+
+      {%- liquid
+        render 'drawer'
+        render 'layout--navigation'
+        render 'feedback-bar'
+      -%}
+    </div>
+
+    {%- render 'icons', icon: 'defs' -%}
+
+    {{ 'custom_mw.js' | asset_url | script_tag }}
+    {{ 'rdc.js' | asset_url | script_tag }}
+    <script src="https://assets.cloudlift.app/api/assets/upload.js?shop=three-foxes-pty-ltd.myshopify.com"></script>
+    {% if ctm_pages == 'favours-custom-' or ctm_pages == 'foxtails-custom' %}
+      <script src="{{ 'custom_product_customizer.js' | asset_url }}" async></script>
+      {% comment %} {{ 'custom_product_customizer.js' | asset_url | script_tag }} {% endcomment %}
+    {% endif %}
+
+    {% render 'third-party-body' %}
+    <script src="https://kit.fontawesome.com/c91cf6f0c3.js" crossorigin="anonymous"></script>
+  </body>
+</html>

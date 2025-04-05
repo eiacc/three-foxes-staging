@@ -1,0 +1,320 @@
+{% assign collection = collections.foxtails-co %}
+
+<div class="col-12 text-center mb-sml">
+  <h5 class="H5_SUBTITLE">Step 1</h5>
+  <h2 class="H2_Product">Choose your Foxtails</h2>
+</div>
+<!-- Notice disabled <div class="col-12 col-md-11 col-lg-9 mx-auto pb-mini text-center">
+  <p>(Minimum order of 48)</p>
+</div> -->
+
+{% if collection.products_count > 0 %}
+	<div class="row mb-mini justify-content-center row-eq-height">
+  	{% for product in collection.products %}
+      {% if product.available %}
+      <div class="col-12 col-md-6 col-lg-4 mb-med mb-md-sml">
+        <div class="row">
+          <div class="col-5 col-md-12 text-center px-0 px-md-4 px-lg-sml">
+            <img class="img-fluid" src="{{ variant.image | default: product.featured_image | img_url: '450x' }}" alt="{{ variant.title | escape }}"/>
+          </div>
+          <div class="col-7 col-md-12 text-center pl-0 pr-3 px-md-3">
+            <div class="mh-100-desk pages--product-content">
+            	<h3 class="H3_Title mb-0 mt-2 h2-mob-smaller">{{ product.title }}</h3>
+              	<p class="H5_SUBTITLE pt-1 pb-0 m-0 note mx-auto">
+                	{{ product.description | split: '</p>' | first | strip_html }}
+              	</p>
+            </div>
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+            <div class="qty-selector col-12 py-2">
+              <input class="qtyminus" field="updates_{{ product.id }}" type="button" onclick="downFavourTotal({{ product.id }})" value="-"/>
+              <input class="qtyplus" field="updates_{{ product.id }}" type="button" onclick="upFavourTotal({{ product.id }})" value="+"/>
+              <input class="quantity" id="updates_{{ product.id }}" max="99" min="0" name="updates[{{ variant.id }}]"  onchange="getFavourTotal()" onfocus="this.select()" pattern="[0-99]*" type="number" value="0"/>
+            </div>
+          </div>
+      	</div>
+      </div>
+      {% endif %}
+  	{% endfor %}
+	</div>
+
+
+  <div class="row">
+    <div class="col-11 mx-auto text-center pb-mini">
+      <h2 class="H2_Product h2-mob-smaller">Total Cocktails: &nbsp; <span id="favourcount">00</span> <span class="mx-2" style="font-size: 20px; position: relative;">x</span> <span id="quickcost">$14</span></h2>
+       <h2 class="H2_Product h2-mob-smaller">Subtotal: &nbsp; $<span id="quicktotalcost">00</span></h2>
+      {% comment %} and 
+      <div class="btn-group">
+        <span style="pointer-events: none;" id="discount-card-A" class="btn btn-outline-dark">18 and over<br>$11 per cocktail</span>
+        <span style="pointer-events: none;" id="discount-card-B" class="btn btn-outline-dark">48 and over<br>$9 per cocktail</span>
+      </div> 
+      {% endcomment %}
+     
+    </div>
+    <div class="col-11 mx-auto text-center">
+      <p class="lead">Now let's get to the fun part</p>
+    </div>
+
+  
+   <div class="col-11 mx-auto text-center">
+      <a aria-controls="#collapse-labels" aria-expanded="true" class="btn btn-dark btn-lrg text-light mx-auto link" data-target="#collapse-labels" data-toggle="collapse" onclick="onStepOne()" value="Continue to labels" >Next step <i class="ml-2 fa-solid fa-chevron-right"></i></a>
+    </div>
+    
+    {% comment %} {% section '3fox-Favour-Notice' %} {% endcomment %}
+    
+  </div>
+
+{% else %}
+  <p>There are no products in this view.</p>
+{% endif %}
+
+<script>
+  var items = [];
+  
+  var allCounts = 0;
+  var bottlePrice = 14;
+  var discountBreakA = 11;
+  var discountPriceA = 7;
+  var discountBreakB = 600;
+  var discountPriceB = 6;
+  var discountNone = "Order 18+ for $11/bottle, or 48+ for $9/bottle";
+  var discountA = "Bottles are now <s>$14</s> $11 per bottle!";
+  var discountB = "Bottles are now <s>$14</s> $9 per bottle!";
+  var stepPrice = 0;
+  window.onload = getFavourTotalFirst;
+  
+  
+  // This is a special one that checks the cart first, and grabs those values if it can.
+  var cartlist = [];
+  function getFavourTotalFirst() {
+    var allCounts = 0;
+    const products = {{collection.products | json}};
+    var cartContents = {{cart.items | json}};
+    cartContents.forEach(cartitem => {
+      cartlist.push({
+            title: cartitem.title, 
+        	id: cartitem.product_id,
+            qty:  cartitem.quantity
+        });
+    });
+    console.dir(cartlist);
+    products.forEach(product => {
+      const docId = "updates_" + product.id;
+      const qtyfield = document.getElementById(docId);
+      var count =  parseInt(qtyfield.value);
+      cartlist.forEach(entry => {
+        if (entry.id == product.id) {
+          console.log(entry.title+" "+entry.qty);
+          count = Number(entry.qty);
+          console.log("CARTFOUND, Count = "+count);
+          qtyfield.value = count;
+        }
+      });
+      if(count > 0){
+        allCounts += count;
+      }
+    });
+    let totalId = document.getElementById("favourcount");
+    totalId.innerHTML = allCounts;
+    if (allCounts > discountBreakA ) {
+      if (allCounts > discountBreakB) {
+       	var bottlePrice = discountPriceB; // In discount A & B
+        console.log('DISCOUNT (9)');
+      } else {
+        var bottlePrice = discountPriceA; // In discount A
+        console.log('DISCOUNT (11)');
+      }
+       updateQuickTotalCost(bottlePrice,allCounts);
+    } else {
+       var bottlePrice = 14; // Set to normal
+       updateQuickTotalCost(bottlePrice,allCounts);
+       console.log('No discount');
+       
+    }
+  }
+  
+  
+  function getFavourTotal() {
+    var allCounts = 0;
+    const products = {{collection.products | json}};
+    products.forEach(product => {
+      const docId = "updates_" + product.id;
+      const count =  parseInt(document.getElementById(docId).value);
+      if(count > 0){
+        allCounts += count;
+      }
+    });
+    let totalId = document.getElementById("favourcount");
+    totalId.innerHTML = allCounts;
+    if (allCounts > discountBreakA ) {
+       if (allCounts > discountBreakB) {
+       	var bottlePrice = discountPriceB; // In discount A & B
+        console.log('DISCOUNT (9) for'+allCounts+'bottles');
+      } else {
+        var bottlePrice = discountPriceA; // In discount A
+        console.log('DISCOUNT (11) for'+allCounts+'bottles');
+      }
+       updateQuickTotalCost(bottlePrice,allCounts);
+    } else {
+       var bottlePrice = 14; // Set to normal
+       updateQuickTotalCost(bottlePrice,allCounts);
+       console.log('No discount');
+    }
+    updateDiscountCard(allCounts);
+  }
+  
+  function updateQuickTotalCost(bottlePrice,allCounts) {
+    let quickcost = document.getElementById("quickcost");
+    let quicktotal = document.getElementById("quicktotalcost");
+    quickcost.innerHTML = "$"+bottlePrice;
+    let quicktotalcalc = allCounts*bottlePrice
+    quicktotal.innerHTML = quicktotalcalc;
+    updateDiscountCard(allCounts);
+  }
+  
+  function updateDiscountCard(total) {
+    let cardA = document.getElementById("discount-card-A");
+    let cardB = document.getElementById("discount-card-B");
+    if (total > discountBreakA ) {
+       if (total > discountBreakB) {
+         console.log("CARD:: Discount A");
+          cardA.classList.remove("btn-dark","text-light");
+          cardA.classList.add("btn-outline-dark","text-dark");
+          cardB.classList.remove("btn-outline-dark","text-dark");
+          cardB.classList.add("btn-dark","text-light");
+      } else {
+        console.log("CARD:: Discount A");
+          cardB.classList.remove("btn-dark","text-light");
+          cardB.classList.add("btn-outline-dark","text-dark");
+          cardA.classList.remove("btn-outline-dark","text-dark");
+          cardA.classList.add("btn-dark","text-light");
+      }
+    } else {
+      console.log("CARD:: Discount None");
+      	cardA.classList.remove("btn-dark","text-light");
+	 	cardA.classList.add("btn-outline-dark","text-dark");
+        cardB.classList.remove("btn-dark","text-light");
+		cardB.classList.add("btn-outline-dark","text-dark");
+    }
+  }
+  
+  async function upFavourTotal(ID) {
+    let totalId = document.getElementById("favourcount");
+    let updateField = document.getElementById("updates_"+ID);
+    let count = Number(updateField.value);
+    updateField.value = count + 1;
+    let allCounts = totalId.innerHTML;
+    allCounts =+ allCounts+1;
+  	totalId.innerHTML = allCounts;
+    if (allCounts > discountBreakA ) {
+      if (allCounts > discountBreakB ) {
+      	bottlePrice=discountPriceB;
+      } else {
+        bottlePrice=discountPriceA;
+      }
+    }else{
+      bottlePrice=14; //normal
+    };
+    updateQuickTotalCost(bottlePrice,allCounts);
+    updateDiscountCard(allCounts);
+  }
+  async function downFavourTotal(ID) {
+    let totalId = document.getElementById("favourcount");
+    let updateField = document.getElementById("updates_"+ID);
+    let count = Number(updateField.value);
+    if (count == 0) {
+      updateField.value = 0;
+    } else {
+      updateField.value = count - 1;
+    }
+    let allCounts = totalId.innerHTML;
+    if (count > 0 && allCounts > 0) {
+    	allCounts = allCounts - 1;
+    }
+  	totalId.innerHTML = allCounts;
+    if (allCounts > discountBreakA ) {
+      if (allCounts > discountBreakB ) {
+      	bottlePrice=discountPriceB;
+      } else {
+        bottlePrice=discountPriceA;
+      }
+    }else{
+      bottlePrice=14;
+    };
+    updateQuickTotalCost(bottlePrice,allCounts);
+    updateDiscountCard(allCounts);
+  }
+  
+   async function onStepOne() {
+	stepPrice = 0; // reset
+    // update the cart
+    allCounts = 0;
+    let bottlePrice = 14;
+    const products = {{collection.products | json}};
+    products.forEach(product => {
+      const docId = "updates_" + product.id;
+      const count =  parseInt(document.getElementById(docId).value);
+      if(count > 0){
+        allCounts += count;
+      }
+    });
+     console.log('Allcount: '+allCounts);
+     if (allCounts > discountBreakA ) {
+       if (allCounts > discountBreakB ) {
+          bottlePrice=discountPriceB;
+          let quickcost = document.getElementById("quickcost");
+          quickcost.innerHTML = "$"+discountPriceB;
+          console.log('DISCOUNT ('+discountPriceB+') for '+allCounts+' bottles');
+        } else {
+          bottlePrice=discountPriceA;
+          let quickcost = document.getElementById("quickcost");
+          quickcost.innerHTML = "$"+discountPriceA;
+          console.log('DISCOUNT ('+discountPriceA+') for '+allCounts+' bottles');
+        }
+     }
+    products.forEach(product => {
+      const docId = "updates_" + product.id;
+      var count =  parseInt(document.getElementById(docId).value);
+      cartlist.forEach(entry => {
+        // If product currently exists in cart, minus current from value to be added (i.E. may be 0)
+        if (entry.title == product.title) {
+          let shift = Number(entry.qty);
+          count -= shift;
+          console.log("Squared count for "+entry.title+" by -"+shift+" = "+count);
+        }
+      });
+      if(count > 0){
+        console.log('Product: '+product.title+' | '+count+' :: '+product.variants[0].id);
+        items.push({
+          quantity: count,
+          id: product.variants[0].id
+        });
+        stepPrice += (bottlePrice * count);
+      }
+    });
+    console.log('Cnt:: '+allCounts);
+    console.log('TotalBtlprice:: '+stepPrice);
+    // Since we're back at step 1, we need to check if the later elements have changes prices
+    totalPrice = 0+stepPrice;
+    if (isSelectCustomLabel == true) {
+      totalPrice += 190;
+      console.log("Adding Favours and Label: "+totalPrice);
+    }
+    if (isSelectNameTag) {
+       let qtyForNametags = Math.ceil(allCounts/24);
+       if (qtyForNametags < 1) {
+         qtyForNametags = 1;
+       }
+      let NametagCost = 9*qtyForNametags;
+       totalPrice += Number(NametagCost);
+       console.log("Adding Favours and Nametags("+qtyForNametags+") :"+totalPrice);
+     } else {
+       totalPrice = 0;
+     }
+       
+      disableOrShowButton(totalPrice);
+    
+     gotoStep2();
+    
+  }
+  
+</script>

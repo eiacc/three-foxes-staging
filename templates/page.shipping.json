@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16324399488a55ecb4": {
+      "type": "featured-text",
+      "custom_css": [
+        "strong {font-weight: 600;}"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "none",
+        "white-text": false,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "1",
+        "overline": "",
+        "heading": "Shipping",
+        "description": "<p>We know you want your Three Foxes asap. Here are the deets on how it gets from us to you.</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "2",
+        "spacing-above": false,
+        "spacing-below": true
+      }
+    },
+    "16324397781a8be68b": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "16324397781a8be68b-0": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Shipping & Delivery Times",
+            "description": "<p>We are currently shipping to Australia only. One day we hope to reach the far corners of this beautiful world.<br/><br/>We aim to dispatch all general product orders within 2 business days. Custom orders take a minimum of 4 weeks to fulfill.<br/><br/>For most metro areas, orders will arrive in 2-5 business days from when they are shipped; however due to circumstances that are out of our control (hello Covid-19), we can not guarantee this.<br/><br/></p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-1": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Delivery & Collection",
+            "description": "<p>We will not deliver the order, or authorise collection from our distillery if we deem the person taking the products unsuitable. This includes if we, or our couriers, believe the person to be under the influence of alcohol or drugs, under the age of 18 or acting on behalf of someone under the age of 18, or if our requests for proof of age are not met. <br/><br/>As a small batch distillery we can not guarantee the amount of product ordered will be delivered and reserve the right to offer a smaller amount in the event a product has been over-subscribed.<br/><br/>It is your responsibility to let us know if a product has not been delivered. Please send us an email via <strong>hello@threefoxes.com.au</strong>. Once we are aware of the issue, we will investigate and do everything we can to ensure a replacement is delivered and received.<br/><br/></p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "16324397781a8be68b-2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Delivery Returns or Non-Collection",
+            "description": "<p>In the event that delivery was not able to be completed (such as a wrong or incomplete address provided to us when placing the order or the person taking receipt of the product is deemed to be unsuitable) then your order will be returned to us.<br/><br/>We may attempt to redeliver if suitable arrangements can be made or we will refund the amount paid for the products. However, you agree that we may deduct an amount from this refund to cover the cost of an incomplete delivery.<br/><br/></p>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "16324397781a8be68b-0",
+        "16324397781a8be68b-1",
+        "16324397781a8be68b-2"
+      ],
+      "custom_css": [
+        "p {padding-bottom: 10px;}",
+        "strong {font-weight: 600;}"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": true,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "2",
+        "heading": "",
+        "heading-alignment": "left",
+        "chooseHeadingtype": "heading4",
+        "chooseParagraphtype": "subNav"
+      }
+    }
+  },
+  "order": [
+    "16324399488a55ecb4",
+    "main",
+    "16324397781a8be68b"
+  ]
+}

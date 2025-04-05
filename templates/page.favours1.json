@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": true,
+        "background-color": "none",
+        "white-text": false,
+        "container-width": "4",
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "3fox_custom_notice_H7FCiJ": {
+      "type": "3fox-Custom-Notice",
+      "settings": {
+        "enable": false,
+        "notice": ""
+      }
+    },
+    "ctm_favours_zcLQCF": {
+      "type": "ctm_favours",
+      "blocks": {
+        "ctm_step_rR9aLt": {
+          "type": "ctm_step",
+          "settings": {
+            "stepName": "COCKTAILS"
+          }
+        },
+        "ctm_step_MHPPV4": {
+          "type": "ctm_step",
+          "settings": {
+            "stepName": "LABELS"
+          }
+        },
+        "ctm_step_x7EWjF": {
+          "type": "ctm_step",
+          "settings": {
+            "stepName": "BOTTLE TAGS"
+          }
+        }
+      },
+      "block_order": [
+        "ctm_step_rR9aLt",
+        "ctm_step_MHPPV4",
+        "ctm_step_x7EWjF"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "3fox_custom_notice_H7FCiJ",
+    "ctm_favours_zcLQCF"
+  ]
+}

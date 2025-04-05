@@ -1,0 +1,394 @@
+<div class="col-11 col-lg-8 mx-auto text-center">
+  
+  <p class="lead">Your Foxtails are going to be a hit!</p>
+  
+  <!-- Since nametags are selected by default, price starts at 206 and shows in button -->
+  <button
+    type="button"
+    class="btn mx-auto btn-primary btn-lrg"
+    onclick="onStepThree()"
+    id="total-price"
+    style="display: block;"
+  >
+    ADD TO CART - $250
+  </button>
+  
+  <div
+    class="btn btn-dark btn-lrg mx-auto "
+    id="disablebutton"
+    style="display: none;"
+  >
+    Nothing selected
+  </div>
+  
+  <div id="loadingAnim" style="display: none;" class="loading text-center mx-auto py-3">
+    <div class="sk-chase mx-auto">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+    <strong>Submitting to cart</strong>
+  </div>
+</div>
+
+
+<script>
+  
+  
+  function gotoStep1() {
+  	$('#collapse-select').show();
+    $('#collapse-labels').hide();
+    $('#collapse-tags').hide();
+    var selectHeading = document.getElementById("collapse-select-heading");
+    var labelsHeading = document.getElementById("collapse-labels-heading");
+    var tagsHeading = document.getElementById("collapse-tags-heading");
+    selectHeading.classList.add("active");
+    labelsHeading.classList.remove("active");
+    tagsHeading.classList.remove("active");
+    step = 1;
+    console.log('Back to step '+step);
+    // Scroll to top
+    window.scrollTo(0,0);
+  }
+  
+  function gotoStep2() {
+    $('#collapse-select').hide();
+    $('#collapse-labels').show();
+    $('#collapse-tags').hide();
+    var selectHeading = document.getElementById("collapse-select-heading");
+    var labelsHeading = document.getElementById("collapse-labels-heading");
+    var tagsHeading = document.getElementById("collapse-tags-heading");
+    selectHeading.classList.remove("active");
+    labelsHeading.classList.add("active");
+    tagsHeading.classList.remove("active");
+    step = 2;
+    console.log('Back to step '+step);
+    // Scroll to top
+    window.scrollTo(0,0);
+  }
+  
+  function gotoStep3() {
+    eventDateSetMin();
+    nametagCountUpdate();
+    if (isSelectEnquiryForm == true) {
+      // Show enquiry form;
+      getAQuoteLoadQtys();
+      $('#quoteModal').modal();
+    } else {
+      var selectHeading = document.getElementById("collapse-select-heading");
+      var labelsHeading = document.getElementById("collapse-labels-heading");
+      var tagsHeading = document.getElementById("collapse-tags-heading");
+      selectHeading.classList.remove("active");
+      labelsHeading.classList.remove("active");
+      tagsHeading.classList.add("active");
+      $('#collapse-tags').show();
+       $('#collapse-labels').hide();
+      step = 3;
+      console.log('Customlabel + Back to step '+step);
+      // Scroll to top
+      window.scrollTo(0,0);
+    }
+  }
+
+  var validForm = false;
+  
+  // Update the cart
+  
+  function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+  
+  // Format date for validation
+	function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+  
+  function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    //var hour = a.getHours();
+    //var min = a.getMinutes();
+    //var sec = a.getSeconds();
+    var time = year + '-' + month + '-' + date;
+    return time;
+  }
+
+  function getDateWeeks(numWeeks) {
+    let later = new Date();
+    later.setDate(later.getDate() + numWeeks * 7);
+    let laterUnix = (new Date(later).valueOf());
+    return laterUnix;
+  }
+  
+  
+  function eventDateSetMin() {
+    const eventDateEle = document.getElementById("event-date");
+    const leadTimeNoteEle = document.getElementById("leadTime");
+    // Custom labels have a 4 week lead time, others have 2
+    // alert("Label Custom = "+isSelectCustomLabel);
+    if (isSelectCustomLabel == true) {
+      eventDateEle.min = formatDate(getDateWeeks(4));
+      leadTimeNoteEle.innerHTML = "4 weeks to fulfil custom ";
+    } else {
+      eventDateEle.min = formatDate(getDateWeeks(2));
+      leadTimeNoteEle.innerHTML = "2 weeks to fulfil standard or cobrand ";
+    }
+  }
+  
+  
+  const eventdate = document.getElementById("event-date");
+  const eventdateError = document.getElementById("eventDateError");
+  
+  function validateForm() {
+    
+    var validForm = true;
+    
+    const emailEle = document.getElementById("event-email");
+    const eventEmail = emailEle.value;
+    const mobileEle = document.getElementById("event-mobile");
+    const eventMobile = mobileEle.value;
+    const ABNEle = document.getElementById("event-ABN");
+    const eventABN = ABNEle.value;
+    const eventDateEle = document.getElementById("event-date");
+    const eventDate = ABNEle.value;
+    
+    let eventDateError = document.getElementById("eventDateError");
+    let bestEmailError = document.getElementById("bestEmailError");
+    let bestMobileError = document.getElementById("bestMobileError");
+    let ABNError = document.getElementById("ABNError");
+    
+    eventDateError.innerHTML = "";
+    bestEmailError.innerHTML = "";
+    bestMobileError.innerHTML = "";
+    
+    console.log('====VALIDATE=====');
+    
+    // If event date (disable for now since it's optional)
+    let event = eventdate.value;
+    if(event) {
+      if (isSelectCustomLabel) {
+        // Custom has a 4 week lead time
+        let laterUnix4 = getDateWeeks(4);
+        let eventUnix = (new Date(event).valueOf());
+        if (eventUnix < laterUnix4) {
+      		eventdateError.style.display = "block";
+      		eventdateError.innerHTML = "Your date must be at least 4 weeks away for Custom labels"
+      		validForm = false;
+        } else {
+          eventdateError.style.display = "none";
+        }
+      } else {
+        // Cobrand and other have a 2 week lead time
+        let laterUnix2 = getDateWeeks(2);
+        let eventUnix = (new Date(event).valueOf());
+        if (eventUnix < laterUnix2) {
+      		eventdateError.style.display = "block";
+      		eventdateError.innerHTML = "Your date must be at least 2 weeks away for Cobrand labels"
+      		validForm = false;
+        } else {
+          eventdateError.style.display = "none";
+        }
+      }
+      //
+    } else {
+      	eventdateError.style.display = "block";
+        eventdateError.innerHTML = "You must select an event date"
+        validForm = false;
+    }
+      
+    if (eventEmail == "") {
+      console.log('Form = No email');
+      bestEmailError.style.display = "block";
+      bestEmailError.innerHTML = "You must give a preferred email";
+      let email = document.getElementById("event-email").value;
+      validForm = false;
+      console.log('email? : '+validForm);
+    } else {
+      console.log('email? : '+validForm);
+    }
+    if (eventEmail != ""){
+      console.log('Email: '+eventEmail);
+      if (validateEmail(eventEmail)) {
+        console.log('email? : '+validForm);
+      } else {
+        bestEmailError.style.display = "block";
+      	bestEmailError.innerHTML = "You must enter a valid email";
+        validForm = false;
+        console.log('email? : '+validForm);
+      }
+    }
+    if (eventMobile == "") {
+      console.log('Form = No mobile');
+      bestMobileError.style.display = "block";
+      bestMobileError.innerHTML = "You must give a preferred mobile";
+      validForm = false;
+      console.log('mobile? : '+validForm);
+    } else {
+      var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      if (eventMobile.match(phoneno)) {
+      	console.log('mobilematchcheck : '+validForm);
+      } else {
+        validForm = false;
+        bestMobileError.style.display = "block";
+      	bestMobileError.innerHTML = "You must enter a plain mobile number";
+        console.log('mobileNOMATCH : '+validForm);
+      }
+    }
+    if (eventABN == "") {
+      console.log('Form = No ABN');
+      console.log('ABN? : '+validForm);
+    } else {
+      if (isNaN(eventABN)) {
+      	validForm = false;
+        ABNError.style.display = "block";
+      	ABNError.innerHTML = "ABN must be a number without spaces";
+        console.log('ABNNONUMBER : '+validForm);
+      } else {
+        console.log('ABN = : '+eventABN);
+        ABNError.style.display = "none";
+        ABNError.innerHTML = "";
+      }
+    }
+    
+    
+    console.log('endform? : '+validForm);
+
+    // Final validation return
+    if (validForm == true) {
+    	return true;
+    } else {
+      return false;
+    }
+    
+  }
+  
+  function labelTest() {
+    
+  }
+ 
+  
+  async function onStepThree() {
+    
+    if (validateForm()) {
+      
+      const eventdateEle = document.getElementById("event-date");
+      const eventDate = eventdateEle.value;
+      const emailEle = document.getElementById("event-email");
+      const eventEmail = emailEle.value;
+      const mobileEle = document.getElementById("event-mobile");
+      const eventMobile = mobileEle.value;
+      const companyEle = document.getElementById("event-company");
+      const company = companyEle.value;
+      const ABNEle = document.getElementById("event-ABN");
+      const ABN = ABNEle.value;
+      
+      var fileNameEle = "";
+      var fileName = "";
+        
+      
+      const addButton = document.getElementById("total-price");
+      const loadingAnim = document.getElementById("loadingAnim");
+
+      if (labelType == "cobrand") {
+        console.log ('P+: Cobrand label');
+        var fileNameEle =  document.getElementsByClassName("filepond--file-info-main");
+        if (typeof(fileNameEle[0]) != 'undefined' && fileNameEle != null)
+        {
+          console.log("FILENAMEELE ==="+fileNameEle[0]);
+          fileName = fileNameEle[0].innerHTML;
+          console.log("FILENAME ==="+fileName);
+        } else {
+          console.log("No Logo File");
+        }
+        
+        items.push({
+          // quantity: 1, id: 39282293735510, // variant id of standard foxtail label,
+          quantity: 1, id: document.querySelector('input[name="labelRadio"]:checked').value, // variant id of standard foxtail label,
+          properties: {
+            "Contact email": " "+eventEmail,
+            "Contact phone": " "+eventMobile,
+            "Date": " "+eventDate,
+            "Company": " "+company,
+            "ABN": " "+ABN,
+            "Logo": " "+fileName
+          }
+        });
+
+      } else if (labelType == "custom") {
+        console.log ('P+: Custom label');
+        var fileNameEle =  document.getElementsByClassName("filepond--file-info-main");
+        if (typeof(fileNameEle[0]) != 'undefined' && fileNameEle != null)
+        {
+          console.log("FILENAMEELE ==="+fileNameEle[0]);
+          fileName = fileNameEle[0].innerHTML;
+          console.log("FILENAME ==="+fileName);
+        } else {
+          console.log("No Logo File");
+        }
+        items.push({
+          // quantity: 1, id: 39282295308374, // variant id of standard foxtail label,
+          quantity: 1, id: document.querySelector('input[name="labelRadio"]:checked').value, // variant id of standard foxtail label,
+          properties: {
+            "Contact email": " "+eventEmail,
+            "Contact phone": " "+eventMobile,
+            "Date": " "+eventDate,
+            "Company": " "+company,
+            "ABN": " "+ABN,
+            "Logo": " "+fileName
+          }
+        });
+
+      } else {
+        console.log ('P+: Standard label');
+        items.push({
+          quantity: 1, id: 33280155320406, // variant id of standard foxtail label,
+          properties: {
+            "Contact email": " "+eventEmail,
+            "Contact phone": " "+eventMobile,
+            "Date": " "+eventDate,
+            "Company": " "+company,
+            "ABN": " "+ABN,
+          }
+        });
+      }
+      
+
+      if (isSelectNameTag) {
+        items.push({
+          quantity: nametagCount,
+          id: 33176709300310, // variant id of bottle tag
+        });
+      }    
+
+      updateCart(items);
+      
+      addButton.style.display = "none";
+      loadingAnim.style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "/cart";
+      }, 6000);
+      
+    }
+
+  }
+  
+  
+</script>
