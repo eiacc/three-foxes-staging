@@ -3,61 +3,9 @@
 
   <div class="{% unless bkst.enableOnlyPrints != false %}row{% endunless %} ctm_tab_content_inner_area ctm_tabs_label_area pt-3-">
     <div class="jtzuya-templates-wrapper">
-      <div class="jtzuya-templates jtzuya-templates--active" data-customizer-template="premium">
-        <input type="radio" name="template_selection" data-price="190" data-product-id="33184610582614" id="template_selection_premium" data-product-type="Premium" checked hidden aria-hidden="true">
-        <input type="radio" name="template_selection" data-price="150" data-product-id="33184610549846" id="template_selection_digital" data-product-type="Digital" hidden aria-hidden="true">
-
-        <!--  left  -->
-        <div class="jtzuya-templates__tab jtzuya-templates__tab--left">
-          <p class="jtzuya-templates__tab-title">CHOOSE YOUR LABEL TYPE</p>
-
-          <div class="jtzuya-templates__tab-label-types">
-            <div class="jtzuya-templates__tab-label-type" data-template-selection="premium">
-              <label for="template_selection_premium"></label>
-              <p class="font-sub-2">PREMIUM FOIL <br>TEMPLATES</p>
-              <p class="font-sub-2">$190</p>
-            </div>
-            <div class="jtzuya-templates__tab-label-type" data-template-selection="digital">
-              <label for="template_selection_digital"></label>
-              <p class="font-sub-2">DIGITAL PRINT <br>TEMPLATES</p>
-              <p class="font-sub-2">$150</p>
-            </div>
-          </div>
-        </div>
-
-        <!--  right  -->
-        <div class="jtzuya-templates__tab jtzuya-templates__tab--right">
-          <div class="jtzuya-templates__tab-selections jtzuya-templates__tab-selections--premium">
-            {% for metaobject in metaobjects["product_customizer_template"].values %}
-              <label class="jtzuya-templates__tab-selection {% if forloop.index == 1 %}jtzuya-template__tab-selection--active{% endif %}" data-img="{{ metaobject.image | image_url: width: metaobject.image.width }}" data-option="{{ metaobject.option.value }}" >{{ metaobject.title.value }}</label>
-            {% endfor %}
-          </div>
-
-          <div class="jtzuya-templates__tab-selections jtzuya-templates__tab-selections--digital">
-            {% for metaobject in metaobjects["product_customizer_digital_template"].values %}
-              <label class="jtzuya-templates__tab-selection {% if forloop.index == 1 %}jtzuya-template__tab-selection--active{% endif %}" data-img="{{ metaobject.image | image_url: width: metaobject.image.width }}" data-option="{{ metaobject.option.value }}" >{{ metaobject.title.value }}</label>
-          {% endfor %}
-          </div>
-
-          <div class="jtzuya-templates__tab-template-view">
-            {% for metaobject in metaobjects["product_customizer_template"].values %}
-              {% if forloop.index == 1 %}
-                <p>{{ metaobject.option.value }}</p>
-                {{
-                  metaobject.image.value |
-                  image_url: width: metaobject.image.value.width |
-                  image_tag:
-                    widths: "300, 500, 767, 1000, 1200, 1500",
-                    sizes: sizes,
-                    alt: metaobject.option.value
-                }}
-                {% comment %} <img src="{{ metaobject.image.value | file_url }}" width="100%" height="100%" alt="{{ metaobject.option.value }}"/> {% endcomment %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
+      <artwork-template class="jtzuya-templates jtzuya-templates--active" data-customizer-template="premium">
+        {%- render 'jtzuya-artwork', product: bkst.product -%}
+      </artwork-template>
 
       <div class="jtzuya-templates" data-customizer-template="custom">
         {% for i in (1..2) %}

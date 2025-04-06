@@ -1,0 +1,53 @@
+{% assign items = all_products[product].variants %}
+
+{%- liquid
+  capture item
+    echo '['
+      for i in items
+        assign field  = i.metafields.custom['product_customizer']
+        assign meta   = field.value
+        if field and meta
+          capture j
+            echo '{'
+              assign key    = '"' | append: meta['type'] | append: '"'
+              assign temp_title = '"' | append: i.title      | append: '"'
+
+              echo 'price'        | append: ':' | append: i.price     | append: ','
+              echo 'title'        | append: ':' | append: temp_title  | append: ','
+              echo 'key'          | append: ':' | append: key         | append: ','
+
+              if i.available
+                echo 'available'  | append: ':' | append: 'true'        | append: ','
+              else
+                echo 'available'  | append: ':' | append: 'false'       | append: ','
+              endif
+
+              capture extend
+                assign img_url  = meta['image'] | file_url
+                assign img      = '"' | append: img_url         | append: '"'
+                assign title    = '"' | append: meta['title']   | append: '"'
+                assign id       = '"' | append: i.id            | append: '"'
+                assign option   = '"' | append: meta['option']  | append: '"'
+                echo '{'
+                  echo 'image'    | append: ':' | append: img     | append: ','
+                  echo 'title'    | append: ':' | append: title   | append: ','
+                  echo 'id'       | append: ':' | append: id      | append: ','
+                  echo 'option'   | append: ':' | append: option
+                echo '}'
+              endcapture
+
+              echo 'extend' | append: ':' | append: extend
+            echo '}'
+          endcapture
+
+          echo j
+          unless forloop.last
+            echo ','
+          endunless
+        endif
+      endfor
+    echo ']'
+  endcapture
+-%}
+
+<script>{% if item %}window.customizerVariants = {{ item }}{% endif %}</script>

@@ -207,7 +207,7 @@ function manualDataRetrieval() {
   if (!el) return null
 
   if (type === 'premium') {
-    const el_temp = el.querySelector('input[type="radio"]:checked')
+    const el_temp = el.querySelector('.jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active')
     console.log('el temp', el_temp)
     temp.items[0].id                = el_temp.getAttribute('data-product-id')
     temp.items[0].value             = el_temp.getAttribute('data-product-id')
@@ -1035,11 +1035,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     for (const el of templates) {
       if (el.classList.contains('jtzuya-templates__tab-selection--active')) {
-        dataMap.set('image', el.getAttribute('data-img'));
+        dataMap.set('image',  el.getAttribute('data-img'));
         dataMap.set('option', el.getAttribute('data-option'));
-
+    
         templateView.querySelector('p').textContent = el.getAttribute('data-option');
-        templateView.querySelector('img').src = el.getAttribute('data-img');
+        templateView.querySelector('img').src       = el.getAttribute('data-img');
         break;
       }
     }
@@ -1048,13 +1048,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   if (templateControls) {
     templateControls.forEach((control) => {
       control.addEventListener('change', (e) => {
-        const isPremium = e.target.id === "template_selection_premium";
-        const isDigital = e.target.id === "template_selection_digital";
+        console.log('change')
+        const isPremium = e.target.getAttribute('id') === "template_selection_premium";
+        const isDigital = e.target.getAttribute('id') === "template_selection_digital";
 
         if (isPremium) {
           override.personalise_hide = false  // parameter at personalize section
+          console.log('is premium')
           updateTemplateView(templateViewPremium, premiumMap);
         } else if (isDigital) {
+          console.log('is digi')
           override.personalise_hide = true // parameter at personalize section. if true it will hide the colors fields
           updateTemplateView(templateViewDigital, digitalMap);
         }

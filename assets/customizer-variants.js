@@ -1,0 +1,153 @@
+class ArtworkTemplate extends HTMLElement {
+  constructor() {
+    super();
+    this.variants   = this.reform();
+    this.appendChild(this.build());
+  }
+
+  reform() {
+    const map       = new Map();
+    const variants  = window.customizerVariants
+    if (!variants) return map
+
+    for (let i = 0; i < variants.length; i++) {
+      const variant = variants[i]
+      const extend = new Map([
+        ['id',      variant.extend['id']],
+        ['image',   variant.extend['image']],
+        ['option',  variant.extend['option']],
+        ['title',   variant.extend['title']],
+      ])
+
+      // const tempTitle = variant['title'].toLowerCase();
+      const title = variant['key'] === 'premium' ? 'Premium Foil Template' : 'Digital Print Template';
+      const data = new Map([
+        ['key',       variant['key']],
+        ['price',     (variant['price'] / 100).toFixed(2)],
+        ['title',     title],
+        ['available', variant['available']],
+        ['extend',    []]
+      ]);
+
+      if (!map.has(variant['key'])) {
+        data.get('extend').push(extend);
+        map.set(variant['key'], data)
+      } else {
+        map.get(variant['key']).set('price', data.get('price'))
+        map.get(variant['key']).get('extend').push(extend);
+      }
+    }
+
+    // console.log('map', map)
+
+    return map
+  }
+
+  build() {
+    const fragment = document.createDocumentFragment()
+    const array = Array.from(this.variants.values());
+    
+    const lw  = this.create_el('div', 'jtzuya-templates__tab jtzuya-templates__tab--left');   // left wrapper
+    const p   = this.create_el('p', 'jtzuya-templates__tab-title', 'CHOOSE YOUR LABEL TYPE');
+    const li  = this.create_el('div', 'jtzuya-templates__tab-label-types') // label items
+    lw.appendChild(p)
+
+    const rw  = this.create_el('div', 'jtzuya-templates__tab jtzuya-templates__tab--right');  // right wrapper
+
+    array.forEach((data, idx) => {
+      const key         = data.get('key');
+      const price       = data.get('price');
+      const title       = data.get('title');
+      const array       = data.get('extend');
+      // const available   = dataMap.get('available');
+
+      li.appendChild(this.left(idx, title, key, price)) // left content
+      rw.appendChild(this.right(key, array, price))  // right content
+    });
+
+
+    const vt    = this.create_el('div', 'jtzuya-templates__tab-template-view') // view template
+    const frcel = rw.firstElementChild.querySelector('.jtzuya-templates__tab-selection')
+    const vp    = this.create_el('p')
+    vp.textContent = frcel.getAttribute('data-option') // view paragraph
+    const vi    = this.create_el('img') 
+    vi.setAttribute('src', frcel.getAttribute('data-img'))// view image
+    vi.setAttribute('alt', frcel.getAttribute('data-option'))// view image
+    
+    vt.appendChild(vp)
+    vt.appendChild(vi)
+    rw.appendChild(vt)
+
+    // append all elements
+    lw.appendChild(li)
+    fragment.appendChild(lw)
+    fragment.appendChild(rw)
+
+    return fragment
+  }
+
+  create_el(tag, classList = null, content = null) {
+    const el = document.createElement(tag)
+    if (classList)  el.classList = classList
+    if (content)    el.textContent = content
+    return el
+  }
+
+  left(idx, title, key, price) {
+    const fragment = document.createDocumentFragment();
+
+    const input = this.create_el('input')
+    input.setAttribute('type', 'radio')
+    input.setAttribute('name', 'template_selection')
+    input.setAttribute('data-price', price)
+    input.setAttribute('id', `template_selection_${key.toLowerCase()}`)
+    input.setAttribute('data-product-type', key)
+    input.setAttribute('hidden', true)
+    input.setAttribute('aria-hidden', true)
+    if (idx === 0) input.setAttribute('checked', true)
+
+
+    const div = this.create_el('div', 'jtzuya-templates__tab-label-type');
+    div.setAttribute('data-template-selection', key)
+
+    const label = this.create_el('label');
+    label.setAttribute('for', `template_selection_${key}`)
+
+    const p1 = this.create_el('p', 'font-sub-2', title)
+    const p2 = this.create_el('p', 'font-sub-2', `$${price}`)
+
+    div.appendChild(label)
+    div.appendChild(p1)
+    div.appendChild(p2)
+
+    this.appendChild(input)
+    fragment.appendChild(div)
+
+    return fragment
+  }
+
+  right(key, array, price) {
+    const fragment = document.createDocumentFragment()
+    const wrapper  = this.create_el('div', `jtzuya-templates__tab-selections jtzuya-templates__tab-selections--${key}`)
+
+    array.forEach((i, idx) => {
+      const title     = i.get('title')
+      const image     = i.get('image')
+      const id        = i.get('id')
+      const option    = i.get('option')
+      const classList = idx === 0 ? 'jtzuya-templates__tab-selection jtzuya-template__tab-selection--active' : 'jtzuya-templates__tab-selection'
+      const label     = this.create_el('label', classList, title)
+      label.setAttribute('data-img', image)
+      label.setAttribute('data-option', option)
+      label.setAttribute('data-product-id', id)
+      label.setAttribute('data-price', price)
+      label.setAttribute('data-product-type', key)
+      wrapper.appendChild(label)
+    })
+
+    fragment.appendChild(wrapper)
+    return fragment
+  }
+}
+
+customElements.define('artwork-template', ArtworkTemplate)

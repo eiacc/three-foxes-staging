@@ -52,6 +52,7 @@
         "template_selection_mK38HY": {
           "type": "template_selection",
           "settings": {
+            "product": "w-label",
             "tabLabel": "ARTWORK",
             "tabHeading": "Select Your Favorite Template",
             "tabSubHeading": "",
