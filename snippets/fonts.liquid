@@ -118,7 +118,7 @@
 
     {% if settings.subheading_font_override != 'disable' %}
       {% assign subheading = settings.subheading_font_override %}
-      --font--heading--family        : {% render 'override-font', font: subheading %}, {{ font--heading.fallback_families }};
+      --font--nav--family        : {% render 'override-font', font: subheading %}, {{ font--heading.fallback_families }};
     {% else %}
       --font--nav--family: {{ font--nav.family }}, {{ font--nav.fallback_families }};
     {% endif %}
