@@ -1105,6 +1105,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         const pw        = evt.target.closest('.ctm__tab_content_area'); // parent wrapper
         const idx       = pw.getAttribute('data-tab_index') * 1;
         const dArea     = document.querySelector(`.ctmStepBlock_${idx + 2}`)
+        const cTab      = document.querySelector(`li.ctm_tab_content[data-tab_index="${idx + 2}"] .ctm_tab_label`); // future tab
 
         if (customizerType === 'standard') {
           if (dArea) {
@@ -1112,17 +1113,32 @@ document.addEventListener("DOMContentLoaded", (event) => {
             dArea.classList.add(`ctmStepDisabled`)
             hideLabelApp()
           }
+
+          if (cTab) {
+            // cross out personalise tab
+            cTab.classList.add('ctm_tab_label--disable')
+          }
         } else if (customizerType === 'custom') {
           if (dArea) {
             // console.log('dArea to change', dArea)
             dArea.classList.add(`ctmStepDisabled`)
             hideLabelApp(false)
           }
+          // cross out personalise tab
+          if (cTab) {
+            // cross out personalise tab
+            cTab.classList.add('ctm_tab_label--disable')
+          }
         } else {
           if (dArea) {
             // console.log('dArea to change', dArea)
             if (dArea.classList.contains('ctmStepDisabled')) dArea.classList.remove(`ctmStepDisabled`)
             hideLabelApp(false)
+          }
+
+          if (cTab) {
+            // cross out personalise tab
+            cTab.classList.remove('ctm_tab_label--disable')
           }
         }
       }

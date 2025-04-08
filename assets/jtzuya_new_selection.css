@@ -252,3 +252,8 @@ input[name="label_application"] ~ label {
     margin-inline-end: 6px;
   }
 }
+
+.ctm_tab_label.ctm_tab_label--disable {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
