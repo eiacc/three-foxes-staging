@@ -969,11 +969,13 @@
       var(--digital-layer),
       var(--base-layer);
     background-size: auto 100%;
-    aspect-ratio: 2/4;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1;
     max-height: 425px;
     width: 100%;
     background-blend-mode: multiply;
-    mask-image: url(var(--base-layer));
+    mask-image: var(--base-layer);
     mask-size: auto 100%;
     position: relative;
   }
