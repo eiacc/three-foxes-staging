@@ -62,8 +62,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
                 capture name_foil
                   echo '['
                     for image in meta['name_foil'].value
-                      assign foil_img = image | json
-                      echo '"' | append: foil_img | append: '"'
+                      echo image | json
                       unless forloop.last
                         echo ','
                       endunless
@@ -77,8 +76,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
                 capture date_foil
                   echo '['
                     for image in meta['date_foil'].value
-                      assign foil_img = image | json
-                      echo '"' | append: foil_img | append: '"'
+                      echo image | json
                       unless forloop.last
                         echo ','
                       endunless
