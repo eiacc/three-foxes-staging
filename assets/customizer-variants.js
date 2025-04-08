@@ -20,8 +20,8 @@ class ArtworkTemplate extends HTMLElement {
         ['title',   variant.extend['title']],
       ])
 
-      if (variant.hasOwnProperty('dimage')) {
-        extend.set('dimage', variant['dimage'])
+      if (variant['extend'] && variant['extend'].hasOwnProperty('dimage')) {
+        extend.set('dimage', variant.extend['dimage'])
       }
 
       if (variant.hasOwnProperty('name_foil')) {
