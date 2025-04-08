@@ -11,22 +11,24 @@
           </div> {% endcomment %}
           <div id="mockupBox" class="label-mockup labB-Gold labA-Gold">
             <div class="imgcontainer" id="mockupcontainer_script" style="display: block;">
-              {% comment %} <img src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_LogoDate_500x.png?v=131239421455045747311686892841" class="date img-fluid"> {% endcomment %}
-              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933" class="date img-fluid" data-defaultImg="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933">
-              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_500x.png?v=28342300526648561861686892841" class="nametrim img-fluid" data-defaultImg="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_500x.png?v=28342300526648561861686892841" data-defaultImgDigital="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/johhnyone_bottle.png?v=1724647639">
-              {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/har_jessica.png?v=1724395197" class="nametrim img-fluid"> {% endcomment %}
-              {% comment %} <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="bottle img-fluid"> {% endcomment %}
-              {% comment %} <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/DemoLabel_BlankBottle_500x_d.png?v=1726826367" class="bottle img-fluid"> {% endcomment %}
-              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/digital-bott.png?v=1727180767" class="bottle ctm__bottle img-fluid" data-ctm_foil_bottle_img="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/clear-martini_2657d56e-cead-42b1-9f4a-b00e9af9ddff.png?v=1743373211" data-ctm_digital_bottle_img="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/digital-bott.png?v=1727180767">
-              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="base">
-            </div>
-            <div class="imgcontainer" id="mockupcontainer_bold" style="display: none;">
-              {% comment %} <img src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_LogoDate_500x.png?v=131239421455045747311686892841" class="date img-fluid"> {% endcomment %}
-              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933" class="date img-fluid">
-              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_Bold_500x.png?v=37767811398118822541686892841" class="nametrim img-fluid">
-              {% comment %} <img src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/har_jessica.png?v=1724395197" class="nametrim img-fluid"> {% endcomment %}
-              <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="bottle img-fluid">
-              {% comment %} <img loading="lazy" src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_BlankBottle_500x.png?v=1440437108697371301686892841" class="base"> {% endcomment %}
+              {% assign image = "https://cdn.shopify.com/s/files/1/0289/0180/2070/files/CLEAR-BOTTLE.png?v=1744067645" %}
+              <img 
+                width="100%"
+                height="100%"
+                loading="lazy"
+                src="https://cdn.shopify.com/s/files/1/0289/0180/2070/files/foxtail-05.png?v=1724396933" 
+                class="date img-fluid"
+              />
+
+              <img 
+                width="100%"
+                height="100%"
+                loading="lazy" 
+                src="//threefoxes.com.au/cdn/shop/t/31/assets/DemoLabel_NameTrim_500x.png?v=28342300526648561861686892841"
+                class="nametrim img-fluid"
+              />
+
+              <img loading="lazy" src="{{ image }}" class="base" width="100%" height="100%">
             </div>
           </div>
         </div>

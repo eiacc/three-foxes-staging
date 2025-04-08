@@ -167,6 +167,22 @@ const override = {
   preserve_heading: "Upload Your Artwork"
 }
 
+function personalizeImages(type = 'premium') {
+  const activeLabel = document.querySelector(`.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`)
+  if (!activeLabel) return
+
+  const img = activeLabel.getAttribute('data-img')
+
+  const mockupWrapper = document.getElementById('mockupBox')
+  const mockupBase    = mockupWrapper.querySelector('img.base')
+
+  if (type === 'premium') {
+    
+  } else {
+    mockupBase.setAttribute('src', img)
+  }
+}
+
 function manualDataRetrieval() {
   const selector = `[data-customizer-template="${override.label}"]`
   /*
@@ -207,8 +223,9 @@ function manualDataRetrieval() {
   if (!el) return null
 
   if (type === 'premium') {
-    const el_temp = el.querySelector('.jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active')
-    console.log('el temp', el_temp)
+    const radio     = document.querySelector('input[type="radio"][name="template_selection"]:checked')
+    const radioAttr = radio.getAttribute('data-product-type')
+    const el_temp = el.querySelector(`.jtzuya-templates__tab-selections--${radioAttr} .jtzuya-template__tab-selection--active`); // lol the name class
     temp.items[0].id                = el_temp.getAttribute('data-product-id')
     temp.items[0].value             = el_temp.getAttribute('data-product-id')
     
@@ -1498,45 +1515,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
       return price;
     }
 
-
-    
     // summaryPropsData += `<div class="ctmSummaryTypeHeading ctmTextCapitalize mb-4">ORDER INFORMATION</div>`;
     // summaryItemsData += `<div class="ctmSummaryTypeHeading ctmTextCapitalize mb-4">ORDER TOTAL</div>`;
     summaryPropsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order information</div>`;
     summaryItemsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order total</div>`;
-    
-    // summaryData.localItems.forEach(item => {
-    //   if (!item.id) {
-    //     if (item.title) {
-    //       summaryData.itemProperties.push({ [item.title]: item.value });
-    //     } else if (item.name) {
-    //       summaryData.itemProperties.push({ [item.name]: item.type });
-    //     }
-    //     summaryData.localItems = summaryData.localItems.filter(item => item.id);
-    //   } else if (item.id) {
-    //     summaryData.items.push({ id: item.id, quantity: item.quantity });
-    //     // if (item.title) {
-    //     // } else if (item.name) {
-    //     //   summaryData.itemProperties.push({ [item.name]: item.type });
-    //     // }
-    //     summaryData.localItems = summaryData.localItems.filter(item => !item.id);
-    //   }
-    // });
-    
-    // const updateLocalStorageSummary = { ...summaryData };
-    // localStorage.setItem('customiseProductData', JSON.stringify(updateLocalStorageSummary));
-
-
-    // console.log(summaryData.localItems)
-    // console.log(summaryData)
-
-    // summaryData.localItems.forEach((item)=>{
     summaryResult.items.forEach((item)=>{
-
-      // summaryData.items.forEach((item)=>{
-        // console.error("item :- ", item);
-        
-      // ctmTotal += parseFloat(item.price_no_currency);
       ctmTotal += parseFloat(cocktailPrice(item.price_no_currency)) * item.quantity;
       if (item.title) {
 
@@ -1545,22 +1528,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if(item.id == "33176702746710"){ item_total_price = 'Included' }
 
         if( price != 0 || item.id == "33176702746710"){
-          
           summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
             <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-9 col-6- col-8 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">${item.title}</h6>
             <div class="ctm_list_item_value col-md-3 col-6- col-4 ctm_pl_pr_sm0 px-0 text-right">${item_total_price}</div>
           </div>`;
         }
-
-      // } else if (item.name) {
-      //   summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1-">
-      //           <h6 class="ctm_list_item_label m-0">${item.name}</h6>
-      //           <div class="ctm_list_item_value">${item.type}</div>
-      //         </div>`;
       }
-      // console.log(item)
-      // console.log("summaryItem :- ", summaryItemsData)
-      // summaryWrapper.appendChild(summaryItem)
     })
 
     // summaryData.itemProperties.forEach((item)=>{
@@ -1668,58 +1641,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const response = await fetch(`${Shopify.routes.root}cart.js`);
     const cartData = await response.json();
     let cust_label_item;
-    // console.log("cartData :- ", cartData)
-    // let ctmProperties = {
-    //   'properties': localStoData.itemProperties,
-    // }
-    // localStoData.localItems.forEach(item => {
-    //   if (!item.id) {
-    //     if (item.title) {
-    //       localStoData.itemProperties.push({ [item.title]: item.value });
-    //     } else if (item.name) {
-    //       localStoData.itemProperties.push({ [item.name]: item.type });
-    //     }
-    //     localStoData.localItems = localStoData.localItems.filter(item => item.id);
-    //   } else if (item.id) {
-    //     localStoData.items.push({ id: item.id, quantity: item.quantity });
-    //   } else if (item.type == 'label') {
-    //     localStoData.items.push({ id: item.value, quantity: item.quantity });
-    //     // if (item.title) {
-    //     // } else if (item.name) {
-    //     //   localStoData.itemProperties.push({ [item.name]: item.type });
-    //     // }
-    //     localStoData.localItems = localStoData.localItems.filter(item => !item.id);
-    //   }
-    // });
     
     const updateLocalStorageOnSubmit = { ...localStoData };
     localStorage.setItem('customiseProductData', JSON.stringify(updateLocalStorageOnSubmit));
-    // console.error("localStoData data :- ", localStoData)
-
-
-    // let ctmProperties = {};
-    // // for (let prop of localStoData.itemProperties) {
-    // console.error("check all data on submit : ", localStoData);
-    
-    // for (let prop of localStoData.properties) {
-    //   // console.log("object prop :- ", prop)
-    //   // ctmProperties[prop['name']] = prop['value'];
-    //   console.log("check ctmProperties object on submit :-", ctmProperties)
-    //   ctmProperties[Object.keys(prop)[0]] = Object.values(prop)[0];
-    // }
-    // // console.log("localStoData :- ", localStoData.items[0])
-    // if (localStoData.items[0]) {
-    //   // localStoData.itemProperties
-    //   // localStoData.items[0].push(ctmProperties)
-    //   // let checkPushedData = Object.assign(localStoData.items[0], ctmProperties)
-    //   localStoData.items[0] = Object.assign(localStoData.items[0], { properties: ctmProperties })
-    //   // console.log("1st elem localStoData :- ", localStoData)
-    //   // console.log("checkPushedData localStoData :- ", checkPushedData)
-    //   // console.log("ctmProperties :- ", ctmProperties)
-      
-    // }
-    // console.log("check localStoData :- ", localStoData.items)
-    // console.log("check ctmProperties :- ", ctmProperties)
     
     const cartItemArray = ctmCollectDataArr.reduce((acc, current) => {
       return acc.concat(current.items);
@@ -1729,32 +1653,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
       quantity: Number(item.quantity)
     }));
 
-
-    let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
-    cartItemArray.map(i => { 
-      if (labelsArr.includes(i.id)) { 
-        cust_label_item = i.id 
-      } 
-    });
-    
-    // cartItemArray.map( i => { if( i.id == '39282293735510' || i.id == '39282295308374' || i.id == '33184610582614' || i.id == '33184610549846' || i.id == '33176702746710' ){ cust_label_item = i.id }})
-    // console.log('cart cartItemArray', cartItemArray)  ;
-    // console.log('cart cartItemIdsAndQuantities', cartItemIdsAndQuantities);
-
+    /**
+     * Not needed since we are still appending the name properties under
+     * wedding label's or the 2nd step or the 2nd item of our arr ctmCollectDataArr
+     * 
+     * step 2 wont be added if there are no products added at step 1.
+     * 
+    */
+    // let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
+    // cartItemArray.map(i => {
+    //   if (labelsArr.includes(i.id)) {
+    //     cust_label_item = i.id
+    //   }
+    // });
 
     const cartPropertiesArray = ctmCollectDataArr.reduce((acc, current) => {
       return acc.concat(current.properties);
     }, []);
-
-    // console.log("check cart cartPropertiesArray : ", cartPropertiesArray)
-    // const propertiesObject = cartPropertiesArray.reduce((acc, current) => {
-    //   acc[current.name] = current.value;
-    //   return acc;
-    // }, {});
-
-    // console.log('cart cartPropertiesArray', cartPropertiesArray);
-    // console.log('cust_label_item', cust_label_item);
-    
 
     // summaryResult
     let ctmCartSubData = {};
@@ -1770,13 +1685,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       force cart property overrider by jtzuya
       Since the current selection for "ARTWORK" tab specifiaclly for premium & digital
       isn't tied to the variants, we have to manually add it this way
+      dont think we need this
     */
-    if (overrideVariant !== '') transformedArray.push({'Variant Selected': overrideVariant})
+    // if (overrideVariant !== '') transformedArray.push({'Variant Selected': overrideVariant}) // not needed since we are now targeting
+    // it based of variant ids (and will be displayed on the cart automatically)
 
     // console.log('ctmCartSubData', ctmCartSubData);
     let Cus_itemFound = false;
-    ctmCartSubData.items = ctmCartSubData.items.map(item => {
-      if (item.id === cust_label_item) {
+    ctmCartSubData.items = ctmCartSubData.items.map((item, idx) => {
+      if (item.id === 1) {
         Cus_itemFound = true;
         return { ...item, properties: transformedArray };
       }
@@ -1834,29 +1751,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 
-
-  // domContentLoaded ends
-      
-  // let ctmCollectDataArr = [];
-  // let ctmCollectDataArr = {
-  //   items: [],
-  //   properties: []
-  // };
-
-  // function removeExtraSteps(elem, ctmCollectDataArr) {
-  //   console.log("check the provided elem :- ", elem)
-  //   console.log("check the provided ctmCollectDataArr :- ", ctmCollectDataArr)
-  //   // const currentStep = Number(elem.dataset.tab_index) - 1;
-  //   const currentStep = Number(elem.dataset.tab_index);
-  //   // const currentStep = 2;
-  //   // const startIndex = ctmCollectDataArr.findIndex(item => item.step === currentStep.toString());
-  //   // if (startIndex !== -1) {
-  //   //   ctmCollectDataArr.splice(startIndex + 1, ctmCollectDataArr.length - startIndex - 1);
-  //   // }
-  //   ctmCollectDataArr = ctmCollectDataArr.slice(0, ctmCollectDataArr.findIndex(item => item.step === currentStep.toString()) + 1);
-  //   console.table('ctmCollectDataArr check according steps updates :- ', ctmCollectDataArr)
-  //   return ctmCollectDataArr;
-  // }
 function removeExtraSteps(elem, ctmCollectDataArr) {
   // const currentStep = Number(elem.dataset.tab_index) - 1;
   const currentStep = Number(elem.dataset.tab_index);

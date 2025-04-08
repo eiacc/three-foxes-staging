@@ -1,4 +1,25 @@
 {% assign items = all_products[product].variants %}
+{% comment %} {% assign test_img = items[3].metafields.custom['product_customizer']['value']['name_foil'] %} {% endcomment %}
+{% assign v = items[3].metafields.custom['product_customizer'] %}
+
+title: {{ v.value['title'] }}
+<br>
+option: {{ v.value['option'] }}
+<br>
+{% assign imge = v.value['name_foil'] %}
+image filetered first : {{ imge       | first | file_url }}<br>
+image dot             : {{ imge.first | file_url }}<br>
+image index           : {{ imge[0]    | file_url }}<br>
+image filtered last   : {{ imge       | last | file_url }}
+<br>
+images: {{ v.value['name_foil'] | json }}
+<br>
+size files: {{ v.value['name_foil'].value | size }}
+<br>
+size values: {{ v.value['name_foil'].value | first }}
+<br>
+size values: {{ v.value['name_foil'].value | first | json }}
+<br>
 
 {%- liquid
   capture item
@@ -28,6 +49,7 @@
                 assign title    = '"' | append: meta['title']   | append: '"'
                 assign id       = '"' | append: i.id            | append: '"'
                 assign option   = '"' | append: meta['option']  | append: '"'
+                
                 echo '{'
                   echo 'image'    | append: ':' | append: img     | append: ','
                   echo 'title'    | append: ':' | append: title   | append: ','
@@ -35,6 +57,36 @@
                   echo 'option'   | append: ':' | append: option
                 echo '}'
               endcapture
+
+              if meta['name_foil']
+                capture name_foil
+                  echo '['
+                    for image in meta['name_foil']
+                      assign foil_img = image | file_url
+                      echo '"' | append: foil_img | append: '"'
+                      unless forloop.last
+                        echo ','
+                      endunless
+                    endfor
+                  echo ']'
+                endcapture
+                echo 'name_foil' | append: ':' | append: name_foil | append: ','
+              endif
+
+              if meta['date_foil']
+                capture date_foil
+                  echo '['
+                    for image in meta['date_foil']
+                      assign foil_img = image | file_url
+                      echo '"' | append: foil_img | append: '"'
+                      unless forloop.last
+                        echo ','
+                      endunless
+                    endfor
+                  echo ']'
+                endcapture
+                echo 'date_foil' | append: ':' | append: date_foil | append: ','
+              endif
 
               echo 'extend' | append: ':' | append: extend
             echo '}'
