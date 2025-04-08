@@ -303,6 +303,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   function personalizeImageFoilChangeHandler(props) {
     console.log('personalizeImageFoilChangeHandler', props)
+    console.log('current map', premiumImageMap)
     if (!props) return
     const { name, date } = props
     const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
@@ -348,8 +349,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
       if (dates) premiumImageMap.set('date', dates.split(','));
       if (names) premiumImageMap.set('name', names.split(','))
 
-      // if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
+      if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
       mockupWrapper.style.setProperty('--digital-layer', 'url("")')
+      mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
+      mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
+
     } else {
       // hide foils
       const img = activeLabel.getAttribute('data-dimage')
