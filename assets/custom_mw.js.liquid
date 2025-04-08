@@ -82,6 +82,7 @@ function handleDateChange(e, idx) {
 }
 
 function handlePersonalizeDataChange(e) {
+  console.log('click label')
   const el = e.target
   const type = el.getAttribute('data-product-type')
   if (type) personalizeImagesInit(type)
@@ -203,6 +204,7 @@ function personalizeImagesInit(type = 'premium') {
   if (!activeLabel) return
 
   const mockupWrapper = document.getElementById('mockupBox')
+  const container     = mockupWrapper.firstElementChild
   const mockupBase    = mockupWrapper.querySelector('img.base')
   const mockupDate    = mockupWrapper.querySelector('img.date')
   const mockupName    = mockupWrapper.querySelector('img.nametrim')
@@ -218,13 +220,13 @@ function personalizeImagesInit(type = 'premium') {
     if (names) premiumImageMap.set('name', names.split(','))
 
     if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
-
-    mockupName.style.opacity = '1'
+    container.style.setProperty('--digital-layer', '')
   } else {
     // hide foils
     const img = activeLabel.getAttribute('data-img')
-    mockupDate.setAttribute('src', img)
-    mockupName.style.opacity = '0'
+    container.style.setProperty('--digital-layer', img)
+    container.style.setProperty('--name-layer', '')
+    container.style.setProperty('--date-layer', '')
   }
 
   console.log('current map', premiumImageMap)
@@ -235,18 +237,16 @@ function personalizeImageFoilChangeHandler(props) {
   console.log('personalizeImageFoilChangeHandler', props)
   if (!props) return
   const { name, date } = props
+  const img = document.querySelector('#mockupBox .imgcontainer')
+  if (!img) return
 
   if (name) {
-    const img = document.querySelector('#mockupBox img.nametrim')
-    if (!img) return
-    img.setAttribute('src', name)
+    container.style.setProperty('--name-layer', name)
     console.log('name', name)
   }
 
   if (date) {
-    const img = document.querySelector('#mockupBox img.date')
-    if (!img) return
-    img.setAttribute('src', date)
+    container.style.setProperty('--date-layer', date)
     console.log('date', date)
   }
 }

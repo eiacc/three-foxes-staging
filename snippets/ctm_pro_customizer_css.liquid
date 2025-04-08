@@ -961,15 +961,17 @@
   #shopify-section-{{ section.id }} .imgcontainer {
     --date-layer: '';
     --name-layer: '';
-    --name-layer: '';
+    --digital-layer: '';
     --base-layer: 'https://cdn.shopify.com/s/files/1/0289/0180/2070/files/CLEAR-BOTTLE.png?v=1744067645';
     background: 
       url(var(--date-layer)),
       url(var(--name-layer)),
-      url(var(--name-layer)),
+      url(var(--digital-layer)),
       url(var(--base-layer));
     background-size: auto 100%;
     aspect-ratio: 2/4;
+    max-height: 425px;
+    width: 100%;
     background-blend-mode: multiply;
     mask-image: url(var(--base-layer));
     mask-size: auto 100%;
