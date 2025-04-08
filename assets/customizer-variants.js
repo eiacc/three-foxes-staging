@@ -203,7 +203,7 @@ class ArtworkTemplate extends HTMLElement {
     const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
     const activeLabel = document.querySelector(selector)
 
-    console.log('el web component', element)
+    // console.log('el web component', element)
     console.log('activeLabel web component', activeLabel)
 
     if (!activeLabel) {
