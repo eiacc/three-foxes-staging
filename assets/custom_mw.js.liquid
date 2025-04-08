@@ -199,7 +199,10 @@ const premiumImageMap = new Map([
 
 function personalizeImagesInit(type = 'premium') {
   console.log('type activated', type)
-  const activeLabel = document.querySelector(`.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`)
+  const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`
+  const activeLabel = document.querySelector(selector)
+
+  console.log('seclector', selector)
 
   if (!activeLabel) {
     console.log('active label not found', activeLabel)
