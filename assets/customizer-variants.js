@@ -1,15 +1,8 @@
 class ArtworkTemplate extends HTMLElement {
   constructor() {
     super();
-    window.premiumImageMap  = new Map([
-      ['name', []],
-      ['date', []],
-    ])
-
-
     this.variants   = this.reform();
     this.appendChild(this.build());
-    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   reform() {
@@ -32,11 +25,11 @@ class ArtworkTemplate extends HTMLElement {
       }
 
       if (variant.hasOwnProperty('name_foil')) {
-        if (window.premiumImageMap.get('name').length < 1) window.premiumImageMap.set('name', variant['name_foil'])
+        // console.log('has name', variant['name_foil'])
         extend.set('name_foil', variant['name_foil'])
       }
       if (variant.hasOwnProperty('date_foil')) {
-        if (window.premiumImageMap.get('date').length < 1) window.premiumImageMap.set('date', variant['date_foil'])
+        // console.log('has date', variant['date_foil'])
         extend.set('date_foil', variant['date_foil'])
       }
 
@@ -143,56 +136,7 @@ class ArtworkTemplate extends HTMLElement {
     this.appendChild(input)
     fragment.appendChild(div)
 
-    input.addEventListener('change', this.handleInputChange)
-
     return fragment
-  }
-
-  handleInputChange(e) {
-    const el = e.target
-    console.log('element', el)
-    const type = el.getAttribute('data-product-type')
-    const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`;
-    // const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection.jtzuya-template__tab-selection--active`
-
-    const activeLabel = document.querySelector(selector)
-
-    console.log('seclector', selector)
-
-    if (!activeLabel) {
-      console.log('active label not found', activeLabel)
-      return
-    }
-
-    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
-
-    if (!mockupWrapper) {
-      console.log('mockwrapper not found', mockupWrapper)
-      return
-    }
-
-    // TODO: fix class naming
-    if (type === 'premium') {
-      const dates         = activeLabel.getAttribute('data-personalize-date-foils')
-      const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
-      const names         = activeLabel.getAttribute('data-personalize-name-foils')
-      const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
-
-      if (dates) window.premiumImageMap.set('date', dates.split(','));
-      if (names) window.premiumImageMap.set('name', names.split(','))
-
-      mockupWrapper.style.setProperty('--digital-layer', 'url("")')
-      mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
-      mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
-    } else {
-      // hide foils
-      const img = activeLabel.getAttribute('data-dimage')
-      mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
-      mockupWrapper.style.setProperty('--name-layer', 'url("")')
-      mockupWrapper.style.setProperty('--date-layer', 'url("")')
-    }
-  
-    console.log('window current map', window.premiumImageMap)
   }
 
   right(key, data, price) {
@@ -234,8 +178,6 @@ class ArtworkTemplate extends HTMLElement {
           label.setAttribute('data-personalize-date-foils', dateFoils.join(','))
         }
       }
-
-      label.addEventListener('click', this.handleInputChange)
 
       wrapper.appendChild(label)
     })
