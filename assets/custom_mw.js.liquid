@@ -331,8 +331,8 @@ class Customizer {
   }
 
   variant_change(props) {
-    console.log('personalizeImageFoilChangeHandler', props)
-    console.log('current map', window.premiumImageMap)
+    // console.log('personalizeImageFoilChangeHandler', props)
+    // console.log('current map', window.premiumImageMap)
     if (!props) return
     const { name, date } = props
 
@@ -381,6 +381,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let ctmCollectDataArr = [];
   let summaryResult = {};
 
+  const customizerInstance      = new Customizer();
   class CustomizerViews {
     constructor() {}
 
@@ -444,7 +445,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
               when artwork === 'digital' = override.personalise_hide = true
               when artwork === 'premium' = override.personalise_hide = false
             */
-            personalizeImagesInit(); // initialize
             console.log('selector', selector.get('colors'))
             console.log('name',     names.get('colors'))
             const swatches = document.querySelectorAll(selector.get('colors'));
@@ -529,6 +529,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
             // TODO: 
             if (override.label === 'premium' && Boolean(override.personalise_hide) === true) {
+              // activate variant and use previous selected variant index
+              const props = {
+                name: window.premiumImageMap.get('name')[window.premiumImageMap.get('name_index')],
+                date: window.premiumImageMap.get('date')[window.premiumImageMap.get('date_index')],
+              }
+              customizerInstance.variant_change(props);
+
               document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
                 el.classList.add('d-none')
                 el.classList.remove('d-md-flex')
@@ -617,7 +624,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 
-  const customizerInstance      = new Customizer();
   const customizerViewsInstance = new CustomizerViews();
   const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
   const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Comment Colour"]')
@@ -626,14 +632,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   function handleNameChange(e, idx) {
     window.premiumImageMap.get('name')[idx]
-    console.log('image at indx ', idx, ' ', window.premiumImageMap.get('name')[idx])
+    window.premiumImageMap.set('name_index')
     customizerInstance.variant_change({name: window.premiumImageMap.get('name')[idx]})
   }
 
   function handleDateChange(e, idx) {
     window.premiumImageMap.get('date')[idx]
-    console.log('image at indx ', idx, ' ', window.premiumImageMap.get('date')[idx])
-
+    window.premiumImageMap.set('date_index')
     customizerInstance.variant_change({date: window.premiumImageMap.get('date')[idx]})
   }
 

@@ -3,7 +3,9 @@ class ArtworkTemplate extends HTMLElement {
     super();
     window.premiumImageMap = new Map([
       ['name', []],
+      ['name_index', 0],
       ['date', []],
+      ['date_index', 0]
     ])
     this.variants   = this.reform();
     this.appendChild(this.build());
