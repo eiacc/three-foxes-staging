@@ -323,10 +323,11 @@ class Customizer {
       const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
       const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
 
-      this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
-      this.image.date.list    = date_foils
-      this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
-      this.image.name.list    = name_foils
+      // TODO: values are being interchanged
+      this.image.date.default = date_foils
+      this.image.date.list    = date_foils[window.premiumImageMap.get('date_index')]
+      this.image.name.default = name_foils
+      this.image.name.list    = name_foils[window.premiumImageMap.get('name_index')]
 
       this.apply(type)
       return
