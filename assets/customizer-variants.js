@@ -201,7 +201,7 @@ class ArtworkTemplate extends HTMLElement {
 
   handleInputChange(e) {
     const el      = e.target
-    const wrapper = el.closes('.jtzuya-templates[data-customizer-template]')
+    const wrapper = el.closest('.jtzuya-templates[data-customizer-template]')
     const type    = el.getAttribute('data-product-type')
 
     const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
