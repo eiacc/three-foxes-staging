@@ -62,11 +62,9 @@ function delaydelivery() {
 
 const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
 const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Comment Colour"]')
-const allFoils  = document.querySelectorAll('.jtzuya-templates__tab-selection')
 
 nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNameChange(e, idx)))
 dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
-allFoils.forEach(label => label.addEventListener('click', e => handlePersonalizeDataChange))
 
 function handleNameChange(e, idx) {
   premiumImageMap.get('name')[idx]
@@ -204,7 +202,7 @@ function personalizeImagesInit(type = 'premium') {
   if (!activeLabel) return
 
   const mockupWrapper = document.getElementById('mockupBox')
-  const container     = mockupWrapper.firstElementChild
+  const container     = mockupWrapper.querySelector('.imgcontainer')
   const mockupBase    = mockupWrapper.querySelector('img.base')
   const mockupDate    = mockupWrapper.querySelector('img.date')
   const mockupName    = mockupWrapper.querySelector('img.nametrim')
@@ -224,7 +222,7 @@ function personalizeImagesInit(type = 'premium') {
   } else {
     // hide foils
     const img = activeLabel.getAttribute('data-img')
-    container.style.setProperty('--digital-layer', img)
+    container.style.setProperty('--digital-layer', `'${img}'`)
     container.style.setProperty('--name-layer', '')
     container.style.setProperty('--date-layer', '')
   }
@@ -241,12 +239,12 @@ function personalizeImageFoilChangeHandler(props) {
   if (!img) return
 
   if (name) {
-    container.style.setProperty('--name-layer', name)
+    container.style.setProperty('--name-layer', `'${name}'`)
     console.log('name', name)
   }
 
   if (date) {
-    container.style.setProperty('--date-layer', date)
+    container.style.setProperty('--date-layer', `'${date}'`)
     console.log('date', date)
   }
 }
@@ -1184,8 +1182,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
   
         // Remove active class from the previously selected label
         labels[selectionIdx].classList.remove('jtzuya-template__tab-selection--active');
-  
-        personalizeImagesInit(e.target.getAttribute('data-product-type'))
+        
+        const type = e.target.getAttribute('data-product-type')
+        console.log('tick', type)
+        personalizeImagesInit(type)
 
         // Add active class to the newly selected label
         curr.classList.add('jtzuya-template__tab-selection--active');
