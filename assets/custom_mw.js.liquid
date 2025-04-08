@@ -294,7 +294,16 @@ class Customizer {
 
   change(e) {
     console.log('e change', e.target)
-    this.click(e)
+    const target      = e.target
+    const type        = target.getAttribute('data-product-type')
+    const area        = target.parentElement
+
+    console.log('area', area)
+    console.log('type', type)
+
+    const activeTab   = area.querySelector(`.jtzuya-templates__tab--right .jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`)
+    console.log('active tab', activeTab)
+    // this.click(e)
   }
 
   click(e)  {
