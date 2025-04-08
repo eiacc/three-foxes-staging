@@ -20,6 +20,10 @@ class ArtworkTemplate extends HTMLElement {
         ['title',   variant.extend['title']],
       ])
 
+      if (variant.hasOwnProperty('dimage')) {
+        extend.set('dimage', variant['dimage'])
+      }
+
       if (variant.hasOwnProperty('name_foil')) {
         // console.log('has name', variant['name_foil'])
         extend.set('name_foil', variant['name_foil'])
@@ -153,6 +157,11 @@ class ArtworkTemplate extends HTMLElement {
       label.setAttribute('data-product-id', id)
       label.setAttribute('data-price', price)
       label.setAttribute('data-product-type', key)
+
+      if (i.has('dimage')) {
+        const dimage = i.get('dimage')
+        label.setAttribute('data-dimage', dimage)
+      }
 
       if (i.has('name_foil')) {
         const nameFoils = i.get('name_foil')
