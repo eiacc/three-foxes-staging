@@ -79,13 +79,6 @@ function handleDateChange(e, idx) {
   personalizeImageFoilChangeHandler({date: premiumImageMap.get('date')[idx]})
 }
 
-function handlePersonalizeDataChange(e) {
-  console.log('click label')
-  const el = e.target
-  const type = el.getAttribute('data-product-type')
-  if (type) personalizeImagesInit(type)
-}
-
 // let colorA = "Gold"
 // function onSelectColorA(colorName) {
 //   colorA = colorName;
@@ -308,66 +301,66 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let ctmCollectDataArr = [];
   let summaryResult = {};
 
+  function personalizeImageFoilChangeHandler(props) {
+    console.log('personalizeImageFoilChangeHandler', props)
+    if (!props) return
+    const { name, date } = props
+    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
+    if (!img) return
+
+    if (name) {
+      container.style.setProperty('--name-layer', `url('${name}')`)
+      console.log('name', name)
+    }
+
+    if (date) {
+      container.style.setProperty('--date-layer', `url('${date}')`)
+      console.log('date', date)
+    }
+  }
+
   function personalizeImagesInit(type = 'premium') {
-  console.log('type activated', type)
-  const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`
-  const activeLabel = document.querySelector(selector)
+    console.log('type activated', type)
+    const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection.jtzuya-template__tab-selection--active`
+    const activeLabel = document.querySelector(selector)
 
-  console.log('seclector', selector)
+    console.log('seclector', selector)
 
-  if (!activeLabel) {
-    console.log('active label not found', activeLabel)
-    return
+    if (!activeLabel) {
+      console.log('active label not found', activeLabel)
+      return
+    }
+
+    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
+
+    if (!mockupWrapper) {
+      console.log('mockwrapper not found', mockupWrapper)
+      return
+    }
+
+    // TODO: fix class naming
+    if (type === 'premium') {
+      const dates         = activeLabel.getAttribute('data-personalize-date-foils')
+      const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
+      const names         = activeLabel.getAttribute('data-personalize-name-foils')
+      const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
+
+      if (dates) premiumImageMap.set('date', dates.split(','));
+      if (names) premiumImageMap.set('name', names.split(','))
+
+      if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
+      mockupWrapper.style.setProperty('--digital-layer', 'url("")')
+    } else {
+      // hide foils
+      const img = activeLabel.getAttribute('data-dimage')
+      mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
+      mockupWrapper.style.setProperty('--name-layer', 'url("")')
+      mockupWrapper.style.setProperty('--date-layer', 'url("")')
+    }
+
+    console.log('current map', premiumImageMap)
   }
-
-  const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
-
-  if (!mockupWrapper) {
-    console.log('mockwrapper not found', mockupWrapper)
-    return
-  }
-
-  // TODO: fix class naming
-  if (type === 'premium') {
-    const dates         = activeLabel.getAttribute('data-personalize-date-foils')
-    const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
-    const names         = activeLabel.getAttribute('data-personalize-name-foils')
-    const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
-
-    if (dates) premiumImageMap.set('date', dates.split(','));
-    if (names) premiumImageMap.set('name', names.split(','))
-
-    if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
-    mockupWrapper.style.setProperty('--digital-layer', 'url("")')
-  } else {
-    // hide foils
-    const img = activeLabel.getAttribute('data-dimage')
-    mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
-    mockupWrapper.style.setProperty('--name-layer', 'url("")')
-    mockupWrapper.style.setProperty('--date-layer', 'url("")')
-  }
-
-  console.log('current map', premiumImageMap)
-}
-personalizeImagesInit(); // initialize on load
-
-function personalizeImageFoilChangeHandler(props) {
-  console.log('personalizeImageFoilChangeHandler', props)
-  if (!props) return
-  const { name, date } = props
-  const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
-  if (!img) return
-
-  if (name) {
-    container.style.setProperty('--name-layer', `url('${name}')`)
-    console.log('name', name)
-  }
-
-  if (date) {
-    container.style.setProperty('--date-layer', `url('${date}')`)
-    console.log('date', date)
-  }
-}
+  personalizeImagesInit(); // initialize on load
 
   class CustomizerViews {
     constructor() {}
@@ -1174,7 +1167,10 @@ function personalizeImageFoilChangeHandler(props) {
       label.addEventListener('click', (e) => {
         e.preventDefault();
         const curr = e.target; // Ensure we get the correct label
-  
+        const _type = curr.getAttribute('data-product-type')
+        console.log('tick', _type)
+        personalizeImagesInit(_type)
+
         if (!curr || curr.classList.contains('jtzuya-template__tab-selection--active')) {
           return;
         }
@@ -1192,10 +1188,6 @@ function personalizeImageFoilChangeHandler(props) {
         // Remove active class from the previously selected label
         labels[selectionIdx].classList.remove('jtzuya-template__tab-selection--active');
         
-        const type = e.target.getAttribute('data-product-type')
-        console.log('tick', type)
-        personalizeImagesInit(type)
-
         // Add active class to the newly selected label
         curr.classList.add('jtzuya-template__tab-selection--active');
   
