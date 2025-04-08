@@ -29,8 +29,8 @@ class ArtworkTemplate extends HTMLElement {
         ['extend',    []]
       ]);
 
-      if (variant['foil_name']) data.set('foil_name', variant['foil_name'])
-      if (variant['foil_date']) data.set('foil_date', variant['foil_date'])
+      if (variant.hasOwnProperty('name_foil')) data.set('name_foil', variant['name_foil'])
+      if (variant.hasOwnProperty('date_foil')) data.set('date_foil', variant['date_foil'])
 
       if (!map.has(variant['key'])) {
         data.get('extend').push(extend);
@@ -41,8 +41,7 @@ class ArtworkTemplate extends HTMLElement {
       }
     }
 
-    // console.log('map', map)
-
+    console.log('map', map)
     return map
   }
 
@@ -146,14 +145,14 @@ class ArtworkTemplate extends HTMLElement {
       label.setAttribute('data-price', price)
       label.setAttribute('data-product-type', key)
 
-      if (data.has('foil_name')) {
-        const foil = data.get('foil_name')
+      if (data.has('name_foil')) {
+        const foil = data.get('name_foil')
         if (foil.length > 0) label.setAttribute('data-personalize-default-name-foil', foil[0])
         label.setAttribute('data-personalize-name-foils', foil.join(','))
       }
 
-      if (data.has('foil_date')) {
-        const foil = data.get('foil_date')
+      if (data.has('date_foil')) {
+        const foil = data.get('date_foil')
         if (foil.length > 0) label.setAttribute('data-personalize-default-date-foil', foil[0])
         label.setAttribute('data-personalize-date-foils', foil.join(','))
       }
