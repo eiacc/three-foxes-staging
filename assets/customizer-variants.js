@@ -144,6 +144,7 @@ class ArtworkTemplate extends HTMLElement {
       const image     = i.get('image')
       const id        = i.get('id')
       const option    = i.get('option')
+      
       const classList = idx === 0 ? 'jtzuya-templates__tab-selection jtzuya-template__tab-selection--active' : 'jtzuya-templates__tab-selection'
       const label     = this.create_el('label', classList, title)
       label.setAttribute('data-img', image)
@@ -152,16 +153,20 @@ class ArtworkTemplate extends HTMLElement {
       label.setAttribute('data-price', price)
       label.setAttribute('data-product-type', key)
 
-      if (data.has('name_foil')) {
-        const foil = data.get('name_foil')
-        if (foil.length > 0) label.setAttribute('data-personalize-default-name-foil', foil[0])
-        label.setAttribute('data-personalize-name-foils', foil.join(','))
+      if (i.has('name_foil')) {
+        const nameFoils = i.get('name_foil')
+        if (nameFoils.length > 0) {
+          label.setAttribute('data-personalize-default-name-foil', nameFoils[0])
+          label.setAttribute('data-personalize-name-foils', nameFoils.join(','))
+        }
       }
 
-      if (data.has('date_foil')) {
-        const foil = data.get('date_foil')
-        if (foil.length > 0) label.setAttribute('data-personalize-default-date-foil', foil[0])
-        label.setAttribute('data-personalize-date-foils', foil.join(','))
+      if (i.has('date_foil')) {
+        const dateFoils = i.get('date_foil')
+        if (dateFoils.length > 0) {
+          label.setAttribute('data-personalize-default-date-foil', dateFoils[0])
+          label.setAttribute('data-personalize-date-foils', dateFoils.join(','))
+        }
       }
 
       wrapper.appendChild(label)
