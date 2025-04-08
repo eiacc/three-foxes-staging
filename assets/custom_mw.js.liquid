@@ -298,13 +298,13 @@ class Customizer {
     this.display()
 
     if (type === 'premium') {
-      // const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
-      // const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
+      const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
+      const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
 
       // this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
-      // this.image.date.list    = date_foils
+      this.image.date.list    = date_foils
+      this.image.name.list    = name_foils
       // this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
-      // this.image.name.list    = name_foils
 
       this.apply(type)
       return
@@ -342,16 +342,18 @@ class Customizer {
     // console.log('personalizeImageFoilChangeHandler', props)
     // console.log('current map', window.premiumImageMap)
     if (!props) return
-    const { name, date } = props
+    const { type, idx } = props
 
-    if (name) {
-      this.mockup.style.setProperty('--name-layer', `url('${name}')`)
-      console.log('name', name)
+    if (type === 'name') {
+      const img = this.image.name.list[idx]
+      this.mockup.style.setProperty('--name-layer', `url('${img}')`)
+      console.log('img url', img)
     }
 
-    if (date) {
-      this.mockup.style.setProperty('--date-layer', `url('${date}')`)
-      console.log('date', date)
+    if (type === 'date') {
+      const img = this.image.name.list[idx]
+      this.mockup.style.setProperty('--date-layer', `url('${img}')`)
+      console.log('img url', img)
     }
   }
 
@@ -634,15 +636,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
   dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
 
   function handleNameChange(e, idx) {
-    window.premiumImageMap.get('name')[idx]
+    // window.premiumImageMap.get('name')[idx]
     window.premiumImageMap.set('name_index', idx)
-    customizerInstance.variant_change({name: window.premiumImageMap.get('name')[idx]})
+    customizerInstance.variant_change({type: 'name', idx})
   }
 
   function handleDateChange(e, idx) {
-    window.premiumImageMap.get('date')[idx]
+    // window.premiumImageMap.get('date')[idx]
     window.premiumImageMap.set('date_index', idx)
-    customizerInstance.variant_change({date: window.premiumImageMap.get('date')[idx]})
+    customizerInstance.variant_change({type: 'name', idx})
   }
 
   document.addEventListener('click', function(evt) {
