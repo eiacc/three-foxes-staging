@@ -1664,7 +1664,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // console.log('ctmCartSubData', ctmCartSubData);
     let Cus_itemFound = false;
     ctmCartSubData.items = ctmCartSubData.items.map((item, idx) => {
-      if (item.id === 1) {
+      if (idx === 1) {
         Cus_itemFound = true;
         return { ...item, properties: transformedArray };
       }
