@@ -1,6 +1,6 @@
 {% assign items = all_products[product].variants %}
 {% comment %} {% assign test_img = items[3].metafields.custom['product_customizer']['value']['name_foil'] %} {% endcomment %}
-{% assign v = items[3].metafields.custom['product_customizer'] %}
+{% comment %} {% assign v = items[3].metafields.custom['product_customizer'] %}
 
 title: {{ v.value['title'] }}
 <br>
@@ -19,7 +19,7 @@ size files: {{ v.value['name_foil'].value | size }}
 size values: {{ v.value['name_foil'].value | first }}
 <br>
 size values: {{ v.value['name_foil'].value | first | json }}
-<br>
+<br> {% endcomment %}
 
 {%- liquid
   capture item
@@ -61,8 +61,8 @@ size values: {{ v.value['name_foil'].value | first | json }}
               if meta['name_foil']
                 capture name_foil
                   echo '['
-                    for image in meta['name_foil']
-                      assign foil_img = image | file_url
+                    for image in meta['name_foil'].value
+                      assign foil_img = image | json
                       echo '"' | append: foil_img | append: '"'
                       unless forloop.last
                         echo ','
@@ -76,8 +76,8 @@ size values: {{ v.value['name_foil'].value | first | json }}
               if meta['date_foil']
                 capture date_foil
                   echo '['
-                    for image in meta['date_foil']
-                      assign foil_img = image | file_url
+                    for image in meta['date_foil'].value
+                      assign foil_img = image | json
                       echo '"' | append: foil_img | append: '"'
                       unless forloop.last
                         echo ','
