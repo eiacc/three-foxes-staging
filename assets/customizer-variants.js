@@ -1,13 +1,15 @@
 class ArtworkTemplate extends HTMLElement {
   constructor() {
     super();
-    this.variants   = this.reform();
-    this.appendChild(this.build());
-    this.handleInputChange = this.handleInputChange.bind(this)
     window.premiumImageMap  = new Map([
       ['name', []],
       ['date', []],
     ])
+
+
+    this.variants   = this.reform();
+    this.appendChild(this.build());
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   reform() {
@@ -148,6 +150,7 @@ class ArtworkTemplate extends HTMLElement {
 
   handleInputChange(e) {
     const el = e.target
+    console.log('element', el)
     const type = el.getAttribute('data-product-type')
     const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection.jtzuya-template__tab-selection--active`
 
