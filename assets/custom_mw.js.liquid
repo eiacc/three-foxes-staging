@@ -67,16 +67,16 @@ nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNa
 dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
 
 function handleNameChange(e, idx) {
-  premiumImageMap.get('name')[idx]
-  console.log('image at indx ', idx, ' ', premiumImageMap.get('name')[idx])
-  personalizeImageFoilChangeHandler({name: premiumImageMap.get('name')[idx]})
+  window.premiumImageMap.get('name')[idx]
+  console.log('image at indx ', idx, ' ', window.premiumImageMap.get('name')[idx])
+  personalizeImageFoilChangeHandler({name: window.premiumImageMap.get('name')[idx]})
 }
 
 function handleDateChange(e, idx) {
-  premiumImageMap.get('date')[idx]
-  console.log('image at indx ', idx, ' ', premiumImageMap.get('date')[idx])
+  window.premiumImageMap.get('date')[idx]
+  console.log('image at indx ', idx, ' ', window.premiumImageMap.get('date')[idx])
 
-  personalizeImageFoilChangeHandler({date: premiumImageMap.get('date')[idx]})
+  personalizeImageFoilChangeHandler({date: window.premiumImageMap.get('date')[idx]})
 }
 
 // let colorA = "Gold"
@@ -184,11 +184,6 @@ const override = {
   arr_idx: 0,
   preserve_heading: "Upload Your Artwork"
 }
-
-const premiumImageMap = new Map([
-  ['name', []],
-  ['date', []],
-])
 
 function manualDataRetrieval() {
   const selector = `[data-customizer-template="${override.label}"]`
@@ -303,7 +298,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   function personalizeImageFoilChangeHandler(props) {
     console.log('personalizeImageFoilChangeHandler', props)
-    console.log('current map', premiumImageMap)
+    console.log('current map', window.premiumImageMap)
     if (!props) return
     const { name, date } = props
     const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
@@ -347,8 +342,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const names         = activeLabel.getAttribute('data-personalize-name-foils')
       const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
 
-      if (dates) premiumImageMap.set('date', dates.split(','));
-      if (names) premiumImageMap.set('name', names.split(','))
+      if (dates) window.premiumImageMap.set('date', dates.split(','));
+      if (names) window.premiumImageMap.set('name', names.split(','))
 
       if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
       mockupWrapper.style.setProperty('--digital-layer', 'url("")')
@@ -363,9 +358,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
       mockupWrapper.style.setProperty('--date-layer', 'url("")')
     }
 
-    console.log('current map', premiumImageMap)
+    console.log('current map', window.premiumImageMap)
   }
-  personalizeImagesInit(); // initialize on load
+
+  console.log('premium image window', window.premiumImageMap)
 
   class CustomizerViews {
     constructor() {}

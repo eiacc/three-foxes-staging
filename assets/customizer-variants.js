@@ -1,6 +1,10 @@
 class ArtworkTemplate extends HTMLElement {
   constructor() {
     super();
+    window.premiumImageMap = new Map([
+      ['name', []],
+      ['date', []],
+    ])
     this.variants   = this.reform();
     this.appendChild(this.build());
   }
@@ -26,10 +30,12 @@ class ArtworkTemplate extends HTMLElement {
 
       if (variant.hasOwnProperty('name_foil')) {
         // console.log('has name', variant['name_foil'])
+        if (window.premiumImageMap.get('name').length < 1) window.premiumImageMap.set('name', variant['name_foil'])
         extend.set('name_foil', variant['name_foil'])
       }
       if (variant.hasOwnProperty('date_foil')) {
         // console.log('has date', variant['date_foil'])
+        if (window.premiumImageMap.get('date').length < 1) window.premiumImageMap.set('date', variant['date_foil'])
         extend.set('date_foil', variant['date_foil'])
       }
 
