@@ -1629,8 +1629,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
      * step 2 wont be added if there are no products added at step 1.
      * 
     */
-    console.log('cartItemArray', cartItemArray)
-
     // let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
     // cartItemArray.map(i => {
     //   if (labelsArr.includes(i.id)) {
@@ -1664,9 +1662,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // console.log('ctmCartSubData', ctmCartSubData);
     let Cus_itemFound = false;
     ctmCartSubData.items = ctmCartSubData.items.map((item, idx) => {
-      if (idx === 1) {
-        Cus_itemFound = true;
-        return { ...item, properties: transformedArray };
+      if (override.label === 'standard') {
+        if (idx === 0) {
+          Cus_itemFound = true;
+          return { ...item, properties: transformedArray };
+        }
+      } else {
+        if (idx === 1) {
+          Cus_itemFound = true;
+          return { ...item, properties: transformedArray };
+        }
       }
       return item;
     });
@@ -1693,7 +1698,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // }
     
     console.log("check data  : ", data);
-    return
     
     const cartUrl = `${Shopify.routes.root}cart/add.js`;
 
