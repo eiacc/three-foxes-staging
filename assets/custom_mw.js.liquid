@@ -215,6 +215,7 @@ function personalizeImagesInit(type = 'premium') {
     mockupName.style.opacity = '0'
   }
 }
+personalizeImagesInit(); // initialize
 
 function personalizeImageFoilChangeHandler(props) {
   if (!props) return
@@ -1123,10 +1124,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
           override.personalise_hide = false  // parameter at personalize section
           console.log('is premium')
           updateTemplateView(templateViewPremium, premiumMap);
+          personalizeImagesInit('premium')
         } else if (isDigital) {
           console.log('is digi')
           override.personalise_hide = true // parameter at personalize section. if true it will hide the colors fields
           updateTemplateView(templateViewDigital, digitalMap);
+          personalizeImagesInit('digital')
         }
       });
     });
@@ -1165,6 +1168,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         // Remove active class from the previously selected label
         labels[selectionIdx].classList.remove('jtzuya-template__tab-selection--active');
   
+        personalizeImagesInit(e.target.getAttribute('data-product-type'))
+
         // Add active class to the newly selected label
         curr.classList.add('jtzuya-template__tab-selection--active');
   
@@ -1175,8 +1180,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   };
   
   // Initialize template selections
-  updateSelection(templateViewPremium, premiumMap);
   updateSelection(templateViewDigital, digitalMap);
+  updateSelection(templateViewPremium, premiumMap);
 
   document.querySelectorAll('input[name="ctm_tab_card"]').forEach((input, index)=>{
     input.addEventListener('change', function(evt) {
