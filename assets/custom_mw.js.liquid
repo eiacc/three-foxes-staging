@@ -192,7 +192,7 @@ const premiumImageMap = new Map([
 ])
 
 function personalizeImagesInit(type = 'premium') {
-  const activeLabel = document.querySelector(`.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`)
+  const activeLabel = document.querySelector(`.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`)
   if (!activeLabel) return
 
   const mockupWrapper = document.getElementById('mockupBox')
@@ -202,8 +202,12 @@ function personalizeImagesInit(type = 'premium') {
 
   // TODO: fix class naming
   if (type === 'premium') {
-    premiumImageMap.set('date', activeLabel.getAttribute('data-personalize-date-foils').split(','));
-    premiumImageMap.set('name', activeLabel.getAttribute('data-personalize-name-foils').split(','));
+    const dates = activeLabel.getAttribute('data-personalize-date-foils')
+    if (dates) premiumImageMap.set('date', dates.split(','));
+
+    const names = activeLabel.getAttribute('data-personalize-name-foils')
+    if (names) premiumImageMap.set('name', names.split(','));
+
     const imgName = activeLabel.getAttribute('data-personalize-default-name-foil')
     const imgDate = activeLabel.getAttribute('data-personalize-default-date-foil')
     personalizeImageFoilChangeHandler({name: imgName, date: imgDate})
@@ -214,8 +218,10 @@ function personalizeImagesInit(type = 'premium') {
     mockupDate.setAttribute('src', img)
     mockupName.style.opacity = '0'
   }
+
+  console.log('new premium images', premiumImageMap)
 }
-personalizeImagesInit(); // initialize
+personalizeImagesInit(); // initialize on load
 
 function personalizeImageFoilChangeHandler(props) {
   if (!props) return
