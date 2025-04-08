@@ -21,11 +21,11 @@ class ArtworkTemplate extends HTMLElement {
       ])
 
       if (variant.hasOwnProperty('name_foil')) {
-        console.log('has name', variant['name_foil'])
+        // console.log('has name', variant['name_foil'])
         extend.set('name_foil', variant['name_foil'])
       }
       if (variant.hasOwnProperty('date_foil')) {
-        console.log('has date', variant['date_foil'])
+        // console.log('has date', variant['date_foil'])
         extend.set('date_foil', variant['date_foil'])
       }
 
@@ -75,6 +75,7 @@ class ArtworkTemplate extends HTMLElement {
 
 
     const vt    = this.create_el('div', 'jtzuya-templates__tab-template-view') // view template
+
     const frcel = rw.firstElementChild.querySelector('.jtzuya-templates__tab-selection')
     const vp    = this.create_el('p')
     vp.textContent = frcel.getAttribute('data-option') // view paragraph

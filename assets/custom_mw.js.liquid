@@ -61,15 +61,16 @@ function delaydelivery() {
 }
 
 const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
-const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Date Colour"]')
+const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Comment Colour"]')
+const allFoils  = document.querySelectorAll('.jtzuya-templates__tab-selection')
 
 nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNameChange(e, idx)))
 dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
+allFoils.forEach(label => label.addEventListener('click', e => handlePersonalizeDataChange))
 
 function handleNameChange(e, idx) {
   premiumImageMap.get('name')[idx]
   console.log('image at indx ', idx, ' ', premiumImageMap.get('name')[idx])
-
   personalizeImageFoilChangeHandler({name: premiumImageMap.get('name')[idx]})
 }
 
@@ -78,6 +79,12 @@ function handleDateChange(e, idx) {
   console.log('image at indx ', idx, ' ', premiumImageMap.get('date')[idx])
 
   personalizeImageFoilChangeHandler({date: premiumImageMap.get('date')[idx]})
+}
+
+function handlePersonalizeDataChange(e) {
+  const el = e.target
+  const type = el.getAttribute('data-product-type')
+  if (type) personalizeImagesInit(type)
 }
 
 // let colorA = "Gold"
@@ -202,11 +209,15 @@ function personalizeImagesInit(type = 'premium') {
 
   // TODO: fix class naming
   if (type === 'premium') {
-    premiumImageMap.set('date', activeLabel.getAttribute('data-personalize-date-foils').split(','));
-    premiumImageMap.set('name', activeLabel.getAttribute('data-personalize-name-foils').split(','));
-    const imgName = activeLabel.getAttribute('data-personalize-default-name-foil')
-    const imgDate = activeLabel.getAttribute('data-personalize-default-date-foil')
-    personalizeImageFoilChangeHandler({name: imgName, date: imgDate})
+    const dates         = activeLabel.getAttribute('data-personalize-date-foils')
+    const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
+    const names         = activeLabel.getAttribute('data-personalize-name-foils')
+    const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
+
+    if (dates) premiumImageMap.set('date', dates.split(','));
+    if (names) premiumImageMap.set('name', names.split(','))
+
+    if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
     mockupName.style.opacity = '1'
   } else {
     // hide foils
@@ -214,23 +225,28 @@ function personalizeImagesInit(type = 'premium') {
     mockupDate.setAttribute('src', img)
     mockupName.style.opacity = '0'
   }
+
+  console.log('current map', premiumImageMap)
 }
 personalizeImagesInit(); // initialize
 
 function personalizeImageFoilChangeHandler(props) {
+  console.log('personalizeImageFoilChangeHandler', props)
   if (!props) return
   const { name, date } = props
 
   if (name) {
     const img = document.querySelector('#mockupBox img.nametrim')
     if (!img) return
-    img.setAttribute('src', url)
+    img.setAttribute('src', name)
+    console.log('name', name)
   }
 
   if (date) {
     const img = document.querySelector('#mockupBox img.date')
     if (!img) return
-    img.setAttribute('src', url)
+    img.setAttribute('src', date)
+    console.log('date', date)
   }
 }
 
