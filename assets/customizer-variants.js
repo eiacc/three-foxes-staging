@@ -8,12 +8,12 @@ class ArtworkTemplate extends HTMLElement {
     this.variants   = this.reform();
     this.appendChild(this.build());
 
-    this.handleInputChange = this.handleInputChange.bind(this)
-    const inputs = document.querySelectorAll('input[data-product-type]')
-    const labels = document.querySelectorAll('span[data-product-type]')
+    // this.handleInputChange = this.handleInputChange.bind(this)
+    // const inputs = document.querySelectorAll('input[data-product-type]')
+    // const labels = document.querySelectorAll('span[data-product-type]')
 
-    inputs.forEach(input => input.addEventListener('change', this.handleInputChange))
-    labels.forEach(input => input.addEventListener('click', this.handleInputChange))
+    // inputs.forEach(input => input.addEventListener('change', this.handleInputChange))
+    // labels.forEach(input => input.addEventListener('click', this.handleInputChange))
   }
 
   reform() {
@@ -199,54 +199,54 @@ class ArtworkTemplate extends HTMLElement {
     return fragment
   }
 
-  handleInputChange(e) {
-    const el      = e.target
-    const wrapper = el.closest('.jtzuya-templates[data-customizer-template]')
-    const type    = el.getAttribute('data-product-type')
+  // handleInputChange(e) {
+  //   const el      = e.target
+  //   const wrapper = el.closest('.jtzuya-templates[data-customizer-template]')
+  //   const type    = el.getAttribute('data-product-type')
 
-    const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
-    const activeLabel = wrapper.querySelector(selector)
+  //   const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
+  //   const activeLabel = wrapper.querySelector(selector)
 
-    // console.log('el web component', element)
-    console.log('activeLabel web component', activeLabel)
+  //   // console.log('el web component', element)
+  //   console.log('activeLabel web component', activeLabel)
 
-    if (!activeLabel) {
-      console.log('active label not found', activeLabel)
-      return
-    }
+  //   if (!activeLabel) {
+  //     console.log('active label not found', activeLabel)
+  //     return
+  //   }
 
-    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
+  //   const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
 
-    if (!mockupWrapper) {
-      console.log('mockwrapper not found', mockupWrapper)
-      return
-    }
+  //   if (!mockupWrapper) {
+  //     console.log('mockwrapper not found', mockupWrapper)
+  //     return
+  //   }
 
-    // TODO: fix class naming
-    if (type === 'premium') {
-      const dates         = activeLabel.getAttribute('data-personalize-date-foils')
-      const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
-      const names         = activeLabel.getAttribute('data-personalize-name-foils')
-      const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
+  //   // TODO: fix class naming
+  //   if (type === 'premium') {
+  //     const dates         = activeLabel.getAttribute('data-personalize-date-foils')
+  //     const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
+  //     const names         = activeLabel.getAttribute('data-personalize-name-foils')
+  //     const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
 
-      if (dates) window.premiumImageMap.set('date', dates.split(','));
-      if (names) window.premiumImageMap.set('name', names.split(','))
+  //     if (dates) window.premiumImageMap.set('date', dates.split(','));
+  //     if (names) window.premiumImageMap.set('name', names.split(','))
 
-      if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
-      mockupWrapper.style.setProperty('--digital-layer', 'url("")')
-      mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
-      mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
+  //     if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
+  //     mockupWrapper.style.setProperty('--digital-layer', 'url("")')
+  //     mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
+  //     mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
 
-    } else {
-      // hide foils
-      const img = activeLabel.getAttribute('data-dimage')
-      mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
-      mockupWrapper.style.setProperty('--name-layer', 'url("")')
-      mockupWrapper.style.setProperty('--date-layer', 'url("")')
-    }
+  //   } else {
+  //     // hide foils
+  //     const img = activeLabel.getAttribute('data-dimage')
+  //     mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
+  //     mockupWrapper.style.setProperty('--name-layer', 'url("")')
+  //     mockupWrapper.style.setProperty('--date-layer', 'url("")')
+  //   }
 
-    console.log('current map', window.premiumImageMap)
-  }
+  //   console.log('current map', window.premiumImageMap)
+  // }
 }
 
 customElements.define('artwork-template', ArtworkTemplate)

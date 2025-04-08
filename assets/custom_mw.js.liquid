@@ -315,54 +315,52 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 
-  // function personalizeImagesInit(type = 'premium') {
-  //   console.log('type activated', type)
-  //   // const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`;
-  //   const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
-  //   const activeLabel = document.querySelector(selector)
+  function personalizeImagesInit(type = 'premium') {
+    console.log('type activated', type)
+    // const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`;
+    const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
+    const activeLabel = document.querySelector(selector)
 
-  //   console.log('seclector', selector)
-  //   console.log('el', element)
+    console.log('seclector', selector)
+    console.log('el', element)
 
-  //   if (!activeLabel) {
-  //     console.log('active label not found', activeLabel)
-  //     return
-  //   }
+    if (!activeLabel) {
+      console.log('active label not found', activeLabel)
+      return
+    }
 
-  //   const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
+    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
 
-  //   if (!mockupWrapper) {
-  //     console.log('mockwrapper not found', mockupWrapper)
-  //     return
-  //   }
+    if (!mockupWrapper) {
+      console.log('mockwrapper not found', mockupWrapper)
+      return
+    }
 
-  //   // TODO: fix class naming
-  //   if (type === 'premium') {
-  //     const dates         = activeLabel.getAttribute('data-personalize-date-foils')
-  //     const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
-  //     const names         = activeLabel.getAttribute('data-personalize-name-foils')
-  //     const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
+    // TODO: fix class naming
+    if (type === 'premium') {
+      const dates         = activeLabel.getAttribute('data-personalize-date-foils')
+      const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
+      const names         = activeLabel.getAttribute('data-personalize-name-foils')
+      const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
 
-  //     if (dates) window.premiumImageMap.set('date', dates.split(','));
-  //     if (names) window.premiumImageMap.set('name', names.split(','))
+      if (dates) window.premiumImageMap.set('date', dates.split(','));
+      if (names) window.premiumImageMap.set('name', names.split(','))
 
-  //     if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
-  //     mockupWrapper.style.setProperty('--digital-layer', 'url("")')
-  //     mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
-  //     mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
+      if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
+      mockupWrapper.style.setProperty('--digital-layer', 'url("")')
+      mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
+      mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
 
-  //   } else {
-  //     // hide foils
-  //     const img = activeLabel.getAttribute('data-dimage')
-  //     mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
-  //     mockupWrapper.style.setProperty('--name-layer', 'url("")')
-  //     mockupWrapper.style.setProperty('--date-layer', 'url("")')
-  //   }
+    } else {
+      // hide foils
+      const img = activeLabel.getAttribute('data-dimage')
+      mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
+      mockupWrapper.style.setProperty('--name-layer', 'url("")')
+      mockupWrapper.style.setProperty('--date-layer', 'url("")')
+    }
 
-  //   console.log('current map', window.premiumImageMap)
-  // }
-
-  console.log('premium image window', window.premiumImageMap)
+    console.log('current map', window.premiumImageMap)
+  }
 
   class CustomizerViews {
     constructor() {}
@@ -409,6 +407,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
               when artwork === 'digital' = override.personalise_hide = true
               when artwork === 'premium' = override.personalise_hide = false
             */
+            personalizeImagesInit(); // initialize
             console.log('selector', selector.get('colors'))
             console.log('name',     names.get('colors'))
             const swatches = document.querySelectorAll(selector.get('colors'));
