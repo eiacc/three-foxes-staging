@@ -9,6 +9,11 @@ class ArtworkTemplate extends HTMLElement {
     this.appendChild(this.build());
 
     this.handleInputChange = this.handleInputChange.bind(this)
+    const inputs = document.querySelectorAll('input[data-product-type]')
+    const labels = document.querySelectorAll('span[data-product-type]')
+
+    inputs.forEach(input => input.addEventListener('change', this.handleInputChange))
+    labels.forEach(input => input.addEventListener('click', this.handleInputChange))
   }
 
   reform() {
@@ -144,7 +149,6 @@ class ArtworkTemplate extends HTMLElement {
     this.appendChild(input)
     fragment.appendChild(div)
 
-    input.addEventListener('change', this.handleInputChange)
     return fragment
   }
 
@@ -188,7 +192,6 @@ class ArtworkTemplate extends HTMLElement {
         }
       }
 
-      label.addEventListener('click', this.handleInputChange)
       wrapper.appendChild(label)
     })
 
