@@ -12,12 +12,22 @@ class ArtworkTemplate extends HTMLElement {
 
     for (let i = 0; i < variants.length; i++) {
       const variant = variants[i]
+      // extend is each variant data
       const extend = new Map([
         ['id',      variant.extend['id']],
         ['image',   variant.extend['image']],
         ['option',  variant.extend['option']],
         ['title',   variant.extend['title']],
       ])
+
+      if (variant.hasOwnProperty('name_foil')) {
+        console.log('has name', variant['name_foil'])
+        extend.set('name_foil', variant['name_foil'])
+      }
+      if (variant.hasOwnProperty('date_foil')) {
+        console.log('has date', variant['date_foil'])
+        extend.set('date_foil', variant['date_foil'])
+      }
 
       // const tempTitle = variant['title'].toLowerCase();
       const title = variant['key'] === 'premium' ? 'Premium Foil Template' : 'Digital Print Template';
@@ -28,9 +38,6 @@ class ArtworkTemplate extends HTMLElement {
         ['available', variant['available']],
         ['extend',    []]
       ]);
-
-      if (variant.hasOwnProperty('name_foil')) data.set('name_foil', variant['name_foil'])
-      if (variant.hasOwnProperty('date_foil')) data.set('date_foil', variant['date_foil'])
 
       if (!map.has(variant['key'])) {
         data.get('extend').push(extend);
