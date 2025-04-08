@@ -1173,7 +1173,7 @@ function personalizeImageFoilChangeHandler(props) {
     labels.forEach((label) => {
       label.addEventListener('click', (e) => {
         e.preventDefault();
-        const curr = e.target.closest('label'); // Ensure we get the correct label
+        const curr = e.target; // Ensure we get the correct label
   
         if (!curr || curr.classList.contains('jtzuya-template__tab-selection--active')) {
           return;
