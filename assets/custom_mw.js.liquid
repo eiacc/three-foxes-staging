@@ -60,25 +60,6 @@ function delaydelivery() {
   }
 }
 
-const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
-const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Comment Colour"]')
-
-nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNameChange(e, idx)))
-dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
-
-function handleNameChange(e, idx) {
-  window.premiumImageMap.get('name')[idx]
-  console.log('image at indx ', idx, ' ', window.premiumImageMap.get('name')[idx])
-  personalizeImageFoilChangeHandler({name: window.premiumImageMap.get('name')[idx]})
-}
-
-function handleDateChange(e, idx) {
-  window.premiumImageMap.get('date')[idx]
-  console.log('image at indx ', idx, ' ', window.premiumImageMap.get('date')[idx])
-
-  personalizeImageFoilChangeHandler({date: window.premiumImageMap.get('date')[idx]})
-}
-
 function flowExtraAreaProQtyCal(proItems){
 
   let label_app = document.getElementById('label_application1');
@@ -349,6 +330,23 @@ class Customizer {
     this.apply(type)
   }
 
+  variant_change(props) {
+    console.log('personalizeImageFoilChangeHandler', props)
+    console.log('current map', window.premiumImageMap)
+    if (!props) return
+    const { name, date } = props
+
+    if (name) {
+      this.mockup.style.setProperty('--name-layer', `url('${name}')`)
+      console.log('name', name)
+    }
+
+    if (date) {
+      this.mockup.style.setProperty('--date-layer', `url('${date}')`)
+      console.log('date', date)
+    }
+  }
+
   display() {
     this.display_wrapper.firstElementChild.textContent = this.artwork.description
     this.display_wrapper.lastElementChild.setAttribute('src', this.artwork.image)
@@ -365,25 +363,6 @@ class Customizer {
     this.mockup.style.setProperty('--digital-layer', `url('${this.image.digital}')`)
     this.mockup.style.setProperty('--name-layer',    'url("")')
     this.mockup.style.setProperty('--date-layer',    'url("")')
-  }
-}
-
-function personalizeImageFoilChangeHandler(props) {
-  console.log('personalizeImageFoilChangeHandler', props)
-  console.log('current map', window.premiumImageMap)
-  if (!props) return
-  const { name, date } = props
-  const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
-  if (!img) return
-
-  if (name) {
-    container.style.setProperty('--name-layer', `url('${name}')`)
-    console.log('name', name)
-  }
-
-  if (date) {
-    container.style.setProperty('--date-layer', `url('${date}')`)
-    console.log('date', date)
   }
 }
 
@@ -640,7 +619,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   const customizerInstance      = new Customizer();
   const customizerViewsInstance = new CustomizerViews();
+  const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
+  const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Comment Colour"]')
+  nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNameChange(e, idx)))
+  dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
 
+  function handleNameChange(e, idx) {
+    window.premiumImageMap.get('name')[idx]
+    console.log('image at indx ', idx, ' ', window.premiumImageMap.get('name')[idx])
+    Customizer.variant_change({name: window.premiumImageMap.get('name')[idx]})
+  }
+
+  function handleDateChange(e, idx) {
+    window.premiumImageMap.get('date')[idx]
+    console.log('image at indx ', idx, ' ', window.premiumImageMap.get('date')[idx])
+
+    Customizer.variant_change({date: window.premiumImageMap.get('date')[idx]})
+  }
 
   document.addEventListener('click', function(evt) {
     if(evt.target.closest('.ctmChooseTemplates')){ labelNotAvailablePopup(evt.target) }
