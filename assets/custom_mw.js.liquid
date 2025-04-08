@@ -296,10 +296,13 @@ class Customizer {
     this.display()
 
     if (type === 'premium') {
-      this.image.date.default = activeTab.getAttribute('data-personalize-date-foils')
-      this.image.date.list    = activeTab.getAttribute('data-personalize-default-date-foil').split(',')
-      this.image.name.default = activeTab.getAttribute('data-personalize-name-foils')
-      this.image.name.list    = activeTab.getAttribute('data-personalize-default-name-foil').split(',')
+      const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
+      const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
+
+      this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
+      this.image.date.list    = date_foils
+      this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
+      this.image.name.list    = name_foils
 
       this.apply(type)
       return
@@ -317,10 +320,13 @@ class Customizer {
     console.log('e click', type)
 
     if (type === 'premium') {
-      this.image.date.default = target.getAttribute('data-personalize-date-foils')
-      this.image.date.list    = target.getAttribute('data-personalize-default-date-foil').split(',')
-      this.image.name.default = target.getAttribute('data-personalize-name-foils')
-      this.image.name.list    = target.getAttribute('data-personalize-default-name-foil').split(',')
+      const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
+      const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
+
+      this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
+      this.image.date.list    = date_foils
+      this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
+      this.image.name.list    = name_foils
 
       this.apply(type)
       return
