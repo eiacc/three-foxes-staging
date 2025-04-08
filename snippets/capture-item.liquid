@@ -28,8 +28,13 @@
                 assign title    = '"' | append: meta['title']   | append: '"'
                 assign id       = '"' | append: i.id            | append: '"'
                 assign option   = '"' | append: meta['option']  | append: '"'
-                
+
                 echo '{'
+                  if meta['image_type']
+                    assign dimg_url = meta['image_type'] | file_url
+                    assign dimg     = '"' | append: dimg_url        | append: '"'
+                    echo 'dimage'   | append: ':' | append: dimg    | append: ','
+                  endif
                   echo 'image'    | append: ':' | append: img     | append: ','
                   echo 'title'    | append: ':' | append: title   | append: ','
                   echo 'id'       | append: ':' | append: id      | append: ','
