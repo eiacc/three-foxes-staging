@@ -207,6 +207,9 @@ function personalizeImagesInit(type = 'premium') {
   const mockupDate    = mockupWrapper.querySelector('img.date')
   const mockupName    = mockupWrapper.querySelector('img.nametrim')
 
+  console.log('container', container)
+  if (!container) return
+
   // TODO: fix class naming
   if (type === 'premium') {
     const dates         = activeLabel.getAttribute('data-personalize-date-foils')
@@ -218,13 +221,13 @@ function personalizeImagesInit(type = 'premium') {
     if (names) premiumImageMap.set('name', names.split(','))
 
     if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
-    container.style.setProperty('--digital-layer', '')
+    container.style.setProperty('--digital-layer', 'url("")')
   } else {
     // hide foils
     const img = activeLabel.getAttribute('data-img')
-    container.style.setProperty('--digital-layer', `'${img}'`)
-    container.style.setProperty('--name-layer', '')
-    container.style.setProperty('--date-layer', '')
+    container.style.setProperty('--digital-layer', `url('${img}')`)
+    container.style.setProperty('--name-layer', 'url("")')
+    container.style.setProperty('--date-layer', 'url("")')
   }
 
   console.log('current map', premiumImageMap)
@@ -239,12 +242,12 @@ function personalizeImageFoilChangeHandler(props) {
   if (!img) return
 
   if (name) {
-    container.style.setProperty('--name-layer', `'${name}'`)
+    container.style.setProperty('--name-layer', `url('${name}')`)
     console.log('name', name)
   }
 
   if (date) {
-    container.style.setProperty('--date-layer', `'${date}'`)
+    container.style.setProperty('--date-layer', `url('${date}')`)
     console.log('date', date)
   }
 }
