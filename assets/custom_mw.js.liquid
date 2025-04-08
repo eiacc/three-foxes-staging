@@ -360,6 +360,8 @@ class Customizer {
   }
 
   apply(type = 'premium') {
+    console.log('applying', this.image)
+
     if (type === 'premium') {
       this.mockup.style.setProperty('--digital-layer',  'url("")')
       this.mockup.style.setProperty('--date-layer',     `url('${this.image.date.default}')`)
@@ -537,11 +539,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
             // TODO: 
             if (override.label === 'premium' && Boolean(override.personalise_hide) === true) {
               // activate variant and use previous selected variant index
-              const props = {
-                name: window.premiumImageMap.get('name')[window.premiumImageMap.get('name_index')],
-                date: window.premiumImageMap.get('date')[window.premiumImageMap.get('date_index')],
-              }
-              customizerInstance.variant_change(props);
+              // const props = {
+              //   name: window.premiumImageMap.get('name')[window.premiumImageMap.get('name_index')],
+              //   date: window.premiumImageMap.get('date')[window.premiumImageMap.get('date_index')],
+              // }
+              // customizerInstance.variant_change(props);
 
               document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
                 el.classList.add('d-none')
