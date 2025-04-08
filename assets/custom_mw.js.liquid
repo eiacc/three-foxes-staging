@@ -263,6 +263,8 @@ class Customizer {
       digital: ''
     }
 
+    console.log('default', this.image)
+
     this.artwork = {
       image: '',
       description: ''
@@ -324,10 +326,10 @@ class Customizer {
       const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
 
       // TODO: values are being interchanged
-      this.image.date.default = date_foils
-      this.image.date.list    = date_foils[window.premiumImageMap.get('date_index')]
-      this.image.name.default = name_foils
-      this.image.name.list    = name_foils[window.premiumImageMap.get('name_index')]
+      this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
+      this.image.date.list    = date_foils
+      this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
+      this.image.name.list    = name_foils
 
       this.apply(type)
       return
@@ -538,13 +540,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
             // TODO: 
             if (override.label === 'premium' && Boolean(override.personalise_hide) === true) {
-              // activate variant and use previous selected variant index
-              // const props = {
-              //   name: window.premiumImageMap.get('name')[window.premiumImageMap.get('name_index')],
-              //   date: window.premiumImageMap.get('date')[window.premiumImageMap.get('date_index')],
-              // }
-              // customizerInstance.variant_change(props);
-
               document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
                 el.classList.add('d-none')
                 el.classList.remove('d-md-flex')
