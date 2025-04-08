@@ -1,38 +1,10 @@
-
-  /* 
-TradeGothicPro-Light.woff 
-TradeGothicPro-StdBoldExt 
-Dahlia-MediumCondensed
-*/
-
-@font-face {
-  font-family: "TradeGothicLTPro-reg";
-  src: url({{ "TradeGothicLT-new.woff2" | asset_url }}) format('woff2'), 
-    url({{ "TradeGothicLT-new.woff" | asset_url }}) format('woff');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "TradeGothicLTPro";
-  src: url({{ "TradeGothicPro-StdBoldExt.woff2" | asset_url }}) format('woff2'), 
-    url({{ "TradeGothicPro-StdBoldExt.woff" | asset_url }}) format('woff');
-  font-weight: 700;
-}
-
-
-/* @font-face {
-  font-family: "Dahlia";
-  src: url({{ "Dahlia-BoldCondensed.woff2" | asset_url }}) format("woff2"), 
-    url({{ "Dahlia-BoldCondensed.woff" | asset_url }}) format("woff"),
-  url({{ "Dahlia-BoldCondensed.eot" | asset_url }}) format("eot");
-  font-weight: 700;
-} */
 .font-dahlia {
   font-family: 'Dahlia', sans-serif;
 }
 .font-TradeGothic {
   font-family: 'TradeGothicLTPro', sans-serif;
 }
+
 .font-dahlia, .font-balboa, .font-moret  {
   font-family: 'Dahlia', sans-serif;
   /* font-weight: 700; */
@@ -56,22 +28,8 @@ Dahlia-MediumCondensed
 	font-weight: 700;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-  font-family: var(--font--heading--family);
-}
-
-.ctmFontDahlia {
-  font-family: var(--font--heading--family);
-}
-
-.product--title {
-  /* font-size: 2rem; */
-  font-family: var(--font--heading--family);
-}
-
-.header--primary-logo [data-item="section-heading"] {
-  font-family: var(--font--heading--family);
-  /* font-size: 2.5rem; */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, .ctmFontDahlia, .product--title, .header--primary-logo [data-item="section-heading"] {
+  font-family: var(--font--heading--family)!important;
 }
 
 .ctm__wrapper img.img-fluid.demo-img-label {
