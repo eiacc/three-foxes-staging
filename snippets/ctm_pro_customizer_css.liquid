@@ -338,6 +338,7 @@
   #shopify-section-{{ section.id }} .active.ctmProcard {
     opacity: 1;
   }
+
   #shopify-section-{{ section.id }} .active.ctmProLabel img {
     opacity: 1;
   }
@@ -955,5 +956,23 @@
     .ctm_tabs_label_area .ctm_card img {
       max-width: 120px;
     }
+  }
+
+  #shopify-section-{{ section.id }} .imgcontainer {
+    --date-layer: '';
+    --name-layer: '';
+    --name-layer: '';
+    --base-layer: 'https://cdn.shopify.com/s/files/1/0289/0180/2070/files/CLEAR-BOTTLE.png?v=1744067645';
+    background: 
+      url(var(--date-layer)),
+      url(var(--name-layer)),
+      url(var(--name-layer)),
+      url(var(--base-layer));
+    background-size: auto 100%;
+    aspect-ratio: 2/4;
+    background-blend-mode: multiply;
+    mask-image: url(var(--base-layer));
+    mask-size: auto 100%;
+    position: relative;
   }
 {% endstyle %}
