@@ -644,7 +644,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   function handleDateChange(e, idx) {
     // window.premiumImageMap.get('date')[idx]
     window.premiumImageMap.set('date_index', idx)
-    customizerInstance.variant_change({type: 'name', idx})
+    customizerInstance.variant_change({type: 'date', idx})
   }
 
   document.addEventListener('click', function(evt) {
