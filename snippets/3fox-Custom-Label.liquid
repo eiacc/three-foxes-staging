@@ -41,8 +41,8 @@
   <div class="btn-group btn-group-toggle btngroup-labels-customise row text-center justify-content-center" data-toggle="buttons">
     
       <!-- <label class="btn col-12 col-lg-4 px-4" for="labelRadioNormal">
-        <img src="{{ 'Favour_Standard_v2.png' | asset_img_url: '500x'}}" class="mb-2 img-fluid demo-img-label" style="">
-        <input id="labelRadioNormal" name="labelRadio" onchange="onUnselectCustomLabel()" type="radio">
+        <img src="{{ 'Favour_Standard_v2.png' | asset_img_url width="100%" height="100% decrement  %}": '500x'}}" class="mb-2 img-fluid demo-img-label" style="">
+        <input id="labelRadioNormal" name="labelRadio"adio">
         <br><span>Foxtail &amp; Co</span><br>
         <p class="col-12 mb-0 mt-1">(Free)</p>
       </label> -->
@@ -72,8 +72,8 @@
         {% comment %} <label class="btn col-12 col-lg-4 px-4" for="labelRadioCustom"> {% endcomment %}
         <label class="btn col-12 col-lg-4 px-4 {{ labelClasses }}" for="{{ radioId }}">
           {% comment %} <img src="{{ 'FOX_Digital-Print.png' | asset_img_url: '500x' }}" class="mb-2 img-fluid demo-img-label" style=""> {% endcomment %}
-           <img src="{{ proImg | img_url: 'master' }}" class="mb-2 img-fluid demo-img-label" style="">
-          <input {% if forloop.index == 1 %}checked{% endif %} id="{{ radioId }}" name="labelRadio" onchange="{{ onChange }}()" type="radio" value="{{ product.selected_or_first_available_variant.id }}">
+           <img src="{{ proImg | img_url: 'master' }}" class="mb-2 img-fluid demo-img-label" style=""> width="100%" height="100% decrement  %}"
+          <input {% if forloop.index == 1 %}checked{% endif %} id="{{ radioId }}" name="labelRadio"pe="radio" value="{{ product.selected_or_first_available_variant.id }}">
           <br><span>{{ product.title }}</span><br>
           <br>
           <p class="H5_SUBTITLE" style="font-size: 15px;">{{ product.price | money | append: ' (PER DESIGN)' }}</p>
@@ -83,33 +83,6 @@
           </div>
         </label>
       {% endfor %}
-    
-      {% comment %} <label class="btn col-12 col-lg-4 px-4" for="labelRadioCustom">
-        <img src="{{ 'FOX_Digital-Print.png' | asset_img_url: '500x' }}" class="mb-2 img-fluid demo-img-label" style="">
-        <img src="{{ 'https://threefoxes.com.au/cdn/shop/t/31/assets/FOX_Digital-Print_500x.png?v=96320436142936080991686892841' }}" class="mb-2 img-fluid demo-img-label" style="">
-        <input checked id="labelRadioCustom" name="labelRadio" onchange="onSelectCobrandLabel()" type="radio" >
-        <br><span>Digital Print</span><br>
-        <br>
-        <p class="H5_SUBTITLE" style="font-size: 15px;">$150 (PER DESIGN)</p>
-        <p class="H5_SUBTITLE" style="font-size: 15px;">CMYK DIGITAL PRINT</p>
-        <div class="details">
-        
-        </div>
-      </label>
-
-      <label class="btn col-12 col-lg-4 px-4 active" for="labelRadioNormal">
-        <img src="{{ 'FOX_Premium-Foil.png' | asset_img_url: '500x'}}" class="mb-2 img-fluid demo-img-label" style="">
-        <img src="{{ 'https://threefoxes.com.au/cdn/shop/t/31/assets/FOX_Premium-Foil_500x.png?v=84015900784431142381686892841'}}" class="mb-2 img-fluid demo-img-label" style="">
-        <input id="labelRadioQuote" name="labelRadio" onchange="onSelectCustomLabel()" type="radio" selected>
-        <br><span>Premium Foil</span><br>
-        <br>
-        <p class="H5_SUBTITLE" style="font-size: 15px;">$350 (PER DESIGN)</p>
-        <p class="H5_SUBTITLE" style="font-size: 15px;">UP TO 2 COLOUR FOIL 
-        <br>PLUS CMYK PRINT</p>
-        <div class="details">
-        
-        </div>
-      </label> {% endcomment %}
     
       <div class="col-12 col-lg-8 mx-auto mt-mini px-lg-5 px-3">
         <p class="lead">Label size is 115mm wide by 50mm high
@@ -376,43 +349,43 @@
       <div class="px-lg-sml">
         <div class="btn-group btn-group-toggle btn-group-colours row text-center px-sml px-lg-0" data-toggle="buttons">
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Gold">
-            <img src="{{ 'Colour-Gold.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Gold" name="labelNameColour" onchange="onSelectColorA('Gold')" type="radio">
+            <img src="{{ 'Colour-Gold.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Gold" name="labelNameColour" type="radio">
             <div class="colourname">Gold</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-RoseGold">
-            <img src="{{ 'Colour-RoseGold.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-RoseGold" name="labelNameColour" onchange="onSelectColorA('Rosegold')" type="radio">
+            <img src="{{ 'Colour-RoseGold.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-RoseGold" name="labelNameColour" type="radio">
             <div class="colourname rosegold">Rose Gold</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Copper">
-            <img src="{{ 'Colour-copper.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Copper" name="labelNameColour" onchange="onSelectColorA('Copper')" type="radio">
+            <img src="{{ 'Colour-copper.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Copper" name="labelNameColour" type="radio">
             <div class="colourname">Copper</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Silver">
-            <img src="{{ 'Colour-Silver.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Silver" name="labelNameColour" onchange="onSelectColorA('Silver')" type="radio">
+            <img src="{{ 'Colour-Silver.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Silver" name="labelNameColour" type="radio">
             <div class="colourname">Silver</div>
           </label>
           <label class="btn col-4 text-center active mb-2" for="labelNameColour-Black">
-            <img src="{{ 'Colour-Black.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input checked id="labelNameColour-Black" name="labelNameColour" onchange="onSelectColorA('Black')" type="radio">
+            <img src="{{ 'Colour-Black.png' | asset_img_url: '100x' }}" class width="100%" height="100% decrement  %}"="mx-auto">
+            <input checked id="labelNameColour-Black" name="labelNameColour" type="radio">
             <div class="colourname black">Black</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Blue">
-            <img src="{{ 'Colour-Blue.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Blue" name="labelNameColour" onchange="onSelectColorA('Blue')" type="radio">
+            <img src="{{ 'Colour-Blue.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Blue" name="labelNameColour" type="radio">
             <div class="colourname blue">Blue</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Red">
-            <img src="{{ 'Colour-Red.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Red" name="labelNameColour" onchange="onSelectColorA('Red')" type="radio">
+            <img src="{{ 'Colour-Red.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Red" name="labelNameColour" type="radio">
             <div class="colourname red">Red</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Green">
-            <img src="{{ 'Colour-Green.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Green" name="labelNameColour" onchange="onSelectColorA('Green')" type="radio">
+            <img src="{{ 'Colour-Green.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Green" name="labelNameColour" type="radio">
             <div class="colourname green">Green</div>
           </label>
         </div>
@@ -426,43 +399,43 @@
       <div class="px-lg-sml">
         <div class="btn-group btn-group-toggle btn-group-colours row text-center px-sml px-lg-0" data-toggle="buttons">
           <label class="btn col-4 text-center" for="labelNameColour-Gold">
-            <img src="{{ 'Colour-Gold.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Gold" name="labelNameColour" onchange="onSelectColorB('Gold')" type="radio">
+            <img src="{{ 'Colour-Gold.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Gold" name="labelNameColour" type="radio">
             <div class="colourname">Gold</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-RoseGold">
-            <img src="{{ 'Colour-RoseGold.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-RoseGold" name="labelNameColour" onchange="onSelectColorB('Rosegold')" type="radio">
+            <img src="{{ 'Colour-RoseGold.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-RoseGold" name="labelNameColour" type="radio">
             <div class="colourname rosegold">Rose Gold</div>
           </label>
           <label class="btn col-4 text-center mb-2 active" for="labelNameColour-Copper">
-            <img src="{{ 'Colour-copper.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input checked id="labelNameColour-Copper" name="labelNameColour" onchange="onSelectColorB('Copper')" type="radio">
+            <img src="{{ 'Colour-copper.png' | asset_img_url: '100x' }}" class width="100%" height="100% decrement  %}"="mx-auto">
+            <input checked id="labelNameColour-Copper" name="labelNameColour" type="radio">
             <div class="colourname">Copper</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Silver">
-            <img src="{{ 'Colour-Silver.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Silver" name="labelNameColour" onchange="onSelectColorB('Silver')" type="radio">
+            <img src="{{ 'Colour-Silver.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Silver" name="labelNameColour" type="radio">
             <div class="colourname">Silver</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Black">
-            <img src="{{ 'Colour-Black.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Black" name="labelNameColour" onchange="onSelectColorB('Black')" type="radio">
+            <img src="{{ 'Colour-Black.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Black" name="labelNameColour" type="radio">
             <div class="colourname black">Black</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Blue">
-            <img src="{{ 'Colour-Blue.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Blue" name="labelNameColour" onchange="onSelectColorB('Blue')" type="radio">
+            <img src="{{ 'Colour-Blue.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Blue" name="labelNameColour" type="radio">
             <div class="colourname blue">Blue</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Red">
-            <img src="{{ 'Colour-Red.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Red" name="labelNameColour" onchange="onSelectColorB('Red')" type="radio">
+            <img src="{{ 'Colour-Red.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Red" name="labelNameColour" type="radio">
             <div class="colourname red">Red</div>
           </label>
           <label class="btn col-4 text-center mb-2" for="labelNameColour-Green">
-            <img src="{{ 'Colour-Green.png' | asset_img_url: '100x' }}" class="mx-auto">
-            <input id="labelNameColour-Green" name="labelNameColour" onchange="onSelectColorB('Green')" type="radio">
+            <img src="{{ 'Colour-Green.png' | asset_img_url: '100x' }}" width="100%" height="100% decrement  %}" class="mx-auto">
+            <input id="labelNameColour-Green" name="labelNameColour" type="radio">
             <div class="colourname green">Green</div>
           </label>
         </div>
