@@ -1,4 +1,25 @@
 {% assign items = all_products[product].variants %}
+{% comment %} {% assign test_img = items[3].metafields.custom['product_customizer']['value']['name_foil'] %} {% endcomment %}
+{% comment %} {% assign v = items[3].metafields.custom['product_customizer'] %}
+
+title: {{ v.value['title'] }}
+<br>
+option: {{ v.value['option'] }}
+<br>
+{% assign imge = v.value['name_foil'] %}
+image filetered first : {{ imge       | first | file_url }}<br>
+image dot             : {{ imge.first | file_url }}<br>
+image index           : {{ imge[0]    | file_url }}<br>
+image filtered last   : {{ imge       | last | file_url }}
+<br>
+images: {{ v.value['name_foil'] | json }}
+<br>
+size files: {{ v.value['name_foil'].value | size }}
+<br>
+size values: {{ v.value['name_foil'].value | first }}
+<br>
+size values: {{ v.value['name_foil'].value | first | json }}
+<br> {% endcomment %}
 
 {%- liquid
   capture item
