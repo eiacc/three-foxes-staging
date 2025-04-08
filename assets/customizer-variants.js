@@ -151,7 +151,7 @@ class ArtworkTemplate extends HTMLElement {
       const option    = i.get('option')
       
       const classList = idx === 0 ? 'jtzuya-templates__tab-selection jtzuya-template__tab-selection--active' : 'jtzuya-templates__tab-selection'
-      const label     = this.create_el('label', classList, title)
+      const label     = this.create_el('span', classList, title)
       label.setAttribute('data-img', image)
       label.setAttribute('data-option', option)
       label.setAttribute('data-product-id', id)
