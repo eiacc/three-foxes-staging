@@ -29,6 +29,9 @@ class ArtworkTemplate extends HTMLElement {
         ['extend',    []]
       ]);
 
+      if (variant['foil_name']) data.set('foil_name', variant['foil_name'])
+      if (variant['foil_date']) data.set('foil_date', variant['foil_date'])
+
       if (!map.has(variant['key'])) {
         data.get('extend').push(extend);
         map.set(variant['key'], data)
@@ -58,11 +61,10 @@ class ArtworkTemplate extends HTMLElement {
       const key         = data.get('key');
       const price       = data.get('price');
       const title       = data.get('title');
-      const array       = data.get('extend');
       // const available   = dataMap.get('available');
 
       li.appendChild(this.left(idx, title, key, price)) // left content
-      rw.appendChild(this.right(key, array, price))  // right content
+      rw.appendChild(this.right(key, data, price))  // right content
     });
 
 
@@ -126,11 +128,12 @@ class ArtworkTemplate extends HTMLElement {
     return fragment
   }
 
-  right(key, array, price) {
+  right(key, data, price) {
     const fragment = document.createDocumentFragment()
     const wrapper  = this.create_el('div', `jtzuya-templates__tab-selections jtzuya-templates__tab-selections--${key}`)
+    const extend   = data.get('extend')
 
-    array.forEach((i, idx) => {
+    extend.forEach((i, idx) => {
       const title     = i.get('title')
       const image     = i.get('image')
       const id        = i.get('id')
@@ -142,6 +145,19 @@ class ArtworkTemplate extends HTMLElement {
       label.setAttribute('data-product-id', id)
       label.setAttribute('data-price', price)
       label.setAttribute('data-product-type', key)
+
+      if (data.has('foil_name')) {
+        const foil = data.get('foil_name')
+        if (foil.length > 0) label.setAttribute('data-personalize-default-name-foil', foil[0])
+        label.setAttribute('data-personalize-name-foils', foil.join(','))
+      }
+
+      if (data.has('foil_date')) {
+        const foil = data.get('foil_date')
+        if (foil.length > 0) label.setAttribute('data-personalize-default-date-foil', foil[0])
+        label.setAttribute('data-personalize-date-foils', foil.join(','))
+      }
+
       wrapper.appendChild(label)
     })
 

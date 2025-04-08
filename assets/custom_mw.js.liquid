@@ -60,23 +60,42 @@ function delaydelivery() {
   }
 }
 
+const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
+const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Date Colour"]')
 
-let colorA = "Gold"
-function onSelectColorA(colorName) {
-  colorA = colorName;
-  // console.log("labA: "+colorA);
-  let mockupBox = document.getElementById("mockupBox");
-  mockupBox.classList.remove("labA-Gold","labA-Rosegold","labA-Copper","labA-Silver","labA-Black");
-  mockupBox.classList.add("labA-"+colorA);
+nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNameChange(e, idx)))
+dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
+
+function handleNameChange(e, idx) {
+  premiumImageMap.get('name')[idx]
+  console.log('image at indx ', idx, ' ', premiumImageMap.get('name')[idx])
+
+  personalizeImageFoilChangeHandler({name: premiumImageMap.get('name')[idx]})
 }
 
-let colorB = "Gold"
-function onSelectColorB(colorName) {
-  colorB = colorName;
-  // console.log("labB: "+colorB);
-  mockupBox.classList.remove("labB-Gold","labB-Rosegold","labB-Copper","labB-Silver","labB-Black");
-  mockupBox.classList.add("labB-"+colorB);
+function handleDateChange(e, idx) {
+  premiumImageMap.get('date')[idx]
+  console.log('image at indx ', idx, ' ', premiumImageMap.get('date')[idx])
+
+  personalizeImageFoilChangeHandler({date: premiumImageMap.get('date')[idx]})
 }
+
+// let colorA = "Gold"
+// function onSelectColorA(colorName) {
+//   colorA = colorName;
+//   // console.log("labA: "+colorA);
+//   let mockupBox = document.getElementById("mockupBox");
+//   mockupBox.classList.remove("labA-Gold","labA-Rosegold","labA-Copper","labA-Silver","labA-Black");
+//   mockupBox.classList.add("labA-"+colorA);
+// }
+
+// let colorB = "Gold"
+// function onSelectColorB(colorName) {
+//   colorB = colorName;
+//   // console.log("labB: "+colorB);
+//   mockupBox.classList.remove("labB-Gold","labB-Rosegold","labB-Copper","labB-Silver","labB-Black");
+//   mockupBox.classList.add("labB-"+colorB);
+// }
 
 function flowExtraAreaProQtyCal(proItems){
 
@@ -167,19 +186,50 @@ const override = {
   preserve_heading: "Upload Your Artwork"
 }
 
-function personalizeImages(type = 'premium') {
+const premiumImageMap = new Map([
+  ['name', []],
+  ['date', []],
+])
+
+function personalizeImagesInit(type = 'premium') {
   const activeLabel = document.querySelector(`.jtzuya-templates__tab-selections--${type} .jtzuya-template__tab-selection--active`)
   if (!activeLabel) return
 
-  const img = activeLabel.getAttribute('data-img')
-
   const mockupWrapper = document.getElementById('mockupBox')
   const mockupBase    = mockupWrapper.querySelector('img.base')
+  const mockupDate    = mockupWrapper.querySelector('img.date')
+  const mockupName    = mockupWrapper.querySelector('img.nametrim')
 
+  // TODO: fix class naming
   if (type === 'premium') {
-    
+    premiumImageMap.set('date', activeLabel.getAttribute('data-personalize-date-foils').split(','));
+    premiumImageMap.set('name', activeLabel.getAttribute('data-personalize-name-foils').split(','));
+    const imgName = activeLabel.getAttribute('data-personalize-default-name-foil')
+    const imgDate = activeLabel.getAttribute('data-personalize-default-date-foil')
+    personalizeImageFoilChangeHandler({name: imgName, date: imgDate})
+    mockupName.style.opacity = '1'
   } else {
-    mockupBase.setAttribute('src', img)
+    // hide foils
+    const img = activeLabel.getAttribute('data-img')
+    mockupDate.setAttribute('src', img)
+    mockupName.style.opacity = '0'
+  }
+}
+
+function personalizeImageFoilChangeHandler(props) {
+  if (!props) return
+  const { name, date } = props
+
+  if (name) {
+    const img = document.querySelector('#mockupBox img.nametrim')
+    if (!img) return
+    img.setAttribute('src', url)
+  }
+
+  if (date) {
+    const img = document.querySelector('#mockupBox img.date')
+    if (!img) return
+    img.setAttribute('src', url)
   }
 }
 
