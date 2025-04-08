@@ -79,23 +79,6 @@ function handleDateChange(e, idx) {
   personalizeImageFoilChangeHandler({date: window.premiumImageMap.get('date')[idx]})
 }
 
-// let colorA = "Gold"
-// function onSelectColorA(colorName) {
-//   colorA = colorName;
-//   // console.log("labA: "+colorA);
-//   let mockupBox = document.getElementById("mockupBox");
-//   mockupBox.classList.remove("labA-Gold","labA-Rosegold","labA-Copper","labA-Silver","labA-Black");
-//   mockupBox.classList.add("labA-"+colorA);
-// }
-
-// let colorB = "Gold"
-// function onSelectColorB(colorName) {
-//   colorB = colorName;
-//   // console.log("labB: "+colorB);
-//   mockupBox.classList.remove("labB-Gold","labB-Rosegold","labB-Copper","labB-Silver","labB-Black");
-//   mockupBox.classList.add("labB-"+colorB);
-// }
-
 function flowExtraAreaProQtyCal(proItems){
 
   let label_app = document.getElementById('label_application1');
@@ -279,8 +262,94 @@ function manualDataRetrieval() {
   return temp
 }
 
-// document.querySelector('[name="Foxtails"]:checked').dataset.ctm_quantity = document.querySelector('[name="Foxtails"]:checked').dataset.is_min_quantity
-// document.querySelector('[name="Foxtails"]:checked').closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper .quantity').value = document.querySelector('[name="Foxtails"]:checked').dataset.is_min_quantity
+class Customizer {
+  constructor() {
+    if (!window.premiumImageMap) return
+    this.map = window.premiumImageMap
+
+    this.mockup;
+    this.image = {
+      date: {
+        default: this.map.get('date')[0],
+        list: this.map.get('date')
+      },
+      name: {
+        default: this.map.get('name')[0],
+        list: this.map.get('name')
+      },
+      digital: ''
+    }
+
+    this.init();
+
+    this.change = this.change.bind(this)
+    this.click  = this.click.bind(this)
+  }
+
+  init() {
+    this.mockup = document.querySelector('#mockupBox .imgcontainer')
+    if (!this.mockup) return
+    this.apply() // initiate apply
+  }
+
+  change(e) {
+    console.log('e change', e.target)
+    this.click(e)
+  }
+
+  click(e)  {
+    const target = e.target
+    const type   = target.getAttribute('data-product-type')
+    console.log('e click', e.target)
+    console.log('e click', type)
+
+    if (type === 'premium') {
+      this.image.date.default = target.getAttribute('data-personalize-date-foils')
+      this.image.date.list    = target.getAttribute('data-personalize-default-date-foil').split(',')
+      this.image.name.default = target.getAttribute('data-personalize-name-foils')
+      this.image.name.list    = target.getAttribute('data-personalize-default-name-foil').split(',')
+
+      this.apply(type)
+      return
+    }
+
+    this.image.digital = target.getAttribute('data-dimage')
+    this.apply(type)
+  }
+
+  apply(type = 'premium') {
+    if (type === 'premium') {
+      this.mockup.style.setProperty('--digital-layer',  'url("")')
+      this.mockup.style.setProperty('--date-layer',     `url('${this.image.date.default}')`)
+      this.mockup.style.setProperty('--name-layer',     `url('${this.image.name.default}')`)
+      return
+    }
+
+    this.mockup.style.setProperty('--digital-layer', `url('${this.image.digital}')`)
+    this.mockup.style.setProperty('--name-layer',    'url("")')
+    this.mockup.style.setProperty('--date-layer',    'url("")')
+  }
+}
+
+function personalizeImageFoilChangeHandler(props) {
+  console.log('personalizeImageFoilChangeHandler', props)
+  console.log('current map', window.premiumImageMap)
+  if (!props) return
+  const { name, date } = props
+  const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
+  if (!img) return
+
+  if (name) {
+    container.style.setProperty('--name-layer', `url('${name}')`)
+    console.log('name', name)
+  }
+
+  if (date) {
+    container.style.setProperty('--date-layer', `url('${date}')`)
+    console.log('date', date)
+  }
+}
+
 document.addEventListener("DOMContentLoaded", (event) => {
   /* always keep at least 1 open by preventing the current to close itself */
   jQuery('[data-toggle="collapse"]').on("click", function (e) {
@@ -296,74 +365,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let ctmCollectDataArr = [];
   let summaryResult = {};
 
-  function personalizeImageFoilChangeHandler(props) {
-    console.log('personalizeImageFoilChangeHandler', props)
-    console.log('current map', window.premiumImageMap)
-    if (!props) return
-    const { name, date } = props
-    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
-    if (!img) return
-
-    if (name) {
-      container.style.setProperty('--name-layer', `url('${name}')`)
-      console.log('name', name)
-    }
-
-    if (date) {
-      container.style.setProperty('--date-layer', `url('${date}')`)
-      console.log('date', date)
-    }
-  }
-
-  function personalizeImagesInit(type = 'premium') {
-    console.log('type activated', type)
-    // const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`;
-    const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
-    const activeLabel = document.querySelector(selector)
-
-    console.log('seclector', selector)
-    console.log('el', element)
-
-    if (!activeLabel) {
-      console.log('active label not found', activeLabel)
-      return
-    }
-
-    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
-
-    if (!mockupWrapper) {
-      console.log('mockwrapper not found', mockupWrapper)
-      return
-    }
-
-    // TODO: fix class naming
-    if (type === 'premium') {
-      const dates         = activeLabel.getAttribute('data-personalize-date-foils')
-      const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
-      const names         = activeLabel.getAttribute('data-personalize-name-foils')
-      const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
-
-      if (dates) window.premiumImageMap.set('date', dates.split(','));
-      if (names) window.premiumImageMap.set('name', names.split(','))
-
-      if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
-      mockupWrapper.style.setProperty('--digital-layer', 'url("")')
-      mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
-      mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
-
-    } else {
-      // hide foils
-      const img = activeLabel.getAttribute('data-dimage')
-      mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
-      mockupWrapper.style.setProperty('--name-layer', 'url("")')
-      mockupWrapper.style.setProperty('--date-layer', 'url("")')
-    }
-
-    console.log('current map', window.premiumImageMap)
-  }
-
   class CustomizerViews {
     constructor() {}
+
+    identify(el) {
+      // console.log('el', el);
+      if (!el) return 'unregistered';
+
+      const isUpload = el.getAttribute('data-is_next_upload');
+      if (isUpload && isUpload === 'true') return 'upload';
+
+      const type = el.getAttribute('type');
+      if (type === 'button') {
+        if (el.classList.contains('ctm_tab_content_next_btn')) return 'next';
+        return 'prev';
+      }
+
+      if (type === 'submit') return 'submit';
+
+      return 'unregistered';
+    }
 
     next(element) {
       if (!element) return
@@ -580,25 +601,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 
+  const customizerInstance      = new Customizer();
   const customizerViewsInstance = new CustomizerViews();
 
-  function identifyButton(el) {
-    // console.log('el', el);
-    if (!el) return 'unregistered';
-
-    const isUpload = el.getAttribute('data-is_next_upload');
-    if (isUpload && isUpload === 'true') return 'upload';
-
-    const type = el.getAttribute('type');
-    if (type === 'button') {
-      if (el.classList.contains('ctm_tab_content_next_btn')) return 'next';
-      return 'prev';
-    }
-
-    if (type === 'submit') return 'submit';
-
-    return 'unregistered';
-  }
 
   document.addEventListener('click', function(evt) {
     if(evt.target.closest('.ctmChooseTemplates')){ labelNotAvailablePopup(evt.target) }
@@ -624,7 +629,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     const curr      = evt.target;
-    const whichType = identifyButton(curr);
+    const whichType = customizerViewsInstance.identify(curr);
 
     if (curr.tagName === 'BUTTON') {
       console.log('which type', whichType)
@@ -645,158 +650,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
           // do nothing
       }
     }
-
-    // if (evt.target.classList.contains('ctm_tab_content_next_btn') && (evt.target.dataset.is_next_upload == 'true')) {
-    //   // console.error('check the clicked button', evt.target.dataset)
-    //   // let ctmClickedClosest = evt.target.closest('.ctm__cocktails_content_area').querySelector('.ctm_tab_content_inner_area');
-    //   let ctmClickedClosest = evt.target.closest('.ctm__gift_sets_area');
-    //   collectStepData(ctmClickedClosest)
-    //   evt.target.closest('.ctm__gift_sets_area').querySelector('.ctm__gift_sets_pro_area').classList.add('d-none');
-    //   if (evt.target.closest('.ctm__gift_sets_area').querySelector('.formpanel')) evt.target.closest('.ctm__gift_sets_area').querySelector('.formpanel').classList.remove('d-none');
-    // } else if (evt.target.classList.contains('ctm_tab_content_next_btn') && !(evt.target.type === 'submit')) {
-    //   let tabWrapper                = evt.target.closest('.ctm__tab_content_area');
-    //   let overrideeEl               = evt.target.closest('[data-selection_override]')
-
-    //   let ctmIsPersonalisedDesabled = (tabWrapper.nextElementSibling.classList.contains('ctm__tab_content_area')) && (tabWrapper.nextElementSibling.classList.contains('ctmStepDisabled'))
-    //   let tabIndex                  = ctmIsPersonalisedDesabled ? tabWrapper.nextElementSibling.nextElementSibling.dataset.tab_index : tabWrapper.nextElementSibling.dataset.tab_index ?? 1;
-    //   tabWrapper                    = tabWrapper ? tabWrapper : evt.target.closest('.ctm__personalise_content_area');
-    //   let validForm                 = true;
-    //   validForm                     = contactInputsValidate(tabWrapper, validForm)
-
-    //   if (!validForm) return
-
-    //   // console.log('tabWrapper',       tabWrapper)
-    //   // console.log('sectionWrapper',   sectionWrapper)
-
-    //   let fieldsArea = evt.target.closest('.ctm__tab_content_area');
-
-    //   if (overrideeEl) {
-    //     console.log('override territory')
-    //     // manipulate if data attribute = data-selection_override
-    //     // if attribute value 0 = do nothing
-    //     // if attribute value 1 = manupulate
-
-    //     if (overrideeEl.getAttribute('data-selection_override') === '0') {
-    //       /*
-    //         Manipulate heading for Artwork tab if label type is "custom"
-    //         by swapping attribute and textcontent
-    //       */
-    //       console.log('pass')
-    //       if (override.label === 'custom') {
-    //         const hArea = document.querySelector('[data-heading-temp-store]') // heading area
-    //         console.log('area', hArea)
-    //         if (hArea) hArea.textContent = "Upload Your Artwork"
-    //       } else {
-    //         // swap values
-    //         const hArea = document.querySelector('[data-heading-temp-store]') // heading area
-    //         console.log('area', hArea)
-    //         if (hArea) hArea.textContent = hArea.getAttribute('data-heading-temp-store')
-    //       }
-    //     }
-
-    //     if (overrideeEl.getAttribute('data-selection_override') === '1') {
-          
-    //       /**
-    //        * Disables personalizer if product Label Type selected is 'standard'
-    //       */
-    //       const idx = tabIndex * 1
-    //       if (override.label === 'standard') {
-    //         tabIndex = idx
-    //         console.log('updating idx', tabIndex)
-    //         // console.log('next area', nArea)
-    //       }
-
-    //       /**
-    //         get data at document.querySelector(`[data-customizer-template="${override.label}"]`)
-    //         get id, pirce, price_no_currency, title (manipulate), type, value(same as id)
-
-    //         data extraction
-    //         data format
-    //         {
-    //           step: '2',
-    //           properties: [],
-    //           items: [{
-    //             id: "33184610582614"
-    //             is_pro_item: undefined
-    //             pirce: "$190.00"
-    //             price_no_currency: "190"
-    //             quantity: "1"
-    //             title: "Personalized Label - Script"
-    //             type: "label"
-    //             value: "33184610582614"
-    //           }]
-    //         }
-
-    //         store _data ctmCollectDataArr
-    //       */
-    //       const _data = manualDataRetrieval(`[data-customizer-template="${override.label}"]`);
-    //       if (_data) {
-    //         let hasCocktails = false;
-    //         hasCocktails = ctmCollectDataArr.some(obj => obj.step === '1');
-    //         if (hasCocktails) {
-    //           if (override.arr_idx !== 0) {
-    //             ctmCollectDataArr[override.arr_idx] = _data
-    //           } else {
-    //             ctmCollectDataArr.push(_data);
-    //             override.arr_idx = ctmCollectDataArr.length - 1;
-    //           }
-    //         }
-    //       }
-
-    //       if (override.label === 'premium' && Boolean(override.personalise_hide) === true) {
-    //         document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
-    //           el.classList.add('d-none')
-    //           el.classList.remove('d-md-flex')
-    //         });
-    //       } else {
-    //         document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
-    //           el.classList.remove('d-none')
-    //           el.classList.add('d-md-flex')
-    //         });
-    //       }
-
-    //       console.log('current arr', ctmCollectDataArr);
-    //     }
-    //   } else if (fieldsArea && !fieldsArea.classList.contains('d-none')) {
-    //     console.log(`clicked button's closest is not hidden!`, fieldsArea.classList.contains('d-none'))
-    //     collectStepData(fieldsArea)
-    //   }
-
-    //   console.log('tabIndex latest', tabIndex)
-    //   tabWrapper.classList.add('d-none');
-    //   customizerInstance.progress(tabIndex); // changes bar size
-    //   // debugger
-
-    //   if (ctmIsPersonalisedDesabled) {
-    //     tabWrapper.nextElementSibling.nextElementSibling.classList.remove('d-none');
-    //     window.scrollTo({ top: tabWrapper.nextElementSibling, behavior: 'smooth' });
-    //     // console.log("tabContent :- ", tabWrapper.nextElementSibling)
-    //     if (tabWrapper.nextElementSibling.classList.contains('ctm__summary')) {
-    //       ctmUpdateSummary()
-    //     }
-    //   } else if (tabWrapper.nextElementSibling.classList.contains('ctm__tab_content_area')) {
-    //     tabWrapper.nextElementSibling.classList.remove('d-none');
-    //     window.scrollTo({ top: tabWrapper.nextElementSibling, behavior: 'smooth' });
-    //     // console.log("tabContent :- ", tabWrapper.nextElementSibling)
-    //     if (tabWrapper.nextElementSibling.classList.contains('ctm__summary')) {
-    //       // console.log("Check ClassList :- ", tabWrapper.nextElementSibling.classList)
-    //       // const customiseProductData = localStorage.getItem('customiseProductData');
-    //       // console.log(JSON.parse(customiseProductData))
-    //       ctmUpdateSummary()
-    //     }
-    //   }
-    // } else if (evt.target.classList.contains('ctm_tab_content_next_btn') && (evt.target.type === 'submit')) {
-    // // } else {
-    //   // const customiseProductData = localStorage.getItem('customiseProductData');
-    //   // // console.info(JSON.parse(customiseProductData));
-    //   // let summaryData = JSON.parse(customiseProductData);
-    //   console.log('ctmCollectDataArr', ctmCollectDataArr);
-      
-    //   console.error("ctmCollectDataArr check on submit : ", ctmCollectDataArr);
-    //   ctmUpdateCartOnSubmit(ctmCollectDataArr , evt.target);
-      
-    // }
-    // Tab next button click ends
 
     // On tab click begins
     if (evt.target.classList.contains('ctm_tab_content')) {
@@ -1142,10 +995,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
           override.personalise_hide = false  // parameter at personalize section
           console.log('is premium')
           updateTemplateView(templateViewPremium, premiumMap);
+          customizerInstance.change(e)
         } else if (isDigital) {
           console.log('is digi')
           override.personalise_hide = true // parameter at personalize section. if true it will hide the colors fields
           updateTemplateView(templateViewDigital, digitalMap);
+          customizerInstance.change(e)
         }
       });
     });
@@ -1192,6 +1047,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         selectionIdx = Array.from(labels).indexOf(curr);
       });
     });
+
+    labels.forEach(label => label.addEventListener('click', customizerInstance.click))
   };
   
   // Initialize template selections
