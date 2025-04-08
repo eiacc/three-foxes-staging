@@ -7,6 +7,8 @@ class ArtworkTemplate extends HTMLElement {
     ])
     this.variants   = this.reform();
     this.appendChild(this.build());
+
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   reform() {
@@ -142,6 +144,7 @@ class ArtworkTemplate extends HTMLElement {
     this.appendChild(input)
     fragment.appendChild(div)
 
+    input.addEventListener('change', this.handleInputChange)
     return fragment
   }
 
@@ -185,11 +188,60 @@ class ArtworkTemplate extends HTMLElement {
         }
       }
 
+      label.addEventListener('click', this.handleInputChange)
       wrapper.appendChild(label)
     })
 
     fragment.appendChild(wrapper)
     return fragment
+  }
+
+  handleInputChange(e) {
+    const el    = e.target
+    const type  = el.getAttribute('data-product-type')
+
+    const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
+    const activeLabel = document.querySelector(selector)
+
+    console.log('el web component', element)
+    console.log('activeLabel web component', activeLabel)
+
+    if (!activeLabel) {
+      console.log('active label not found', activeLabel)
+      return
+    }
+
+    const mockupWrapper = document.querySelector('#mockupBox .imgcontainer')
+
+    if (!mockupWrapper) {
+      console.log('mockwrapper not found', mockupWrapper)
+      return
+    }
+
+    // TODO: fix class naming
+    if (type === 'premium') {
+      const dates         = activeLabel.getAttribute('data-personalize-date-foils')
+      const defaultDate   = activeLabel.getAttribute('data-personalize-default-date-foil')
+      const names         = activeLabel.getAttribute('data-personalize-name-foils')
+      const defaultName   = activeLabel.getAttribute('data-personalize-default-name-foil')
+
+      if (dates) window.premiumImageMap.set('date', dates.split(','));
+      if (names) window.premiumImageMap.set('name', names.split(','))
+
+      if (defaultDate && defaultName) personalizeImageFoilChangeHandler({name: defaultName, date: defaultDate})
+      mockupWrapper.style.setProperty('--digital-layer', 'url("")')
+      mockupWrapper.style.setProperty('--date-layer', `url('${defaultDate}')`)
+      mockupWrapper.style.setProperty('--name-layer', `url('${defaultName}')`)
+
+    } else {
+      // hide foils
+      const img = activeLabel.getAttribute('data-dimage')
+      mockupWrapper.style.setProperty('--digital-layer', `url('${img}')`)
+      mockupWrapper.style.setProperty('--name-layer', 'url("")')
+      mockupWrapper.style.setProperty('--date-layer', 'url("")')
+    }
+
+    console.log('current map', window.premiumImageMap)
   }
 }
 
