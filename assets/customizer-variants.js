@@ -200,11 +200,12 @@ class ArtworkTemplate extends HTMLElement {
   }
 
   handleInputChange(e) {
-    const el    = e.target
-    const type  = el.getAttribute('data-product-type')
+    const el      = e.target
+    const wrapper = el.closes('.jtzuya-templates[data-customizer-template]')
+    const type    = el.getAttribute('data-product-type')
 
     const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
-    const activeLabel = document.querySelector(selector)
+    const activeLabel = wrapper.querySelector(selector)
 
     // console.log('el web component', element)
     console.log('activeLabel web component', activeLabel)
