@@ -959,15 +959,15 @@
   }
 
   #shopify-section-{{ section.id }} .imgcontainer {
-    --date-layer: '';
-    --name-layer: '';
-    --digital-layer: '';
-    --base-layer: 'https://cdn.shopify.com/s/files/1/0289/0180/2070/files/CLEAR-BOTTLE.png?v=1744067645';
+    --date-layer: url('');
+    --name-layer: url('');
+    --digital-layer: url('');
+    --base-layer: url('https://cdn.shopify.com/s/files/1/0289/0180/2070/files/CLEAR-BOTTLE.png?v=1744067645');
     background: 
-      url(var(--date-layer)),
-      url(var(--name-layer)),
-      url(var(--digital-layer)),
-      url(var(--base-layer));
+      var(--date-layer),
+      var(--name-layer),
+      var(--digital-layer),
+      var(--base-layer);
     background-size: auto 100%;
     aspect-ratio: 2/4;
     max-height: 425px;
