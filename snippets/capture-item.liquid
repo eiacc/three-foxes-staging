@@ -1,7 +1,7 @@
 {% assign items = all_products[product].variants %}
-{% comment %} {% assign test_img = items[3].metafields.custom['product_customizer']['value']['name_foil'] %} {% endcomment %}
+{% comment %}
 {% assign v = items[3].metafields.custom['product_customizer'] %}
-
+ 
 title: {{ v.value['title'] }}
 <br>
 option: {{ v.value['option'] }}
@@ -20,6 +20,7 @@ size values: {{ v.value['name_foil'].value | first }}
 <br>
 size values: {{ v.value['name_foil'].value | first | json }}
 <br>
+{% endcomment %}
 
 {%- liquid
   capture item
