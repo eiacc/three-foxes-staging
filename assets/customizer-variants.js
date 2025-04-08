@@ -200,7 +200,7 @@ class ArtworkTemplate extends HTMLElement {
     const el    = e.target
     const type  = el.getAttribute('data-product-type')
 
-    const selector = `.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
+    const selector = `.jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-templates__tab-selection--active`;
     const activeLabel = document.querySelector(selector)
 
     // console.log('el web component', element)
