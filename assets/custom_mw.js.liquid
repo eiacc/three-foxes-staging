@@ -639,13 +639,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   function handleNameChange(e, idx) {
     window.premiumImageMap.get('name')[idx]
-    window.premiumImageMap.set('name_index')
+    window.premiumImageMap.set('name_index', idx)
     customizerInstance.variant_change({name: window.premiumImageMap.get('name')[idx]})
   }
 
   function handleDateChange(e, idx) {
     window.premiumImageMap.get('date')[idx]
-    window.premiumImageMap.set('date_index')
+    window.premiumImageMap.set('date_index', idx)
     customizerInstance.variant_change({date: window.premiumImageMap.get('date')[idx]})
   }
 
