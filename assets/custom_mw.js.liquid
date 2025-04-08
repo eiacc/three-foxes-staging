@@ -268,6 +268,8 @@ class Customizer {
     this.map = window.premiumImageMap
 
     this.mockup;
+    this.display_wrapper;
+
     this.image = {
       date: {
         default: this.map.get('date')[0],
@@ -280,6 +282,11 @@ class Customizer {
       digital: ''
     }
 
+    this.artwork = {
+      image: '',
+      description: ''
+    }
+
     this.init();
 
     this.change = this.change.bind(this)
@@ -287,7 +294,8 @@ class Customizer {
   }
 
   init() {
-    this.mockup = document.querySelector('#mockupBox .imgcontainer')
+    this.display_wrapper = document.querySelector('.jtzuya-templates__tab-template-view')
+    this.mockup          = document.querySelector('#mockupBox .imgcontainer')
     if (!this.mockup) return
     this.apply() // initiate apply
   }
@@ -301,8 +309,23 @@ class Customizer {
     console.log('area', area)
     console.log('type', type)
 
-    const activeTab   = area.querySelector(`.jtzuya-templates__tab--right .jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`)
-    console.log('active tab', activeTab)
+    const activeTab          = area.querySelector(`.jtzuya-templates__tab--right .jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`)
+    this.artwork.image       = activeTab.getAttribute('data-img')
+    this.artwork.description = activeTab.getAttribute('data-option')
+    this.display()
+
+    if (type === 'premium') {
+      this.image.date.default = activeTab.getAttribute('data-personalize-date-foils')
+      this.image.date.list    = activeTab.getAttribute('data-personalize-default-date-foil').split(',')
+      this.image.name.default = activeTab.getAttribute('data-personalize-name-foils')
+      this.image.name.list    = activeTab.getAttribute('data-personalize-default-name-foil').split(',')
+
+      this.apply(type)
+      return
+    }
+
+    this.image.digital = activeTab.getAttribute('data-dimage')
+    this.apply(type)
     // this.click(e)
   }
 
@@ -324,6 +347,11 @@ class Customizer {
 
     this.image.digital = target.getAttribute('data-dimage')
     this.apply(type)
+  }
+
+  display() {
+    this.display_wrapper.firstElementChild.textContent = this.artwork.description
+    this.display_wrapper.lastElementChild.setAttribute('src', this.artwork.image)
   }
 
   apply(type = 'premium') {
