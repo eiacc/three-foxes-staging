@@ -627,14 +627,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
   function handleNameChange(e, idx) {
     window.premiumImageMap.get('name')[idx]
     console.log('image at indx ', idx, ' ', window.premiumImageMap.get('name')[idx])
-    Customizer.variant_change({name: window.premiumImageMap.get('name')[idx]})
+    customizerInstance.variant_change({name: window.premiumImageMap.get('name')[idx]})
   }
 
   function handleDateChange(e, idx) {
     window.premiumImageMap.get('date')[idx]
     console.log('image at indx ', idx, ' ', window.premiumImageMap.get('date')[idx])
 
-    Customizer.variant_change({date: window.premiumImageMap.get('date')[idx]})
+    customizerInstance.variant_change({date: window.premiumImageMap.get('date')[idx]})
   }
 
   document.addEventListener('click', function(evt) {
