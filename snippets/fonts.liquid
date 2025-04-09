@@ -5,29 +5,29 @@
   assign head   = ''
   assign sub    = ''
   assign para   = ''
+
+  if settings.heading_font_override != 'disable'
+    assign font_name    = settings.heading_font_override
+    assign head         = font_name
+    render 'initialize-custom-fonts', font_name: head
+  endif
+
+  if settings.subheading_font_override != 'disable'
+    assign font_name    = settings.subheading_font_override
+    assign sub          = font_name
+    if sub != head and sub != para
+      render 'initialize-custom-fonts', font_name: sub
+    endif
+  endif
+
+  if settings.paragraph_font_override != 'disable'
+    assign font_name    = settings.paragraph_font_override
+    assign para         = font_name
+    if para != head and para != sub
+      render 'initialize-custom-fonts', font_name: para
+    endif
+  endif
 -%}
-
-{% if settings.heading_font_override != 'disable' %}
-  {% assign font_name    = settings.heading_font_override %}
-  {% assign head         = font_name %}
-  {% render 'initialize-custom-fonts', font_name: head %}
-{% endif %}
-
-{% if settings.subheading_font_override != 'disable' %}
-  {% assign font_name    = settings.subheading_font_override %}
-  {% assign sub          = font_name %}
-  {% if sub != head and sub != para %}
-    {% render 'initialize-custom-fonts', font_name: sub %}
-  {% endif %}
-{% endif %}
-
-{% if settings.paragraph_font_override != 'disable' %}
-  {% assign font_name    = settings.paragraph_font_override %}
-  {% assign para         = font_name %}
-    {% if para != head and para != sub %}
-      {% render 'initialize-custom-fonts', font_name: para %}
-    {% endif %}
-{% endif %}
 
 {% style %}
   {%- liquid
