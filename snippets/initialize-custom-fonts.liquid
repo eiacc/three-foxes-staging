@@ -36,14 +36,15 @@
 
   if font_exists == true
     capture render_font
-      assign font_src     = font_list[font_index] | split: ':' | last
-      assign font_format  = 'format("woff2")'
-      assign font_url     = 'url("'  | append: font_src | append: '") '
-      assign src          = font_url | append: font_format
+      assign new_font_name  = font_list[font_index] | split: ':' | first
+      assign font_src       = font_list[font_index] | split: ':' | last
+      assign font_format    = 'format("woff2")'
+      assign font_url       = 'url("'  | append: font_src | append: '") '
+      assign src            = font_url | append: font_format
 
       echo '@font-face {'
-        echo 'font-family'  | append: ':' | append: font      | append: ';'
-        echo 'src'          | append: ':' | append: src       | append: ';'
+        echo 'font-family'  | append: ':' | append: new_font_name   | append: ';'
+        echo 'src'          | append: ':' | append: src             | append: ';'
         echo swap
       echo '}'
     endcapture
