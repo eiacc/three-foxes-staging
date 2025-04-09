@@ -21,15 +21,21 @@
   endcapture
 
   echo fonts
-  echo '<hr>'
+  echo '<br>'
 
   assign swap        = 'font-display: swap;'
   assign font_exists = false
   assign font_list   = fonts | split: ','
   assign font_index  = 0
 
+  echo 'font name ' | append: font_name
+  echo '<br>'
+
   for font in font_list
     assign temp_font_name = font | split: ':' | first
+    echo 'temp_font_name ' | append: temp_font_name
+    echo '<br>'
+
     if temp_font_name == font_name
       echo 'yes'
       assign font_index   = forloop.index0
@@ -38,6 +44,7 @@
   endfor
 
   echo font_list[font_index] | split: ':' | last
+  echo '<hr>'
 
   if font_exists == true
     capture render_font
