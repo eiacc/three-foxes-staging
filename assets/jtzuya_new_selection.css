@@ -256,4 +256,5 @@ input[name="label_application"] ~ label {
 .ctm_tab_label.ctm_tab_label--disable {
   opacity: 0.5;
   text-decoration: line-through;
+  pointer-events: none;
 }
