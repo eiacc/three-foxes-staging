@@ -293,13 +293,14 @@ class Customizer {
     console.log('type', type)
 
     const activeTab          = area.querySelector(`.jtzuya-templates__tab--right .jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`)
+
     this.artwork.image       = activeTab.getAttribute('data-img')
     this.artwork.description = activeTab.getAttribute('data-option')
     this.display()
 
     if (type === 'premium') {
-      const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
-      const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
+      const date_foils = activeTab.getAttribute('data-personalize-date-foils').split(',')
+      const name_foils = activeTab.getAttribute('data-personalize-name-foils').split(',')
 
       // this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
       this.image.date.list    = date_foils

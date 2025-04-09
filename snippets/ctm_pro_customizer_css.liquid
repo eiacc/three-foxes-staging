@@ -111,19 +111,19 @@
     column-gap: 5px;
   }
   #shopify-section-{{ section.id }} .ctm_tabCounter {
-    border-radius: 50%;
+    border: 1px solid var(--ctmGray);
+    border-radius: 100%;
     background-color: transparent;
     color: var(--ctmGray);
-    padding: 4px;
-    font-size: 13px;
+    font-size: 8px;
     max-width: fit-content;
-    display: flex;
-    max-width: 17px;
-    max-height: 17px;
-    min-width: 15px;
-    min-height: 15px;
-    justify-content: center;
-    align-items: center;
+    aspect-ratio: 1;
+    width: 16px;
+    height: 16px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 0 0 0 1px;
     border: 1px solid var(--ctmGray);
   }
   #shopify-section-{{ section.id }} .ctm_tab_active .ctm_tabCounter {
