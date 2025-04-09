@@ -7,14 +7,9 @@
     Code by http://github.com/eiacc
   endcomment
 
-  if font == 'dahlia_medium'
-    echo 'Dahlia Medium'
-  elsif font == 'dahlia_bold'
-    echo 'Dahlia Bold'
-  elsif font == 'trade_gothic'
-    echo 'Trade Gothic'
-  elsif font == 'trade_gothic_bold'
-    echo 'Trade Gothic Bold'
+  assign font_name = font | split: '_' | join: ' ' | capitalize
+  if font 
+    echo font_name
   else
     echo 'sans-serif'
   endif
