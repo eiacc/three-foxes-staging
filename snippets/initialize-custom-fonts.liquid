@@ -31,6 +31,8 @@ endcapture
   endfor
 
   if font_exists == true
+    echo font_list[font_index] | split: ':' | last
+
     capture render_font
       assign font_src     = font_list[font_index] | split: ':' | last
       assign font_format  = 'format("woff2")'
