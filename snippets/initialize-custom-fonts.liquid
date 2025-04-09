@@ -23,7 +23,8 @@ endcapture
   assign font_index  = 0
 
   for font in font_list
-    if font contains font_name
+    assign temp_font_name = font | split: ':' | first
+    if temp_font_name == font_name
       assign font_index   = forloop.index0
       assign font_exists  = true
     endif
