@@ -104,6 +104,10 @@
             "value": "trade_gothic_bold"
           },
           {
+            "label": "Passion One Bold",
+            "value": "passion_one_bold"
+          },
+          {
             "label": "Disable Font",
             "value": "disable"
           }
