@@ -18,7 +18,7 @@
     "color--button": "#ffffff",
     "bg-color--button": "#212121",
     "typography--heading": "americana_n4",
-    "heading_font_override": "passion_one_bold",
+    "heading_font_override": "dahlia_medium",
     "typography--heading--line_height": 1,
     "typography--heading--spacing": 2,
     "typography--heading--uppercase": false,
