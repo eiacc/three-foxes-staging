@@ -7,20 +7,17 @@
   assign font_src_2 = 'TradeGothicLTStd-BoldExt.woff2'  | asset_url
   assign font_src_3 = 'Dahlia-BoldCondensed.woff2'      | asset_url
   assign font_src_4 = 'Dahlia-Medium.woff2'             | asset_url
-  assign font_src_5 = 'Misto.woff2' | asset_url
 
   assign font_1 =  'Trade Gothic'         | append: ':' | append: font_src_1
   assign font_2 =  'Trade Gothic Bold'    | append: ':' | append: font_src_2
   assign font_3 =  'Dahlia Bold'          | append: ':' | append: font_src_3
   assign font_4 =  'Dahlia Medium'        | append: ':' | append: font_src_4
-     assign font_5 =  'Misto'        | append: ':' | append: font_src_5
 
   capture fonts
     echo font_1 | append: ','
     echo font_2 | append: ','
     echo font_3 | append: ','
-    echo font_4 | append: ','
-    echo font_5
+    echo font_4
   endcapture
 
   assign swap        = 'font-display: swap;'
