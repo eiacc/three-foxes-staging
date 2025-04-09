@@ -1,31 +1,78 @@
-{% style %}
+{% comment %}
   @font-face {
     font-family: "Dahlia Medium";
     src: url({{ "Dahlia-Medium.woff2" | asset_url }}) format("woff2");
-    /* font-weight: bold; */
     font-display: swap;
   }
 
   @font-face {
     font-family: "Dahlia Bold";
     src: url({{ "Dahlia-BoldCondensed.woff2" | asset_url }}) format("woff2");
-    /* font-weight: bold; */
     font-display: swap;
   }
 
   @font-face {
     font-family: 'Trade Gothic Bold';
     src: url({{ 'TradeGothicLTStd-BoldExt.woff2' | asset_url }}) format('woff2');
-    /* font-weight: bold; */
-    font-style: normal;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'Trade Gothic';
     src: url({{  'TradeGothicLTStd-Extended.woff2' | asset_url }}) format('woff2');
-    /* font-weight: normal; */
-    font-style: normal;
     font-display: swap;
   }
-{% endstyle %}
+
+  USAGE: {% render 'initialize-custom-fonts', font_name: 'Font Name' %}
+{% endcomment %}
+
+{%- liquid
+assign font_1 =  'Trade Gothic'         | append: ':' | append: 'TradeGothicLTStd-Extended.woff2' | asset_url
+assign font_2 =  'Trade Gothic Bold'    | append: ':' | append: 'TradeGothicLTStd-BoldExt.woff2'  | asset_url
+assign font_3 =  'Dahlia Bold'          | append: ':' | append: 'Dahlia-BoldCondensed.woff2'      | asset_url
+assign font_4 =  'Dahlia Medium'        | append: ':' | append: 'Dahlia-Medium.woff2'             | asset_url
+
+capture fonts
+  echo font_1 | append: ','
+  echo font_2 | append: ','
+  echo font_3 | append: ','
+  echo font_4
+endcapture
+-%}
+
+{% liquid
+  assign swap        = 'font-display: swap;'
+  assign font_exists = false
+  assign font_list   = fonts | split: ','
+  assign font_index
+
+  for font in font_list
+    if font contains font_name
+      assign font_index   = forloop.index0
+      assign font_exists  = true
+    endif
+  endfor
+
+  if font_exists
+    capture render_font
+      assign font_src     = font_list[font_index] | split: ':' | last
+      assign font_format  = 'format("woff2")'
+      assign font_url     = 'url("'  | append: font_src | append: '") '
+      assign src          = font_url | append: font_format
+
+      echo '@font-face {'
+        echo 'font-family'  | append: ':' | append: font      | append: ';'
+        echo 'src'          | append: ':' | append: src       | append: ';'
+        echo swap
+      echo '}'
+    endcapture
+  endif
+
+  echo render_font
+%}
+
+{% if font %}
+  {%- style -%}
+    {{ render_font -}}
+  {%- endstyle -%}
+{% endif %}

@@ -34,14 +34,14 @@ async function updateCart(items) {
 async function disableOrShowButton(totalPrice) {
   let disableButton = document.getElementById("disablebutton");
   let cartButton = document.getElementById("total-price");
-  console.log("Showbutton - TotalPrice: "+totalPrice);
-  console.log("Showbutton - AllCounts: "+allCounts);
+  // console.log("Showbutton - TotalPrice: "+totalPrice);
+  // console.log("Showbutton - AllCounts: "+allCounts);
   if (totalPrice == 0) {
-    console.log("disShow: allcounts = "+allCounts)
+    // console.log("disShow: allcounts = "+allCounts)
       disableButton.style.display = "block";
       cartButton.style.display = "none";
   } else {
-    console.log("normShow: allcounts = "+allCounts)
+    // console.log("normShow: allcounts = "+allCounts)
       disableButton.style.display = "none";
       cartButton.style.display = "block";
   };
@@ -184,7 +184,7 @@ function manualDataRetrieval() {
   }
   
   const el = document.querySelector(selector);
-  console.log('el', el)
+  // console.log('el', el)
   const type = override.label
   if (!el) return null
 
@@ -263,7 +263,7 @@ class Customizer {
       digital: ''
     }
 
-    console.log('default', this.image)
+    // console.log('default', this.image)
 
     this.artwork = {
       image: '',
@@ -319,8 +319,8 @@ class Customizer {
   click(e)  {
     const target = e.target
     const type   = target.getAttribute('data-product-type')
-    console.log('e click', e.target)
-    console.log('e click', type)
+    // console.log('e click', e.target)
+    // console.log('e click', type)
 
     if (type === 'premium') {
       const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
@@ -348,13 +348,13 @@ class Customizer {
     if (type === 'name') {
       const img = this.image.name.list[idx]
       this.mockup.style.setProperty('--name-layer', `url('${img}')`)
-      console.log('img url', img)
+      // console.log('img url', img)
     }
 
     if (type === 'date') {
       const img = this.image.date.list[idx]
       this.mockup.style.setProperty('--date-layer', `url('${img}')`)
-      console.log('img url', img)
+      // console.log('img url', img)
     }
   }
 
@@ -364,7 +364,7 @@ class Customizer {
   }
 
   apply(type = 'premium') {
-    console.log('applying', this.image)
+    // console.log('applying', this.image)
 
     if (type === 'premium') {
       this.mockup.style.setProperty('--digital-layer',  'url("")')
@@ -458,10 +458,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
               when artwork === 'digital' = override.personalise_hide = true
               when artwork === 'premium' = override.personalise_hide = false
             */
-            console.log('selector', selector.get('colors'))
-            console.log('name',     names.get('colors'))
+            // console.log('selector', selector.get('colors'))
+            // console.log('name',     names.get('colors'))
             const swatches = document.querySelectorAll(selector.get('colors'));
-            console.log('swatches', swatches)
+            // console.log('swatches', swatches)
             console.warn('================================')
 
             switch(Boolean(override.personalise_hide)) {
@@ -538,7 +538,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 override.arr_idx = ctmCollectDataArr.length - 1;
               }
             }
-            console.log('current collection array', ctmCollectDataArr);
+            // console.log('current collection array', ctmCollectDataArr);
 
             // TODO: 
             if (override.label === 'premium' && Boolean(override.personalise_hide) === true) {
@@ -1464,7 +1464,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
   
   function ctmUpdateSummary() {
-    console.log(`check ctmCollectDataArr on summary :- `, ctmCollectDataArr)
+    // console.log(`check ctmCollectDataArr on summary :- `, ctmCollectDataArr)
     const newItemArray = ctmCollectDataArr.reduce((acc, current) => {
       return acc.concat(current.items);
     }, []);
@@ -1475,7 +1475,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }, []);
     summaryResult.items = newItemArray;
     summaryResult.properties = newPropertiesArray
-    console.log("check the last step summary result as follows : ", summaryResult);
+    // console.log("check the last step summary result as follows : ", summaryResult);
 
 
     // const customiseProductData = localStorage.getItem('customiseProductData');
@@ -1714,7 +1714,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //   ctmCartSubData.items[0] = Object.assign(ctmCartSubData.items[0], { properties: JSON.stringify(cartPropertiesArray) })
     // }
     
-    console.log("check data  : ", data);
+    // console.log("check data  : ", data);
     
     const cartUrl = `${Shopify.routes.root}cart/add.js`;
 
@@ -1817,7 +1817,7 @@ function updateIsUpload(classes) {
     if (ctmClickedClosest.nextElementSibling.classList.contains('ctmStepDisabled')) {
       console.error("check ctmClickedClosest ctmStepDisabled : ", ctmClickedClosest.nextElementSibling);
       ctmCollectDataArr = ctmCollectDataArr.filter(step => step.step !== ctmClickedClosest.nextElementSibling.dataset.tab_index);
-      console.log("objectcheck stepdata : ", stepData)
+      // console.log("objectcheck stepdata : ", stepData)
     }
     // const stepData = {
     //   step: currentStep,
@@ -2054,8 +2054,8 @@ function updateIsUpload(classes) {
 
     if (ctmChooseTemplates || ctmChooseLabelFile) {
       if (ctmChooseLabelFile && ctmChooseLabelFile.value !== '' && ctmChooseTemplates) {
-        console.log("object checking what is ctmChooseLabelFile && ctmChooseLabelFile.value !== '' && ctmChooseTemplates: ", ctmChooseTemplates)
-        console.log("object checking what is ctmChooseTemplates?.dataset.is_pro_label_item: ", JSON.parse(ctmChooseTemplates?.dataset.is_pro_label_item))        
+        // console.log("object checking what is ctmChooseLabelFile && ctmChooseLabelFile.value !== '' && ctmChooseTemplates: ", ctmChooseTemplates)
+        // console.log("object checking what is ctmChooseTemplates?.dataset.is_pro_label_item: ", JSON.parse(ctmChooseTemplates?.dataset.is_pro_label_item))        
 
         let ctmLabelProperties = {
           // 'id': ctmChooseTemplates?.value,
@@ -2107,7 +2107,7 @@ function updateIsUpload(classes) {
           ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
         }
       } else if (ctmChooseLabelFile && ctmChooseLabelFile.value !== '') {
-        console.log("object checking what is ctmChooseTemplates : ", ctmChooseTemplates)
+        // console.log("object checking what is ctmChooseTemplates : ", ctmChooseTemplates)
         // console.log("check file step :- ", ctmChooseLabelFile);
         let tempFileUrl = ctmChooseLabelFile.value.split('/');
         let fileName = ctmClickedClosest.querySelector('.ctm__contentInnderTabsContent:not(.d-none) .cl-upload--wrapper fieldset.filepond--file-wrapper legend').innerHTML;
@@ -2128,7 +2128,7 @@ function updateIsUpload(classes) {
           ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
         }
       } else if (ctmGiftFreeLabel && ctmChooseTemplates) {
-        console.log("object checking what is ctmGiftFreeLabel && ctmChooseTemplates : ",ctmGiftFreeLabel, ctmChooseTemplates)
+        // console.log("object checking what is ctmGiftFreeLabel && ctmChooseTemplates : ",ctmGiftFreeLabel, ctmChooseTemplates)
         // console.log("check file step :- ", ctmChooseLabelFile);
         let ctmLabelProperties = {
           // 'Label': ctmGiftFreeLabel.value,
@@ -2181,7 +2181,7 @@ function updateIsUpload(classes) {
         }
         ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
       } else if (ctmChooseTemplates) {
-        console.log("first ctmChooseTemplates checking : ", ctmChooseTemplates)
+        // console.log("first ctmChooseTemplates checking : ", ctmChooseTemplates)
         let ctmLabelProperties = {
           'title': ctmChooseTemplates?.dataset.ctmprotitle ? ctmChooseTemplates?.dataset.ctmprotitle : ctmChooseTemplates?.dataset.type,
           // 'id': ctmChooseTemplates?.value,
@@ -2207,10 +2207,10 @@ function updateIsUpload(classes) {
               // 'Gift set label': ctmGiftFileInput.value,
               'Custom Label Image': fileName,
             }
-            console.log("first ctmGiftFileInput check : ", ctmGiftFileInput)
+            // console.log("first ctmGiftFileInput check : ", ctmGiftFileInput)
             stepData.properties.push(ctmLabelProperties)
           }
-          console.log("checking stepData : ", stepData)
+          // console.log("checking stepData : ", stepData)
         }
 
         if (existingStepIndexProperties !== -1) {
@@ -2242,7 +2242,7 @@ function updateIsUpload(classes) {
     // Step2 data collecton is ends from here
 
     // Step3 data collecton is begins from here
-    console.log("check parent contains hidden or not :- ", ctmClickedClosest)
+    // console.log("check parent contains hidden or not :- ", ctmClickedClosest)
     // console.log("check parent contains hidden or not :- ", ctmClickedClosest.classList.contains('ctm__personalise_content_area'))
     if (ctmClickedClosest.classList.contains('ctm__personalise_content_area')) {
       // let ctmPersonaliseNonRadio = document.querySelectorAll('.ctm__tab_content_area.ctm__personalise_content_area:not(.d-none) input:not([type="radio"])');
@@ -2267,7 +2267,7 @@ function updateIsUpload(classes) {
     // let ctmExtrasData =  document.querySelectorAll('.ctm__tab_content_area.ctm__extras_content_area:not(.d-none) input[type="radio"]:checked');
     if (ctmClickedClosest.classList.contains('ctm__extras_content_area')) {
       let ctmExtrasData =  ctmClickedClosest.querySelectorAll('input[type="radio"]:checked');
-      console.log("object extras step :- ", ctmClickedClosest)
+      // console.log("object extras step :- ", ctmClickedClosest)
 
       ctmExtrasData.forEach((extras)=>{
         // console.log(extras.dataset)
