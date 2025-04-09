@@ -20,7 +20,7 @@ endcapture
   assign swap        = 'font-display: swap;'
   assign font_exists = false
   assign font_list   = fonts | split: ','
-  assign font_index
+  assign font_index  = 0
 
   for font in font_list
     if font contains font_name
