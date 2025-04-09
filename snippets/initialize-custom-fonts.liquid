@@ -1,28 +1,4 @@
 {% comment %}
-  @font-face {
-    font-family: "Dahlia Medium";
-    src: url({{ "Dahlia-Medium.woff2" | asset_url }}) format("woff2");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Dahlia Bold";
-    src: url({{ "Dahlia-BoldCondensed.woff2" | asset_url }}) format("woff2");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Trade Gothic Bold';
-    src: url({{ 'TradeGothicLTStd-BoldExt.woff2' | asset_url }}) format('woff2');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Trade Gothic';
-    src: url({{  'TradeGothicLTStd-Extended.woff2' | asset_url }}) format('woff2');
-    font-display: swap;
-  }
-
   USAGE: {% render 'initialize-custom-fonts', font_name: 'Font Name' %}
 {% endcomment %}
 
@@ -53,7 +29,7 @@ endcapture
     endif
   endfor
 
-  if font_exists
+  if font_exists == true
     capture render_font
       assign font_src     = font_list[font_index] | split: ':' | last
       assign font_format  = 'format("woff2")'
@@ -71,8 +47,8 @@ endcapture
   echo render_font
 %}
 
-{% if font %}
+{%- if font_exists == true -%}
   {%- style -%}
     {{ render_font -}}
   {%- endstyle -%}
-{% endif %}
+{%- endif -%}
