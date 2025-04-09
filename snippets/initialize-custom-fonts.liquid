@@ -3,10 +3,15 @@
 {% endcomment %}
 
 {%- liquid
-  assign font_1 =  'Trade Gothic'         | append: ':' | append: 'TradeGothicLTStd-Extended.woff2' | asset_url
-  assign font_2 =  'Trade Gothic Bold'    | append: ':' | append: 'TradeGothicLTStd-BoldExt.woff2'  | asset_url
-  assign font_3 =  'Dahlia Bold'          | append: ':' | append: 'Dahlia-BoldCondensed.woff2'      | asset_url
-  assign font_4 =  'Dahlia Medium'        | append: ':' | append: 'Dahlia-Medium.woff2'             | asset_url
+  assign font_src_1 = 'TradeGothicLTStd-Extended.woff2' | asset_url
+  assign font_src_2 = 'TradeGothicLTStd-BoldExt.woff2'  | asset_url
+  assign font_src_3 = 'Dahlia-BoldCondensed.woff2'      | asset_url
+  assign font_src_4 = 'Dahlia-Medium.woff2'             | asset_url
+
+  assign font_1 =  'Trade Gothic'         | append: ':' | append: font_src_1
+  assign font_2 =  'Trade Gothic Bold'    | append: ':' | append: font_src_2
+  assign font_3 =  'Dahlia Bold'          | append: ':' | append: font_src_3
+  assign font_4 =  'Dahlia Medium'        | append: ':' | append: font_src_4
 
   capture fonts
     echo font_1 | append: ','
@@ -14,11 +19,10 @@
     echo font_3 | append: ','
     echo font_4
   endcapture
--%}
 
-{{ fonts }}
+  echo fonts
+  echo '<hr>'
 
-{% liquid
   assign swap        = 'font-display: swap;'
   assign font_exists = false
   assign font_list   = fonts | split: ','
@@ -51,4 +55,4 @@
 
     echo '<style data-test>' | append: render_font | append: '</style>'
   endif
-%}
+-%}
