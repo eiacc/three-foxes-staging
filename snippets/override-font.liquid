@@ -7,8 +7,18 @@
     Code by http://github.com/eiacc
   endcomment
 
-  assign font_name = font | split: '_' | join: ' ' | capitalize
-  if font 
+  assign word_list = font | split: '_'
+
+  capture font_name
+    for word in word_list
+      echo word | capitalize
+      unless forloop.last
+        echo ' '
+      endunless
+    endfor
+  endcapture
+  
+  if font_name != '' 
     echo font_name
   else
     echo 'sans-serif'
