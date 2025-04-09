@@ -42,13 +42,7 @@ endcapture
         echo swap
       echo '}'
     endcapture
+
+    echo '<style>' | append: render_font | append: '</style>'
   endif
-
-  echo render_font
 %}
-
-{%- if font_exists == true -%}
-  {%- style -%}
-    {{ render_font -}}
-  {%- endstyle -%}
-{%- endif -%}
