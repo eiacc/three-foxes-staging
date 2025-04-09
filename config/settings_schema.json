@@ -104,6 +104,10 @@
             "value": "trade_gothic_bold"
           },
           {
+            "label": "Misto",
+            "value": "misto"
+          },
+          {
             "label": "Disable Font",
             "value": "disable"
           }
