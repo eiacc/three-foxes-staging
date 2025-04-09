@@ -3,18 +3,20 @@
 {% endcomment %}
 
 {%- liquid
-assign font_1 =  'Trade Gothic'         | append: ':' | append: 'TradeGothicLTStd-Extended.woff2' | asset_url
-assign font_2 =  'Trade Gothic Bold'    | append: ':' | append: 'TradeGothicLTStd-BoldExt.woff2'  | asset_url
-assign font_3 =  'Dahlia Bold'          | append: ':' | append: 'Dahlia-BoldCondensed.woff2'      | asset_url
-assign font_4 =  'Dahlia Medium'        | append: ':' | append: 'Dahlia-Medium.woff2'             | asset_url
+  assign font_1 =  'Trade Gothic'         | append: ':' | append: 'TradeGothicLTStd-Extended.woff2' | asset_url
+  assign font_2 =  'Trade Gothic Bold'    | append: ':' | append: 'TradeGothicLTStd-BoldExt.woff2'  | asset_url
+  assign font_3 =  'Dahlia Bold'          | append: ':' | append: 'Dahlia-BoldCondensed.woff2'      | asset_url
+  assign font_4 =  'Dahlia Medium'        | append: ':' | append: 'Dahlia-Medium.woff2'             | asset_url
 
-capture fonts
-  echo font_1 | append: ','
-  echo font_2 | append: ','
-  echo font_3 | append: ','
-  echo font_4
-endcapture
+  capture fonts
+    echo font_1 | append: ','
+    echo font_2 | append: ','
+    echo font_3 | append: ','
+    echo font_4
+  endcapture
 -%}
+
+{{ fonts }}
 
 {% liquid
   assign swap        = 'font-display: swap;'
