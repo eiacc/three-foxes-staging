@@ -25,6 +25,7 @@ endcapture
   for font in font_list
     assign temp_font_name = font | split: ':' | first
     if temp_font_name == font_name
+      echo 'yes'
       assign font_index   = forloop.index0
       assign font_exists  = true
     endif
