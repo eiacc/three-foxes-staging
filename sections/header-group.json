@@ -299,7 +299,7 @@
         "image_kByKd3": {
           "type": "image",
           "settings": {
-            "menu-item": "BOTTLESHOP",
+            "menu-item": "BOTTLE SHOP",
             "image": "shopify://shop_images/ESPRESSO_56c179d0-a8d7-4830-af85-c59d942f2f69.jpg",
             "image-display-type": "aspect-ratio",
             "aspect-ratio": 60,
