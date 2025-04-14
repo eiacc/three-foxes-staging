@@ -243,20 +243,8 @@
         "info": "When enabled, this feature will force to switch font family (SubHeading)",
         "options": [
           {
-            "label": "Dahlia Medium",
-            "value": "dahlia_medium"
-          },
-          {
-            "label": "Dahlia Bold",
-            "value": "dahlia_bold"
-          },
-          {
-            "label": "Trade Gothic",
-            "value": "trade_gothic"
-          },
-          {
-            "label": "Trade Gothic Bold",
-            "value": "trade_gothic_bold"
+            "label": "Riamo Sans Reg",
+            "value": "riamo_sans_reg"
           },
           {
             "label": "Disable Font",
@@ -347,20 +335,8 @@
         "info": "When enabled, this feature will force to switch font family (Paragraph)",
         "options": [
           {
-            "label": "Dahlia Medium",
-            "value": "dahlia_medium"
-          },
-          {
-            "label": "Dahlia Bold",
-            "value": "dahlia_bold"
-          },
-          {
-            "label": "Trade Gothic",
-            "value": "trade_gothic"
-          },
-          {
-            "label": "Trade Gothic Bold",
-            "value": "trade_gothic_bold"
+            "label": "Riamo Sans Reg",
+            "value": "riamo_sans_reg"
           },
           {
             "label": "Disable Font",
