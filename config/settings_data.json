@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "color--accent-1": "#ae3b3b",
+    "color--accent-1": "#87231c",
     "color--accent-2": "#f7f2ee",
     "bg-color--light": "#f8f9fa",
     "bg-color--dark": "#000000",
@@ -37,7 +37,7 @@
     "typography--sub-nav--size": 12,
     "typography--sub-nav--uppercase": true,
     "typography--paragraph": "avenir_next_n3",
-    "paragraph_font_override": "trade_gothic_ext",
+    "paragraph_font_override": "disable",
     "typography--paragraph--size": 18,
     "typography--featured-paragraph--size": 18,
     "typography--featured_paragraph_line_height": 1.6,

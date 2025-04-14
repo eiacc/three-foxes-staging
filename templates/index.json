@@ -93,12 +93,13 @@
     },
     "featured_text_j7W7QW": {
       "type": "featured-text",
+      "custom_css": [],
       "settings": {
         "top-border": false,
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "white-text": true,
+        "white-text": false,
         "heading-type": "section-heading",
         "chooseSubHeadingtype": "SubHeading2",
         "chooseHeadingtype": "heading2",
@@ -181,6 +182,7 @@
         "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-2",
         "template--14865991630929__2c7b2c75-a053-465f-9304-0c8a440bc6b4-1686696817f31cd7d8-3"
       ],
+      "custom_css": [],
       "settings": {
         "top-border": false,
         "spacing-above": true,
@@ -198,12 +200,13 @@
     },
     "featured-blog": {
       "type": "featured-blog",
+      "custom_css": [],
       "settings": {
         "top-border": false,
         "spacing-above": true,
         "spacing-below": true,
-        "background-color": "accent-2",
-        "white-text": false,
+        "background-color": "accent-1",
+        "white-text": true,
         "container-width": "4",
         "tag-select": "pinned",
         "show-cta": true,
