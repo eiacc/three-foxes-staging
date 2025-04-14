@@ -84,33 +84,14 @@
         "type": "select",
         "id": "heading_font_override",
         "label": "Override Heading font",
-        "default": "disable",
+        "default": "riamo_sans_reg",
         "info": "When enabled, this feature will force to switch font family (Heading)",
         "options": [
           {
-            "label": "Dahlia Medium",
-            "value": "dahlia_medium"
+            "label": "Riamo Sans Reg",
+            "value": "riamo_sans_reg"
           },
-          {
-            "label": "Dahlia Bold",
-            "value": "dahlia_bold"
-          },
-          {
-            "label": "Trade Gothic",
-            "value": "trade_gothic"
-          },
-          {
-            "label": "Trade Gothic Bold",
-            "value": "trade_gothic_bold"
-          },
-          {
-            "label": "Passion One Bold",
-            "value": "passion_one_bold"
-          },
-          {
-            "label": "Disable Font",
-            "value": "disable"
-          }
+          
         ]
       },
       {
