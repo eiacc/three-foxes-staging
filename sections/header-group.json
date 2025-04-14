@@ -296,6 +296,19 @@
             "mobile-aspect-ratio": 134
           }
         },
+        "image_kByKd3": {
+          "type": "image",
+          "settings": {
+            "menu-item": "BOTTLESHOP",
+            "image": "shopify://shop_images/ESPRESSO_56c179d0-a8d7-4830-af85-c59d942f2f69.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 60,
+            "description": "COCKTAILS",
+            "link-url": "",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
         "image_NUBeEQ": {
           "type": "image",
           "settings": {
@@ -335,6 +348,7 @@
         "image_87BwmD",
         "image_CekmQV",
         "image_7edhqw",
+        "image_kByKd3",
         "image_NUBeEQ",
         "image_KpaGfJ"
       ],
