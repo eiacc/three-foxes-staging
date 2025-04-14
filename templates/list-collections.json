@@ -11,10 +11,52 @@
   "sections": {
     "main": {
       "type": "list-collections",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "view": "collection-thumbnails",
+        "spacing-above": true,
+        "spacing-below": true,
+        "collection-list": [
+          "aperitivo",
+          "foxtails-co",
+          "spirits"
+        ],
+        "heading": "Collections",
+        "container-width": "4",
+        "width": 3,
+        "white-text": true,
+        "text-style": "none",
+        "heading-type": "overline",
+        "image-type": "collection",
+        "overlay-style": "darken-bottom",
+        "spacing": true,
+        "mobile-width": "2",
+        "mobile-overlay": false
+      }
+    },
+    "featured_collections_4PdeXV": {
+      "type": "featured-collections",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "none",
+        "white-text": false,
+        "width": 3,
+        "heading": "",
+        "heading-alignment": "center",
+        "collection-list": [
+          "aperitivo",
+          "spirits",
+          "foxtails-co"
+        ],
+        "image-type": "collection",
+        "mobile-width": "2"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "featured_collections_4PdeXV"
   ]
 }

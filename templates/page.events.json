@@ -20,9 +20,155 @@
         "spacing-above": true,
         "spacing-below": true
       }
+    },
+    "image_with_text_6amQp6": {
+      "type": "image-with-text",
+      "settings": {
+        "top-border": false,
+        "spacing-above": false,
+        "spacing-below": false,
+        "background-color": "none",
+        "container-width": "6",
+        "white-text": true,
+        "overlap": false,
+        "heading-type": "section-heading",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "text-position": "overlay",
+        "text-horizontal-alignment": "right",
+        "text-vertical-alignment": "top",
+        "text-width": "small",
+        "text-style": "none",
+        "text-background-color": "transparent",
+        "image-display-type": "medium",
+        "aspect-ratio": 56,
+        "overlay-style": "darken-bottom",
+        "parallax-enabled": false,
+        "image": "shopify://shop_images/Three_foxes_Distillery-48-1.jpg",
+        "overline": "",
+        "title": "THREE FOXES",
+        "description": "",
+        "link-url": "",
+        "link-text": "",
+        "mobile-image": "shopify://shop_images/Three_foxes_Distillery-48-1.jpg",
+        "mobile-overlay": true,
+        "mobile-hide-description": false,
+        "mobile-image-display-type": "original",
+        "mobile-aspect-ratio": 134,
+        "mobile-text-alignment": "center"
+      }
+    },
+    "image_with_text_UwPtex": {
+      "type": "image-with-text",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": false,
+        "background-color": "accent-1",
+        "container-width": "3",
+        "white-text": true,
+        "overlap": false,
+        "heading-type": "section-heading",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "text-position": "left",
+        "text-horizontal-alignment": "center",
+        "text-vertical-alignment": "center",
+        "text-width": "medium",
+        "text-style": "none",
+        "text-background-color": "transparent",
+        "image-display-type": "medium",
+        "aspect-ratio": 56,
+        "overlay-style": "darken-bottom",
+        "parallax-enabled": false,
+        "overline": "Overline text",
+        "title": "THREE FOXES",
+        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>",
+        "link-url": "",
+        "link-text": "Optional link",
+        "mobile-overlay": true,
+        "mobile-hide-description": false,
+        "mobile-image-display-type": "original",
+        "mobile-aspect-ratio": 134,
+        "mobile-text-alignment": "center"
+      }
+    },
+    "grid_with_overlay_JJ6czH": {
+      "type": "grid-with-overlay",
+      "blocks": {
+        "image_AKPE9X": {
+          "type": "image",
+          "settings": {
+            "x-blocks": "2",
+            "y-blocks": "2",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "title": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_VjVJGM": {
+          "type": "image",
+          "settings": {
+            "x-blocks": "1",
+            "y-blocks": "1",
+            "image-display-type": "fill",
+            "aspect-ratio": 56,
+            "title": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_Qd8chW": {
+          "type": "image",
+          "settings": {
+            "x-blocks": "1",
+            "y-blocks": "1",
+            "image-display-type": "fill",
+            "aspect-ratio": 56,
+            "title": "Grid image",
+            "link-url": "",
+            "link-text": "Optional link"
+          }
+        }
+      },
+      "block_order": [
+        "image_AKPE9X",
+        "image_VjVJGM",
+        "image_Qd8chW"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "heading-white-text": false,
+        "container-width": "4",
+        "spacing": true,
+        "width": 3,
+        "white-text": true,
+        "text-style": "none",
+        "heading-type": "block-heading",
+        "chooseHeadingtype": "heading2",
+        "chooseGridTitleHeadingtype": "heading4",
+        "overlay-style": "darken",
+        "overline": "",
+        "heading": "",
+        "description": "",
+        "link-url": "",
+        "link-text": "",
+        "mobile-width": "2",
+        "mobile-overlay": true,
+        "mobile-image-display-type": "original",
+        "mobile-aspect-ratio": 134
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_with_text_6amQp6",
+    "image_with_text_UwPtex",
+    "grid_with_overlay_JJ6czH"
   ]
 }
