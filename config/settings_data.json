@@ -37,7 +37,7 @@
     "typography--sub-nav--size": 12,
     "typography--sub-nav--uppercase": true,
     "typography--paragraph": "avenir_next_n3",
-    "paragraph_font_override": "disable",
+    "paragraph_font_override": "trade_gothic_ext",
     "typography--paragraph--size": 18,
     "typography--featured-paragraph--size": 18,
     "typography--featured_paragraph_line_height": 1.6,
