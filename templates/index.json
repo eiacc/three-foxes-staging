@@ -20,7 +20,7 @@
             "text-vertical-alignment": "bottom",
             "image": "shopify://shop_images/Three_foxes_Distillery-64.jpg",
             "overline": "",
-            "title": "Aperitivo Bitter",
+            "title": "APERITIVO BITTER",
             "description": "",
             "link-url": "shopify://products/triple-bitter",
             "link-text": "SHOP NOW",
@@ -105,10 +105,10 @@
         "chooseParagraphtype": "paragraph1",
         "container-width": "1",
         "overline": "",
-        "heading": "Slow Drinking & Aperitivo Culture",
+        "heading": "SLOW DRINKING AND APERITIVO CULTURE",
         "description": "<p>It isn’t about speed or excess, but about savouring the moment.</p>",
         "link-url": "shopify://blogs/culture/choosing-flavour-over-firepower",
-        "link-text": "READ"
+        "link-text": "READ MORE..."
       }
     },
     "featured-collection-slider": {
@@ -126,7 +126,7 @@
         "products-per-row--mobile": "2",
         "collection": "meet-the-family",
         "max-products": 6,
-        "heading": "Meet the Family",
+        "heading": "MEET THE FAM",
         "chooseHeadingtype": "heading2",
         "chooseProTitleHeadingtype": "heading4"
       }
@@ -190,7 +190,7 @@
         "container-width": "4",
         "image-shape": "circle",
         "overline": "",
-        "heading": "Testimonials",
+        "heading": "OUR CUSTOMERS SAY",
         "chooseHeadingtype": "heading2",
         "chooseParagraphtype": "paragraph1",
         "mobile-width": "2"
@@ -210,7 +210,7 @@
         "show-date": true,
         "show-excerpt": true,
         "blog": "culture",
-        "blog-heading": "The Bitter Affair",
+        "blog-heading": "THE BITTER AFFAIR",
         "chooseHeadingtype": "heading2",
         "choosePostTitleHeadingtype": "heading4",
         "choosePostDateParatype": "subNav",
@@ -230,11 +230,11 @@
         "white-text": false,
         "container-width": "4",
         "theme": "grayscale",
-        "heading": "Book your next event with us!",
+        "heading": "BOOK WITH US",
         "chooseHeadingtype": "heading2",
         "chooseParagraphtype": "paragraph1",
         "chooseMapLinktype": "subNav",
-        "address": "<p>14-16 Helen St<br/>Heidelberg West<br/>Victoria, Australia<br/>1300 872 306<br/><br/><a href=\"/pages/our-story\" title=\"Our story\"><strong>LEARN MORE</strong></a></p>",
+        "address": "<p>14-16 Helen St<br/>Heidelberg West<br/>Victoria, Australia<br/>1300 872 306<br/><br/><a href=\"/pages/our-story\" title=\"Our story\"><strong>LEARN MORE...</strong></a></p>",
         "hours": "",
         "image": "shopify://shop_images/Three_foxes_Distillery-15-2.jpg",
         "api-key": "",
