@@ -84,14 +84,17 @@
         "type": "select",
         "id": "heading_font_override",
         "label": "Override Heading font",
-        "default": "riamo_sans_reg",
+        "default": "disable",
         "info": "When enabled, this feature will force to switch font family (Heading)",
         "options": [
           {
             "label": "Riamo Sans Reg",
             "value": "riamo_sans_reg"
           },
-          
+          {
+            "label": "Disable Font",
+            "value": "disable"
+          }
         ]
       },
       {
