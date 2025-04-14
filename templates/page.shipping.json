@@ -50,7 +50,7 @@
         "16324397781a8be68b-0": {
           "type": "collapsible-row",
           "settings": {
-            "heading": "Shipping & Delivery Times",
+            "heading": "SHIPPING AND DELIVERY TIMES",
             "description": "<p>For now, we’re keeping it local, Australia only. But one day, we’ll make it to the far corners of the globe (watch out, Iceland). We aim to get standard orders out the door within 2 business days, while custom goodies take at least 4 weeks, greatness takes time, after all. Most metro folks can expect their box of joy within 2–5 business days post-shipping, but if there’s a random delay (cheers, Covid), don’t come at us with pitchforks, we’ll do our best to keep things moving!<br/><br/></p>",
             "page-content": "",
             "default-open": false
@@ -68,7 +68,7 @@
         "16324397781a8be68b-2": {
           "type": "collapsible-row",
           "settings": {
-            "heading": "Delivery Returns or Non-Collection",
+            "heading": "DELIVERY RETURNS AND NON COLLECTIONS",
             "description": "<p>If your delivery can’t land, say, you gave us the wrong address or the person answering the door isn’t fit for boozy duty, your order will boomerang back to us. We <em>might</em> give it another shot if we can tee up a proper plan, but we’re not playing courier tag all week. Help us help you: double-check your details and make sure someone suitable is ready to receive the goods!<br/></p>",
             "page-content": "",
             "default-open": false
