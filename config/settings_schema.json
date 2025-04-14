@@ -92,6 +92,10 @@
             "value": "riamo_sans_reg"
           },
           {
+            "label": "Trade Gothic Ext",
+            "value": "trade_gothic_ext"
+          },
+          {
             "label": "Disable Font",
             "value": "disable"
           }
