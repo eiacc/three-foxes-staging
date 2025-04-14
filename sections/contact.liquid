@@ -109,7 +109,18 @@
               required
             />
           </div>
-
+  
+          'SK CODE'
+          <label for="ContactFormReason">Reason for Contact</label>
+  <select id="ContactFormReason" name="contact[reason]">
+    <option value="General Inquiry">General Inquiry</option>
+    <option value="Event Booking">Event Booking</option>
+    <option value="Wholesale Enquiry">Wholesale Enquiry</option>
+    <option value="Something Else">Something Else</option>
+  </select>
+          'SK CODE END'
+          
+          
           <label for="{{ form_id }}-contact-textarea" data-item="hidden-text">
             {{- contact_message_t -}}
           </label>
