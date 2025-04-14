@@ -27,7 +27,7 @@
         "container-width": "1",
         "overline": "",
         "heading": "Returns & Refunds",
-        "description": "<p>We want you to be satisfied with your Three Foxes but if you aren’t, here is some helpful information about returns, refunds and cancellations.</p><p>It is your responsibility to let us know if a product has not been delivered or is faulty. Please send us an email via <a href=\"mailto:hello@threefoxes.com.au\" target=\"_blank\" title=\"Email hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>. Once we are aware of the issue, we will investigate and do everything we can to ensure a replacement is delivered and received.</p>",
+        "description": "<p>We want you to love your Three Foxes goodies, but if something’s not right, don’t stress. Here’s the lowdown on returns and refunds. If your order’s gone walkabout or arrived a bit off, flick us an email at <a><strong>hello@threefoxes.com.au</strong></a>. Once we know what’s up, we’ll jump on it and make sure a fresh replacement finds its way to you, stat.</p>",
         "link-url": "/",
         "link-text": ""
       }
@@ -51,7 +51,7 @@
           "type": "collapsible-row",
           "settings": {
             "heading": "Refunds",
-            "description": "<p>If your product is faulty, damaged or wrongly described we will cheerfully refund your money. You will need to provide proof of purchase and return the product(s) to us.</p><p>Refunds won't be given for late delivery, or a delivery outside our stated delivery time.</p>",
+            "description": "<p>If your product turns up faulty, damaged, or not what we promised, we’ll happily sort you out with a refund, no dramas. Just send it back our way with proof of purchase. But heads up, we can’t offer refunds for fashionably late deliveries or anything arriving outside our stated delivery window.</p>",
             "page-content": "",
             "default-open": false
           }
@@ -60,7 +60,7 @@
           "type": "collapsible-row",
           "settings": {
             "heading": "Exchanges",
-            "description": "<p>We only exchange a product if it is damaged or faulty. You will need to provide proof of purchase and return the product(s) to us.</p>",
+            "description": "<p>We only swap things out if they’re damaged or faulty. Just show us proof of purchase and send the product back our way, and we’ll take care of the rest.</p>",
             "page-content": "",
             "default-open": false
           }
@@ -69,7 +69,7 @@
           "type": "collapsible-row",
           "settings": {
             "heading": "Returns",
-            "description": "<p>The product must be unused, in the same condition that you received it.</p><p>We recommend that you return the product via registered post and that you prepay postage. You assume any risk of loss, theft or damage to goods in transit so we also advise you to insure the parcel. We will refund the cost of delivery if Three Foxes is at fault.</p><p>To organise a return please shoot an email over to our customer service crew via <a href=\"mailto:hello@threefoxes.com.au\" target=\"_blank\" title=\"Email hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>.</p>",
+            "description": "<p>The product’s gotta come back to us unused and in the same condition you got it—no mystery dents or half-missing bottles, please. We recommend sending it via registered post (prepaid, of course) and giving it a little insurance hug, just in case the postal gremlins strike. If it turns out we’re at fault, we’ll happily cover delivery costs. To get the ball rolling, fire off an email to our friendly crew at <a><strong>hello@threefoxes.com.au</strong></a>.</p>",
             "page-content": "",
             "default-open": false
           }
@@ -78,7 +78,7 @@
           "type": "collapsible-row",
           "settings": {
             "heading": "Cancellations",
-            "description": "<p>If you wish to cancel your order, please contact us immediately on <a href=\"mailto:hello@threefoxes.com.au\"><strong>hello@threefoxes.com.au</strong></a>.  Every attempt will be made to accommodate your request, however once payment has been received, cancellation is at our discretion.</p>",
+            "description": "<p>Changed your mind? No worries, just hit us up ASAP at <a><strong>hello@threefoxes.com.au</strong></a> and we’ll do our best to hit the brakes before it goes out. For customised orders we’ll do our best to accommodate a change. But if the bottles have already been labelled, the ship’s sailed, we can’t cancel once your order’s wearing its Sunday best.</p>",
             "page-content": "",
             "default-open": false
           }
