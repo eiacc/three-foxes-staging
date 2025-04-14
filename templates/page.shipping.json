@@ -59,7 +59,7 @@
         "16324397781a8be68b-1": {
           "type": "collapsible-row",
           "settings": {
-            "heading": "Delivery & Collection",
+            "heading": "DELIVERY AND COLLECTION",
             "description": "<p>We love delivering good times, but we won't hand over the goods (or let anyone collect from the distillery) if the person on the other end isn’t quite right. That means if you’re under 18, clearly under the influence, or dodging age checks, no drinks for you.</p><p>Missing a delivery? Don’t sit in silence—drop us a line at <a><strong>hello@threefoxes.com.au</strong></a> and we’ll get on the case faster than you can say “Super mocha frappe-chinno”.<br/></p>",
             "page-content": "",
             "default-open": false
@@ -69,7 +69,7 @@
           "type": "collapsible-row",
           "settings": {
             "heading": "Delivery Returns or Non-Collection",
-            "description": "<p>In the event that delivery was not able to be completed (such as a wrong or incomplete address provided to us when placing the order or the person taking receipt of the product is deemed to be unsuitable) then your order will be returned to us.<br/><br/>We may attempt to redeliver if suitable arrangements can be made or we will refund the amount paid for the products. However, you agree that we may deduct an amount from this refund to cover the cost of an incomplete delivery.<br/><br/></p>",
+            "description": "<p>If your delivery can’t land, say, you gave us the wrong address or the person answering the door isn’t fit for boozy duty, your order will boomerang back to us. We <em>might</em> give it another shot if we can tee up a proper plan, but we’re not playing courier tag all week. Help us help you: double-check your details and make sure someone suitable is ready to receive the goods!<br/></p>",
             "page-content": "",
             "default-open": false
           }
