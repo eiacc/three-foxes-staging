@@ -295,6 +295,32 @@
             "mobile-image-display-type": "original",
             "mobile-aspect-ratio": 134
           }
+        },
+        "image_NUBeEQ": {
+          "type": "image",
+          "settings": {
+            "menu-item": "BOTTLE SHOP",
+            "image": "shopify://shop_images/Aperitivo_Table_with_Drinks_-_Floral_Tablecloth_-_MISC_-_03.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "APERITIVO",
+            "link-url": "",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_KpaGfJ": {
+          "type": "image",
+          "settings": {
+            "menu-item": "BOTTLE SHOP",
+            "image": "shopify://shop_images/EspAmaro_Cocktail_2_-_Bottle_Drink_With_Cinnamon_Biscotti_-_Red_Curtain_-_1x1_-_02.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 100,
+            "description": "AMARO",
+            "link-url": "",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
         }
       },
       "block_order": [
@@ -308,7 +334,9 @@
         "image_aNFBNW",
         "image_87BwmD",
         "image_CekmQV",
-        "image_7edhqw"
+        "image_7edhqw",
+        "image_NUBeEQ",
+        "image_KpaGfJ"
       ],
       "settings": {
         "layout": "drawer",

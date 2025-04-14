@@ -17,9 +17,9 @@
         "heading-alignment": "center",
         "show-description": true,
         "description-alignment": "with-title",
-        "white-text": true,
+        "white-text": false,
         "show-image": true,
-        "use-image-fallback": true,
+        "use-image-fallback": false,
         "image-display-type": "small",
         "aspect-ratio": 56,
         "mobile-image-display-type": "medium",
@@ -27,39 +27,6 @@
         "text-style": "none",
         "overlay-style": "darken-bottom",
         "parallax-enabled": false
-      }
-    },
-    "header-promo": {
-      "type": "image-with-text",
-      "settings": {
-        "top-border": false,
-        "spacing-above": true,
-        "spacing-below": true,
-        "background-color": "light",
-        "container-width": "5",
-        "white-text": true,
-        "overlap": false,
-        "heading-type": "featured-heading",
-        "text-position": "overlay",
-        "text-horizontal-alignment": "center",
-        "text-vertical-alignment": "center",
-        "text-width": "medium",
-        "text-style": "none",
-        "text-background-color": "transparent",
-        "image-display-type": "x-small",
-        "aspect-ratio": 56,
-        "overlay-style": "darken-bottom",
-        "parallax-enabled": false,
-        "overline": "Overline text",
-        "title": "Collection Promotion",
-        "description": "<p>A collection-wide promotion for sales, product announcements and more.</p>",
-        "link-url": "",
-        "link-text": "",
-        "mobile-overlay": true,
-        "mobile-hide-description": false,
-        "mobile-image-display-type": "original",
-        "mobile-aspect-ratio": 134,
-        "mobile-text-alignment": "center"
       }
     },
     "navigation": {
@@ -79,47 +46,15 @@
     },
     "main": {
       "type": "collection--body",
-      "blocks": {
-        "grid-promo-1": {
-          "type": "promotion",
-          "settings": {
-            "row-number": 2,
-            "column-number": 2,
-            "promo-width": 2,
-            "heading-type": "section-heading",
-            "text-horizontal-alignment": "center",
-            "text-vertical-alignment": "center",
-            "text-width": "medium",
-            "text-style": "none",
-            "text-background-color": "transparent",
-            "overlay-style": "darken-bottom",
-            "image-display-type": "medium",
-            "aspect-ratio": 56,
-            "parallax-enabled": false,
-            "white-text": true,
-            "overline": "Overline text",
-            "title": "Grid promotion",
-            "description": "<p>Create eye-catching promos within collection grids to increase discoverability and accelerate conversions.</p>",
-            "link-url": "",
-            "link-text": "Optional link",
-            "mobile-hide-description": false,
-            "mobile-image-display-type": "original",
-            "mobile-aspect-ratio": 134,
-            "mobile-text-alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "grid-promo-1"
-      ],
       "settings": {
-        "products-per-row--desktop": 4,
+        "products-per-row--desktop": 3,
         "products-per-row--mobile": "1",
-        "number-of-rows": 4
+        "number-of-rows": 3
       }
     },
     "recent-products": {
       "type": "recent-products",
+      "disabled": true,
       "settings": {
         "top-border": false,
         "spacing-above": false,
@@ -132,6 +67,7 @@
     },
     "footer-promo": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "top-border": false,
         "spacing-above": false,
@@ -141,6 +77,8 @@
         "white-text": true,
         "overlap": false,
         "heading-type": "featured-heading",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
         "text-position": "overlay",
         "text-horizontal-alignment": "center",
         "text-vertical-alignment": "center",
@@ -166,7 +104,6 @@
   },
   "order": [
     "collection-header",
-    "header-promo",
     "navigation",
     "main",
     "recent-products",
