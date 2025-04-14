@@ -28,7 +28,7 @@
     "typography--section--mobile-size": 14,
     "typography--block--size": 22,
     "typography--accent": "avenir_next_n6",
-    "subheading_font_override": "trade_gothic_bold",
+    "subheading_font_override": "riamo_sans_reg",
     "typography--accent--size": 16,
     "typography--accent--size_heading_2": 16,
     "typography--button--spacing": 0,
