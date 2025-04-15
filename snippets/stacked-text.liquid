@@ -16,9 +16,6 @@
 {%- if text_exists -%}
   <div
     class="stacked-text--root"
-    {% if white_text %}
-      data-text-color="white"
-    {% endif %}
     data-mobile-alignment="{{ mobile_alignment }}"
     data-x-alignment="{{ x_alignment }}"
     data-y-alignment="{{ y_alignment }}"
@@ -42,7 +39,7 @@
             data-transition-item="{{ id }}"
           {% endunless %}
         >
-          <h2 class="stacked-text--title rdc-m-b1r" data-item="{{ heading_type }}">
+          <h2 class="stacked-text--title rdc-m-b1r" data-text-color="{{ text_color }}" data-item="{{ heading_type }}">
             {%- render "utils", utility: "emphasized-text", text: title -%}
           </h2>
         </div>
