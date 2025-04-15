@@ -31,11 +31,11 @@
   endcapture
 -%}
 
-{% if override_fonts != blank %}
-  {% style %}
-    {{ override_fonts }}
-  {% endstyle %}
-{% endif %}
+{%- if override_fonts != blank -%}
+  {%- style -%}
+    {{ override_fonts -}}
+  {%- endstyle -%}
+{%- endif -%}
 
 {% style %}
   {%- liquid
