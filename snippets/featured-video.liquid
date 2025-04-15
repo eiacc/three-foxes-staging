@@ -45,9 +45,6 @@
   data-overlay-style="{{ overlay_style }}"
   data-display-type="{{ display_type }}"
   data-id="{{ id }}"
-  {% if white_text %}
-    data-text-color="white"
-  {% endif %}
   data-mobile-text-alignment="{{ mobile_text_alignment }}"
   data-mobile-display-type="{{ mobile_display_type }}"
   data-text-x-alignment="{{ text_x_alignment }}"
@@ -57,7 +54,7 @@
   style="{{ css_vars }}"
 >
   {%- if cover_link -%}
-    <a class="featured-video--container" href="{{ button_url }}">
+    <a class="featured-video--container" data-text-color="{{ text_color | default: 'accent_2' }}" href="{{ button_url }}">
   {%- else -%}
     <div class="featured-video--container">
   {%- endif -%}
@@ -103,7 +100,7 @@
     data-translucent="{{ settings.content--box-translucent }}"
   >
     {%- unless overline == blank -%}
-      <h4 data-item="overline">
+      <h4 data-item="overline" data-text-color="{{ text_color | default: 'accent_2' }}">
         {{- overline | escape -}}
       </h4>
     {%- endunless -%}
@@ -116,7 +113,7 @@
           data-transition-type="slide-in"
         {% endunless %}
       >
-        <h2 data-item="{{ heading_type }}">
+        <h2 data-item="{{ heading_type }}" data-text-color="{{ text_color | default: 'accent_2' }}">
           {%- render "utils", utility: "emphasized-text", text: heading -%}
         </h2>
       </div>
@@ -133,6 +130,7 @@
           data-transition-item="{{ id }}"
           data-transition-type="slide-in"
         {% endunless %}
+        data-text-color="{{ text_color | default: 'accent_2' }}"
       >
         {{- description -}}
       </div>
@@ -172,7 +170,7 @@
           data-transition-button
         {% endunless %}
       >
-        <div>{{ button_text }}</div>
+        <div data-text-color="{{ text_color | default: 'accent_2' }}">{{ button_text }}</div>
       </a>
     {%- endif -%}
   </div>
