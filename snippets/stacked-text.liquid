@@ -94,7 +94,6 @@
           <a
             class="stacked-text--button"
             href="{{ link_url }}"
-            data-text-color="{{ text_color }}"
             data-item="{{- settings.buttons--style -}}"
             data-text="{{ link_text }}"
             {% unless settings.transitions--text %}
@@ -105,7 +104,7 @@
               data-transition-button
             {% endunless %}
           >
-            <span>{{- link_text -}}</span>
+            <span data-text-color="{{ text_color }}">{{- link_text -}}</span>
           </a>
         {%- endif -%}
       {%- endif -%}
