@@ -401,6 +401,31 @@
       },
       {
         "type": "header",
+        "content": "Overline"
+      },
+      {
+        "type": "select",
+        "id": "overline_font_override",
+        "label": "Override Overline font",
+        "default": "disable",
+        "info": "When enabled, this feature will force to switch font family (Paragraph)",
+        "options": [
+          {
+            "label": "Riamo Sans Reg",
+            "value": "riamo_sans_reg"
+          },
+          {
+            "label": "Trade Gothic Ext",
+            "value": "trade_gothic_ext"
+          },
+          {
+            "label": "Disable Font",
+            "value": "disable"
+          }
+        ]
+      },
+      {
+        "type": "header",
         "content": "Text visibility"
       },
       {
