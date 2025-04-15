@@ -1,49 +1,52 @@
 {% comment %}
   USAGE: {% render 'initialize-custom-fonts', font_name: 'Font Name' %}
-  comment
-  assign font_src_1 = 'https://cdn.shopify.com/s/files/1/0289/0180/2070/files/RiamoSans-Regular.woff2?v=1744599120'
-  assign font_src_2 = 'https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Trade_Gothic_LT_Extended.woff2?v=1744605234'
-
-  assign font_1 =  'Riamo Sans Reg'         | append: ':' | append: font_src_1
-  assign font_2 =  'Trade Gothic Ext'       | append: ':' | append: font_src_2
-  endcomment
 {% endcomment %}
 
 {%- liquid
   capture fonts
     echo 'Riamo Sans Reg: https://cdn.shopify.com/s/files/1/0289/0180/2070/files/RiamoSans-Regular.woff2?v=1744599120' | append: ','
-    echo 'Trade Gothic Ext: https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Trade_Gothic_LT_Extended.woff2?v=1744605234'
+    echo 'Trade Gothic Ext: https://cdn.shopify.com/s/files/1/0289/0180/2070/files/Trade_Gothic_LT_Extended.woff?v=1744605234' | append: ','
+    echo 'Custom Serif: https://cdn.shopify.com/s/files/1/0289/0180/2070/files/CustomSerif.ttf?v=1744605999'
   endcapture
 
-  assign swap        = 'font-display: swap;'
-  assign font_exists = false
-  assign font_list   = fonts | split: ','
-  assign font_index  = 0
+  assign swap      = 'font-display: swap;'
+  assign font_list = fonts | split: ','
 
-  for font in font_list
-    assign temp_font_name = font | split: ':' | first | split: ' ' | join: '_' | downcase
+  capture render_fonts
+    for font in font_list
+      assign font_parts     = font | split: ':'
+      assign new_font_name  = font_parts[0] | strip
+      assign font_src       = font_parts[1] | strip
 
-    if temp_font_name == font_name
-      assign font_index   = forloop.index0
-      assign font_exists  = true
-    endif
-  endfor
+      assign ext_parts = font_src | split: '?' | first | split: '.'
+      assign extension = ext_parts | last | downcase
 
-  if font_exists == true
-    capture render_font
-      assign new_font_name  = font_list[font_index] | split: ':' | first
-      assign font_src       = font_list[font_index] | split: ':' | last
-      assign font_format    = 'format("woff2")'
-      assign font_url       = 'url("'  | append: font_src | append: '") '
-      assign src            = font_url | append: font_format
+      assign format = ''
+      if extension == 'woff2'
+        assign format = 'format("woff2")'
+      elsif extension == 'woff'
+        assign format = 'format("woff")'
+      elsif extension == 'ttf'
+        assign format = 'format("truetype")'
+      elsif extension == 'otf'
+        assign format = 'format("opentype")'
+      else
+        assign format = ''
+      endif
+
+      assign font_url = 'url("' | append: font_src | append: '")'
+      assign src = font_url
+      if format != ''
+        assign src = src | append: ' ' | append: format
+      endif
 
       echo '@font-face {'
-        echo 'font-family'  | append: ':"' | append: new_font_name   | append: '";'
-        echo 'src'          | append: ':' | append: src             | append: ';'
+        echo 'font-family: "' | append: new_font_name | append: '";'
+        echo 'src: ' | append: src | append: ';'
         echo swap
       echo '}'
-    endcapture
+    endfor
+  endcapture
 
-    echo render_font
-  endif
+  echo render_fonts
 -%}
