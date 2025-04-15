@@ -2,9 +2,10 @@
   comment
     CUSTOM FONT OVERRIDE
   endcomment
-  assign head   = ''
-  assign sub    = ''
-  assign para   = ''
+  assign head     = ''
+  assign sub      = ''
+  assign para     = ''
+  assign overline = ''
 
   capture override_fonts
     if settings.heading_font_override != 'disable'
@@ -26,6 +27,14 @@
       assign para         = font_name
       if para != head and para != sub
         render 'initialize-custom-fonts', font_name: para
+      endif
+    endif
+  
+    if settings.overline_font_override != 'disable'
+      assign font_name    = settings.overline_font_override
+      assign overline     = font_name
+      if overline != head and overline != sub and overline != para
+        render 'initialize-custom-fonts', font_name: overline
       endif
     endif
   endcapture
@@ -172,6 +181,13 @@
     --font--paragraph--style: {{ font--paragraph.style }};
     --font--paragraph--spacing: {{ settings.typography--paragraph--spacing }}px;
 
+    {%  if settings.overline_font_override != 'disable' %}
+      {% assign overline = settings.overline_font_override %}
+      --font-overline-family: {% render 'override-font', font: overline %}, {{ font--paragraph.fallback_families }};
+    {% else %}
+      --font-overline-family: {{ font--paragraph.family }}, {{ font--paragraph.fallback_families }};
+    {% endif %}
+
     --font--button--spacing       : {{ settings.typography--button--spacing }}px;
     --font--button--line__height  : {{ settings.typography--accent--line_height }};
     --font--line-height           : var(--font--heading--line_height);
@@ -180,7 +196,10 @@
     --font-gothic: var(--font--nav--family);
     --font-gothic-reg: var(--font--paragraph--family);
   }
-
+  [data-item="overline"] {
+    font-family: var(--font-overline-family);
+  }
+  
   [data-item~='featured-heading'] .emphasized,
   [data-item~='banner-heading'] .emphasized {
     {%- if settings.typography--hollow -%}
