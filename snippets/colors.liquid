@@ -1,13 +1,16 @@
 {%- style -%}
-[data-text-color="accent_1"] {
+[data-text-color="accent_1"],
+[data-text-color="accent_1"] * {
   color: {{ settings.color--accent-1 -}};
 }
   
-[data-text-color="accent_2"] {
+[data-text-color="accent_2"],
+[data-text-color="accent_2"] * {
   color: {{ settings.color--accent-2 -}};
 }
   
-[data-text-color="text"] {
+[data-text-color="text"],
+[data-text-color="text"] * {
   color: {{ settings.color--body -}}
 }
 {%- endstyle -%}
