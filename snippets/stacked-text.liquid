@@ -52,7 +52,7 @@
             data-transition-item="{{ id }}"
           {% endunless %}
         >
-          <h3 data-item="overline">
+          <h3 data-item="overline" data-text-color="{{ text_color }}">
             {{- overline | escape -}}
           </h3>
         </div>
@@ -61,6 +61,7 @@
       {%- if description != blank -%}
         <div
           class="stacked-text--description"
+          data-text-color="{{ text_color }}"
           data-item="{{ description_type }}"
           {% if mobile_hide_description %}
             data-mq="medium-large"
@@ -87,12 +88,13 @@
               data-transition-button
             {% endunless %}
           >
-            <span>{{- link_text -}}</span>
+            <span data-text-color="{{ text_color }}">{{- link_text -}}</span>
           </div>
         {%- else -%}
           <a
             class="stacked-text--button"
             href="{{ link_url }}"
+            data-text-color="{{ text_color }}"
             data-item="{{- settings.buttons--style -}}"
             data-text="{{ link_text }}"
             {% unless settings.transitions--text %}
