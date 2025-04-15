@@ -36,7 +36,7 @@
         "chooseParagraphtype": "paragraph1",
         "text-position": "overlay",
         "text-horizontal-alignment": "right",
-        "text-vertical-alignment": "top",
+        "text-vertical-alignment": "bottom",
         "text-width": "small",
         "text-style": "none",
         "text-background-color": "transparent",
@@ -46,7 +46,7 @@
         "parallax-enabled": false,
         "image": "shopify://shop_images/Three_foxes_Distillery-48-1.jpg",
         "overline": "",
-        "title": "THREE FOXES",
+        "title": "HOST YOUR NEXT EVENT WITH US!",
         "description": "",
         "link-url": "",
         "link-text": "",
@@ -83,8 +83,8 @@
         "parallax-enabled": false,
         "image": "shopify://shop_images/Three_foxes_Distillery-5-1.jpg",
         "overline": "",
-        "title": "THREE FOXES",
-        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>",
+        "title": "",
+        "description": "<p>Our function space is more than a place to taste, it’s a reflection of our philosophy, where the pace is unhurried, the drinks are crafted with care, and every visit is a reminder that good times are best enjoyed with Drinks, Food and Tunes!</p>",
         "link-url": "",
         "link-text": "",
         "mobile-overlay": true,
@@ -94,12 +94,90 @@
         "mobile-text-alignment": "center"
       }
     },
+    "text_columns_D7tENG": {
+      "type": "text-columns",
+      "blocks": {
+        "image_BUwyCb": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify://shop_images/Three_foxes_Distillery-23-1.jpg",
+            "title": "THE SPACE",
+            "description": "<p>Tucked among gleaming copper stills and warm red brick, our space is full of charm, character, and just the right amount of mischief.</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_RTBwgW": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify://shop_images/Three_foxes_Distillery-60-1.jpg",
+            "title": "THE DRINKS",
+            "description": "<p>All our base packages come stocked with the spirits, wine, and beer, with easy upgrades if you’re feeling fancy with cocktails all night long.</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_htVbFA": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify://shop_images/Three_foxes_Distillery-72-1.jpg",
+            "title": "THE FOOD",
+            "description": "<p>Choose a feast from our Distillery Kitchen, call in one of our trusted catering crews, or bring your own,...because good food is non-negotiable</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_Fh9PTU": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify://shop_images/Three_foxes_Distillery-45.jpg",
+            "title": "THE MUSIC",
+            "description": "<p>We’ve got the surround sound ready for your playlist, just plug in and play. Or go big and bring your own DJ or live band. We’re all ears (and dance moves)</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_BUwyCb",
+        "image_RTBwgW",
+        "image_htVbFA",
+        "image_Fh9PTU"
+      ],
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "block-spacing": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "container-width": "4",
+        "width": 4,
+        "aspect-ratio": "square",
+        "image-width": 0,
+        "text-alignment": "center",
+        "overline": "",
+        "heading": "WHY HOST WITH US?",
+        "description": "",
+        "link-url": "",
+        "link-text": "",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseProTitleHeadingtype": "heading4",
+        "chooseParagraphtype": "paragraph1",
+        "mobile-width": "1"
+      }
+    },
     "featured_text_F7c8r3": {
       "type": "featured-text",
       "settings": {
         "top-border": false,
         "spacing-above": true,
-        "spacing-below": true,
+        "spacing-below": false,
         "background-color": "accent-1",
         "white-text": true,
         "heading-type": "section-heading",
@@ -108,8 +186,8 @@
         "chooseParagraphtype": "paragraph1",
         "container-width": "4",
         "overline": "",
-        "heading": "CREATING MOMENTS",
-        "description": "<p>Aperitivo culture is all about keeping that relaxed, social energy alive but making it yours. Aperitivo has come a long way, but its heart remains the same: it’s about connection, community, and celebrating the little pauses in life. So grab a glass, gather your crew, and keep the tradition going, with your own twist, of course. Cheers!</p>",
+        "heading": "THE PLACE FOR SOCIAL ENERGY",
+        "description": "<p>Aperitivo culture is all about keeping that relaxed, social energy alive but making it yours. Aperitivo has come a long way, but its heart remains the same: it’s about connection, community, and celebrating the little pauses in life. So grab a glass, gather your crew, and make the occasion your own. Cheers!</p>",
         "link-url": "/",
         "link-text": ""
       }
@@ -146,7 +224,7 @@
         "image_Qd8chW": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Three_foxes_Distillery-79-1.jpg",
+            "image": "shopify://shop_images/Three_foxes_Distillery-105-1.jpg",
             "x-blocks": "1",
             "y-blocks": "1",
             "image-display-type": "fill",
@@ -199,7 +277,7 @@
         "container-width": "2",
         "heading": "GET IN TOUCH TO FIND OUT MORE",
         "store-address": "14-16 Helen St, Heidelberg West 3081 Victoria",
-        "store-hours": "<p>Get the info pack for all the details</p>",
+        "store-hours": "<p>Ask for the info pack for all the details</p>",
         "show-social-sharing": false
       }
     }
@@ -208,6 +286,7 @@
     "main",
     "image_with_text_6amQp6",
     "image_with_text_UwPtex",
+    "text_columns_D7tENG",
     "featured_text_F7c8r3",
     "grid_with_overlay_JJ6czH",
     "contact_DKVXPi"
