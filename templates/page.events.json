@@ -81,16 +81,37 @@
         "aspect-ratio": 56,
         "overlay-style": "darken-bottom",
         "parallax-enabled": false,
-        "overline": "Overline text",
+        "image": "shopify://shop_images/Three_foxes_Distillery-5-1.jpg",
+        "overline": "",
         "title": "THREE FOXES",
         "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>",
         "link-url": "",
-        "link-text": "Optional link",
+        "link-text": "",
         "mobile-overlay": true,
         "mobile-hide-description": false,
         "mobile-image-display-type": "original",
         "mobile-aspect-ratio": 134,
         "mobile-text-alignment": "center"
+      }
+    },
+    "featured_text_F7c8r3": {
+      "type": "featured-text",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "heading-type": "section-heading",
+        "chooseSubHeadingtype": "SubHeading2",
+        "chooseHeadingtype": "heading2",
+        "chooseParagraphtype": "paragraph1",
+        "container-width": "4",
+        "overline": "",
+        "heading": "CREATING MOMENTS",
+        "description": "<p>Aperitivo culture is all about keeping that relaxed, social energy alive but making it yours. Aperitivo has come a long way, but its heart remains the same: it’s about connection, community, and celebrating the little pauses in life. So grab a glass, gather your crew, and keep the tradition going, with your own twist, of course. Cheers!</p>",
+        "link-url": "/",
+        "link-text": ""
       }
     },
     "grid_with_overlay_JJ6czH": {
@@ -99,6 +120,7 @@
         "image_AKPE9X": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Three_foxes_Distillery-67-1.jpg",
             "x-blocks": "2",
             "y-blocks": "2",
             "image-display-type": "aspect-ratio",
@@ -111,6 +133,7 @@
         "image_VjVJGM": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Three_foxes_Distillery-73-1.jpg",
             "x-blocks": "1",
             "y-blocks": "1",
             "image-display-type": "fill",
@@ -123,13 +146,14 @@
         "image_Qd8chW": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Three_foxes_Distillery-79-1.jpg",
             "x-blocks": "1",
             "y-blocks": "1",
             "image-display-type": "fill",
             "aspect-ratio": 56,
-            "title": "Grid image",
+            "title": "",
             "link-url": "",
-            "link-text": "Optional link"
+            "link-text": ""
           }
         }
       },
@@ -163,12 +187,29 @@
         "mobile-image-display-type": "original",
         "mobile-aspect-ratio": 134
       }
+    },
+    "contact_DKVXPi": {
+      "type": "contact",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "white-text": true,
+        "container-width": "2",
+        "heading": "GET IN TOUCH TO FIND OUT MORE",
+        "store-address": "14-16 Helen St, Heidelberg West 3081 Victoria",
+        "store-hours": "<p>Get in touch if you have a querie or would like to see the Events Info pack.</p>",
+        "show-social-sharing": true
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_6amQp6",
     "image_with_text_UwPtex",
-    "grid_with_overlay_JJ6czH"
+    "featured_text_F7c8r3",
+    "grid_with_overlay_JJ6czH",
+    "contact_DKVXPi"
   ]
 }
