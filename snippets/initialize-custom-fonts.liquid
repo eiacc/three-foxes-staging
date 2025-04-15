@@ -38,7 +38,7 @@
       assign src            = font_url | append: font_format
 
       echo '@font-face {'
-        echo 'font-family'  | append: ':' | append: new_font_name   | append: ';'
+        echo 'font-family'  | append: ':"' | append: new_font_name   | append: '";'
         echo 'src'          | append: ':' | append: src             | append: ';'
         echo swap
       echo '}'
