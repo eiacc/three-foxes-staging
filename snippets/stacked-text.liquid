@@ -39,7 +39,7 @@
             data-transition-item="{{ id }}"
           {% endunless %}
         >
-          <h2 class="stacked-text--title rdc-m-b1r" data-jtzuya-text-color="{{ text_color | default: "accent_2" }}" data-item="{{ heading_type }}">
+          <h2 class="stacked-text--title rdc-m-b1r" data-text-color="{{ text_color | default: "accent_2" }}" data-item="{{ heading_type }}">
             {%- render "utils", utility: "emphasized-text", text: title -%}
           </h2>
         </div>
@@ -52,7 +52,7 @@
             data-transition-item="{{ id }}"
           {% endunless %}
         >
-          <h3 data-item="overline" data-jtzuya-text-color="{{ text_color | default: "accent_2" }}">
+          <h3 data-item="overline" data-text-color="{{ text_color | default: "accent_2" }}">
             {{- overline | escape -}}
           </h3>
         </div>
@@ -61,7 +61,7 @@
       {%- if description != blank -%}
         <div
           class="stacked-text--description"
-          data-jtzuya-text-color="{{ text_color | default: "accent_2" }}"
+          data-text-color="{{ text_color | default: "accent_2" }}"
           data-item="{{ description_type }}"
           {% if mobile_hide_description %}
             data-mq="medium-large"
@@ -88,7 +88,7 @@
               data-transition-button
             {% endunless %}
           >
-            <span data-jtzuya-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
+            <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
           </div>
         {%- else -%}
           <a
@@ -104,7 +104,7 @@
               data-transition-button
             {% endunless %}
           >
-            <span data-jtzuya-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
+            <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
           </a>
         {%- endif -%}
       {%- endif -%}
