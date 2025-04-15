@@ -165,7 +165,7 @@
                 {%- if view == "slideshow" and block.type == 'image' -%}
                   {%-
                     render 'featured-content',
-                    white_text: white_text,
+                    text_color: text_color,
                     description: block.settings.description,
                     heading_type: heading_type,
                     id: block_id,
@@ -197,7 +197,7 @@
                 {%- elsif view == "slideshow" and block.type == 'video' -%}
                   {%-
                     render 'featured-video',
-                    white_text: white_text,
+                    text_color: text_color,
                     aspect_ratio: aspect_ratio,
                     autoplay: block.settings.autoplay,
                     button_text: block.settings.button-text,
