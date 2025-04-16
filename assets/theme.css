@@ -11,20 +11,20 @@
 
 .contact--root[data-text-color="accent_1"] [data-item="paragraph"],
 .contact--root[data-text-color="accent_1"] [data-item="block-link"] {
-  color: #87231C !important;
+  color: var(--settings-accent-1, #87231C) !important;
 }
 
 .contact--root[data-text-color="accent_2"] [data-item="paragraph"],
 .contact--root[data-text-color="accent_2"] [data-item="block-link"] {
-  color: #F7F2EE !important;
+  color: var(--settings-accent-2, #F7F2EE) !important;
 }
 
 .contact--root[data-text-color="text"] [data-item="paragraph"],
 .contact--root[data-text-color="text"] [data-item="block-link"] {
-  color: #212121 !important;
+  color: var(--settings-text, #212121) !important;
 }
 
 .contact--root[data-text-color="btn_text"] [data-item="paragraph"],
 .contact--root[data-text-color="btn_text"] [data-item="block-link"] {
-  color: #FFFFFF !important;
+  color: var(--settings-btn-text, #FFFFFF) !important;
 }
