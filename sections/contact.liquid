@@ -225,11 +225,17 @@
       "default": "none"
     },
     {
-      "id": "white-text",
-      "label": "Use white text color",
-      "type": "checkbox",
-      "default": false
-    },
+        "id": "text-color",
+        "label": "Text Color",
+        "type": "select",
+        "options": [
+          { "label": "Accent 1", "value": "accent_1" },
+          { "label": "Accent 2", "value": "accent_2" },
+          { "label": "Text", "value": "text" },
+          { "label": "Button Text", "value": "btn_text" }
+        ],
+        "default": "accent_1"
+      },
     {
       "id": "container-width",
       "label": "Maximum width of container",
