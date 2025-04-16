@@ -244,6 +244,22 @@
         "map-address": ""
       }
     },
+    "contact_RXRkrw": {
+      "type": "contact",
+      "name": "Contact form",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "background-color": "accent-1",
+        "text-color": "accent_2",
+        "container-width": "2",
+        "heading": "Contact us",
+        "store-address": "391 Sutter St,\r\nSan Francisco",
+        "store-hours": "<p>Monday - Friday<br/>12pm - 8pm<br/><br/>Saturday - Sunday<br/>12pm - 5pm</p>",
+        "show-social-sharing": true
+      }
+    },
     "featured_newsletter_8aNLc3": {
       "type": "featured-newsletter",
       "settings": {
@@ -289,6 +305,7 @@
     "2c7b2c75-a053-465f-9304-0c8a440bc6b4",
     "featured-blog",
     "map",
+    "contact_RXRkrw",
     "featured_newsletter_8aNLc3",
     "888c0700-2b7d-4516-8312-8388f1daefac"
   ]
