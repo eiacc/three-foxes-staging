@@ -9,17 +9,19 @@
 
 
 
-:root {
-  --color-accent-1: #007aff; /* example blue */
-  --color-accent-2: #FF0077; /* pink */
-  --color-text: #212529;     /* standard dark grey */
-  --color-btn-text: #ffffff; /* white */
+.contact--root.accent_1,
+.contact--root.accent_1 * {
+  color: var(--color-accent-1) !important;
 }
-
-
-
 .contact--root.accent_2,
 .contact--root.accent_2 * {
   color: var(--color-accent-2) !important;
 }
-
+.contact--root.text,
+.contact--root.text * {
+  color: var(--color-text) !important;
+}
+.contact--root.btn_text,
+.contact--root.btn_text * {
+  color: var(--color-btn-text) !important;
+}
