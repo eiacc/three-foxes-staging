@@ -120,7 +120,7 @@
         "spacing-below": true,
         "featured-collection--image--show": false,
         "featured-collection--description--show": true,
-        "background-color": "accent-2",
+        "background-color": "light",
         "white-text": false,
         "display-type": "grid",
         "products-per-row--desktop": "3",
