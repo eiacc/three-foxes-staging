@@ -273,7 +273,7 @@
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "dark",
-        "text-color": "accent_2",
+        "text-color": "btn_text",
         "container-width": "2",
         "heading": "GET IN TOUCH TO FIND OUT MORE",
         "store-address": "14-16 Helen St, Heidelberg West 3081 Victoria",
