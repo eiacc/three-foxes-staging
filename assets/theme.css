@@ -10,5 +10,5 @@
 
 .contact--root.accent_2,
 .contact--root.accent_2 * {
-  color: var(--color-accent-2) !important;
+  color: #FF0077 !important;
 }
