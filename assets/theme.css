@@ -9,19 +9,22 @@
 
 
 
-.contact--root.accent_1,
-.contact--root.accent_1 * {
+.contact--root[data-text-colour="accent_1"],
+.contact--root[data-text-colour="accent_1"] * {
   color: var(--color-accent-1) !important;
 }
-.contact--root.accent_2,
-.contact--root.accent_2 * {
+
+.contact--root[data-text-colour="accent_2"],
+.contact--root[data-text-colour="accent_2"] * {
   color: var(--color-accent-2) !important;
 }
-.contact--root.text,
-.contact--root.text * {
+
+.contact--root[data-text-colour="text"],
+.contact--root[data-text-colour="text"] * {
   color: var(--color-text) !important;
 }
-.contact--root.btn_text,
-.contact--root.btn_text * {
+
+.contact--root[data-text-colour="btn_text"],
+.contact--root[data-text-colour="btn_text"] * {
   color: var(--color-btn-text) !important;
 }
