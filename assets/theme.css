@@ -59,3 +59,9 @@
 .contact--root[data-text-color="btn_text"] [data-item="block-link"] {
   color: var(--settings-btn-text, #FFFFFF) !important;
 }
+
+[data-text-color="orange"],
+[data-text-color="orange"] * {
+  color: #F78007 !important;
+}
+
