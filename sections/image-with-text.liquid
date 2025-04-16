@@ -5,6 +5,8 @@
   assign mobile_aspect_ratio = 100.0 | divided_by: section.settings.mobile-aspect-ratio
   assign text_position = section.settings.text-position
   assign top_border = section.settings.top-border
+  assign text_color = section.settings.text-color
+
 -%}
 
 {% style %}
@@ -62,7 +64,7 @@
 >
   {%-
     render 'featured-content',
-    white_text: section.settings.white-text,
+    text_color: text_color,
     description: section.settings.description,
     heading_type: section.settings.heading-type,
     id: section.id,
@@ -184,11 +186,17 @@
       "content": "Text layout"
     },
     {
-      "id": "white-text",
-      "label": "Use white text color",
-      "type": "checkbox",
-      "default": true
-    },
+        "id": "text-color",
+        "label": "Text Color",
+        "type": "select",
+        "options": [
+          { "label": "Accent 1", "value": "accent_1" },
+          { "label": "Accent 2", "value": "accent_2" },
+          { "label": "Text", "value": "text" },
+          { "label": "Button Text", "value": "btn_text" }
+        ],
+        "default": "accent_1"
+      },
     {
       "id": "overlap",
       "label": "Overlap text",
