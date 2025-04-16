@@ -51,6 +51,7 @@
           "disabled": true,
           "settings": {
             "variant-style": "buttons",
+            "variant_metafield_interaction": false,
             "swatches-enabled": true,
             "size-chart-enabled": true,
             "size-chart-option": "size",
@@ -182,7 +183,7 @@
         "spacing-above": true,
         "spacing-below": true,
         "block-spacing": true,
-        "background-color": "accent-2",
+        "background-color": "accent-1",
         "white-text": false,
         "container-width": "4",
         "width": 3,

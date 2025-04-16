@@ -354,7 +354,7 @@
       ],
       "settings": {
         "layout": "drawer",
-        "background-color": "accent-2",
+        "background-color": "light",
         "bottom-border": true,
         "white-text": false,
         "hover-disabled": false,
@@ -389,7 +389,7 @@
         "spacing-below": false,
         "background-color": "none",
         "container-width": "6",
-        "white-text": true,
+        "text-color": "accent_1",
         "overlap": false,
         "heading-type": "section-heading",
         "chooseHeadingtype": "heading2",
