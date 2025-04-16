@@ -9,24 +9,44 @@
 
 
 /* FORCE TEXT COLOR FOR CONTACT.LIQUID */
+
+.featured-grid--root[data-text-color="accent_1"] [data-item="paragraph"],
+.featured-grid--root[data-text-color="accent_1"] [data-item="section-heading"],
+.featured-grid--root[data-text-color="accent_1"] [data-item="block-heading"],
+.featured-grid--root[data-text-color="accent_1"] [data-item="rte-content"],
+.featured-grid--root[data-text-color="accent_1"] [data-item="overline"],
 .contact--root[data-text-color="accent_1"] [data-item="paragraph"],
 .contact--root[data-text-color="accent_1"] [data-item="section-heading"],
 .contact--root[data-text-color="accent_1"] [data-item="block-link"] {
   color: var(--settings-accent-1, #87231C) !important;
 }
 
+.featured-grid--root[data-text-color="accent_2"] [data-item="paragraph"],
+.featured-grid--root[data-text-color="accent_2"] [data-item="section-heading"],
+.featured-grid--root[data-text-color="accent_2"] [data-item="block-heading"],
+.featured-grid--root[data-text-color="accent_2"] [data-item="rte-content"],
+.featured-grid--root[data-text-color="accent_2"] [data-item="overline"],
 .contact--root[data-text-color="accent_2"] [data-item="paragraph"],
 .contact--root[data-text-color="accent_2"] [data-item="section-heading"],
 .contact--root[data-text-color="accent_2"] [data-item="block-link"] {
   color: var(--settings-accent-2, #F78007) !important;
 }
 
+.featured-grid--root[data-text-color="text"] [data-item="paragraph"],
+.featured-grid--root[data-text-color="text"] [data-item="section-heading"],
+.featured-grid--root[data-text-color="text"] [data-item="block-heading"],
+.featured-grid--root[data-text-color="text"] [data-item="rte-content"],
+.featured-grid--root[data-text-color="text"] [data-item="overline"],
 .contact--root[data-text-color="text"] [data-item="paragraph"],
 .contact--root[data-text-color="text"] [data-item="section-heading"],
 .contact--root[data-text-color="text"] [data-item="block-link"] {
   color: var(--settings-text, #000000) !important;
 }
-
+.featured-grid--root[data-text-color="btn_text"] [data-item="paragraph"],
+.featured-grid--root[data-text-color="btn_text"] [data-item="section-heading"],
+.featured-grid--root[data-text-color="btn_text"] [data-item="block-heading"],
+.featured-grid--root[data-text-color="btn_text"] [data-item="rte-content"],
+.featured-grid--root[data-text-color="btn_text"] [data-item="overline"],
 .contact--root[data-text-color="btn_text"] [data-item="paragraph"],
 .contact--root[data-text-color="btn_text"] [data-item="section-heading"],
 .contact--root[data-text-color="btn_text"] [data-item="block-link"] {
