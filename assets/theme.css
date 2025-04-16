@@ -10,6 +10,11 @@
 
 /* FORCE TEXT COLOR FOR CONTACT.LIQUID */
 
+
+
+
+.featured-collection--root[data-text-color="accent_1"] [data-item="paragraph"],
+.featured-collection--root[data-text-color="accent_1"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="accent_1"] [data-item="paragraph"],
 .featured-grid--root[data-text-color="accent_1"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="accent_1"] [data-item="block-heading"],
@@ -20,7 +25,8 @@
 .contact--root[data-text-color="accent_1"] [data-item="block-link"] {
   color: var(--settings-accent-1, #87231C) !important;
 }
-
+.featured-collection--root[data-text-color="accent_2"] [data-item="paragraph"],
+.featured-collection--root[data-text-color="accent_2"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="accent_2"] [data-item="paragraph"],
 .featured-grid--root[data-text-color="accent_2"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="accent_2"] [data-item="block-heading"],
@@ -31,7 +37,8 @@
 .contact--root[data-text-color="accent_2"] [data-item="block-link"] {
   color: var(--settings-accent-2, #F78007) !important;
 }
-
+.featured-collection--root[data-text-color="text"] [data-item="paragraph"],
+.featured-collection--root[data-text-color="text"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="text"] [data-item="paragraph"],
 .featured-grid--root[data-text-color="text"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="text"] [data-item="block-heading"],
@@ -42,6 +49,8 @@
 .contact--root[data-text-color="text"] [data-item="block-link"] {
   color: var(--settings-text, #000000) !important;
 }
+.featured-collection--root[data-text-color="btn_text"] [data-item="paragraph"],
+.featured-collection--root[data-text-color="btn_text"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="btn_text"] [data-item="paragraph"],
 .featured-grid--root[data-text-color="btn_text"] [data-item="section-heading"],
 .featured-grid--root[data-text-color="btn_text"] [data-item="block-heading"],
