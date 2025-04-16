@@ -246,13 +246,14 @@
     },
     "contact_RXRkrw": {
       "type": "contact",
+      "custom_css": [],
       "name": "Contact form",
       "settings": {
         "top-border": false,
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "text-color": "accent_1",
+        "text-color": "text",
         "container-width": "2",
         "heading": "Contact us",
         "store-address": "391 Sutter St,\r\nSan Francisco",
