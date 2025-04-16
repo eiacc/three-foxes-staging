@@ -60,8 +60,15 @@
   color: var(--settings-btn-text, #FFFFFF) !important;
 }
 
-[data-text-color="orange"],
-[data-text-color="orange"] * {
+[data-text-color="3fd-orange"],
+[data-text-color="3fd-orange"] * {
   color: #F78007 !important;
 }
-
+[data-text-color="3fd-red"],
+[data-text-color="3fd-red"] * {
+  color: ##87231C !important;
+}
+[data-text-color="3fd-beige"],
+[data-text-color="3fd-beige"] * {
+  color: #F7F2EE !important;
+}
