@@ -9,23 +9,22 @@
 
 
 
-/* FORCE text color based on data-text-color */
-.contact--root[data-text-color="accent_1"],
-.contact--root[data-text-color="accent_1"] * {
+.contact--root[data-text-color="accent_1"] [data-item="paragraph"],
+.contact--root[data-text-color="accent_1"] [data-item="block-link"] {
   color: #87231C !important;
 }
 
-.contact--root[data-text-color="accent_2"],
-.contact--root[data-text-color="accent_2"] * {
+.contact--root[data-text-color="accent_2"] [data-item="paragraph"],
+.contact--root[data-text-color="accent_2"] [data-item="block-link"] {
   color: #F7F2EE !important;
 }
 
-.contact--root[data-text-color="text"],
-.contact--root[data-text-color="text"] * {
+.contact--root[data-text-color="text"] [data-item="paragraph"],
+.contact--root[data-text-color="text"] [data-item="block-link"] {
   color: #212121 !important;
 }
 
-.contact--root[data-text-color="btn_text"],
-.contact--root[data-text-color="btn_text"] * {
+.contact--root[data-text-color="btn_text"] [data-item="paragraph"],
+.contact--root[data-text-color="btn_text"] [data-item="block-link"] {
   color: #FFFFFF !important;
 }
