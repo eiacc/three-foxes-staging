@@ -99,7 +99,7 @@
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "text-color": "text",
+        "text-color": "accent_2",
         "heading-type": "section-heading",
         "chooseSubHeadingtype": "SubHeading2",
         "chooseHeadingtype": "heading2",
@@ -253,12 +253,12 @@
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "text-color": "text",
+        "text-color": "accent_2",
         "container-width": "2",
         "heading": "Contact us",
         "store-address": "391 Sutter St,\r\nSan Francisco",
         "store-hours": "<p>Monday - Friday<br/>12pm - 8pm<br/><br/>Saturday - Sunday<br/>12pm - 5pm</p>",
-        "show-social-sharing": true
+        "show-social-sharing": false
       }
     },
     "featured_newsletter_8aNLc3": {
