@@ -9,22 +9,23 @@
 
 
 
+/* FORCE text color based on data-text-color */
 .contact--root[data-text-color="accent_1"],
 .contact--root[data-text-color="accent_1"] * {
-  color: var(--color-accent-1) !important;
+  color: #87231C !important;
 }
 
 .contact--root[data-text-color="accent_2"],
 .contact--root[data-text-color="accent_2"] * {
-  color: var(--color-accent-2) !important;
+  color: #F7F2EE !important;
 }
 
 .contact--root[data-text-color="text"],
 .contact--root[data-text-color="text"] * {
-  color: var(--color-text) !important;
+  color: #212121 !important;
 }
 
 .contact--root[data-text-color="btn_text"],
 .contact--root[data-text-color="btn_text"] * {
-  color: var(--color-btn-text) !important;
+  color: #FFFFFF !important;
 }
