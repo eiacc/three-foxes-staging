@@ -99,7 +99,7 @@
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "text-color": "accent_2",
+        "text-color": "text",
         "heading-type": "section-heading",
         "chooseSubHeadingtype": "SubHeading2",
         "chooseHeadingtype": "heading2",
