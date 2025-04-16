@@ -5,13 +5,13 @@
   assign contact_button_t = 'sections.contact.button' | t
   assign open_maps_t = 'sections.map.open' | t
   assign shopify_disclaimer_t = 'shopify.online_store.spam_detection.disclaimer_html' | t
-
+  assign text_color = section.settings.text-color
+  
   comment
     "Variables"
   endcomment
 
   assign bg_color = section.settings.background-color
-  assign text_color = section.settings.text-color
   assign container_width = section.settings.container-width
   assign form_id = 'contact_form_' | append: section.id
   assign heading = section.settings.heading
