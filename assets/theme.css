@@ -31,3 +31,6 @@
 .blog--root {
   background-color: #F7F2EE; /* or any hex you want */
 }
+.blog--root[data-text-color="3fd-red"] {
+  color: #87231C;
+}
