@@ -276,10 +276,10 @@
         "link-url": "shopify://pages/events",
         "link-text": "LEARN MORE",
         "mobile-overlay": true,
-        "mobile-hide-description": false,
-        "mobile-image-display-type": "original",
-        "mobile-aspect-ratio": 134,
-        "mobile-text-alignment": "center"
+        "mobile-hide-description": true,
+        "mobile-image-display-type": "aspect-ratio",
+        "mobile-aspect-ratio": 80,
+        "mobile-text-alignment": "bottom"
       }
     },
     "featured_newsletter_8aNLc3": {
