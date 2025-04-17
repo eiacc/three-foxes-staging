@@ -5,8 +5,7 @@
   assign contact_button_t = 'sections.contact.button' | t
   assign open_maps_t = 'sections.map.open' | t
   assign shopify_disclaimer_t = 'shopify.online_store.spam_detection.disclaimer_html' | t
-  assign text_color = section.settings.text-color
-  
+
   comment
     "Variables"
   endcomment
@@ -21,21 +20,22 @@
   assign spacing_above = section.settings.spacing-above
   assign spacing_below = section.settings.spacing-below
   assign top_border = section.settings.top-border
+  assign white_text = section.settings.white-text
 -%}
 
-
- <div class="contact--root {{ section.settings.text-color }}"
-
+<div
+  class="contact--root"
   data-section-id="{{ section.id }}"
   data-background-color="{{ bg_color }}"
   data-container-width="{{ container_width }}"
-  data-text-color="{{ section.settings.text-color }}"
+  {% if white_text %}
+    data-text-color="3fd-orange"
+  {% endif %}
   data-spacing-above="{{ spacing_above }}"
   data-spacing-below="{{ spacing_below }}"
   data-top-border="{{ top_border }}"
 >
   <div class="contact--wrapper">
-    
     {%- unless heading == blank -%}
       <div class="contact--header">
         <h2 class="contact--title" data-item="section-heading">
@@ -227,17 +227,11 @@
       "default": "none"
     },
     {
-        "id": "text-color",
-        "label": "Text Color",
-        "type": "select",
-        "options": [
-          { "label": "Accent 1", "value": "accent_1" },
-          { "label": "Accent 2", "value": "accent_2" },
-          { "label": "Text", "value": "text" },
-          { "label": "Button Text", "value": "btn_text" }
-        ],
-        "default": "accent_1"
-      },
+      "id": "white-text",
+      "label": "Use Alt text color",
+      "type": "checkbox",
+      "default": false
+    },
     {
       "id": "container-width",
       "label": "Maximum width of container",
