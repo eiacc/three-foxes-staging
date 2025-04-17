@@ -25,7 +25,7 @@
             "link-url": "shopify://products/triple-bitter",
             "link-text": "SHOP NOW",
             "mobile-text-alignment": "bottom",
-            "mobile-hide-description": false
+            "mobile-hide-description": true
           }
         },
         "slide-1": {
@@ -73,7 +73,7 @@
         "spacing-around-blocks": false,
         "arrows-enabled": false,
         "blocks_per_slide": 1,
-        "background-color": "none",
+        "background-color": "accent-1",
         "text-color": "accent_2",
         "text-style": "none",
         "text-background-color": "transparent",
@@ -88,7 +88,7 @@
         "mobile-image-display-type": "fit-screen",
         "mobile-aspect-ratio": 134,
         "blocks_per_slide_mobile": "1",
-        "mobile-overlay": true
+        "mobile-overlay": false
       }
     },
     "featured_text_j7W7QW": {
