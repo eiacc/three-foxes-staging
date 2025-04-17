@@ -24,7 +24,7 @@
             "description": "",
             "link-url": "shopify://products/triple-bitter",
             "link-text": "SHOP NOW",
-            "mobile-text-alignment": "center",
+            "mobile-text-alignment": "bottom",
             "mobile-hide-description": false
           }
         },
