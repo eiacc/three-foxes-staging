@@ -223,25 +223,41 @@
         "view-more-text": "View more"
       }
     },
-    "map": {
-      "type": "map",
+    "image_with_text_bCt4Vg": {
+      "type": "image-with-text",
+      "name": "Image with text",
       "settings": {
         "top-border": false,
         "spacing-above": true,
         "spacing-below": true,
-        "background-color": "accent-2",
-        "white-text": false,
+        "background-color": "accent-1",
         "container-width": "4",
-        "theme": "grayscale",
-        "heading": "BOOK WITH US",
+        "text-color": "accent_2",
+        "overlap": false,
+        "heading-type": "section-heading",
         "chooseHeadingtype": "heading2",
         "chooseParagraphtype": "paragraph1",
-        "chooseMapLinktype": "subNav",
-        "address": "<p>14-16 Helen St<br/>Heidelberg West<br/>Victoria, Australia<br/>1300 872 306<br/><br/><a href=\"/pages/our-story\" title=\"Our story\"><strong>LEARN MORE...</strong></a></p>",
-        "hours": "",
-        "image": "shopify://shop_images/Three_foxes_Distillery-15-2.jpg",
-        "api-key": "",
-        "map-address": ""
+        "text-position": "right",
+        "text-horizontal-alignment": "right",
+        "text-vertical-alignment": "center",
+        "text-width": "medium",
+        "text-style": "none",
+        "text-background-color": "transparent",
+        "image-display-type": "medium",
+        "aspect-ratio": 58,
+        "overlay-style": "darken-bottom",
+        "parallax-enabled": false,
+        "image": "shopify://shop_images/Three_foxes_Distillery-15-2_49fc7e42-1110-40fc-9251-836e5938664b.jpg",
+        "overline": "",
+        "title": "BOOK YOUR NEXT EVENT WITH US",
+        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>",
+        "link-url": "shopify://pages/events",
+        "link-text": "LEARN MORE",
+        "mobile-overlay": true,
+        "mobile-hide-description": false,
+        "mobile-image-display-type": "original",
+        "mobile-aspect-ratio": 134,
+        "mobile-text-alignment": "center"
       }
     },
     "contact_RXRkrw": {
@@ -305,7 +321,7 @@
     "featured-collection-slider",
     "2c7b2c75-a053-465f-9304-0c8a440bc6b4",
     "featured-blog",
-    "map",
+    "image_with_text_bCt4Vg",
     "contact_RXRkrw",
     "featured_newsletter_8aNLc3",
     "888c0700-2b7d-4516-8312-8388f1daefac"
