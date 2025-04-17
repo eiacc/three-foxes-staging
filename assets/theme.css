@@ -27,10 +27,12 @@
   color: #F7F2EE !important;
 }
 
-
+/* FORCE BACKGROUND COLOR FOR BLOG */
 .blog--root {
-  background-color: #F7F2EE; /* or any hex you want */
+  background-color: #F7F2EE;
 }
-.blog--root[data-text-color="3fd-red"] {
-  color: #87231C;
+
+/* FORCE BACKGROUND COLOR FOR BLOG POST */
+.article--root{
+  background-color: #F7F2EE;
 }
