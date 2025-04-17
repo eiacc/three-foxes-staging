@@ -296,19 +296,6 @@
             "mobile-aspect-ratio": 134
           }
         },
-        "image_kByKd3": {
-          "type": "image",
-          "settings": {
-            "menu-item": "BOTTLE SHOP",
-            "image": "shopify://shop_images/ESPRESSO_56c179d0-a8d7-4830-af85-c59d942f2f69.jpg",
-            "image-display-type": "aspect-ratio",
-            "aspect-ratio": 60,
-            "description": "COCKTAILS",
-            "link-url": "",
-            "mobile-image-display-type": "original",
-            "mobile-aspect-ratio": 134
-          }
-        },
         "image_NUBeEQ": {
           "type": "image",
           "settings": {
@@ -326,10 +313,23 @@
           "type": "image",
           "settings": {
             "menu-item": "BOTTLE SHOP",
-            "image": "shopify://shop_images/EspAmaro_Cocktail_2_-_Bottle_Drink_With_Cinnamon_Biscotti_-_Red_Curtain_-_1x1_-_02.jpg",
+            "image": "shopify://shop_images/RosGIn_Cocktail_2_-_Gin_Spritz-137.jpg",
             "image-display-type": "aspect-ratio",
-            "aspect-ratio": 100,
-            "description": "AMARO",
+            "aspect-ratio": 66,
+            "description": "SPIRITS",
+            "link-url": "shopify://collections/spirits",
+            "mobile-image-display-type": "original",
+            "mobile-aspect-ratio": 134
+          }
+        },
+        "image_kByKd3": {
+          "type": "image",
+          "settings": {
+            "menu-item": "BOTTLE SHOP",
+            "image": "shopify://shop_images/ESPRESSO_56c179d0-a8d7-4830-af85-c59d942f2f69.jpg",
+            "image-display-type": "aspect-ratio",
+            "aspect-ratio": 60,
+            "description": "COCKTAILS",
             "link-url": "",
             "mobile-image-display-type": "original",
             "mobile-aspect-ratio": 134
@@ -348,9 +348,9 @@
         "image_87BwmD",
         "image_CekmQV",
         "image_7edhqw",
-        "image_kByKd3",
         "image_NUBeEQ",
-        "image_KpaGfJ"
+        "image_KpaGfJ",
+        "image_kByKd3"
       ],
       "settings": {
         "layout": "drawer",
