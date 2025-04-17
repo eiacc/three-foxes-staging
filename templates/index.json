@@ -86,9 +86,9 @@
         "rotate-frequency": 4,
         "transition_type": "slide",
         "mobile-image-display-type": "fit-screen",
-        "mobile-aspect-ratio": 134,
+        "mobile-aspect-ratio": 118,
         "blocks_per_slide_mobile": "1",
-        "mobile-overlay": false
+        "mobile-overlay": true
       }
     },
     "featured_text_j7W7QW": {
