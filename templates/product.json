@@ -136,6 +136,10 @@
         "mobile-media-layout": "slideshow"
       }
     },
+    "reviews_Ee7CgX": {
+      "type": "reviews",
+      "settings": {}
+    },
     "text_columns_tdUPLe": {
       "type": "text-columns",
       "blocks": {
@@ -215,10 +219,6 @@
         "title": "You may also like"
       }
     },
-    "reviews_Ee7CgX": {
-      "type": "reviews",
-      "settings": {}
-    },
     "featured_newsletter_h9trRM": {
       "type": "featured-newsletter",
       "settings": {
@@ -242,9 +242,9 @@
   },
   "order": [
     "main",
+    "reviews_Ee7CgX",
     "text_columns_tdUPLe",
     "related-products",
-    "reviews_Ee7CgX",
     "featured_newsletter_h9trRM"
   ]
 }
