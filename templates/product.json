@@ -188,7 +188,7 @@
         "spacing-below": true,
         "block-spacing": true,
         "background-color": "accent-1",
-        "text-color": "accent_2",
+        "white-text": true,
         "container-width": "4",
         "width": 3,
         "aspect-ratio": "portrait",
