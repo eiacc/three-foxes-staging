@@ -260,23 +260,6 @@
         "mobile-text-alignment": "center"
       }
     },
-    "contact_RXRkrw": {
-      "type": "contact",
-      "custom_css": [],
-      "name": "Contact form",
-      "settings": {
-        "top-border": false,
-        "spacing-above": true,
-        "spacing-below": true,
-        "background-color": "accent-1",
-        "white-text": true,
-        "container-width": "2",
-        "heading": "Contact us",
-        "store-address": "391 Sutter St,\r\nSan Francisco",
-        "store-hours": "<p>Monday - Friday<br/>12pm - 8pm<br/><br/>Saturday - Sunday<br/>12pm - 5pm</p>",
-        "show-social-sharing": false
-      }
-    },
     "featured_newsletter_8aNLc3": {
       "type": "featured-newsletter",
       "settings": {
@@ -322,7 +305,6 @@
     "2c7b2c75-a053-465f-9304-0c8a440bc6b4",
     "featured-blog",
     "image_with_text_bCt4Vg",
-    "contact_RXRkrw",
     "featured_newsletter_8aNLc3",
     "888c0700-2b7d-4516-8312-8388f1daefac"
   ]
