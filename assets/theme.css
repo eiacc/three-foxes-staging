@@ -44,6 +44,9 @@
 .article--recents-root{
   background-color: #F7F2EE;
 }
-
+/* FORCE BACKGROUND COLOR FOR BLOG POST NAV */
+.article--navigation-root{
+  background-color: #F7F2EE;
+}
 
 /* ******************* SK TOUCH UPS END *******************************/
