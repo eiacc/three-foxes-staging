@@ -226,7 +226,7 @@
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "white-text": true,
+        "text-color": "accent_2",
         "heading-type": "section-heading",
         "chooseSubHeadingtype": "SubHeading2",
         "chooseHeadingtype": "heading2",
