@@ -15,7 +15,7 @@
   assign spacing_below = section.settings.spacing-below
   assign text_alignment = section.settings.text-alignment
   assign top_border = section.settings.top-border
-  assign text_color = section.settings.text-color
+  assign white_text = section.settings.white-text
 
   assign header_text_exists = true
   if overline == blank and heading == blank and description == blank
@@ -115,13 +115,15 @@
   data-container-width="{{ container_width }}"
   data-footer-text-exists="{{ footer_text_exists }}"
   data-header-text-exists="{{ header_text_exists }}"
+  {% if white_text %}
+    data-text-color="white"
+  {% endif %}
   data-mobile-overlay="false"
   data-spacing-above="{{ spacing_above }}"
   data-spacing-below="{{ spacing_below }}"
   data-text-alignment="{{ text_alignment }}"
   data-text-position="bottom"
   data-top-border="{{ top_border }}"
-  data-text-color="{{ text_color }}"
 >
   {%- if header_text_exists -%}
     <div class="featured-grid--header" data-container="block">
@@ -348,17 +350,11 @@
       "default": "none"
     },
     {
-        "id": "text-color",
-        "label": "Text Color",
-        "type": "select",
-        "options": [
-          { "label": "Accent 1", "value": "accent_1" },
-          { "label": "Accent 2", "value": "accent_2" },
-          { "label": "Text", "value": "text" },
-          { "label": "Button Text", "value": "btn_text" }
-        ],
-        "default": "accent_1"
-      },
+      "id": "white-text",
+      "label": "Use white text color",
+      "type": "checkbox",
+      "default": false
+    },
     {
       "id": "container-width",
       "label": "Maximum width of container",
