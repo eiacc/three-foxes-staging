@@ -112,8 +112,30 @@
         "link-text": "READ MORE..."
       }
     },
+    "featured_collection_wLFJrh": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "top-border": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "featured-collection--image--show": false,
+        "featured-collection--description--show": false,
+        "background-color": "none",
+        "white-text": true,
+        "display-type": "slideshow",
+        "products-per-row--desktop": "3",
+        "products-per-row--mobile": "1",
+        "collection": "aperitivo",
+        "max-products": 6,
+        "heading": "APERITIVO & AMARO",
+        "chooseHeadingtype": "heading2",
+        "chooseProTitleHeadingtype": "heading4"
+      }
+    },
     "featured-collection-slider": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "top-border": true,
         "spacing-above": true,
@@ -301,6 +323,7 @@
   "order": [
     "slideshow",
     "featured_text_j7W7QW",
+    "featured_collection_wLFJrh",
     "featured-collection-slider",
     "2c7b2c75-a053-465f-9304-0c8a440bc6b4",
     "featured-blog",

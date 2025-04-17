@@ -47,6 +47,7 @@
     "buttons--radius": 3,
     "image--product-size": "natural",
     "product--hover-image-enabled": false,
+    "product--show-vendor": false,
     "product--swatches-enabled": true,
     "product--hide-single-swatch": false,
     "product--text-alignment": "center",
