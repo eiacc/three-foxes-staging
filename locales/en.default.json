@@ -253,7 +253,7 @@
       "home_page_link": "Home page",
       "page_title": "Page not found",
       "products_link": "products",
-      "return_links_html": "Lost? Head back to the {{ home_page_link }} or click the lil’ magnifying glass top left of screen if you know what you’re hunting for."
+      "return_links_html": "Lost? Head back to the {{ home_page_link }} or click the lil’ magnifying glass top left of screen if you know what you’re digging for."
     }
   },
   "layout": {
