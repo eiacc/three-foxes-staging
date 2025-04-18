@@ -56,10 +56,16 @@ h3.rdc-m-0 {
   text-transform: uppercase !important;
 }
 
-.ctm_stepNavBtn {
-  font-size: 26px !important;
-  padding: 14px 28px !important;
+
+button.btn.btn-danger.ctm_tab_content_next_btn.ctmBtnBurgundy.ctmSecFontAvenir.ctmTextCapitalise {
+  font-size: 18px !important;
+  padding: 14px 24px !important;
 }
+button.btn.btn-secondary.ctm_tab_content_prev_btn {
+  font-size: 18px !important;
+  padding: 14px 24px !important;
+}
+
 
 
 /* FORCE BACKGROUND COLOR FOR COLLECTIONS PAGES
