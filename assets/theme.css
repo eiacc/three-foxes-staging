@@ -49,10 +49,12 @@
   background-color: #F7F2EE;
 }
 
-.stacked-text--block:hover .stacked-text--heading,
-.stacked-text--block:hover .stacked-text--button span {
-  color: white !important;
+/* Target only the text elements on hover */
+.featured-content--cover-link:hover .stacked-text--title,
+.featured-content--cover-link:hover .stacked-text--button span {
+  color: #ffffff !important;
 }
+
 
 
 
