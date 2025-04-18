@@ -50,10 +50,11 @@
 }
 
 /* Target only the text elements on hover */
-.featured-content--cover-link:hover .stacked-text--title,
-.featured-content--cover-link:hover .stacked-text--button span {
+a.featured-content--cover-link:hover h2.stacked-text--title,
+a.featured-content--cover-link:hover .stacked-text--button span {
   color: #ffffff !important;
 }
+
 
 
 
