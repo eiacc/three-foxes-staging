@@ -61,7 +61,9 @@
   background-color: #F7F2EE;
 }
 
-.collection-grid {
-  background-color: #F7F2EE !important; /* Replace with your desired color */
+.collection--grid,
+.collection--grid > div {
+  background-color: #F7F2EE !important;
 }
+
 /* ******************* SK TOUCH UPS END *******************************/
