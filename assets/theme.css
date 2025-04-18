@@ -49,10 +49,14 @@
   background-color: #F7F2EE;
 }
 
-.stacked-text--block:hover [data-item="section-heading"],
-.stacked-text--block:hover .stacked-text--button a {
-  color: green !important;
+.stacked-text--block:hover [data-item="section-heading"] * {
+  color: white !important;
 }
+
+.stacked-text--block:hover .stacked-text--button a span {
+  color: white !important;
+}
+
 
 
 /* ******************* SK TOUCH UPS END *******************************/
