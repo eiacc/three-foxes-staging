@@ -63,10 +63,12 @@ button.ctm_tab_content_prev_btn {
   height: 43px !important;
 }
 
+.ctm_tab_content_next_btn span,
+.ctm_tab_content_prev_btn span,
 .ctm_tab_content_next_btn,
 .ctm_tab_content_prev_btn {
-  font-size: 40px !important;
-  text-transform: uppercase !important;
+  font-size: 30px !important;
+  line-height: 1.2 !important;
 }
 
 
