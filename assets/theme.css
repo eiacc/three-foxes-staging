@@ -52,7 +52,7 @@
 /* Target only the text elements on hover */
 h2.stacked-text--title[data-text-color="accent_2"]:hover,
 .stacked-text--button span[data-text-color="accent_2"]:hover {
-  color: white !important;
+  color: green !important;
 }
 
 
