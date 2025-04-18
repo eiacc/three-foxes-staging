@@ -50,6 +50,8 @@
 }
 
 /* FORCE BACKGROUND COLOR FOR COLLECTIONS PAGES */
-.collection--header-root{background-color: #F7F2EE;}
+.collection--header-root{
+  background-color: #F7F2EE;
+}
 
 /* ******************* SK TOUCH UPS END *******************************/
