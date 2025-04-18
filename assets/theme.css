@@ -49,7 +49,14 @@
   background-color: #F7F2EE;
 }
 
+/* REMOVE EXISITING HOVER */
+
+.featured-content--cover-link:hover .stacked-text--title,
+.featured-content--cover-link:hover .stacked-text--button span {
+  color: inherit !important;
+}
 /* Target only the text elements on hover */
+
 h2.stacked-text--title[data-text-color="accent_2"]:hover,
 .stacked-text--button span[data-text-color="accent_2"]:hover {
   color: green !important;
