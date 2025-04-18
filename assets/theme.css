@@ -49,12 +49,6 @@
   background-color: #F7F2EE;
 }
 
-.footer-root{
-  background-color: #87231C;
-[data-background-color="3fd-red"],
-[data-background-color="3fd-red"] * {
-  color: #87231C !important;
-}
 
 
 
