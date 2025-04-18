@@ -67,6 +67,12 @@ button.ctm_tab_content_prev_btn {
   vertical-align: middle;
 }
 
+button.ctm_tab_content_next_btn span,
+button.ctm_tab_content_prev_btn span {
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+}
+
 
 
 /* FORCE BACKGROUND COLOR FOR COLLECTIONS PAGES
