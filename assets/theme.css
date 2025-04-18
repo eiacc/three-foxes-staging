@@ -61,16 +61,11 @@ button.ctm_tab_content_next_btn,
 button.ctm_tab_content_prev_btn {
   width: 160px !important;
   height: 43px !important;
-  font-size: 30px !important;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
 }
 
 .ctm_tab_content_next_btn,
 .ctm_tab_content_prev_btn {
-  font-size: 24px !important;
-  font-weight: bold !important;
+  font-size: 30px !important;
   text-transform: uppercase !important;
 }
 
