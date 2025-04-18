@@ -12,7 +12,7 @@
     "collection-header": {
       "type": "collection--header",
       "custom_css": [
-        ".section--collection-header {background-color: #F7F2EE !important;}"
+        ".section--collection-header {background-color: #f7f2ee !important;}"
       ],
       "settings": {
         "show-title": true,
@@ -34,6 +34,9 @@
     },
     "navigation": {
       "type": "collection--navigation",
+      "custom_css": [
+        ".section--collection-header {background-color: #f7f2ee !important;}"
+      ],
       "settings": {
         "show-browse-button": true,
         "show-sort-button": true,
