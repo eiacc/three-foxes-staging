@@ -32,26 +32,24 @@
   background-color: #F7F2EE;
 }
 
-/* FORCE BACKGROUND COLOR FOR BLOG POST */
+/* FORCE BACKGROUND COLOR FOR BLOG BLOCKS */
 .article--root{
   background-color: #F7F2EE;
 }
-/* FORCE BACKGROUND COLOR FOR BLOG POST COMMENTS */
+
 .article-comments--root{
   background-color: #F7F2EE;
 }
-/* FORCE BACKGROUND COLOR FOR BLOG POST RECENTS */
+
 .article--recents-root{
   background-color: #F7F2EE;
 }
-/* FORCE BACKGROUND COLOR FOR BLOG POST NAV */
+
 .article--navigation-root{
   background-color: #F7F2EE;
 }
 
-
-
-
-
+/* FORCE BACKGROUND COLOR FOR COLLECTIONS PAGES */
+.collection--header-root{background-color: #F7F2EE;}
 
 /* ******************* SK TOUCH UPS END *******************************/
