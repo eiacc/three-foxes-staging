@@ -67,11 +67,13 @@ button.ctm_tab_content_prev_btn {
   vertical-align: middle;
 }
 
-button.ctm_tab_content_next_btn,
-button.ctm_tab_content_prev_btn {
-  font-size: 30px !important;
-  line-height: 1.2 !important;
+.ctm_tab_content_next_btn,
+.ctm_tab_content_prev_btn {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
 }
+
 
 
 
