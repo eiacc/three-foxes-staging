@@ -57,13 +57,14 @@ h3.rdc-m-0 {
 }
 
 
-button.ctm_tab_content_next_btn[type="button"] {
-  font-size: 22px !important;
-  padding: 12px 25px !important;
-}
-button.ctm_tab_content_prev_btn[type="button"] {
-  font-size: 22px !important;
-  padding: 12px 25px !important;
+button.ctm_tab_content_next_btn,
+button.ctm_tab_content_prev_btn {
+  width: 120px !important;
+  height: 60px !important;
+  font-size: 18px !important;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
 }
 
 
