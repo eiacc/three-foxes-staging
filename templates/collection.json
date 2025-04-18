@@ -35,7 +35,7 @@
     "navigation": {
       "type": "collection--navigation",
       "custom_css": [
-        ".section--collection-header {background-color: #f7f2ee !important;}"
+        ".section--collection-navigation {background-color: #f7f2ee !important;}"
       ],
       "settings": {
         "show-browse-button": true,
@@ -52,6 +52,9 @@
     },
     "main": {
       "type": "collection--body",
+      "custom_css": [
+        ".section--collection-grid {background-color: #f7f2ee !important;}"
+      ],
       "settings": {
         "products-per-row--desktop": 3,
         "products-per-row--mobile": "1",
