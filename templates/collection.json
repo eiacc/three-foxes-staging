@@ -11,6 +11,9 @@
   "sections": {
     "collection-header": {
       "type": "collection--header",
+      "custom_css": [
+        ".section--collection-header {background-color: #F7F2EE !important;}"
+      ],
       "settings": {
         "show-title": true,
         "heading-type": "featured-heading",
@@ -74,7 +77,7 @@
         "spacing-below": false,
         "background-color": "none",
         "container-width": "6",
-        "white-text": true,
+        "text-color": "accent_1",
         "overlap": false,
         "heading-type": "featured-heading",
         "chooseHeadingtype": "heading2",
