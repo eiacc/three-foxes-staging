@@ -58,15 +58,15 @@ h3.rdc-m-0 {
 
 
 button.ctm_tab_content_next_btn[type="button"] {
-  font-size: 30px !important;
+  font-size: 22px !important;
   padding: 18px 30px !important;
 }
 button.ctm_tab_content_prev_btn[type="button"] {
-  font-size: 30px !important;
+  font-size: 22px !important;
   padding: 18px 30px !important;
 }
 button[data-step="next"] {
-  font-size: 30px !important;
+  font-size: 22px !important;
 }
 
 
