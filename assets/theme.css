@@ -56,14 +56,12 @@ h3.rdc-m-0 {
   text-transform: uppercase !important;
 }
 
-
+/* Increase button size */
 button.ctm_tab_content_next_btn,
 button.ctm_tab_content_prev_btn {
   width: 160px !important;
   height: 43px !important;
 }
-
-
 
 
 
