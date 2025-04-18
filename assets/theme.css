@@ -65,6 +65,9 @@ button.ctm_tab_content_prev_btn[type="button"] {
   font-size: 30px !important;
   padding: 18px 30px !important;
 }
+button[data-step="next"] {
+  font-size: 30px !important;
+}
 
 
 
