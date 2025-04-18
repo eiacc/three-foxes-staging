@@ -57,14 +57,15 @@ h3.rdc-m-0 {
 }
 
 
-button.btn.btn-danger.ctm_tab_content_next_btn.ctmBtnBurgundy.ctmSecFontAvenir.ctmTextCapitalise {
+button.ctm_tab_content_next_btn[type="button"] {
   font-size: 44px !important;
-  padding: 14px 24px !important;
+  padding: 18px 30px !important;
 }
-button.btn.btn-secondary.ctm_tab_content_prev_btn {
+button.ctm_tab_content_prev_btn[type="button"] {
   font-size: 44px !important;
-  padding: 14px 24px !important;
+  padding: 18px 30px !important;
 }
+
 
 
 
