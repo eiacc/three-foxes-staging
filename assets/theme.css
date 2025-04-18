@@ -49,21 +49,12 @@
   background-color: #F7F2EE;
 }
 
-/* FORCE BACKGROUND COLOR FOR COLLECTIONS PAGES */
-.collection--header-root{
-  background-color: #F7F2EE;
-}
+/* FORCE BACKGROUND COLOR FOR COLLECTIONS PAGES
 
-.collection--body-root{
-  background-color: #F7F2EE;
-}
-.collection--navigation-root{
-  background-color: #F7F2EE;
-}
 
-.collection--grid,
-.collection--grid > div {
-  background-color: #F7F2EE !important;
-}
+ADDED CUSTOM CSS TO .collection--header
+ADDED CUSTOM CSS TO .collection--body
+ADDED CUSTOM CSS TO .collection--navigation
+
 
 /* ******************* SK TOUCH UPS END *******************************/
