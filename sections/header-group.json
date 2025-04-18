@@ -298,9 +298,9 @@
       "settings": {
         "layout": "drawer",
         "background-color": "light",
-        "bottom-border": true,
+        "bottom-border": false,
         "white-text": false,
-        "hover-disabled": true,
+        "hover-disabled": false,
         "sticky-enabled": true,
         "hide-on-scroll": false,
         "reduce-height": true,
