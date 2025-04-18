@@ -51,12 +51,11 @@
 
 /* REMOVE EXISITING HOVER */
 .featured-content--cover-link {
-  pointer-events: none;
+  display: inline-block;
+  width: auto;
+  height: auto;
 }
 
-.featured-content--cover-link:hover .stacked-text--title,
-.featured-content--cover-link:hover .stacked-text--button span {
-  color: inherit !important;
 }
 /* Target only the text elements on hover */
 
