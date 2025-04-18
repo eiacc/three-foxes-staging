@@ -50,6 +50,9 @@
 }
 
 /* REMOVE EXISITING HOVER */
+.featured-content--cover-link {
+  pointer-events: none;
+}
 
 .featured-content--cover-link:hover .stacked-text--title,
 .featured-content--cover-link:hover .stacked-text--button span {
