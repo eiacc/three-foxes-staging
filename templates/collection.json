@@ -56,9 +56,9 @@
         ".section--collection-grid {background-color: #f7f2ee !important;}"
       ],
       "settings": {
-        "products-per-row--desktop": 3,
+        "products-per-row--desktop": 4,
         "products-per-row--mobile": "1",
-        "number-of-rows": 3
+        "number-of-rows": 5
       }
     },
     "recent-products": {
