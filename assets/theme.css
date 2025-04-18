@@ -51,7 +51,7 @@
 
 .stacked-text--block:hover [data-item="section-heading"],
 .stacked-text--block:hover .stacked-text--button a {
-  color: white !important;
+  color: green !important;
 }
 
 
