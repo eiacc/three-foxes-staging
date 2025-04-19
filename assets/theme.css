@@ -67,10 +67,9 @@ button.ctm_tab_content_prev_btn {
 }
 
 /* Force cart background color */
-#CartDrawer, 
-.cart--root, 
-.cart__items, 
-.cart__drawer, 
+body,
+.layout--template,
+.cart--root,
 .cart-page--root {
   background-color: #F7F2EE !important;
 }
