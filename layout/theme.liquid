@@ -57,7 +57,7 @@
       {{ 'custom__pages.css' | asset_url | stylesheet_tag }}
     {% endif %}
     {{ 'rdc.css' | asset_url | stylesheet_tag }}
-    {% include 'hulk_po_vd.liquid' %}
+    {% comment %} {% include 'hulk_po_vd.liquid' %} {% endcomment %}
 
     {% render 'third-party-head' %}
   </head>
