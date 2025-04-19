@@ -74,6 +74,15 @@ body,
   background-color: #F7F2EE !important;
 }
 
+.btn--primary {
+  background-color: #87231C;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}
 
 
 /**********************  NOTE   ********************************
