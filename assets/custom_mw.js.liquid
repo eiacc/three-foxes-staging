@@ -762,7 +762,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           }
         } else {
           validForm = false;
-          alert("You must upload a file, or click 'I'll provide later'");
+          alert("Upload your file, or click 'I'll provide later'");
         }
       } else {
         validForm = true;
@@ -775,7 +775,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       if (labelInput.value.trim() === "") {
         validForm = false;
         labelInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
-        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'You must enter some label names';
+        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Please enter your label text';
       } else if(labelInput.value.trim().length <= 3) {
         validForm = false;
         labelInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
@@ -795,7 +795,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       if (labeldate.value.trim() === "") {
         validForm = false;
         labeldate.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
-        labeldate.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'You must enter a date or comment';
+        labeldate.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Please enter a date or text here';
       } else {
         validForm = true;
       }
@@ -825,7 +825,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }
       if (dateInput.value.trim() == '') {
         dateInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
-        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'You must select an event date';
+        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Event date required';
       }
       if (validForm == true) {
         dateInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.add('d-none')
@@ -838,7 +838,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let eventEmail = eventEmailElem.value
       if (eventEmail == "") {
         eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
-        eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "You must give a preferred email";
+        eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Email address required";
 
         // console.log('Form = No email');
         // bestEmailError.style.display = "block";
@@ -853,7 +853,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           // console.log('email? : '+validForm);
         } else {
           eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
-          eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "You must enter a valid email";
+          eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Email address required";
           // bestEmailError.style.display = "block";
           // bestEmailError.innerHTML = "You must enter a valid email";
           validForm = false;
@@ -868,7 +868,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let eventMobile = eventPhoneElem.value
       if (eventMobile == "") {
         eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
-        eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "You must give a preferred mobile";
+        eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Mobile number required";
         // console.log('Form = No mobile');
         // bestMobileError.style.display = "block";
         // bestMobileError.innerHTML = "You must give a preferred mobile";
@@ -885,7 +885,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           validForm = false;
           eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
           // eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "You must enter a plain mobile number";
-          eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "You must enter a valid mobile number";
+          eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Please enter a valid mobile number";
           // bestMobileError.style.display = "block";
           // bestMobileError.innerHTML = "You must enter a plain mobile number";
           // console.log('mobileNOMATCH : '+validForm);
