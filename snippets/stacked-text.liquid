@@ -91,6 +91,8 @@
             <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
           </div>
         {%- else -%}
+          {% comment %} THIS IS THE ORGINAL LINK TYPE, NO BUTTON JSUT WORD
+            
           <a
             class="stacked-text--button"
             href="{{ link_url }}"
@@ -106,6 +108,16 @@
           >
             <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
           </a>
+          {% endcomment %}
+<a
+  class="stacked-text--button btn btn--primary"
+  href="{{ link_url }}"
+>
+  {{- link_text -}}
+</a>
+
+
+      
         {%- endif -%}
       {%- endif -%}
     </div>
