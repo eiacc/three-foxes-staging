@@ -1504,7 +1504,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // summaryPropsData += `<div class="ctmSummaryTypeHeading ctmTextCapitalize mb-4">ORDER INFORMATION</div>`;
     // summaryItemsData += `<div class="ctmSummaryTypeHeading ctmTextCapitalize mb-4">ORDER TOTAL</div>`;
-    summaryPropsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order information</div>`;
+    summaryPropsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order Detais</div>`;
     summaryItemsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order total</div>`;
     summaryResult.items.forEach((item)=>{
       ctmTotal += parseFloat(cocktailPrice(item.price_no_currency)) * item.quantity;
@@ -1533,12 +1533,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if(isLabelApplication){
           summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
           <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">LABEL APPLICATION</h6>
-          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">Three Foxes to Apply Labels</div>
+          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">Three Foxes to apply labels</div>
           </div>`;
         }else{
           summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
           <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">LABEL APPLICATION</h6>
-          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">Lables Provided Separately</div>
+          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">Lables provided separately</div>
           </div>`;
         }
       }
