@@ -27,7 +27,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
       for i in items
         assign field  = i.metafields.custom['product_customizer']
         assign meta   = field.value
-        assign field_option = "'" | append: i.metafields.my_fields.short_description | append: "'"
+        assign field_option = "`" | append: i.metafields.my_fields.short_description | append: "`"
     
         if field and meta
           capture j
