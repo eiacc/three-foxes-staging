@@ -50,7 +50,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
                 assign img      = '"' | append: img_url         | append: '"'
                 assign title    = '"' | append: meta['title']   | append: '"'
                 assign id       = '"' | append: i.id            | append: '"'
-                assign option   = field_option
+                assign option   = "'" | append: field_option  | append: "'"
 
                 echo '{'
                   if meta['image_type']
