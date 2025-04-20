@@ -27,7 +27,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
       for i in items
         assign field  = i.metafields.custom['product_customizer']
         assign meta   = field.value
-        assign field_option = i.metafields.my_fields.short_description | default: "test"
+        assign field_option = i.metafields.my_fields.short_description
     
         if field and meta
           capture j
@@ -107,4 +107,4 @@ size values: {{ v.value['name_foil'].value | first | json }}
   endcapture
 -%}
 
-<script>{% if item %}window.customizerVariants = {{ item }}{% endif %}</script>
+<script>{% if item %}window.customizerVariants = {{ item | json }}{% endif %}</script>
