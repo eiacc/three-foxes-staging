@@ -27,6 +27,8 @@ size values: {{ v.value['name_foil'].value | first | json }}
       for i in items
         assign field  = i.metafields.custom['product_customizer']
         assign meta   = field.value
+        assign option = i.metafields.custom['short_description']
+    
         if field and meta
           capture j
             echo '{'
@@ -48,7 +50,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
                 assign img      = '"' | append: img_url         | append: '"'
                 assign title    = '"' | append: meta['title']   | append: '"'
                 assign id       = '"' | append: i.id            | append: '"'
-                assign option   = '"' | append: i.metafields.custom['short_description']  | append: '"'
+                assign option   = '"' | append: option  | append: '"'
 
                 echo '{'
                   if meta['image_type']
