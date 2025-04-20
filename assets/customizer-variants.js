@@ -20,7 +20,7 @@ class ArtworkTemplate extends HTMLElement {
 
   reform() {
     const map       = new Map();
-    const variants  = JSON.parse(window.customizerVariants)
+    const variants  = window.customizerVariants
     if (!variants) return map
 
     for (let i = 0; i < variants.length; i++) {
