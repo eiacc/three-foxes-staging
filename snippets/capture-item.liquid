@@ -28,8 +28,6 @@ size values: {{ v.value['name_foil'].value | first | json }}
         assign field  = i.metafields.custom['product_customizer']
         assign meta   = field.value
         assign option = i.metafields.custom['short_description']
-
-        echo option
     
         if field and meta
           capture j
