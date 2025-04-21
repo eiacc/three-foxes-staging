@@ -40,3 +40,8 @@
     max-width: 400px;
   }
 }
+
+/* collection page */
+.template--collection .layout--template {
+    padding-block-start: 4rem;
+}
