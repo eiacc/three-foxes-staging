@@ -74,7 +74,7 @@
         "arrows-enabled": false,
         "blocks_per_slide": 1,
         "background-color": "accent-1",
-        "text-color": "accent_2",
+        "text-color": "btn_text",
         "text-style": "none",
         "text-background-color": "transparent",
         "heading-type": "banner-heading",
@@ -114,7 +114,6 @@
     },
     "featured_collection_wLFJrh": {
       "type": "featured-collection",
-      "name": "Featured collection",
       "settings": {
         "top-border": false,
         "spacing-above": true,
@@ -247,7 +246,6 @@
     },
     "image_with_text_bCt4Vg": {
       "type": "image-with-text",
-      "name": "Image with text",
       "settings": {
         "top-border": false,
         "spacing-above": true,
