@@ -46,6 +46,7 @@
   {%- if cover_link -%}
     <a
       class="featured-content--cover-link"
+      data-text-color="{{ text_color | default: 'accent_1' }}"
       href="{{ link_url }}"
       {%- if title != blank -%}
         aria-label="{{ title }}"
