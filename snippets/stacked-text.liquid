@@ -21,7 +21,8 @@
     data-y-alignment="{{ y_alignment }}"
     data-width="{{ width }}"
   >
-    <div
+    <a
+      href="{{ link_url | default: "#" }}"
       class="stacked-text--wrapper"
       data-text-style="{{ style }}"
       data-background-color="{{ bg_color }}"
@@ -110,6 +111,6 @@
                 
         {%- endif -%}
       {%- endif -%}
-    </div>
+    </a>
   </div>
 {%- endif -%}
