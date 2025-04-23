@@ -60,3 +60,7 @@ a.stacked-text--wrapper {
 .stacked-text--root {
   flex-direction: column;
 }
+
+.stacked-text--button {
+  width: 100%;
+}
