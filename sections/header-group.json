@@ -16,15 +16,14 @@
       "blocks": {
         "announcement": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "Super sale up to 40% off - discount code  BLKFRYD",
-            "link": "",
+            "text": "SUPER SALE ON WEDDING FAVOURS 50% OFF BULK ORDERS",
+            "link": "shopify://pages/foxtails-wedding",
             "hide-on-desktop": false,
             "hide-on-mobile": false,
             "page-enabled": false,
             "page-url": "",
-            "countdown-enabled": true,
+            "countdown-enabled": false,
             "timer-bg-color": "dark",
             "light-number": true,
             "expiry-date": "DD-MM-YYYY",
