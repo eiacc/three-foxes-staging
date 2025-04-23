@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const dpv       = area.nextElementSibling.classList.contains(names.get('area')) && area.nextElementSibling.classList.contains(names.get('disabled')); // returns a boolean. is personalized view disabled?
       const index     = dpv ? area.nextElementSibling.nextElementSibling.dataset.tab_index : area.nextElementSibling.dataset.tab_index;
 
-      console.log('area', area)
+      if (area) console.log('area', area)
       
       let isFormValid   = contactInputsValidate(area, true); // returns true or false
       if (!isFormValid) return
