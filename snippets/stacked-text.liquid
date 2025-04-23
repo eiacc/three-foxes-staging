@@ -104,7 +104,7 @@
               data-transition-button
             {% endunless %}
           >
-            <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
+            <a href="{{ link_url | default: '#' }}" data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</a>
           </div>
         {%- else -%}
             
