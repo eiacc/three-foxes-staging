@@ -438,6 +438,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const dpv       = area.nextElementSibling.classList.contains(names.get('area')) && area.nextElementSibling.classList.contains(names.get('disabled')); // returns a boolean. is personalized view disabled?
       const index     = dpv ? area.nextElementSibling.nextElementSibling.dataset.tab_index : area.nextElementSibling.dataset.tab_index;
 
+      console.log('area', area)
+      
       let isFormValid   = contactInputsValidate(area, true); // returns true or false
       if (!isFormValid) return
 
@@ -735,6 +737,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   function contactInputsValidate(tabWrapper, validForm) {
     const labelInput = tabWrapper.querySelector('[name="Label"]');
     const labeldate = tabWrapper.querySelector('[name="Label Date"');
+
+    console.log('area', area)
 
     const dateInput = tabWrapper.querySelector('#contactInfoEventDate');
     const eventEmailElem = tabWrapper.querySelector('#contactInfoEventEmail');
