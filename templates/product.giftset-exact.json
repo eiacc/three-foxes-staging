@@ -51,6 +51,7 @@
           "disabled": true,
           "settings": {
             "variant-style": "buttons",
+            "variant_metafield_interaction": false,
             "swatches-enabled": true,
             "size-chart-enabled": true,
             "size-chart-option": "size",
@@ -115,6 +116,7 @@
       ],
       "settings": {
         "container-width": "3",
+        "background_color": "none",
         "spacing-above": false,
         "spacing-below": true,
         "media-layout": "two",
@@ -220,7 +222,7 @@
         "spacing-above": true,
         "spacing-below": true,
         "background-color": "accent-1",
-        "white-text": true,
+        "text-color": "accent_2",
         "heading-type": "section-heading",
         "chooseSubHeadingtype": "SubHeading2",
         "chooseHeadingtype": "heading2",
