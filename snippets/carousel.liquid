@@ -84,6 +84,7 @@
   data-transition-type="{{ transition_type }}"
   data-view="{{ view }}"
   style="{{ css_vars }}"
+  data-text-color="{{ text_color | default: "accent_2" }}"
 >
   <div class="carousel--viewport">
     {%- unless arrows_enabled == false -%}
