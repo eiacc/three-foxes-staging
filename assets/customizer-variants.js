@@ -55,6 +55,7 @@ class ArtworkTemplate extends HTMLElement {
         ['price',     (variant['price'] / 100).toFixed(2)],
         ['title',     title],
         ['available', variant['available']],
+        ['product_name', variant['product_name']]
         ['extend',    []]
       ]);
 
@@ -86,9 +87,10 @@ class ArtworkTemplate extends HTMLElement {
       const key         = data.get('key');
       const price       = data.get('price');
       const title       = data.get('title');
+      const product_name = data.get('product_name')
       // const available   = dataMap.get('available');
 
-      li.appendChild(this.left(idx, title, key, price)) // left content
+      li.appendChild(this.left(idx, title, product_name, key, price)) // left content
       rw.appendChild(this.right(key, data, price))  // right content
     });
 
@@ -121,7 +123,7 @@ class ArtworkTemplate extends HTMLElement {
     return el
   }
 
-  left(idx, title, key, price) {
+  left(idx, title, product_name, key, price) {
     const fragment = document.createDocumentFragment();
 
     const input = this.create_el('input')
@@ -132,6 +134,7 @@ class ArtworkTemplate extends HTMLElement {
     input.setAttribute('data-product-type', key)
     input.setAttribute('hidden', true)
     input.setAttribute('aria-hidden', true)
+    input.setAttribute('data-product-name', product_name)
     if (idx === 0) input.setAttribute('checked', true)
 
 

@@ -1,4 +1,5 @@
 {% assign items = all_products[product].variants %}
+
 {% comment %} {% assign test_img = items[3].metafields.custom['product_customizer']['value']['name_foil'] %} {% endcomment %}
 {% comment %} {% assign v = items[3].metafields.custom['product_customizer'] %}
 
@@ -44,6 +45,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
               echo 'price'        | append: ':' | append: i.price     | append: ','
               echo 'title'        | append: ':' | append: temp_title  | append: ','
               echo 'key'          | append: ':' | append: key         | append: ','
+              echo 'product_name' | append: ':' | append: product | append: ','
 
               if i.available
                 echo 'available'  | append: ':' | append: 'true'        | append: ','
