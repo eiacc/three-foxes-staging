@@ -26,8 +26,9 @@ size values: {{ v.value['name_foil'].value | first | json }}
   capture item
     echo '['
       for i in items
+        assign variant_ids = variant_ids | append: i.id
         unless forloop.last
-          assign variant_ids = variant_ids | append: i.id | append: ","
+          assign variant_ids = variant_ids | append: ","
         endunless
     
         assign field  = i.metafields.custom['product_customizer']
@@ -115,6 +116,6 @@ size values: {{ v.value['name_foil'].value | first | json }}
 {% if item %}
   <script>
       window.customizerVariants = {{ item }}
-      window.customizerVariantIds = {{ variant_ids }}
+      window.customizerVariantIds = {{ variant_ids | json }}
   </script>
 {% endif %}
