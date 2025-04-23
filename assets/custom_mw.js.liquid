@@ -534,14 +534,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
               TODO: currently disabling the checking
             */
             // const hasItem = ctmCollectDataArr.some(obj => obj.step === '1');
-            const hasItem = ctmCollectDataArr.some(obj => obj.step === '2');
+            let temp_idx = 0;
+            const hasItem = ctmCollectDataArr.some((obj, idx) => {
+              if (obj.step === '2') {
+                temp_idx = idx;
+                return true;
+              }
+              return false;
+            });
             console.log('hasItem', hasItem)
-            if (override.arr_idx !== 0) {
-              ctmCollectDataArr[override.arr_idx] = data;
+
+            if (hasItem) {
+              tmCollectDataArr[temp_idx] = data;
             } else {
               ctmCollectDataArr.push(data);
-              override.arr_idx = ctmCollectDataArr.length - 1;
             }
+            // ctmCollectionDataArr
+            // if (override.arr_idx !== 0) {
+            //   ctmCollectDataArr[override.arr_idx] = data;
+            // } else {
+            //   ctmCollectDataArr.push(data);
+            //   override.arr_idx = ctmCollectDataArr.length - 1;
+            // }
             // if (hasItem) {
             // }
             // console.log('current collection array', ctmCollectDataArr);
