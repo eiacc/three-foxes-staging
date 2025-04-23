@@ -59,12 +59,29 @@
             "mobile-text-alignment": "center",
             "mobile-hide-description": false
           }
+        },
+        "image_ze98Ew": {
+          "type": "image",
+          "settings": {
+            "text-width": "medium",
+            "text-horizontal-alignment": "right",
+            "text-vertical-alignment": "bottom",
+            "image": "shopify://shop_images/Three_Foxes_-_Gabriel-7645_1.jpg",
+            "overline": "",
+            "title": "SUNNY ARVO APERITIVO",
+            "description": "",
+            "link-url": "shopify://products/sunny-arvo-aperitivo",
+            "link-text": "SHOP NOW",
+            "mobile-text-alignment": "center",
+            "mobile-hide-description": false
+          }
         }
       },
       "block_order": [
         "slide-0",
         "slide-1",
-        "slide-2"
+        "slide-2",
+        "image_ze98Ew"
       ],
       "settings": {
         "top-border": false,
