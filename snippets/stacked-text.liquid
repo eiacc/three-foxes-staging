@@ -21,19 +21,34 @@
     data-y-alignment="{{ y_alignment }}"
     data-width="{{ width }}"
   >
-    <a
-      href="{{ link_url | default: "#" }}"
-      class="stacked-text--wrapper"
-      data-text-style="{{ style }}"
-      data-background-color="{{ bg_color }}"
-      data-translucent="{{ settings.content--box-translucent }}"
-      {% unless settings.transitions--text %}
-        data-transition-container="{{ id }}"
-        data-transition-type="slide-in"
-        data-transition-cascade="vertical"
-        data-transition-cascade-interval="500"
-      {% endunless %}
-    >
+    {% if link_url %}
+      <a
+        href="{{ link_url | default: "#" }}"
+        class="stacked-text--wrapper"
+        data-text-style="{{ style }}"
+        data-background-color="{{ bg_color }}"
+        data-translucent="{{ settings.content--box-translucent }}"
+        {% unless settings.transitions--text %}
+          data-transition-container="{{ id }}"
+          data-transition-type="slide-in"
+          data-transition-cascade="vertical"
+          data-transition-cascade-interval="500"
+        {% endunless %}
+      >
+    {% else %}
+      <div
+        class="stacked-text--wrapper"
+        data-text-style="{{ style }}"
+        data-background-color="{{ bg_color }}"
+        data-translucent="{{ settings.content--box-translucent }}"
+        {% unless settings.transitions--text %}
+          data-transition-container="{{ id }}"
+          data-transition-type="slide-in"
+          data-transition-cascade="vertical"
+          data-transition-cascade-interval="500"
+        {% endunless %}
+      >
+    {% endif %}
       {%- if title != blank -%}
         <div
           {% unless settings.transitions--text %}
@@ -111,6 +126,10 @@
                 
         {%- endif -%}
       {%- endif -%}
-    </a>
+    {% if link_url %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
   </div>
 {%- endif -%}
