@@ -76,7 +76,7 @@ function flowExtraAreaProQtyCal(proItems){
 
   if(label_app){
     label_app.setAttribute('data-ctm_quantity', qty);
-    label_app.nextElementSibling.querySelector('span').innerHTML = '$' + (qty * 0.30);
+    label_app.nextElementSibling.querySelector('span').innerHTML = '$' + ((qty * 0.30).toFixed(2));
   }
 
   if(bottle_tags_price.length > 0){
