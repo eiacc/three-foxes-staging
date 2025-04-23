@@ -54,7 +54,7 @@
 } */
 
 a.stacked-text--wrapper {
-  text-decoration: unset;
+  text-decoration: none!important;
 }
 
 .stacked-text--root {
