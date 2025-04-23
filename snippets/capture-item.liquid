@@ -22,9 +22,14 @@ size values: {{ v.value['name_foil'].value | first | json }}
 <br> {% endcomment %}
 
 {%- liquid
+  assign variant_ids = ""
   capture item
     echo '['
       for i in items
+        unless forloop.last
+          assign variant_ids = variant_ids | append: i.id | append: ","
+        endunless
+    
         assign field  = i.metafields.custom['product_customizer']
         assign meta   = field.value
         assign field_option = "`" | append: i.metafields.my_fields.short_description | append: "`"
@@ -107,4 +112,4 @@ size values: {{ v.value['name_foil'].value | first | json }}
   endcapture
 -%}
 
-<script>{% if item %}window.customizerVariants = {{ item }}{% endif %}</script>
+<script>{% if item %}window.customizerVariants = {{ item }}; window.customizerVariantIds = {{ variant_ids }};{% endif %}</script>
