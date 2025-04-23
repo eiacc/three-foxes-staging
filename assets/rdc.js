@@ -21,3 +21,10 @@ const toggleInfoTextBox = function (e) {
 infoBtn.addEventListener('click',toggleInfoTextBox);
 closeBtn.addEventListener('click',toggleInfoTextBox);
 }
+
+(() => {
+  // redirect to product customizer
+  if (window.location.pathname === '/products/w-label') {
+    window.location.href = '/pages/foxtails-wedding';
+  }
+})();
