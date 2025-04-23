@@ -1628,7 +1628,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     targetElem.querySelector('.ctm_round_loader_animate').classList.remove('d-none')
     const response = await fetch(`${Shopify.routes.root}cart.js`);
     const cartData = await response.json();
-    let cust_label_item;
+    let cust_label_item = null;
     
     const updateLocalStorageOnSubmit = { ...localStoData };
     localStorage.setItem('customiseProductData', JSON.stringify(updateLocalStorageOnSubmit));
@@ -1648,12 +1648,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
      * step 2 wont be added if there are no products added at step 1.
      * 
     */
-    // let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
-    // cartItemArray.map(i => {
-    //   if (labelsArr.includes(i.id)) {
-    //     cust_label_item = i.id
-    //   }
-    // });
+    if (window.customizerVariantIds) {
+      // let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
+      const labelsArr = window.customizerVariantIds.split(',')
+      cartItemArray.map(i => {
+        if (labelsArr.includes(i.id)) {
+          cust_label_item = i.id
+        }
+      });
+    }
 
     const cartPropertiesArray = ctmCollectDataArr.reduce((acc, current) => {
       return acc.concat(current.properties);
@@ -1681,16 +1684,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // console.log('ctmCartSubData', ctmCartSubData);
     let Cus_itemFound = false;
     ctmCartSubData.items = ctmCartSubData.items.map((item, idx) => {
-      if (override.label === 'standard') {
-        if (idx === 0) {
+      // if (override.label === 'standard') {
+      //   if (idx === 0) {
+      //     Cus_itemFound = true;
+      //     return { ...item, properties: transformedArray };
+      //   }
+      // } else {
+      //   if (idx === 1) {
+      //     Cus_itemFound = true;
+      //     return { ...item, properties: transformedArray };
+      //   }
+      // }
+      if (cust_label_item) {
           Cus_itemFound = true;
-          return { ...item, properties: transformedArray };
-        }
-      } else {
-        if (idx === 1) {
-          Cus_itemFound = true;
-          return { ...item, properties: transformedArray };
-        }
+          return { ...item, properties: transformedArray };  
       }
       return item;
     });
