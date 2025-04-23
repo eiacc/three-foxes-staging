@@ -91,24 +91,6 @@
       {%- endif -%}
 
       {%- if link_text != blank -%}
-        {%- if cover_link -%}
-          <a
-            href="{{ link_url | default: '#' }}"
-            class="stacked-text--button"
-            data-item="{{- settings.buttons--style -}}"
-            data-text="{{ link_text }}"
-            {% unless settings.transitions--text %}
-              data-transition-item="{{ id }}"
-              data-transition-type="fade-in"
-            {% endunless %}
-            {% unless settings.transitions--buttons %}
-              data-transition-button
-            {% endunless %}
-          >
-            <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
-          </a>
-        {%- else -%}
-            
           <a
             class="stacked-text--button"
             href="{{ link_url }}"
@@ -124,8 +106,6 @@
           >
             <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
           </a>
-                
-        {%- endif -%}
       {%- endif -%}
     {% if view and view == 'slideshow' %}
       </a>
