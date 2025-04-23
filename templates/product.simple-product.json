@@ -140,72 +140,6 @@
       "type": "reviews",
       "settings": {}
     },
-    "text_columns_tdUPLe": {
-      "type": "text-columns",
-      "blocks": {
-        "image_ieazWW": {
-          "type": "image",
-          "settings": {
-            "show-image": true,
-            "image": "{{ product.metafields.custom[\"cocktail-1\"].value }}",
-            "title": "{{ product.metafields.custom.cocktail_one_name.value }}",
-            "description": "<p>{{ product.metafields.custom.cocktail_one_recipe | metafield_tag }}</p>",
-            "link-url": "",
-            "link-text": ""
-          }
-        },
-        "image_YN74K6": {
-          "type": "image",
-          "settings": {
-            "show-image": true,
-            "image": "{{ product.metafields.custom.cocktail_two_image.value }}",
-            "title": "{{ product.metafields.custom.cocktail_two_name.value }}",
-            "description": "<p>{{ product.metafields.custom.cocktail_two_recipe | metafield_tag }}</p>",
-            "link-url": "",
-            "link-text": ""
-          }
-        },
-        "image_FjXbwM": {
-          "type": "image",
-          "settings": {
-            "show-image": true,
-            "image": "{{ product.metafields.custom.cocktail_three_image.value }}",
-            "title": "{{ product.metafields.custom.cocktail_three_name.value }}",
-            "description": "<p>{{ product.metafields.custom.cocktail_three_recipe | metafield_tag }}</p>",
-            "link-url": "",
-            "link-text": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_ieazWW",
-        "image_YN74K6",
-        "image_FjXbwM"
-      ],
-      "settings": {
-        "top-border": false,
-        "spacing-above": true,
-        "spacing-below": true,
-        "block-spacing": true,
-        "background-color": "accent-1",
-        "white-text": true,
-        "container-width": "4",
-        "width": 3,
-        "aspect-ratio": "portrait",
-        "image-width": 0,
-        "text-alignment": "center",
-        "overline": "BEST WAYS TO ENJOY THE",
-        "heading": "{{ product.title }}",
-        "description": "",
-        "link-url": "",
-        "link-text": "",
-        "chooseSubHeadingtype": "SubHeading2",
-        "chooseHeadingtype": "heading2",
-        "chooseProTitleHeadingtype": "heading4",
-        "chooseParagraphtype": "paragraph1",
-        "mobile-width": "1"
-      }
-    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -243,7 +177,6 @@
   "order": [
     "main",
     "reviews_Ee7CgX",
-    "text_columns_tdUPLe",
     "related-products",
     "featured_newsletter_h9trRM"
   ]
