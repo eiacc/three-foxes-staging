@@ -12,22 +12,6 @@
     "slideshow": {
       "type": "slideshow",
       "blocks": {
-        "slide-0": {
-          "type": "image",
-          "settings": {
-            "text-width": "small",
-            "text-horizontal-alignment": "right",
-            "text-vertical-alignment": "bottom",
-            "image": "shopify://shop_images/Three_foxes_Distillery-64.jpg",
-            "overline": "",
-            "title": "APERITIVO BITTER",
-            "description": "",
-            "link-url": "shopify://products/triple-bitter",
-            "link-text": "SHOP NOW",
-            "mobile-text-alignment": "bottom",
-            "mobile-hide-description": true
-          }
-        },
         "image_ze98Ew": {
           "type": "image",
           "settings": {
@@ -42,6 +26,22 @@
             "link-text": "SHOP NOW",
             "mobile-text-alignment": "center",
             "mobile-hide-description": false
+          }
+        },
+        "slide-0": {
+          "type": "image",
+          "settings": {
+            "text-width": "small",
+            "text-horizontal-alignment": "right",
+            "text-vertical-alignment": "bottom",
+            "image": "shopify://shop_images/Three_foxes_Distillery-64.jpg",
+            "overline": "",
+            "title": "APERITIVO BITTER",
+            "description": "",
+            "link-url": "shopify://products/triple-bitter",
+            "link-text": "SHOP NOW",
+            "mobile-text-alignment": "bottom",
+            "mobile-hide-description": true
           }
         },
         "slide-2": {
@@ -78,8 +78,8 @@
         }
       },
       "block_order": [
-        "slide-0",
         "image_ze98Ew",
+        "slide-0",
         "slide-2",
         "slide-1"
       ],
