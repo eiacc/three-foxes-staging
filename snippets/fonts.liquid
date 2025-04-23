@@ -215,12 +215,6 @@
     font-size: {{ settings.typography--accent--size_heading_2 }}px!important;
     font-family: var(--font--nav--family);
   }
-
-  a.stacked-text--wrapper {
-    font-family: var(--font--nav--family);
-    font-size: var(--font--nav--size_heading_2)px;
-    font-weight: normal;
-  }
   
   .font-sub-2 {
     font-family: var(--font--nav--family);
@@ -233,6 +227,10 @@
   }
 
   p, span {
+    font-family: var(--font--paragraph--family);
+  }
+
+  .stacked-text--description * {
     font-family: var(--font--paragraph--family);
   }
 {% endstyle %}
