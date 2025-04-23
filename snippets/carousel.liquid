@@ -85,7 +85,7 @@
   data-view="{{ view }}"
   style="{{ css_vars }}"
 >
-  <div class="carousel--viewport" data-text-color="{{ text_color | default: "accent_2" }}">
+  <div class="carousel--viewport">
     {%- unless arrows_enabled == false -%}
       <div class="carousel--arrow-nav">
         <div class="carousel--prev" tabindex="0">
@@ -275,7 +275,7 @@
     {%- endunless -%}
   </div>
 
-  <div class="carousel--dot-container">
+  <div class="carousel--dot-container" data-text-color="{{ text_color | default: "accent_2" }}">
     <div class="carousel--dot-viewport">
       <div class="carousel--dot-nav"></div>
     </div>
