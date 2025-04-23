@@ -31,15 +31,15 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "text-width": "small",
-            "text-horizontal-alignment": "right",
-            "text-vertical-alignment": "bottom",
+            "text-width": "medium",
+            "text-horizontal-alignment": "left",
+            "text-vertical-alignment": "center",
             "image": "shopify://shop_images/Three_foxes_Distillery-52-2.jpg",
             "overline": "",
-            "title": "SUNNY ARVO",
+            "title": "SUNNY ARVO LIMONCELLO",
             "description": "",
             "link-url": "shopify://products/sunny-arvo-limocello",
-            "link-text": "LIMONCELLO",
+            "link-text": "SHOP NOW",
             "mobile-text-alignment": "center",
             "mobile-hide-description": false
           }
@@ -52,7 +52,7 @@
             "text-vertical-alignment": "bottom",
             "image": "shopify://shop_images/Three_foxes_Distillery-114.jpg",
             "overline": "",
-            "title": "Espresso Amaro",
+            "title": "ESPRESSO AMARO",
             "description": "",
             "link-url": "shopify://products/organic-espresso-amaro",
             "link-text": "SHOP NOW",
