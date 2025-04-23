@@ -95,8 +95,10 @@
       {%- endif -%}
     </div>
 
+    {%  assign view = view | default: '' %}
     {%-
       render "stacked-text",
+      view: view,
       text_color: text_color,
       bg_color: text_bg_color,
       cover_link: cover_link,
