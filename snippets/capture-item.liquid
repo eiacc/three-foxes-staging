@@ -24,6 +24,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
 
 {%- liquid
   assign variant_ids = ""
+  assign product_name = "'" | append: all_products[product].title | append: "'"
   capture item
     echo '['
       for i in items
@@ -45,7 +46,7 @@ size values: {{ v.value['name_foil'].value | first | json }}
               echo 'price'        | append: ':' | append: i.price     | append: ','
               echo 'title'        | append: ':' | append: temp_title  | append: ','
               echo 'key'          | append: ':' | append: key         | append: ','
-              echo 'product_name' | append: ':' | append: product | append: ','
+              echo 'product_name' | append: ':' | append: product_name | append: ','
 
               if i.available
                 echo 'available'  | append: ':' | append: 'true'        | append: ','
