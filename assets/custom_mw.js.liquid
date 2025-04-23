@@ -529,16 +529,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
               which is the selection of cocktails. do not push any data to the ctmCollectDataArr.
 
               Insert our data based on proper indexing
+              TODO: currently disabling the checking
             */
-            const hasItem = ctmCollectDataArr.some(obj => obj.step === '1');
-            if (hasItem) {
+            // const hasItem = ctmCollectDataArr.some(obj => obj.step === '1');
               if (override.arr_idx !== 0) {
                 ctmCollectDataArr[override.arr_idx] = data;
               } else {
                 ctmCollectDataArr.push(data);
                 override.arr_idx = ctmCollectDataArr.length - 1;
               }
-            }
+            // if (hasItem) {
+            // }
             // console.log('current collection array', ctmCollectDataArr);
 
             // TODO: 
