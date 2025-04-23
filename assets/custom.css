@@ -45,3 +45,10 @@
 .template--collection .layout--template {
     padding-block-start: 4rem;
 }
+
+/* carousel */
+.carousel--dot-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
