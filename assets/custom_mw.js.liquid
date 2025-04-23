@@ -735,10 +735,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
   })
 
   function contactInputsValidate(tabWrapper, validForm) {
-    const labelInput = tabWrapper.querySelector('[name="Label Names"]');
-    const labeldate = tabWrapper.querySelector('[name="Label Date"');
+    // const labelInput = tabWrapper.querySelector('input[name="Label Names"]');
+    // const labeldate = tabWrapper.querySelector('input[name="Label Date"');
+    const labelInput = tabWrapper.querySelector('input[name="Names"]');
+    const labeldate = tabWrapper.querySelector('input[name="Comment"');
 
-    console.log('area', tabWrapper)
+    console.log('area', labeldate)
+    console.log('area', labelInput)
 
     const dateInput = tabWrapper.querySelector('#contactInfoEventDate');
     const eventEmailElem = tabWrapper.querySelector('#contactInfoEventEmail');
