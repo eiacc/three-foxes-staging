@@ -1137,14 +1137,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
           if (dArea) {
             console.log('dArea to change', dArea)
             dArea.classList.add(`ctmStepDisabled`)
-            dArea.previousElementSibling.classList.add(`ctmStepDisabled`)
             hideLabelApp()
           }
 
           if (cTab) {
             // cross out personalise tab
             cTab.classList.add('ctm_tab_label--disable')
-            cTab.previousElementSibling.classList.add('ctm_tab_label--disable')
           }
         } else if (customizerType === 'custom') {
           if (dArea) {
