@@ -21,7 +21,7 @@
     data-y-alignment="{{ y_alignment }}"
     data-width="{{ width }}"
   >
-    {% if link_url %}
+    {% if view and view == 'slideshow' %}
       <a
         href="{{ link_url | default: "#" }}"
         class="stacked-text--wrapper"
@@ -126,7 +126,7 @@
                 
         {%- endif -%}
       {%- endif -%}
-    {% if link_url %}
+    {% if view and view == 'slideshow' %}
       </a>
     {% else %}
       </div>
