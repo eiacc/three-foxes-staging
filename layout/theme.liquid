@@ -34,7 +34,15 @@
     -%}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha512-YHQNqPhxuCY2ddskIbDlZfwY6Vx3L3w9WRbyJCY81xpqLmrM6rL2+LocBgeVHwGY9SXYfQWJ+lcEWx1fKS2s8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script>
+      (() => {
+        // force redirect to product customizer
+        if (window.location.pathname === '/products/w-label') {
+          window.location.href = '/pages/foxtails-wedding';
+        }
+      })();
+    </script>
+    
     {%- if request.page_type contains 'customers' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
       <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer="defer"></script>
