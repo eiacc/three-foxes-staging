@@ -55,7 +55,7 @@ class ArtworkTemplate extends HTMLElement {
         ['price',     (variant['price'] / 100).toFixed(2)],
         ['title',     title],
         ['available', variant['available']],
-        ['product_name', variant['product_name']]
+        ['product_name', variant['product_name']],
         ['extend',    []]
       ]);
 
