@@ -47,11 +47,11 @@
 }
 
 /* carousel */
-.carousel--dot-container {
+/* .carousel--dot-container {
   position: absolute;
   bottom: 0;
   right: var(--spacing--section--x);
-}
+} */
 
 a.stacked-text--wrapper {
   text-decoration: none!important;
