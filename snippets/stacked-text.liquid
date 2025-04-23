@@ -92,7 +92,7 @@
 
       {%- if link_text != blank -%}
         {%- if cover_link -%}
-          <a
+          <div
             href="{{ link_url | default: '#' }}"
             class="stacked-text--button"
             data-item="{{- settings.buttons--style -}}"
@@ -106,7 +106,7 @@
             {% endunless %}
           >
             <span data-text-color="{{ text_color | default: "accent_2" }}">{{- link_text -}}</span>
-          </a>
+          </div>
         {%- else -%}
             
           <a
