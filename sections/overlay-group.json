@@ -110,6 +110,7 @@
     },
     "age-verification": {
       "type": "age-verification",
+      "disabled": true,
       "settings": {
         "background-color": "dark",
         "translucent": true,
