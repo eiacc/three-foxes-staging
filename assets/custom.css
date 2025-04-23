@@ -40,6 +40,10 @@
   place-items: center;
 }
 
+.klaviyo-form form button {
+  line-height: unset;
+}
+
 .klaviyo-form .klaviyo-form-version-cid_1 form {
   float: unset!important;
 }
