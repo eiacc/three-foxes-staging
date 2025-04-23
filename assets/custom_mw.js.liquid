@@ -201,7 +201,7 @@ function manualDataRetrieval() {
     temp.items[0].price_no_currency = String(tempPrice)
 
     const tempType                  = el_temp.getAttribute('data-product-type')
-    temp.items[0].title             = ['Personalized Label', `${tempType} (${override.variant})`].join(' - ')
+    temp.items[0].title             = [radio.getAttribute('data-product-name'), `(${override.variant})`].join(' ')
     overrideVariant                 = `${tempType} (${override.variant})`
   } else if (type === 'custom') {
     // custom product
