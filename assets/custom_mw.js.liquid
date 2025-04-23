@@ -1695,7 +1695,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       //     return { ...item, properties: transformedArray };
       //   }
       // }
-      if (cust_label_item) {
+      if (cust_label_item == item.id) {
           Cus_itemFound = true;
           return { ...item, properties: transformedArray };  
       }
