@@ -233,6 +233,7 @@
         },
         "image_87BwmD": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "menu-item": "GIFT SHOP",
             "image": "shopify://shop_images/Best-Sellers-Gift-Set.png",
