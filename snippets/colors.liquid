@@ -15,7 +15,8 @@
   color: {{ settings.color--button -}}!important;
 }
 
-.carousel--root .stacked-text--wrapper:hover [data-text-color] {
+.carousel--root ~ .stacked-text--wrapper:hover [data-text-color],
+.carousel--root ~ .carousel--dot-container:hover [data-text-color] {
   color: #fff!important;
 }
 {%- endstyle -%}
