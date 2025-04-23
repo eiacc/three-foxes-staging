@@ -112,4 +112,11 @@ size values: {{ v.value['name_foil'].value | first | json }}
   endcapture
 -%}
 
-<script>{% if item %}window.customizerVariants = {{ item }}; window.customizerVariantIds = {{ variant_ids }};{% endif %}</script>
+{{  variant_ids }}
+
+{% if item %}
+  <script>
+      window.customizerVariants = {{ item }}; 
+      window.customizerVariantIds = {{ variant_ids }};
+  </script>
+{% endif %}
