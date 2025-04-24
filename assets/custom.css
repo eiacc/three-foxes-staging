@@ -35,10 +35,10 @@
   width: 40px !important;
 }
 
-.klaviyo-form > .needsclick {
+/* .klaviyo-form > .needsclick {
   display: grid;
   place-items: center;
-}
+} */
 
 /* .klaviyo-form .klaviyo-form-version-cid_1 form button {
   line-height: unset!important;
