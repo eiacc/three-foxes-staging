@@ -38,7 +38,7 @@
 .klaviyo-form > .needsclick {
   /* display: grid;
   place-items: center; */
-  max-width: 50px;
+  /* max-width: 50px; */
 }
 
 .klaviyo-form > .needsclick button {
