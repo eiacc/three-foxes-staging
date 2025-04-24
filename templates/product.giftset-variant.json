@@ -152,6 +152,7 @@
           "type": "image",
           "settings": {
             "show-image": true,
+            "image": "{{ product.metafields.custom.cocktail_two_image.value }}",
             "title": "{{ product.metafields.custom.cocktail_two_name.value }}",
             "description": "<p>{{ product.metafields.custom.cocktail_two_recipe | metafield_tag }}</p>",
             "link-url": "",
