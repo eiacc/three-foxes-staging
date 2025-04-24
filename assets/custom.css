@@ -53,10 +53,10 @@ form.klaviyo-form-version-cid_1 {
   float: unset!important;
 }
 
-footer .klaviyo-form button {
+footer form.klaviyo-form-version-cid_1 button {
   background: var(--color--accent-1)!important;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px!important;
+  border-bottom-right-radius: 3px!important;
 }
 
 @media (min-width: 992px) {
