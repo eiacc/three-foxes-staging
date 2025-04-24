@@ -42,11 +42,11 @@
 
 /* .klaviyo-form .klaviyo-form-version-cid_1 form button {
   line-height: unset!important;
-}
+}*/
 
 .klaviyo-form .klaviyo-form-version-cid_1 form {
   float: unset!important;
-} */
+}
 
 @media (min-width: 992px) {
   .klaviyo-form #email_signup {
