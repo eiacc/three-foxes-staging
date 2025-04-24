@@ -53,6 +53,12 @@ form.klaviyo-form klaviyo-form-version-cid_1 {
   float: unset!important;
 }
 
+footer .klaviyo-form button {
+  background: var(--color--accent-1)!important;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
 @media (min-width: 992px) {
   .klaviyo-form #email_signup {
     max-width: 400px;
