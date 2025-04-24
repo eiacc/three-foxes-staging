@@ -2,6 +2,6 @@
 {% assign variant = product.variants[index] %}
 
 <div data-variant-metafields class="d-none">
-  <div data-metafields-images>{%- for metafield in variant.metafields.custom -%}{%- if metafield[0] contains 'image' -%}{% assign num = metafield[0] | split: '_' %}{{ num[2] -}}:::{{ metafield[1] | json -}}{%- unless forloop.last -%}%2C{%- endunless -%}{%- endif -%}{%- endfor -%}</div>
+  <div data-metafields-images>{%- for metafield in variant.metafields.custom -%}{%- if metafield[0] contains 'image' -%}{% assign num = metafield[0] | split: '_' %}{{ num[2] -}}:::{{ metafield[1] -}}{%- unless forloop.last -%}%2C{%- endunless -%}{%- endif -%}{%- endfor -%}</div>
   <div data-metafields-titles>{%- for metafield in variant.metafields.custom -%}{% unless metafield[0] contains 'image' %}{{ metafield[0] | split: '' | last -}}:::{{ metafield[1] -}}{%- unless forloop.last -%}%2C{%- endunless -%}{% endunless %}{%- endfor -%}</div>
 </div>
