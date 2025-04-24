@@ -35,10 +35,10 @@
   width: 40px !important;
 }
 
-.klaviyo-form > .needsclick {
+.klaviyo-form > .needsclick:last-child {
   /* display: grid;
   place-items: center; */
-  /* max-width: 50px; */
+  max-width: 50px;
 }
 
 .klaviyo-form > .needsclick button {
