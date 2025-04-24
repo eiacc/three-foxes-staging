@@ -49,7 +49,7 @@ form.klaviyo-form klaviyo-form-version-cid_1 {
   line-height: unset!important;
 }
 
-.klaviyo-form .klaviyo-form-version-cid_1 form {
+form.klaviyo-form-version-cid_1 {
   float: unset!important;
 }
 
