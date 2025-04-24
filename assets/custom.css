@@ -35,6 +35,10 @@
   width: 40px !important;
 }
 
+form.klaviyo-form klaviyo-form-version-cid_1 {
+  max-width: unset!imporant;
+}
+
 .klaviyo-form > [data-testid="form-row"]:last-child {
   /* display: grid;
   place-items: center; */
