@@ -115,7 +115,8 @@
     </div>
 
     {%- render 'icons', icon: 'defs' -%}
-
+    <script src="{{ 'simulate-clear-cache.js' | asset_url }}" defer="defer"></script>
+    
     {{ 'custom_mw.js' | asset_url | script_tag }}
     {{ 'rdc.js' | asset_url | script_tag }}
     <script src="https://assets.cloudlift.app/api/assets/upload.js?shop=three-foxes-pty-ltd.myshopify.com"></script>
