@@ -1,4 +1,5 @@
 window.onload = function () {
+  console.log('simulate')
   const sessionKey = 'hardReloadDone';
   const url = new URL(window.location.href);
 
