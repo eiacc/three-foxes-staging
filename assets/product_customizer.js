@@ -1,0 +1,2393 @@
+console.log('prod customzier')
+// the total price
+let totalPrice = 0; 
+/**
+ * update the total price of the flow
+ * @param {number} stepPrice
+ */
+function updateTotalPrice(stepPrice) {
+  totalPrice += stepPrice;
+  console.log ('STEP Price: '+stepPrice+' :: Total: '+totalPrice);
+  const totalPriceEle = document.getElementById("total-price");
+  totalPriceEle.innerHTML = "ADD TO CART - " + "$" + totalPrice;
+}
+
+/**
+ * update cart and badge count of cart
+ * @param {array} items
+ */
+async function updateCart(items) {
+  // update cart
+  const addResData = await jQuery.post("/cart/add.js", { items });
+
+  // calc the count of cart
+  const cartDataRes = await jQuery.get("/cart.js");
+  const cartObj = JSON.parse(cartDataRes);
+  let allCartItemCount = 0;
+  cartObj.items.forEach((ele) => {
+    allCartItemCount += ele.quantity;
+  });
+
+
+}
+
+//Show\hide final button
+async function disableOrShowButton(totalPrice) {
+  let disableButton = document.getElementById("disablebutton");
+  let cartButton = document.getElementById("total-price");
+  // console.log("Showbutton - TotalPrice: "+totalPrice);
+  // console.log("Showbutton - AllCounts: "+allCounts);
+  if (totalPrice == 0) {
+    // console.log("disShow: allcounts = "+allCounts)
+      disableButton.style.display = "block";
+      cartButton.style.display = "none";
+  } else {
+    // console.log("normShow: allcounts = "+allCounts)
+      disableButton.style.display = "none";
+      cartButton.style.display = "block";
+  };
+}
+
+var delay = false;
+const delayEle = document.getElementById("delaydeliverycontainer");
+
+function delaydelivery() {
+  if (delay == false) {
+    delay = true;
+    delayEle.style.display = "block";
+  } else {
+    delay = false; 
+    delayEle.style.display = "none";
+  }
+}
+
+function flowExtraAreaProQtyCal(proItems){
+
+  let label_app = document.getElementById('label_application1');
+  let bottle_tags = document.getElementById('bottle_tags1');
+  let cocktail_qty = bottle_tags ? document.getElementById('cocktail_qty') : '';
+  let bottle_tag_pack_qty = bottle_tags ? document.getElementById('bottle_tag_pack_qty') : '';
+  let bottle_tags_price = document.querySelectorAll('.bottle_tags_price');
+
+  let items = proItems.items;
+  let qty = 0;
+  
+  items.forEach( i => qty += parseInt(i.quantity));
+
+  if(label_app){
+    label_app.setAttribute('data-ctm_quantity', qty);
+    label_app.nextElementSibling.querySelector('span').innerHTML = '$' + ((qty * 0.30).toFixed(2));
+  }
+
+  if(bottle_tags_price.length > 0){
+    let b_tags_Q = parseInt(qty / 24) ;
+    let b_tags_R = qty % 24;
+    if(b_tags_R > 0){ b_tags_Q += 1 }
+
+    bottle_tags_price.forEach( b => b.innerHTML = '$' + (b_tags_Q * 9) );    
+  }
+  
+  if(bottle_tags){
+    let b_tags_Q = parseInt(qty / 24) ;
+    let b_tags_R = qty % 24;
+    if(b_tags_R > 0){ b_tags_Q += 1 }
+
+    cocktail_qty.innerHTML = qty;
+    bottle_tag_pack_qty.innerHTML = b_tags_Q;
+
+    bottle_tags.setAttribute('data-ctm_quantity', b_tags_Q);
+    // bottle_tags.nextElementSibling.querySelector('span').innerHTML = '$' + (b_tags_Q * 9); // remove since we are hiding it at Extras snippets
+  }
+
+}
+
+function labelNotAvailablePopup(item){
+  let parent = item.closest('.ctmChooseTemplates');
+  let popLabel = parent.querySelector('.personal_label--no_qty');
+  let input = parent.querySelector('input[disabled]');
+  
+  if(popLabel && input){
+    popLabel.classList.add('personal_label--no_qty--active');
+    setTimeout(() => { popLabel.classList.remove('personal_label--no_qty--active') }, 2000);
+  }
+}
+
+function hideLabelApp(state = true) {
+  // console.log('state', state);
+  let LA = document.querySelector('.ctm_label_applications');
+  
+  if (LA) {
+    let button;
+    
+    if (state === true) {
+      button = LA.querySelector('#label_application2');
+      if (button) {
+        button.checked = true; // Set the radio button as checked
+        button.dispatchEvent(new Event('change')); // Dispatch the change event
+      }
+      LA.style.opacity = '0.3';
+      LA.style.pointerEvents = 'none';
+    } else {
+      button = LA.querySelector('#label_application1');
+      if (button) {
+        button.checked = true; // Set the radio button as checked
+        button.dispatchEvent(new Event('change')); // Dispatch the change event
+      }
+      LA.style.opacity = '1';
+      LA.style.pointerEvents = 'auto';
+    }
+  }
+}
+
+let overrideVariant = ''
+
+const override = {
+  label: 'premium',
+  variant: 'Bold',
+  fileName: '',
+  personalise_hide: false, // personalise hide colors 
+  arr_idx: 0,
+  preserve_heading: "UPLOAD YOUR ARTWORK"
+}
+
+function manualDataRetrieval() {
+  const selector = `[data-customizer-template="${override.label}"]`
+  /*
+    data format:
+    {
+      step: '2',
+      properties: [],
+      items: [{
+        id: "33184610582614"
+        is_pro_item: undefined
+        pirce: "$190.00"
+        price_no_currency: "190"
+        quantity: "1"
+        title: "Personalized Label - Script"
+        type: "label"
+        value: "33184610582614"
+      }]
+    }
+  */
+  const temp = {
+    step: '2',
+    properties: [],
+    items: [{
+      // id: ""
+      // is_pro_item: undefined,
+      // pirce: "$190.00"
+      // price_no_currency: "190"
+      quantity: "1",
+      // title: "Personalized Label - Script"
+      type: "label",
+      // value: ""
+    }]
+  }
+  
+  const el = document.querySelector(selector);
+  // console.log('el', el)
+  const type = override.label
+  if (!el) return null
+
+  if (type === 'premium') {
+    const radio     = document.querySelector('input[type="radio"][name="template_selection"]:checked')
+    const radioAttr = radio.getAttribute('data-product-type')
+    const el_temp = el.querySelector(`.jtzuya-templates__tab-selections--${radioAttr} .jtzuya-template__tab-selection--active`); // lol the name class
+    temp.items[0].id                = el_temp.getAttribute('data-product-id')
+    temp.items[0].value             = el_temp.getAttribute('data-product-id')
+    
+    const tempPrice                 = el_temp.getAttribute('data-price') * 1
+    temp.items[0].pirce             = '$' + tempPrice.toFixed(2)
+    temp.items[0].price_no_currency = String(tempPrice)
+
+    const tempType                  = el_temp.getAttribute('data-product-type')
+    temp.items[0].title             = [radio.getAttribute('data-product-name'), override.variant].join(' - ')
+    overrideVariant                 = `${tempType} (${override.variant})`
+  } else if (type === 'custom') {
+    // custom product
+    const el_temp                   = el.querySelector('input[type="radio"]:checked')
+    temp.items[0].id                = el_temp.getAttribute('value')
+    temp.items[0].value             = el_temp.getAttribute('value')
+    temp.items[0].quantity          = el_temp.getAttribute('data-ctm_quantity')
+    
+    temp.items[0].pirce             = el_temp.getAttribute('data-price')
+    temp.items[0].price_no_currency = el_temp.getAttribute('data-ctm_price_no_currency')
+
+    temp.items[0].title             = el_temp.getAttribute('data-ctmprotitle')
+    temp.items[0].is_pro_item       = el_temp.getAttribute('data-is_pro_label_item')
+
+    const file_temp = el.querySelector('input[name="properties[customLogo]"]')
+    if (file_temp) {
+      const properties = {
+        'Custom Label Image': file_temp.getAttribute('value'),
+        'FileName': override.fileName ?? ''
+      }
+      temp.properties.push(properties)
+    }
+
+    overrideVariant = ''
+  } else {
+    // standard product
+    const el_temp                   = el.querySelector('input[type="radio"]:checked')
+    temp.items[0].id                = el_temp.getAttribute('value')
+    temp.items[0].value             = el_temp.getAttribute('value')
+    temp.items[0].quantity          = el_temp.getAttribute('data-ctm_quantity')
+    
+    temp.items[0].pirce             = el_temp.getAttribute('data-price')
+    temp.items[0].price_no_currency = el_temp.getAttribute('data-ctm_price_no_currency')
+
+    temp.items[0].title             = el_temp.getAttribute('data-ctmprotitle')
+    temp.items[0].is_pro_item       = el_temp.getAttribute('data-is_pro_item')
+    overrideVariant = ''
+  }
+
+  return temp
+}
+
+class Customizer {
+  constructor() {
+    if (!window.premiumImageMap) return
+    this.map = window.premiumImageMap
+
+    this.mockup;
+    this.display_wrapper;
+
+    this.image = {
+      date: {
+        default: this.map.get('date')[0],
+        list: this.map.get('date')
+      },
+      name: {
+        default: this.map.get('name')[0],
+        list: this.map.get('name')
+      },
+      digital: ''
+    }
+
+    // console.log('default', this.image)
+
+    this.artwork = {
+      image: '',
+      description: ''
+    }
+
+    this.init();
+
+    this.change = this.change.bind(this)
+    this.click  = this.click.bind(this)
+  }
+
+  init() {
+    this.display_wrapper = document.querySelector('.jtzuya-templates__tab-template-view')
+    this.mockup          = document.querySelector('#mockupBox .imgcontainer')
+    if (!this.mockup) return
+    this.apply() // initiate apply
+  }
+
+  change(e) {
+    console.log('e change', e.target)
+    const target      = e.target
+    const type        = target.getAttribute('data-product-type')
+    const area        = target.parentElement
+
+    console.log('area', area)
+    console.log('type', type)
+
+    const activeTab          = area.querySelector(`.jtzuya-templates__tab--right .jtzuya-templates__tab-selections--${type} .jtzuya-templates__tab-selection.jtzuya-template__tab-selection--active`)
+
+    this.artwork.image       = activeTab.getAttribute('data-img')
+    this.artwork.description = activeTab.getAttribute('data-option')
+    this.display()
+
+    if (type === 'premium') {
+      const date_foils = activeTab.getAttribute('data-personalize-date-foils').split(',')
+      const name_foils = activeTab.getAttribute('data-personalize-name-foils').split(',')
+
+      // this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
+      this.image.date.list    = date_foils
+      this.image.name.list    = name_foils
+      // this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
+
+      this.apply(type)
+      return
+    }
+
+    this.image.digital = activeTab.getAttribute('data-dimage')
+    this.apply(type)
+    // this.click(e)
+  }
+
+  click(e)  {
+    const target = e.target
+    const type   = target.getAttribute('data-product-type')
+    // console.log('e click', e.target)
+    // console.log('e click', type)
+
+    if (type === 'premium') {
+      const date_foils = target.getAttribute('data-personalize-date-foils').split(',')
+      const name_foils = target.getAttribute('data-personalize-name-foils').split(',')
+
+      this.image.date.default = date_foils[window.premiumImageMap.get('date_index')]
+      this.image.date.list    = date_foils
+      this.image.name.default = name_foils[window.premiumImageMap.get('name_index')]
+      this.image.name.list    = name_foils
+
+      this.apply(type)
+      return
+    }
+
+    this.image.digital = target.getAttribute('data-dimage')
+    this.apply(type)
+  }
+
+  variant_change(props) {
+    // console.log('personalizeImageFoilChangeHandler', props)
+    // console.log('current map', window.premiumImageMap)
+    if (!props) return
+    const { type, idx } = props
+
+    if (type === 'name') {
+      const img = this.image.name.list[idx]
+      this.mockup.style.setProperty('--name-layer', `url('${img}')`)
+      // console.log('img url', img)
+    }
+
+    if (type === 'date') {
+      const img = this.image.date.list[idx]
+      this.mockup.style.setProperty('--date-layer', `url('${img}')`)
+      // console.log('img url', img)
+    }
+  }
+
+  display() {
+    this.display_wrapper.firstElementChild.textContent = this.artwork.description
+    this.display_wrapper.lastElementChild.setAttribute('src', this.artwork.image)
+  }
+
+  apply(type = 'premium') {
+    // console.log('applying', this.image)
+
+    if (type === 'premium') {
+      this.mockup.style.setProperty('--digital-layer',  'url("")')
+      this.mockup.style.setProperty('--date-layer',     `url('${this.image.date.default}')`)
+      this.mockup.style.setProperty('--name-layer',     `url('${this.image.name.default}')`)
+      return
+    }
+
+    this.mockup.style.setProperty('--digital-layer', `url('${this.image.digital}')`)
+    this.mockup.style.setProperty('--name-layer',    'url("")')
+    this.mockup.style.setProperty('--date-layer',    'url("")')
+  }
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  /* always keep at least 1 open by preventing the current to close itself */
+  jQuery('[data-toggle="collapse"]').on("click", function (e) {
+    if ($(this).parents(".accordion").find(".collapse.show")) {
+      var idx = $(this).index('[data-toggle="collapse"]');
+      if (idx == $(".collapse.show").index(".collapse")) {
+        // prevent collapse
+        e.stopPropagation();
+      }
+    }
+  });
+
+  let ctmCollectDataArr = [];
+  let summaryResult = {};
+
+  const customizerInstance      = new Customizer();
+  class CustomizerViews {
+    constructor() {}
+
+    identify(el) {
+      // console.log('el', el);
+      if (!el) return 'unregistered';
+
+      const isUpload = el.getAttribute('data-is_next_upload');
+      if (isUpload && isUpload === 'true') return 'upload';
+
+      const type = el.getAttribute('type');
+      if (type === 'button') {
+        if (el.classList.contains('ctm_tab_content_next_btn')) return 'next';
+        return 'prev';
+      }
+
+      if (type === 'submit') return 'submit';
+
+      return 'unregistered';
+    }
+
+    next(element) {
+      if (!element) return
+
+      const names = new Map([
+        ['area',        'ctm__tab_content_area'],
+        ['override',    'data-selection_override'],
+        ['disabled',    'ctmStepDisabled'],
+        ['colors',      'ctmContentAreaColors']
+      ])
+
+      const selector = new Map([
+        ['area',     `.${names.get('area')}`],
+        ['override', `[${names.get('override')}]`],
+        ['colors',   `.${names.get('colors')}`],
+      ])
+
+      const area      = element.closest(selector.get('area'));
+      const override  = element.closest(selector.get('override'));
+      const dpv       = area.nextElementSibling.classList.contains(names.get('area')) && area.nextElementSibling.classList.contains(names.get('disabled')); // returns a boolean. is personalized view disabled?
+      const index     = dpv ? area.nextElementSibling.nextElementSibling.dataset.tab_index : area.nextElementSibling.dataset.tab_index;
+
+      if (area) console.log('area', area)
+      
+      let isFormValid   = contactInputsValidate(area, true); // returns true or false
+      if (!isFormValid) return
+
+      if (override) {
+        /*
+          force to manually collect data instead of using the existing function collectStepData()
+          because I am still unfamiliar with that function.
+        */
+        const selection_index = override.getAttribute('data-selection_override') * 1
+        this.next_override(selection_index);
+
+        // Advance change
+        if (selection_index === 0) {
+          // check the next 2 steps sibling most likely the personalize view
+          if (override.label === 'premium') {
+            /*
+              Personalise View Control
+              if override.personalise_hide is true, hide all color swatches, else show it.
+              when artwork === 'digital' = override.personalise_hide = true
+              when artwork === 'premium' = override.personalise_hide = false
+            */
+            // console.log('selector', selector.get('colors'))
+            // console.log('name',     names.get('colors'))
+            const swatches = document.querySelectorAll(selector.get('colors'));
+            // console.log('swatches', swatches)
+            console.warn('================================')
+
+            switch(Boolean(override.personalise_hide)) {
+            case true:
+              swatches.forEach(el => {
+                el.classList.add('d-none')
+                el.classList.remove('d-md-flex')
+              });
+              break
+            default:
+              swatches.forEach(el => {
+                el.classList.remove('d-none')
+                el.classList.add('d-md-flex')
+              });
+            }
+          }
+        }
+      } else if (area && !area.classList.contains('d-none')) {
+        collectStepData(area)
+      }
+
+      area.classList.add('d-none');
+      this.progress(index); // changes bar size
+
+      // TODO: optimize condition by levaraging class + index
+      // Show next view
+      if (dpv) {
+        area.nextElementSibling.nextElementSibling.classList.remove('d-none');
+      } else if (area.nextElementSibling.classList.contains('ctm__tab_content_area')) {
+        area.nextElementSibling.classList.remove('d-none');
+      }
+
+      if (area.nextElementSibling.classList.contains('ctm__summary')) ctmUpdateSummary();
+      window.scrollTo({ top: area.nextElementSibling, behavior: 'smooth' });
+    }
+
+    next_override(selection_index) {
+      switch(selection_index) {
+        case 0:
+          /*
+            Manipulate heading for Artwork tab if label type is "custom"
+            by swapping attribute and textcontent
+          */
+          const hArea = document.querySelector('[data-heading-temp-store]'); // heading area
+          if (hArea) {
+            if (override.label === 'custom') {
+              hArea.textContent = "Upload Your Artwork"
+            } else {
+              hArea.textContent = hArea.getAttribute('data-heading-temp-store')
+            }
+          }
+          break // =============================== END OF CASE 0 ===============================
+
+        case 1:
+          /*
+            Manual Data Extraction
+            TODO: Disable personalizer if product Label Type selected is 'standard' || 'custom'
+          */
+
+          const data = manualDataRetrieval();
+          if (data) {
+            /*
+              TODO: if current ctmCollectDataArr doesn't have any object with key step '1'
+              which is the selection of cocktails. do not push any data to the ctmCollectDataArr.
+
+              Insert our data based on proper indexing
+              TODO: currently disabling the checking
+            */
+            // const hasItem = ctmCollectDataArr.some(obj => obj.step === '1');
+            let temp_idx = 0;
+            const hasItem = ctmCollectDataArr.some((obj, idx) => {
+              if (obj.step === '2') {
+                temp_idx = idx;
+                return true;
+              }
+              return false;
+            });
+            console.log('hasItem', hasItem)
+
+            if (hasItem) {
+              ctmCollectDataArr[temp_idx] = data;
+            } else {
+              ctmCollectDataArr.push(data);
+            }
+            // ctmCollectionDataArr
+            // if (override.arr_idx !== 0) {
+            //   ctmCollectDataArr[override.arr_idx] = data;
+            // } else {
+            //   ctmCollectDataArr.push(data);
+            //   override.arr_idx = ctmCollectDataArr.length - 1;
+            // }
+            // if (hasItem) {
+            // }
+            console.log('current collection array', ctmCollectDataArr);
+
+            // TODO: 
+            if (override.label === 'premium' && Boolean(override.personalise_hide) === true) {
+              document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
+                el.classList.add('d-none')
+                el.classList.remove('d-md-flex')
+              });
+            } else {
+              document.querySelectorAll('.ctmContentAreaColors').forEach(el => {
+                el.classList.remove('d-none')
+                el.classList.add('d-md-flex')
+              });
+            }
+          }
+          break; // =============================== END OF CASE 1 ===============================
+
+        default:
+          break
+      }
+    }
+
+    prev(element) {
+      // TODO: refactor
+      const tabCtm    = document.querySelector('.ctm_tab_content');
+      const ctmBar    = document.querySelector('.ctmBar')
+      const pArea     = element.closest('.ctm__tab_content_area')
+      const tabIndex  = pArea.dataset.tab_index
+
+      let ctmTabHeight = tabCtm.offsetHeight + parseInt(getComputedStyle(tabCtm).marginBottom);
+
+      // TODO: if prev sibling is disabled, skip that page
+      if (pArea.previousElementSibling.classList.contains('ctmStepDisabled')) {
+        const currentTab = tabIndex - 2;
+        document.querySelectorAll('.ctm_tab_content').forEach((tab, idx) => {
+          if (idx === tabIndex - 1 || idx === tabIndex - 2) tab.classList.remove('ctm_tab_active')
+        })
+        document.querySelector(`.ctm__tab_content_area[data-tab_index="${tabIndex}"`).classList.add('d-none')
+        document.querySelector(`.ctm__tab_content_area[data-tab_index="${currentTab}"`).classList.remove('d-none')
+        ctmBar.style.height = `${ctmBar.offsetHeight - (ctmTabHeight * 2)}px`;
+      } else {
+        const currentTab = tabIndex - 1;
+        document.querySelectorAll('.ctm_tab_content')[currentTab].classList.remove('ctm_tab_active')
+        document.querySelector(`.ctm__tab_content_area[data-tab_index="${tabIndex}"`).classList.add('d-none')
+        document.querySelector(`.ctm__tab_content_area[data-tab_index="${currentTab}"`).classList.remove('d-none')
+        ctmBar.style.height = `${ctmBar.offsetHeight - ctmTabHeight}px`;
+      }
+    }
+
+    submit(element) {
+      console.error("ctmCollectDataArr check on submit : ", ctmCollectDataArr);
+      ctmUpdateCartOnSubmit(ctmCollectDataArr , element);
+    }
+
+    upload(element) {
+      if (!element) return
+
+      const defaultArea = element.closest('.ctm__gift_sets_area');
+      collectStepData(defaultArea);
+
+      const proArea     = defaultArea.querySelector('.ctm__gift_sets_pro_area');
+      proArea.classList.add('d-none');
+
+      const formArea    = defaultArea.querySelector('.formpanel');
+      if (formArea) formArea.classList.remove('d-none');
+    }
+
+    progress(current_index) {
+      let tabs      = document.querySelectorAll('.ctm_tab_content');
+      let tab       = tabs[0];
+      let progress  = document.querySelector('.ctmBar');
+
+      let th = tab.offsetHeight + parseInt(getComputedStyle(tab).marginBottom); // tab height
+
+      for (let i = 0; i < tabs.length; i++) {
+        if (current_index >= (i + 1)) {
+          const tabLabel  = tabs[i]
+          const height    = th * i
+          progress.style.height = `${height}px`;
+          tabLabel.classList.add('ctm_tab_active');
+        }
+      }
+
+      if (current_index) {
+        let item          = document.querySelectorAll('.ctm_tab_content')[current_index - 1];
+        let parent        = item.closest('ul');
+        let from_left     = item.getBoundingClientRect().left + parent.scrollLeft - 20 ;
+        parent.scrollLeft = from_left;
+      }
+    }
+  }
+
+  const customizerViewsInstance = new CustomizerViews();
+  const nameFoils = document.querySelectorAll('.ctm_personalise_color input[name="Names Colour"]')
+  const dateFoils = document.querySelectorAll('.ctm_personalise_color input[name="Comment Colour"]')
+  nameFoils.forEach((input, idx) => input.addEventListener('change', e => handleNameChange(e, idx)))
+  dateFoils.forEach((input, idx) => input.addEventListener('change', e => handleDateChange(e, idx)))
+
+  function handleNameChange(e, idx) {
+    // window.premiumImageMap.get('name')[idx]
+    window.premiumImageMap.set('name_index', idx)
+    customizerInstance.variant_change({type: 'name', idx})
+  }
+
+  function handleDateChange(e, idx) {
+    // window.premiumImageMap.get('date')[idx]
+    window.premiumImageMap.set('date_index', idx)
+    customizerInstance.variant_change({type: 'date', idx})
+  }
+
+  document.addEventListener('click', function(evt) {
+    if(evt.target.closest('.ctmChooseTemplates')){ labelNotAvailablePopup(evt.target) }
+
+    // if (evt.target.classList.contains('popupnotice.active .closepopup')) {
+    if (evt.target.classList.contains('closepopup')) {
+      evt.target.closest('.popupnotice')?.classList.remove('active');
+      if (evt.target.closest('.ctmImgUploadWrapper')?.querySelector('.providelaterCheckbox')) {
+        evt.target.closest('.ctmImgUploadWrapper').querySelector('.providelaterCheckbox').checked = false;
+      }
+      if (evt.target.closest('.ctm__gift_sets_pro_label_area')?.querySelector('.providelaterCheckbox')) {
+        evt.target.closest('.ctm__gift_sets_pro_label_area').querySelector('.providelaterCheckbox').checked = false;
+      }
+    }
+    if (evt.target.classList.contains('provideLaterAgree')) {
+      evt.target.closest('.popupnotice')?.classList.remove('active');
+      if (evt.target.closest('.ctmImgUploadWrapper')?.querySelector('.providelaterCheckbox')) {
+        evt.target.closest('.ctmImgUploadWrapper').querySelector('.providelaterCheckbox').checked = true;
+      }
+      if (evt.target.closest('.ctm__gift_sets_pro_label_area')?.querySelector('.providelaterCheckbox')) {
+        evt.target.closest('.ctm__gift_sets_pro_label_area').querySelector('.providelaterCheckbox').checked = true;
+      }
+    }
+
+    const curr      = evt.target;
+    const whichType = customizerViewsInstance.identify(curr);
+
+    if (curr.tagName === 'BUTTON') {
+      console.log('which type', whichType)
+      switch(whichType) {
+        case 'upload':
+          customizerViewsInstance.upload(curr);  // done
+          break;
+        case 'submit':
+          customizerViewsInstance.submit(curr);  // done
+          break;
+        case 'next':
+          customizerViewsInstance.next(curr);    // done
+          break;
+        case 'prev':
+          customizerViewsInstance.prev(curr);        // done (temporarily)
+          break;
+        default:
+          // do nothing
+      }
+    }
+
+    // On tab click begins
+    if (evt.target.classList.contains('ctm_tab_content')) {
+        let tabIndex = evt.target.dataset.tab_index;
+        updateSide(tabIndex, evt);
+        // ctmCollectDataArr = removeExtraSteps(evt.target, ctmCollectDataArr)
+        // console.log(evt.target)
+        if (evt.target.querySelector('.ctm_tab_label').textContent.includes('SUMMARY')) {
+          ctmUpdateSummary()
+        }
+    } else if (evt.target.classList.contains('ctm_tabCounter') || evt.target.classList.contains('ctm_tab_label')) {
+        let tabIndex = evt.target.closest('.ctm_tab_content').dataset.tab_index;
+        updateSide(tabIndex, evt);
+        // ctmCollectDataArr = removeExtraSteps(evt.target.closest('.ctm_tab_content'), ctmCollectDataArr)
+        if (evt.target.textContent.includes('SUMMARY') || evt.target.closest('.ctm_tab_content').querySelector('.ctm_tab_label').textContent.includes('SUMMARY')) {
+          ctmUpdateSummary()
+        }
+        // console.log(evt.target)
+    }
+  }) /** end of click event */
+
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  // Provide later checkbox
+  document.querySelectorAll('.providelaterCheckbox')?.forEach((provideLater)=>{
+    provideLater.addEventListener('change', function(evt) {
+      if (this.checked) {
+        console.log("Customer will provide artwork later.", this.checked);
+        this.closest('.ctmImgUploadWrapper')?.querySelector('.popupnotice')?.classList.add('active');
+        this.closest('.ctm__gift_sets_pro_label_area')?.querySelector('.popupnotice')?.classList.add('active');
+      }
+    })
+  })
+
+  function contactInputsValidate(tabWrapper, validForm) {
+    // const labelInput = tabWrapper.querySelector('input[name="Label Names"]');
+    // const labeldate = tabWrapper.querySelector('input[name="Label Date"');
+    const labelInput = tabWrapper.querySelector('input[name="Names"]');
+    const labeldate = tabWrapper.querySelector('input[name="Comment"');
+
+    // console.log('area', labeldate)
+    // console.log('area', labelInput)
+
+    const dateInput = tabWrapper.querySelector('#contactInfoEventDate');
+    const eventEmailElem = tabWrapper.querySelector('#contactInfoEventEmail');
+    const currentDate = new Date();
+    const fourWeeksFromNow = new Date(currentDate.getTime() + 28 * 24 * 60 * 60 * 1000);
+
+    const eventPhoneElem = tabWrapper.querySelector('#contactInfoEventPhone');
+    
+    
+    if (tabWrapper.classList.contains('ctm__gift_sets_uploads_area')) {
+      if (tabWrapper.querySelector('.formpanel:not(.d-none)')) {
+        validForm = false;
+        // console.log("object check tabWrapper gifts : ", tabWrapper)
+        let ctmGiftSleeve_elem = tabWrapper?.querySelector('.cl-upload--wrapper input[type="hidden"][name="properties[upload_box_sleeve]"]');
+        let ctmGiftProvideLaterArtwork = tabWrapper?.querySelector('.providelaterCheckbox');
+        
+        if ((ctmGiftSleeve_elem != null || ctmGiftSleeve_elem != undefined) || ctmGiftProvideLaterArtwork.checked == true) {
+          // console.error("check ctmGiftSleeve_elem : ", ctmGiftSleeve_elem.value);
+          if ((ctmGiftSleeve_elem == null || ctmGiftSleeve_elem == undefined) && ctmGiftProvideLaterArtwork.checked == true) {
+            validForm = true;
+          } else if (ctmGiftSleeve_elem.value.trim() != '' && ctmGiftProvideLaterArtwork.checked == false) {
+            validForm = true;
+          } else if (ctmGiftSleeve_elem.value.trim() != '' && ctmGiftProvideLaterArtwork.checked == true) {
+            validForm = false;
+            alert("You can either upload a file, or click 'I'll provide later'");
+          }
+        } else {
+          validForm = false;
+          alert("Upload your file, or click 'I'll provide later'");
+        }
+      } else {
+        validForm = true;
+      }
+    }
+
+    
+    if (labelInput) {
+      validForm = false;
+      if (labelInput.value.trim() === "") {
+        validForm = false;
+        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Please enter your label text';
+      } else if(labelInput.value.trim().length <= 3) {
+        validForm = false;
+        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Your label name must be greather then 3 letters';
+      } else {
+        validForm = true;
+      }
+      if (validForm == true) {
+        labelInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.add('d-none')
+      }
+    // } else {
+    //   validForm = true;
+    }
+
+    if (labeldate) {
+      validForm = false;
+      if (labeldate.value.trim() === "") {
+        validForm = false;
+        labeldate.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        labeldate.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Please enter a date or text here';
+      } else {
+        validForm = true;
+      }
+      if (validForm == true) {
+        labeldate.closest('.form-group').querySelector('.ctmFormFieldError').classList.add('d-none')
+      }
+    // } else {
+    //   validForm = true;
+    }
+
+
+    if (dateInput) {
+      validForm = false;
+      // dateInput.addEventListener('input', () => {
+      // });
+      // console.log("object fourWeeksFromNow : ", fourWeeksFromNow)
+      let userInputDate = new Date(dateInput.value);
+      if (userInputDate >= fourWeeksFromNow) {
+        validForm = true;
+        // console.log('The entered date is more than 4 weeks from now.');
+      } else {
+        validForm = false;
+        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Your date must be at least 4 weeks away for Custom labels';
+        // ctmFormFieldError
+        // console.log('The entered date is within the next 4 weeks or earlier.');
+      }
+      if (dateInput.value.trim() == '') {
+        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = 'Event date required';
+      }
+      if (validForm == true) {
+        dateInput.closest('.form-group').querySelector('.ctmFormFieldError').classList.add('d-none')
+      }
+    // } else {
+    //   validForm = true;
+    }
+    
+    if (eventEmailElem) {
+      let eventEmail = eventEmailElem.value
+      if (eventEmail == "") {
+        eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Email address required";
+
+        // console.log('Form = No email');
+        // bestEmailError.style.display = "block";
+        // bestEmailError.innerHTML = "You must give a preferred email";
+        // let email = document.getElementById("event-email").value;
+        validForm = false;
+        // console.log('email? : '+validForm);
+      } else if (eventEmail != ""){
+        // console.log('Email: '+eventEmail);
+        if (validateEmail(eventEmail)) {
+          eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.add('d-none')
+          // console.log('email? : '+validForm);
+        } else {
+          eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+          eventEmailElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Email address required";
+          // bestEmailError.style.display = "block";
+          // bestEmailError.innerHTML = "You must enter a valid email";
+          validForm = false;
+          // console.log('email? : '+validForm);
+        }
+      }
+    // } else {
+    //   validForm = true;
+    }
+    
+    if (eventPhoneElem) {
+      let eventMobile = eventPhoneElem.value
+      if (eventMobile == "") {
+        eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+        eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Mobile number required";
+        // console.log('Form = No mobile');
+        // bestMobileError.style.display = "block";
+        // bestMobileError.innerHTML = "You must give a preferred mobile";
+        validForm = false;
+        // console.log('mobile? : '+validForm);
+      } else {
+        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        // var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})([-. ]?[0-9]{1,5}){0,5}$/;
+        
+        if (eventMobile.match(phoneno)) {
+          eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.add('d-none')
+          // console.log('mobilematchcheck : '+validForm);
+        } else {
+          validForm = false;
+          eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').classList.remove('d-none')
+          // eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "You must enter a plain mobile number";
+          eventPhoneElem.closest('.form-group').querySelector('.ctmFormFieldError').innerHTML = "Please enter a valid mobile number";
+          // bestMobileError.style.display = "block";
+          // bestMobileError.innerHTML = "You must enter a plain mobile number";
+          // console.log('mobileNOMATCH : '+validForm);
+        }
+      }
+    }
+
+    console.log("IsValidForm : ", validForm)
+    return validForm;
+  }
+
+  document.querySelectorAll('.ctm__gift_sets_pro_label_area input[type="radio"][name="customLabel"]')?.forEach((giftLabel)=>{
+    giftLabel.addEventListener('change', function(evt) {
+      let ctmLabelParent = this.closest('.ctm_gift_sets_pro_label');
+      let ctmLabelSupperParent = this.closest('.ctm__gift_sets_pro_label_area');
+      ctmLabelSupperParent.querySelectorAll('.ctm_gift_content')?.forEach((ctmContent)=>{
+        if (ctmLabelParent.dataset.tab_index == ctmContent.dataset.tab_index) {
+          ctmContent.classList.remove('d-none')
+        } else {
+          if (ctmContent.querySelector('.ctmProLabel_standred')) {
+            // ctmContent.querySelector('.ctmProLabel_standred input[name="freeLabel"]').checked = false;
+            // ctmContent.querySelector('.ctmProLabel_standred').classList.remove('active');
+          }
+          ctmContent.classList.add('d-none')
+        }
+      })
+    })
+  })
+
+  /**
+   * ===================================================================
+   *              Side Tabs
+   * ===================================================================
+  */
+  let updateSide = (tabIndex, evt) => {
+    // console.log("object evt.target updateSide() : ", evt.target)
+    let sectionWrapper = evt.target.closest('.ctm__tab_section_elems');
+    let tabCtm = sectionWrapper.querySelector('.ctm_tab_content');
+    let ctmBar = sectionWrapper.querySelector('.ctmBar');
+    
+    let ctmActiveSteps = sectionWrapper.querySelectorAll('.ctm__list_group .ctm_tab_active');
+
+    // console.error("check current tabIndex : ", tabIndex)
+    // console.log("check current sectionWrapper : ", sectionWrapper.querySelectorAll('.ctm__list_group .ctm_tab_active'))
+    // console.log("check current sectionWrapper length : ", sectionWrapper.querySelectorAll('.ctm__list_group .ctm_tab_active').length)
+
+    if (tabIndex == ctmActiveSteps.length) {
+      // if (tabContent.classList.contains('ctm__gift_sets_area')) {
+      //   tabContent.querySelector('.ctm__gift_sets_pro_area').classList.remove('d-none')
+      //   tabContent.querySelector('.formpanel').classList.add('d-none')
+      // }
+      sectionWrapper.querySelectorAll('.ctm__tab_content_area').forEach((tabContent, index)=>{
+        let tabIndex = evt.target.closest('.ctm_tab_content').dataset.tab_index;
+        if (tabContent.dataset.tab_index == tabIndex) {
+          window.scrollTo({ top: tabContent, behavior: 'smooth' });
+          // console.log("tabContent :- ", tabContent)
+          if (tabContent.classList.contains('ctm__gift_sets_area')) {
+            tabContent.querySelector('.ctm__gift_sets_pro_area').classList.remove('d-none')
+            tabContent.querySelector('.formpanel').classList.add('d-none')
+          }
+        }
+      })
+    // } else if (tabIndex < ctmActiveSteps.length) {
+    } else if (tabIndex < ctmActiveSteps.length && !(evt.target.closest('.ctm_tab_content').classList.contains('ctmStepDisabled'))) {
+      let ctmTabHeight = tabCtm.offsetHeight + parseInt(getComputedStyle(tabCtm).marginBottom);
+      sectionWrapper.querySelectorAll('.ctm_tab_content').forEach((tabLabel, index)=>{
+        if (index < tabIndex) {
+          let newHeight = index * ctmTabHeight;
+          ctmBar.style.height = `${newHeight}px`;
+          // tabLabel.classList.add('ctm_tab_active');
+          setTimeout(() => {
+            // tabLabel.classList.add('ctm_tab_active', 'ctmSecFont600');
+            tabLabel.classList.add('ctm_tab_active');
+          }, 500);
+          // console.log("index :- ", index)
+          // console.log("totalHeight :- ", index * ctmTabHeight)
+        } else {
+          // tabLabel.classList.remove('ctm_tab_active', 'ctmSecFont600');
+          tabLabel.classList.remove('ctm_tab_active');
+        }
+      })
+  
+      sectionWrapper.querySelectorAll('.ctm__tab_content_area').forEach((tabContent, index)=>{
+        let tabIndex = evt.target.closest('.ctm_tab_content').dataset.tab_index;
+        // if (tabContent.dataset.tab_index == tabIndex) {
+        if (tabContent.dataset.tab_index == tabIndex && !(tabContent.classList.contains('ctmStepDisabled'))) {
+          window.scrollTo({ top: tabContent, behavior: 'smooth' });
+          // console.log("tabContent :- ", tabContent)
+          if (tabContent.classList.contains('ctm__gift_sets_area')) {
+            tabContent.querySelector('.ctm__gift_sets_pro_area').classList.remove('d-none')
+            tabContent.querySelector('.formpanel').classList.add('d-none')
+          }
+          tabContent.classList.remove('d-none');
+        } else {
+          tabContent.classList.add('d-none');
+        }
+      })
+    }
+  }
+
+  // Template selection
+  const templateView = document.querySelector('.jtzuya-templates__tab-template-view');
+  if (templateView) templateView.querySelector('img').removeAttribute('srcset');
+
+  const templateControls    = document.querySelectorAll('.jtzuya-templates-wrapper input[name="template_selection"]');
+  const templateViewPremium = document.querySelectorAll('.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--premium .jtzuya-templates__tab-selection');
+  const templateViewDigital = document.querySelectorAll('.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--digital .jtzuya-templates__tab-selection');
+
+  const premiumMap = new Map([
+    ['image', ''],
+    ['option', ''],
+  ]);
+
+  const digitalMap = new Map([
+    ['image', ''],
+    ['option', ''],
+  ]);
+
+  /**
+   * Updates the template view with the selected template's image and option.
+   * @param {NodeList} templates - List of template elements (premium or digital).
+   * @param {Map} dataMap - Data storage for the selected template.
+   */
+  const updateTemplateView = (templates, dataMap) => {
+    if (dataMap.get('image')) {
+      templateView.querySelector('p').textContent = dataMap.get('option');
+      templateView.querySelector('img').src = dataMap.get('image');
+      return;
+    }
+
+    for (const el of templates) {
+      if (el.classList.contains('jtzuya-templates__tab-selection--active')) {
+        dataMap.set('image',  el.getAttribute('data-img'));
+        dataMap.set('option', el.getAttribute('data-option'));
+    
+        templateView.querySelector('p').textContent = el.getAttribute('data-option');
+        templateView.querySelector('img').src       = el.getAttribute('data-img');
+        break;
+      }
+    }
+  };
+
+  if (templateControls) {
+    templateControls.forEach((control) => {
+      control.addEventListener('change', (e) => {
+        console.log('change')
+        const isPremium = e.target.getAttribute('id') === "template_selection_premium";
+        const isDigital = e.target.getAttribute('id') === "template_selection_digital";
+
+        if (isPremium) {
+          override.personalise_hide = false  // parameter at personalize section
+          console.log('is premium')
+          updateTemplateView(templateViewPremium, premiumMap);
+          customizerInstance.change(e)
+        } else if (isDigital) {
+          console.log('is digi')
+          override.personalise_hide = true // parameter at personalize section. if true it will hide the colors fields
+          updateTemplateView(templateViewDigital, digitalMap);
+          customizerInstance.change(e)
+        }
+      });
+    });
+  }
+
+  const updateSelection = (labels, dataMap) => {
+    let selectionIdx = 0;
+  
+    labels.forEach((label, idx) => {
+      if (label.classList.contains('jtzuya-template__tab-selection--active')) {
+        selectionIdx = idx;
+      }
+    });
+
+    document.querySelector('img').removeAttribute('srcset');
+
+    labels.forEach((label) => {
+      label.addEventListener('click', (e) => {
+        e.preventDefault();
+        const curr = e.target; // Ensure we get the correct label
+        const _type = curr.getAttribute('data-product-type')
+
+        if (!curr || curr.classList.contains('jtzuya-template__tab-selection--active')) {
+          return;
+        }
+  
+        // Update the data map
+        dataMap.set('image', curr.getAttribute('data-img'));
+        dataMap.set('option', curr.getAttribute('data-option'));
+        override.variant = e.target.textContent;
+  
+        // Update the template view content
+        const templateView = document.querySelector('.jtzuya-templates__tab-template-view');
+        templateView.querySelector('p').textContent = curr.getAttribute('data-option');
+        templateView.querySelector('img').src = curr.getAttribute('data-img');
+  
+        // Remove active class from the previously selected label
+        labels[selectionIdx].classList.remove('jtzuya-template__tab-selection--active');
+        
+        // Add active class to the newly selected label
+        curr.classList.add('jtzuya-template__tab-selection--active');
+  
+        // Update selection index
+        selectionIdx = Array.from(labels).indexOf(curr);
+      });
+    });
+
+    labels.forEach(label => label.addEventListener('click', customizerInstance.click))
+  };
+  
+  // Initialize template selections
+  updateSelection(templateViewDigital, digitalMap);
+  updateSelection(templateViewPremium, premiumMap);
+
+  let cTabs = [];
+  document.querySelectorAll('input[name="ctm_tab_card"]').forEach((input, index)=>{
+    input.addEventListener('change', function(evt) {
+      let customizerType = evt.target.getAttribute('data-customizer-label-type')
+      
+      if (customizerType) {
+        override.label  = customizerType;
+        const pw        = evt.target.closest('.ctm__tab_content_area'); // parent wrapper
+        const idx       = pw.getAttribute('data-tab_index') * 1;
+        const dArea     = document.querySelector(`.ctmStepBlock_${idx + 2}`)
+        // const cTab      = document.querySelector(`li.ctm_tab_content[data-tab_index="${idx + 2}"] .ctm_tab_label`); // ahead tab
+
+        if (customizerType === 'standard') {
+          console.log('cTabs', cTabs);
+          
+          if (cTabs.length < 2) {
+            cTabs.push(document.querySelector(`li.ctm_tab_content[data-tab_index="${idx + 2}"] .ctm_tab_label`));
+            cTabs.push(document.querySelector(`li.ctm_tab_content[data-tab_index="${idx + 1}"] .ctm_tab_label`));
+          }
+          
+          if (dArea) {
+            console.log('dArea to change', dArea)
+            dArea.classList.add(`ctmStepDisabled`)
+            hideLabelApp()
+          }
+
+          // cross out personalise tab
+          cTabs.forEach(i => i.classList.add('ctm_tab_label--disable'));
+        } else if (customizerType === 'custom') {
+          console.log('cTabs', cTabs)
+          if (cTabs.length > 1) {
+            console.log('cTabs', cTabs)
+            const artworkEl = cTabs[cTabs.length - 1]; 
+            artworkEl.classList.remove('ctm_tab_label--disable')
+            cTabs.pop()
+          }
+
+          if (cTabs.length < 1) {
+            cTabs.push(document.querySelector(`li.ctm_tab_content[data-tab_index="${idx + 2}"] .ctm_tab_label`));
+            cTabs.forEach(i => i.classList.add('ctm_tab_label--disable'));
+          } else if (cTabs.length === 1) {
+            cTabs.forEach(i => i.classList.add('ctm_tab_label--disable'));
+          }
+          
+          if (dArea) {
+            // console.log('dArea to change', dArea)
+            dArea.classList.add(`ctmStepDisabled`)
+            hideLabelApp(false)
+          }          
+        } else {
+          console.log('cTabs', cTabs)
+          if (dArea) {
+            // console.log('dArea to change', dArea)
+            if (dArea.classList.contains('ctmStepDisabled')) dArea.classList.remove(`ctmStepDisabled`)
+            hideLabelApp(false)
+          }
+
+          if (cTabs.length > 0) {
+            cTabs.forEach(i => {
+              i.classList.remove('ctm_tab_label--disable');
+              cTabs.pop();
+            });
+          }
+        }
+      }
+
+      document.querySelectorAll('[data-customizer-template]').forEach((template, i) => {
+        if (index == i) {
+          template.classList.add('jtzuya-templates--active')
+        } else {
+          template.classList.remove('jtzuya-templates--active')
+        }
+      })
+
+      if (input.closest('.ctm__contentInnderTabs')) {
+        input.closest('.ctm__contentInnderTabs').querySelectorAll('.ctm_card').forEach((ctmCard, i)=>{
+          if (index == i) {
+            ctmCard.classList.add('card');
+            ctmCard.classList.remove('ctmNoActive');
+          } else {
+            ctmCard.classList.remove('card');
+            ctmCard.classList.add('ctmNoActive');
+            ctmCard.classList.add('ctmNoActive');
+          }
+        });
+      }
+
+      if (input.closest('.ctm_tab_content_inner_area')) {
+        input.closest('.ctm_tab_content_inner_area').querySelectorAll('.ctm__contentInnderTabsContent').forEach((ctmContentArea, index)=>{
+          if (input.closest('.ctm_card').dataset.tab_index == ctmContentArea.dataset.tab_index) {
+            ctmContentArea.classList.remove('d-none');
+          } else {
+            ctmContentArea.classList.add('d-none');
+            // ctmContentArea.querySelector('.ctmProLabel')?.classList.remove('amdctive')
+            // ctmContentArea.querySelectorAll('.ctmProcard')?.forEach(elem => {
+            //   elem.classList.remove('active', 'focus')
+            // });
+            // ctmContentArea.querySelectorAll('input[type="radio"]:checked').forEach((tabCheckedRadio, i)=>{
+            //   tabCheckedRadio.checked = false;
+            // })
+          }
+        })
+      }
+      // if (!input.checked) {
+      //     input.closest('label').classList.remove('card');
+      // } else {
+      //     input.closest('label').classList.add('card')
+      // }
+      // let isPersonalised = JSON.parse(this.dataset.is_personalised);
+      // let ctmPersonalisedStep = this.closest('.ctm__tab_content_area').nextElementSibling;
+      // // ctmPersonalisedStep?.classList.add('ctmStepDisabled')
+      // !isPersonalised ? ctmPersonalisedStep?.classList.add('ctmStepDisabled') : ctmPersonalisedStep?.classList.remove('ctmStepDisabled')
+      // if (ctmPersonalisedStep.classList.contains('ctmStepDisabled')) {
+      //   // ctmPersonalisedStep.dataset.tab_index
+      //   ctmPersonalisedStep.closest('.ctm__tab_section_elems').querySelector(`.ctm_list_progress_bar .ctm_tab_content:nth-of-type(${Number(ctmPersonalisedStep.dataset.tab_index)})`).classList.add('ctmStepDisabled');
+      // } else {
+      //   ctmPersonalisedStep.closest('.ctm__tab_section_elems').querySelector(`.ctm_list_progress_bar .ctm_tab_content:nth-of-type(${Number(ctmPersonalisedStep.dataset.tab_index)})`).classList.remove('ctmStepDisabled');
+      // }
+      // console.log(typeof isPersonalised)
+      // console.log("this closest : ", ctmPersonalisedStep)
+      // console.log("document.querySelectorAll('.ctmStepDisabled') : ", document.querySelectorAll('.ctmStepDisabled'))
+    })
+  });
+  
+  document.querySelector('.ctmProLabel input[type="radio"]')?.addEventListener('change', function(evt) {
+    if (this.checked) {
+      this.closest('.ctmProLabel').classList.add('active')
+    }
+  })
+
+  let uncheckBtnClicked = false;
+  let uncheckBtns = document.querySelectorAll('.ctm_tab_pro_card_icon');
+  uncheckBtns.forEach(uncheckBtn => uncheckBtn.addEventListener('click',function () {
+    uncheckBtnClicked = true;
+    // let thisInput = this.parentElement.children[0].children[3];
+    // thisInput.checked = false;
+  
+  }))  
+  // document.querySelectorAll('input[type="checkbox"]').forEach((checkbox, i) => {
+  document.querySelectorAll('input[name="Foxtails"]').forEach((checkbox, i) => {
+    checkbox.addEventListener('change', function(evt) {
+
+    if(!uncheckBtnClicked) this.checked = true;  
+
+      if (this.checked) {
+        
+        
+        // console.log("check product selected :- ", this)
+        this.closest('.ctm_tab_pro_card').classList.add('ctm_tab_pro_card_active')
+        // document.querySelectorAll('input[type="checkbox"]').forEach((otherCheckbox) => {
+        if(this.dataset.is_min_quantity) this.dataset.ctm_quantity = this.dataset.is_min_quantity;
+        if(this.dataset.is_min_quantity) this.closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper .quantity').value = this.dataset.is_min_quantity;
+        let otherCheckboxes = document.querySelectorAll('input[name="Foxtails"]');
+        document.querySelectorAll('input[name="Foxtails"]').forEach((otherCheckbox) => {
+          // console.log("check otherCheckbox : ", otherCheckbox.closest('.ctm_tab_pro_card').classList)
+          let otherCheckboxZero = otherCheckbox.closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper').querySelector('.quantity').value == 0;
+          if (otherCheckbox !== this && otherCheckbox.checked) {
+          
+              
+            
+
+            if (!otherCheckbox.closest('.ctm_tab_pro_card').classList.contains('ctm_pro_change_pos_quantity')) {
+              otherCheckbox.closest('.ctm_tab_pro_card').classList.add('ctm_pro_change_pos_quantity')
+              let quantityWrapper = otherCheckbox.closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper');
+              quantityWrapper.querySelector('.ctm_quantity_corner').innerHTML = quantityWrapper.querySelector('.quantity').value;
+            // } else {
+            //   otherCheckbox.closest('.ctm_tab_pro_card').classList.remove('ctm_pro_change_pos_quantity')
+
+                   if(otherCheckboxZero) {
+  otherCheckbox.closest('.ctm_tab_pro_card').classList.remove('ctm_tab_pro_card_active');
+        otherCheckbox.closest('.ctm_tab_pro_card').classList.remove('ctm_pro_change_pos_quantity');               
+          otherCheckbox.checked = false;
+         
+
+  }
+            }  
+            // console.error("check otherCheckbox :- ", otherCheckbox.closest('.ctm_tab_pro_card'))
+            // this.closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper').style.display = 'none';
+          } else {
+           
+            if (otherCheckbox.type === "radio" && otherCheckbox.checked == false) {
+              // console.log("check otherCheckbox : ", otherCheckbox.closest('.ctm_tab_pro_card').classList)
+              otherCheckbox.closest('.ctm_tab_pro_card').classList.remove('ctm_tab_pro_card_active')
+              otherCheckbox.dataset.ctm_quantity = 0;
+              otherCheckbox.closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper input.quantity').value = 0;
+            }
+          }
+        });
+      let thisCounter = this.parentElement.children[5].children[0].children[0];
+
+        if(!thisCounter.innerText == '') {
+          this.closest('.ctm_tab_pro_card').classList.add('ctm_tab_pro_card_active');
+           this.closest('.ctm_tab_pro_card').classList.remove('ctm_pro_change_pos_quantity');
+        }
+   
+      } else {
+    
+        this.closest('.ctm_tab_pro_card').classList.remove('ctm_tab_pro_card_active','ctm_pro_change_pos_quantity')
+        
+        this.dataset.ctm_quantity = 0;
+        this.closest('.ctm_tab_pro_card').querySelector('.ctm_quatity_wrapper input.quantity').value = 0;
+      }
+      uncheckBtnClicked = false;
+    })
+  })
+
+  let ctmTemplates = document.querySelectorAll('input[name="chooseTemplates"]');
+  ctmTemplates.forEach((input, i, ctmTemplates)=>{
+    // console.log(input, i)
+    input.addEventListener('change', function(evt) {
+      ctmTemplates.forEach((template, index)=>{
+        if (template.checked && i == index) {
+          template.closest('.ctmChooseTemplates').classList.add('ctmChooseTemplatesActive');
+          // console.log(template, index)
+        } else {
+          template.closest('.ctmChooseTemplates').classList.remove('ctmChooseTemplatesActive');
+        }
+      })
+      // console.log(this)
+    })
+  })
+
+  let radioLabel = document.querySelectorAll('input[name="labelRadio"]');
+  radioLabel.forEach((input, i, radioLabel)=>{
+    // console.log(input, i)
+    input.addEventListener('change', function(evt) {
+      radioLabel.forEach((label, index)=>{
+        if (label.checked && i == index) {
+          label.closest('label').classList.add('active', 'focus');
+          // console.log(label, index)
+        } else {
+          label.closest('label').classList.remove('active', 'focus');
+        }
+      })
+      // console.log(this)
+    })
+  })
+
+  document.querySelectorAll('input[name="bottle_tags"]')?.forEach((input)=>{
+    input.addEventListener('change', function(evt) {
+      // console.log("this :- ", this.dataset.isbottletag)
+      this.closest('.ctm_bottle_tag')?.querySelectorAll('.ctmBottleTagImgs img')?.forEach((img)=>{
+        if (img.classList.contains(this.dataset.isbottletag)) {
+          img.classList.remove('d-none')
+          // console.error("Image contains class :- ", this.dataset.isbottletag)
+        } else {
+          img.classList.add('d-none')
+        }
+      })
+    })
+  })
+
+  document.querySelectorAll('input[name="label_application"]')?.forEach((input)=>{
+    input.addEventListener('change', function(evt) {
+      // console.log("this :- ", this.dataset.isbottletag)
+      // console.log("change")
+      this.closest('.ctm_label_applications')?.querySelectorAll('.ctmLabelTagImgs img')?.forEach((img)=>{
+        if (img.classList.contains(this.dataset.islabeltag)) {
+          img.classList.remove('d-none')
+          // console.error("Image contains class :- ", this.dataset.isbottletag)
+        } else {
+          img.classList.add('d-none')
+        }
+      })
+    })
+  })
+
+  let ctmLabelPrint  = document.querySelectorAll('input[name="customLabel"]');
+  ctmLabelPrint .forEach((input, i, ctmLabelPrint  )=>{
+    // console.log(input, i)
+    input.addEventListener('change', function(evt) {
+      ctmLabelPrint .forEach((label, index)=>{
+        if (label.checked && i == index) {
+          console.log(label, index)
+          label.closest('label').classList.add('active', 'focus');
+        } else {
+          label.closest('label').classList.remove('active', 'focus');
+        }
+      })
+      // console.log(this)
+    })
+  })
+
+  function updateCollectioncardsQuantity(elemClasses, opration = 'plus') {
+    // console.log('check opration : ', opration)
+    // document.querySelectorAll('.ctm_quatity_wrapper .qtyplus').forEach((plusInput) => {
+    let queryElemes = document.querySelectorAll(`${elemClasses}`)
+    queryElemes?.forEach((plusInput) => {
+      plusInput.addEventListener('click', (evt) => {
+        const ctmQuantity = evt.target.closest('.ctm_quatity_wrapper').querySelector('.quantity');
+        const ctmQuantityInput = evt.target.closest('.ctm_tab_pro_card');
+        const currentValue = Number(ctmQuantity.value);
+        if (!isNaN(currentValue)) {
+          if (opration == 'plus') {
+            ctmQuantity.value = currentValue + 1;
+          } else if (opration == 'minus') {
+            // ctmQuantity.value = currentValue - 1;
+            // if (currentValue > 0) {
+            if (ctmQuantityInput.querySelector('input[name="Foxtails"]').dataset.is_min_quantity) {
+              if (ctmQuantityInput.querySelector('input[name="Foxtails"]').dataset.is_min_quantity < currentValue) {
+                ctmQuantity.value = currentValue - 1;
+              } else {
+                // ctmQuantityInput.querySelector('input[type="checkbox"]').checked = false;
+                ctmQuantityInput.querySelector('input[name="Foxtails"]').checked = false;
+                ctmQuantityInput.classList.remove('ctm_tab_pro_card_active');
+              }
+            } else {
+              if (currentValue > 1) {
+                ctmQuantity.value = currentValue - 1;
+              } else {
+                // ctmQuantityInput.querySelector('input[type="checkbox"]').checked = false;
+                ctmQuantityInput.querySelector('input[name="Foxtails"]').checked = false;
+                ctmQuantityInput.classList.remove('ctm_tab_pro_card_active');
+              }
+            }
+          }
+          // ctmQuantityInput.querySelector('input[type="checkbox"]').dataset.ctm_quantity = ctmQuantity.value
+          ctmQuantityInput.querySelector('input[name="Foxtails"]').dataset.ctm_quantity = ctmQuantity.value
+        }
+        // console.error('ctmQuantity.value : ', ctmQuantity.value);
+      });
+    });
+  }
+  updateCollectioncardsQuantity('.ctm_quatity_wrapper .qtyplus', 'plus')
+  updateCollectioncardsQuantity('.ctm_quatity_wrapper .qtyminus', 'minus')
+
+  function updateCollectioncardsQuantityOnInput(elemClasses){
+    document.querySelectorAll(`${elemClasses}`)?.forEach(quanElem => {
+      quanElem.addEventListener('input', (e) => {
+        let currentVal = Number(e.target.value);
+        if (currentVal != '' && !isNaN(currentVal)) {
+          // e.target.closest('.ctm_tab_pro_card').querySelector('input[type="checkbox"]').dataset.ctm_quantity = currentVal
+          e.target.closest('.ctm_tab_pro_card').querySelector('input[name="Foxtails"]').dataset.ctm_quantity = currentVal
+          // console.log("checking quanElem", e.target)
+        } else if (currentVal  == 0) {
+          // e.target.closest('.ctm_tab_pro_card').querySelector('input[type="checkbox"]').dataset.ctm_quantity = 1;
+          e.target.closest('.ctm_tab_pro_card').querySelector('input[name="Foxtails"]').dataset.ctm_quantity = 0;
+          e.target.value = 0;
+          // e.target.closest('.ctm_tab_pro_card').querySelector('input[type="checkbox"]').checked = false;
+          // e.target.closest('.ctm_tab_pro_card').classList.remove('ctm_tab_pro_card_active');
+        }
+      })
+    });
+  }
+  updateCollectioncardsQuantityOnInput('.ctm_quatity_wrapper .quantity')
+
+
+  function ctmCustomiseProductData(customiseProductData, ctmPersonaliseProperties) {
+    let localData = {
+      items: [],
+      localItems: [],
+      itemProperties: []
+    }
+    // console.log("check ctmPersonaliseProperties :- ", ctmPersonaliseProperties)
+    // console.log("check customiseProductData :- ", customiseProductData)
+    // console.log("check localData :- ", localData)
+    if (customiseProductData == null || Object.keys(customiseProductData).length == 0) {
+      customiseProductData = localData
+    } else if (!customiseProductData) {
+      customiseProductData = localData
+      
+      ctmPersonaliseProperties.forEach((prop, i, arr) => {
+        const key = Object.keys(prop)[0];
+        const existingProp = customiseProductData.itemProperties?.find(item => key in item);
+        if (existingProp) {
+          existingProp[key] = prop[key];
+        } else {
+          customiseProductData.itemProperties.push(prop);
+        }
+      });
+      localStorage.setItem(`customiseProductData`, JSON.stringify(customiseProductData));
+    } else {
+      ctmPersonaliseProperties.forEach((prop, i, arr) => {
+        const key = Object.keys(prop)[0];
+        const existingProp = customiseProductData.itemProperties?.find(item => key in item);
+        if (existingProp) {
+          existingProp[key] = prop[key];
+        } else {
+          customiseProductData.itemProperties.push(prop);
+        }
+      });
+    }
+    return customiseProductData;
+  }
+  
+  function ctmUpdateSummary() {
+    // console.log(`check ctmCollectDataArr on summary :- `, ctmCollectDataArr)
+    const newItemArray = ctmCollectDataArr.reduce((acc, current) => {
+      return acc.concat(current.items);
+    }, []);
+    const newPropertiesArray = ctmCollectDataArr.reduce((acc, current) => {
+      // console.log("object check props acc : ", acc)
+      // console.log("object check props current : ", current)
+      return acc.concat(current.properties);
+    }, []);
+    summaryResult.items = newItemArray;
+    summaryResult.properties = newPropertiesArray
+    // console.log("check the last step summary result as follows : ", summaryResult);
+
+
+    // const customiseProductData = localStorage.getItem('customiseProductData');
+    // console.info(JSON.parse(customiseProductData));
+    // let summaryData = JSON.parse(customiseProductData);
+    let mainSummaryWrapper = document.querySelector('.ctm__tab_content_area.ctm__summary');
+    let summaryWrapper = mainSummaryWrapper.querySelector('.ctm__summary_list');
+    let summaryItemsData = '';
+    let summaryPropsData = '';
+    let ctmTotal = 0;
+
+    let isLabelApplication = false;
+    summaryResult.items.forEach( i => { if( i.id == "41849361039446" ){ isLabelApplication = true } })
+      
+    let personalized_item = false;
+    summaryResult.items.forEach( i => { if( i.title.toLowerCase().includes('personalized') ){ personalized_item = i } })
+
+    let CocktailQty = 0;
+    ctmCollectDataArr[0].items.forEach( i => { CocktailQty += parseInt(i.quantity) });
+
+    function cocktailPrice(price){
+      if( parseInt(price) == 14 && CocktailQty >= 11 ){ return parseInt(price) / 2 }
+      return price;
+    }
+
+    // summaryPropsData += `<div class="ctmSummaryTypeHeading ctmTextCapitalize mb-4">ORDER INFORMATION</div>`;
+    // summaryItemsData += `<div class="ctmSummaryTypeHeading ctmTextCapitalize mb-4">ORDER TOTAL</div>`;
+    summaryPropsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order Details</div>`;
+    summaryItemsData += `<div class="ctmSummaryTypeHeading ctmSecFontUpCase mb-4- mb-3 txt_center">Order total</div>`;
+    summaryResult.items.forEach((item)=>{
+      ctmTotal += parseFloat(cocktailPrice(item.price_no_currency)) * item.quantity;
+      if (item.title) {
+
+        let price = item.quantity * cocktailPrice(item.price_no_currency);
+        let item_total_price = '$' + price ;
+        if(item.id == "33176702746710"){ item_total_price = 'Included' }
+
+        if( price != 0){
+          summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+            <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-9 col-6- col-8 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">${item.title}</h6>
+            <div class="ctm_list_item_value col-md-3 col-6- col-4 ctm_pl_pr_sm0 px-0 text-right">${item_total_price}</div>
+          </div>`;
+        }
+      }
+    })
+
+    // summaryData.itemProperties.forEach((item)=>{
+    summaryResult.properties.forEach((item)=>{
+      const key = Object.keys(item)[0];
+      // console.error("check object items :- ", item);
+      // console.error("check object keys :- ", key);
+
+      if(key.toLowerCase() == 'email'){
+        if(isLabelApplication){
+          summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+          <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">LABEL APPLICATION</h6>
+          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">Three Foxes to apply labels</div>
+          </div>`;
+        }else{
+          summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+          <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">LABEL APPLICATION</h6>
+          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">Lables provided separately</div>
+          </div>`;
+        }
+      }
+
+      if(key.toLowerCase() == 'names'){
+        if(personalized_item){
+          summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+          <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">TEMPLATE</h6>
+          <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">${personalized_item.title.split('-')[1]?.trim() || ''}</div>
+          </div>`;
+        }
+      }
+
+
+      if(item.type == 'no_product'){}
+      else if (item.type && item.quantity) {
+        // summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1-">
+        //   <h6 class="ctm_list_item_label col-md-4 col-6 ctm_pl_pr_sm0 px-0 text-left m-0">${item.title}</h6>
+        //   <div class="ctm_list_item_value col-md-8 col-6 ctm_pl_pr_sm0 px-0 text-right">${item.value} (${item.price_no_currency})</div>
+        // </div>`;
+        summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+          <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-9 col-6- col-8 ctm_pl_pr_sm0 px-0 text-left m-0">${item.title}</h6>
+          <div class="ctm_list_item_value col-md-3 col-6- col-4 ctm_pl_pr_sm0 px-0 text-right">(${item.price_no_currency})</div>
+        </div>`;
+        ctmTotal += parseFloat(item.price_no_currency);
+      } else {
+        // summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1-">
+        // if (item[key].toLowerCase() == 'label') {       
+        
+        if (item?.type?.toLowerCase() == 'label') {
+          // console.error(" checking summary item key : ", item);
+          // summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1-">
+          //   <h6 class="ctm_list_item_label ctmSecFontUpCase col-md-4 col-6 ctm_pl_pr_sm0 text-left px-0 m-0">${item[key]}</h6>
+          //   <div class="ctm_list_item_value col-md-8 col-6 ctm_pl_pr_sm0 px-0 text-right">${item.value}</div>
+          // </div>`;
+          summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+            <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">${item.title}</h6>
+            <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">${item.value}</div>
+          </div>`;
+        } else {
+          // console.error(" checking summary item : ", item);
+          if (item?.FileName) {
+            summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+              <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">${key}</h6>
+              <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">${item.FileName}</div>
+            </div>`;
+          } else {
+            summaryPropsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mob_align-center">
+              <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase col-md-6 col-6 ctm_pl_pr_sm0 text-left px-0 m-0 mob_fs_12">${key}</h6>
+              <div class="ctm_list_item_value col-md-6 col-6 ctm_pl_pr_sm0 px-0 text-right mob_fs_12">${item[key]}</div>
+            </div>`;
+          }
+        }
+      }
+      // console.log(item, `${key} : ${item[key]}`)
+    })
+    const formattedTotal = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(ctmTotal);
+    summaryItemsData += `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- ctm__summary_total">
+                <h6 class="ctm_list_item_label lh-base ctmSecFontUpCase m-0">Total</h6>
+                <div class="ctm_list_item_value">${formattedTotal}</div>
+              </div>`;
+    
+    // if (ctmTotal > 0 && summaryData) {
+    if (ctmTotal > 0 && summaryResult) {
+      summaryWrapper.querySelector('.ctm__saummary_items').innerHTML = summaryItemsData;
+      summaryWrapper.querySelector('.ctm__saummary_props').innerHTML = summaryPropsData;
+      mainSummaryWrapper.querySelector('.ctm_tab_content_next_btn span').innerHTML = `- ${formattedTotal}`
+      mainSummaryWrapper.querySelector('.rdc-button-next-con .ctm_tab_content_next_btn span').innerHTML = `- ${formattedTotal}`
+    } else {
+      summaryWrapper.innerHTML = `<div class="list-group-item pl-0 d-flex justify-content-between pr-0 pb-1- mx-auto border-0 ctmBurgundy_clr ctm_summary_blank">
+      <h6 class="ctm_list_item_label lh-base m-0">No items found</h>
+      </div>`;
+      mainSummaryWrapper.querySelector('.ctm_tab_content_next_btn').disabled = true;
+      mainSummaryWrapper.querySelector('.ctm_tab_content_next_btn').innerHTML = 'CART EMPTY';
+    }
+  }
+
+  // Update cart items
+  async function ctmUpdateCartOnSubmit(localStoData, targetElem) {
+    targetElem.querySelector('span').classList.add('d-none')
+    targetElem.querySelector('.ctm_round_loader_animate').classList.remove('d-none')
+    const response = await fetch(`${Shopify.routes.root}cart.js`);
+    const cartData = await response.json();
+    let cust_label_item = null;
+    
+    const updateLocalStorageOnSubmit = { ...localStoData };
+    localStorage.setItem('customiseProductData', JSON.stringify(updateLocalStorageOnSubmit));
+    
+    const cartItemArray = ctmCollectDataArr.reduce((acc, current) => {
+      return acc.concat(current.items);
+    }, []);
+    const cartItemIdsAndQuantities = cartItemArray.map(item => ({
+      id: item.id,
+      quantity: Number(item.quantity)
+    }));
+
+    /**
+     * Not needed since we are still appending the name properties under
+     * wedding label's or the 2nd step or the 2nd item of our arr ctmCollectDataArr
+     * 
+     * step 2 wont be added if there are no products added at step 1.
+     * 
+    */
+    if (window.customizerVariantIds) {
+      // let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
+      const labelsArr = window.customizerVariantIds.split(',')
+      cartItemArray.map(i => {
+        if (labelsArr.includes(i.id)) {
+          cust_label_item = i.id
+        }
+      });
+    }
+
+    const cartPropertiesArray = ctmCollectDataArr.reduce((acc, current) => {
+      return acc.concat(current.properties);
+    }, []);
+
+    // summaryResult
+    let ctmCartSubData = {};
+    ctmCartSubData.items = cartItemIdsAndQuantities;
+
+    // ctmCartSubData.items[0].properties = propertiesObject;
+    const transformedArray = cartPropertiesArray.map((obj) => {
+      if (obj.type) { return { [obj.title]: obj.value }} 
+      else { return obj }
+    });
+
+    /*
+      force cart property overrider by jtzuya
+      Since the current selection for "ARTWORK" tab specifiaclly for premium & digital
+      isn't tied to the variants, we have to manually add it this way
+      dont think we need this
+    */
+    // if (overrideVariant !== '') transformedArray.push({'Variant Selected': overrideVariant}) // not needed since we are now targeting
+    // it based of variant ids (and will be displayed on the cart automatically)
+
+    // console.log('ctmCartSubData', ctmCartSubData);
+    let Cus_itemFound = false;
+    ctmCartSubData.items = ctmCartSubData.items.map((item, idx) => {
+      // if (override.label === 'standard') {
+      //   if (idx === 0) {
+      //     Cus_itemFound = true;
+      //     return { ...item, properties: transformedArray };
+      //   }
+      // } else {
+      //   if (idx === 1) {
+      //     Cus_itemFound = true;
+      //     return { ...item, properties: transformedArray };
+      //   }
+      // }
+      if (cust_label_item == item.id) {
+          Cus_itemFound = true;
+          return { ...item, properties: transformedArray };  
+      }
+      return item;
+    });
+
+    // ctmCartSubData.items[0] = { ...ctmCartSubData.items[0], properties: cartPropertiesArray };
+    if( !Cus_itemFound ){ ctmCartSubData.items[0] = { ...ctmCartSubData.items[0], properties: transformedArray } }
+
+    const formattedItems = ctmCartSubData.items.map((item) => {
+      if (item.properties) {
+        const propertiesObject = item.properties.reduce((acc, current) => {
+          acc[Object.keys(current)[0]] = Object.values(current)[0];
+          return acc;
+        }, {});
+        return { ...item, properties: propertiesObject };
+      }
+      return item;
+    });
+
+    const data = { items: formattedItems };
+    // ctmCartSubData.items[0] = { ...ctmCartSubData.items[0], properties: propertiesObject };
+    // if (ctmCartSubData.items[0]) {
+    //   // ctmCartSubData.items[0] = Object.assign(ctmCartSubData.items[0], { properties: cartPropertiesArray })
+    //   ctmCartSubData.items[0] = Object.assign(ctmCartSubData.items[0], { properties: JSON.stringify(cartPropertiesArray) })
+    // }
+    
+    // console.log("check data  : ", data);
+    
+    const cartUrl = `${Shopify.routes.root}cart/add.js`;
+
+    try {
+      const response = await fetch(cartUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const cartData = await response.json();
+      console.log("Cart updated:", cartData);
+      const cartresponse = await fetch(`${Shopify.routes.root}cart.js`);
+      const cartupdated = await cartresponse.json();
+      // if (cartupdated.items.length > 0) {
+      if (cartData.items.length > 0) {
+        localStorage.removeItem('customiseProductData');
+        setTimeout(() => {
+          window.location = theme.urls.cart;
+        }, 1000);
+      }
+      // console.log("cartupdated :- ", cartupdated)
+    } catch (error) {
+      console.error("Error adding products to cart:", error);
+    }
+  }
+
+function removeExtraSteps(elem, ctmCollectDataArr) {
+  // const currentStep = Number(elem.dataset.tab_index) - 1;
+  const currentStep = Number(elem.dataset.tab_index);
+  const startIndex = ctmCollectDataArr.findIndex(item => item.step === currentStep.toString());
+  if (startIndex !== -1) {
+    ctmCollectDataArr.splice(startIndex + 1, ctmCollectDataArr.length - startIndex - 1);
+  }
+  console.table('ctmCollectDataArr check according steps updates :- ', ctmCollectDataArr)
+  return ctmCollectDataArr;
+}
+// function removeExtraSteps(elem) {
+//   // console.log("check the provided elem :- ", elem)
+//   const currentStep = Number(elem.dataset.tab_index) - 1;
+//   console.log("typeof currentStep :- ", typeof currentStep)
+//   ctmCollectDataArr = ctmCollectDataArr.filter((item, index) => index < currentStep);
+//   console.table('ctmCollectDataArr check according steps updates :- ', ctmCollectDataArr)
+// }
+updateIsUpload('input[name="Foxtails"][type="radio"]')
+updateIsUpload('.ctm__gift_sets_pro_area input[name="customLabel"][type="radio"]')
+function updateIsUpload(classes) {
+  // document.querySelectorAll('input[name="Foxtails"][type="radio"]')?.forEach((radio, i, allInputsArr)=>{
+  document.querySelectorAll(`${classes}`)?.forEach((radio, i, allInputsArr)=>{
+    radio.addEventListener('change', function(evt) {
+      // console.log("object checking rpodgiftsets : ", this.dataset)
+      // console.log("object checking closest : ", this.closest('.ctm__gift_sets_area'))
+      if (this.dataset.is_file_upload == "true") {
+        this.closest('.ctm__gift_sets_area').querySelector('.ctm_tab_content_next_btn').setAttribute('data-is_next_upload', 'true');
+        this.closest('.ctm__gift_sets_area').querySelector('.ctm_tab_content_next_btn').removeAttribute('type');
+        // console.log('check the changed radio : ', this.dataset)
+      } else {
+        this.closest('.ctm__gift_sets_area').querySelector('.ctm_tab_content_next_btn').setAttribute('type', 'button');
+        this.closest('.ctm__gift_sets_area').querySelector('.ctm_tab_content_next_btn').removeAttribute('data-is_next_upload');
+      }
+    })
+  })
+}
+  let selectedGiftSets = {};
+
+  document.querySelectorAll('.ctm_pro_gifts_select_box')?.forEach((sel, i, selArr) => {
+    sel.addEventListener('change', function(evt) {
+      const selectedOption = evt.target.selectedOptions[0];
+      if (!selectedOption.disabled) {
+        evt.target.classList.remove('unset');
+      } else {
+        evt.target.classList.add('unset');
+      }
+      
+      selectedGiftSets[evt.target.name] = evt.target.value;
+      // console.log('Updated selectedGiftSets:', selectedGiftSets);
+      if (Object.keys(selectedGiftSets).length == selArr.length) {
+        // console.error("checking all select boxes length :", Object.keys(selectedGiftSets).length);
+        selectedOption.closest('.ctm__gift_products_content_area').querySelector('.ctm_tab_content_next_btn').removeAttribute('disabled');
+        selectedOption.closest('.ctm__gift_products_content_area').querySelector('.ctm_tab_content_next_btn').setAttribute('type', 'button');
+      }
+      
+      return selectedGiftSets;
+    });
+  });
+  function collectStepData(ctmClickedClosest) {
+    // console.error('collectStepData function is called', ctmClickedClosest)
+    // let currentStep = ctmClickedClosest.dataset.step_index;
+    
+    let currentStep = ctmClickedClosest.dataset.tab_index;
+    const stepData = {
+      step: currentStep,
+      items: [],
+      properties: []
+    };
+
+    
+    if (ctmClickedClosest.nextElementSibling.classList.contains('ctmStepDisabled')) {
+      console.error("check ctmClickedClosest ctmStepDisabled : ", ctmClickedClosest.nextElementSibling);
+      ctmCollectDataArr = ctmCollectDataArr.filter(step => step.step !== ctmClickedClosest.nextElementSibling.dataset.tab_index);
+      // console.log("objectcheck stepdata : ", stepData)
+    }
+    // const stepData = {
+    //   step: currentStep,
+    //   properties: []
+    // };
+
+    // Check if the step already exists in the items or properties array
+    const existingStepIndexItems = ctmCollectDataArr.findIndex(item => item.step === currentStep);
+    const existingStepIndexProperties = ctmCollectDataArr.findIndex(item => item.step === currentStep);
+
+
+    // console.log("object check ctmClickedClosest.classList.contains('ctm__gift_sets_uploads_area')", ctmClickedClosest.classList.contains('ctm__gift_sets_uploads_area'))
+    if (ctmClickedClosest.classList.contains('ctm__gift_sets_uploads_area')) {
+      // console.log("object check ctmClickedClosest gifts : ", ctmClickedClosest)
+      let ctmGiftSleeve_elem = ctmClickedClosest?.querySelector('.cl-upload--wrapper input[type="hidden"][name*="properties"]');
+      
+
+      let ctmGiftProvideLaterArtwork = ctmClickedClosest?.querySelector('.providelaterCheckbox');
+      // console.error("check ctmGiftProvideLaterArtwork",ctmGiftProvideLaterArtwork);
+      
+      if ((ctmGiftSleeve_elem != null || ctmGiftSleeve_elem != undefined) || ctmGiftProvideLaterArtwork != null) {
+        // console.error("check ctmGiftSleeve_elem : ", ctmGiftSleeve_elem.value);
+
+        if ((ctmGiftSleeve_elem != null || ctmGiftSleeve_elem != undefined) && ctmGiftProvideLaterArtwork.checked == false) {
+          if (ctmGiftSleeve_elem.value.trim() != '') {
+            let fileName = ctmGiftSleeve_elem.closest('.cl-upload--wrapper').querySelector('fieldset.filepond--file-wrapper legend').innerHTML;
+            override.fileName = fileName
+            let ctmLabelfile = {
+              // 'Custom Label Image': ctmChooseLabelFile.value,
+              // [ctmClickedClosest.querySelector('.formpanel').dataset.upload_input_name]: ctmGiftSleeve_elem?.value,
+              [ctmClickedClosest.querySelector('.formpanel').dataset.upload_input_name]: fileName,
+            }
+            stepData.properties.push(ctmLabelfile);
+            // console.log("object check stepData", stepData)
+            const index = ctmCollectDataArr.findIndex(item => item.step === stepData.step);
+            if (index !== -1) {
+              ctmCollectDataArr[index] = { ...ctmCollectDataArr[index], properties: stepData.properties };
+            }
+            // console.error("check index is available or not : ", existingStepIndexItems, ctmCollectDataArr);
+          }
+        } else if ((ctmGiftSleeve_elem == null || ctmGiftSleeve_elem == undefined) && ctmGiftProvideLaterArtwork.checked == true) {
+          // console.log("object check ctmGiftProvideLaterArtwork", ctmGiftProvideLaterArtwork)
+          let ctmLabelfile = {
+            // 'Custom Label Image': ctmChooseLabelFile.value,
+            // [ctmClickedClosest.querySelector('.formpanel').dataset.upload_input_name]: ctmGiftSleeve_elem?.value,
+            [ctmClickedClosest.querySelector('.formpanel').dataset.upload_input_name]: ctmGiftProvideLaterArtwork?.name,
+          }
+          stepData.properties.push(ctmLabelfile);
+          // console.log("object check stepData", stepData)
+          const index = ctmCollectDataArr.findIndex(item => item.step === stepData.step);
+          if (index !== -1) {
+            ctmCollectDataArr[index] = { ...ctmCollectDataArr[index], properties: stepData.properties };
+          }
+        }
+
+      } else {
+        // return IsValidForm = false;
+        // alert("You must upload a file, or click 'I'll provide later'");
+      }
+    }
+
+    if (ctmClickedClosest.classList.contains('ctm__gift_products_content_area')) {
+      // console.error("checking selectedGiftSets : ", selectedGiftSets);
+      const giftValues = Object.values(selectedGiftSets);
+      const commaSeparatedValues = giftValues.join(', ');
+      stepData.properties.push({'Gift Products':commaSeparatedValues});
+      // console.error("checking stepData : ", stepData);
+      ctmCollectDataArr.push(stepData)
+      
+    }
+
+    // Step1 data collection is begins from here
+    let step1Products = ctmClickedClosest?.querySelectorAll('.ctm_tab_pro_card input[name="Foxtails"]:checked');
+    if (step1Products && step1Products.length > 0) {
+      if (existingStepIndexItems !== -1) {
+        // Update the existing step's products
+        // const existingProducts = ctmCollectDataArr.items[existingStepIndexItems].products;
+        // console.error("check ctmCollectDataArr before exsisting : ", ctmCollectDataArr);
+        const existingProducts = ctmCollectDataArr[existingStepIndexItems].items;
+        // console.log("object check existingProducts : ", existingProducts)
+        const newProducts = [];
+
+        step1Products?.forEach((checkbox, i) => {
+          const existingProductIndex = existingProducts.findIndex(product => product.id === checkbox.value);
+          if (existingProductIndex !== -1) {
+            // Update the quantity of the existing product
+            existingProducts[existingProductIndex].quantity = checkbox.dataset.ctm_quantity;
+            newProducts.push(existingProducts[existingProductIndex]);
+          } else {
+            // Add the new product to the new products array
+            newProducts.push({
+              id: checkbox.value,
+              quantity: checkbox.dataset.ctm_quantity,
+              price: checkbox.dataset.ctm_price,
+              price_no_currency: checkbox.dataset.ctm_price_no_currency,
+              title: checkbox.dataset.ctm_title
+            });
+          }
+        });
+
+        // Remove products that are no longer present
+        // ctmCollectDataArr.items[existingStepIndexItems] = newProducts;
+        ctmCollectDataArr[existingStepIndexItems].items = newProducts;
+      } else {
+        // Create a new step entry in the items array
+        step1Products?.forEach((checkbox, i) => {
+          stepData.items.push({
+            id: checkbox.value,
+            quantity: checkbox.dataset.ctm_quantity,
+            price: checkbox.dataset.ctm_price,
+            price_no_currency: checkbox.dataset.ctm_price_no_currency,
+            title: checkbox.dataset.ctm_title
+          });
+        });
+        ctmCollectDataArr.push(stepData);
+        ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+      }
+    } else if (existingStepIndexItems !== -1) {
+      // Remove the step from the items array if there are no products
+      ctmCollectDataArr.splice(existingStepIndexItems, 1);
+    }
+    // Step1 data collecton is ends from here
+
+    // Step2 data collecton is begins from here
+    let ctmChooseTemplates = ctmClickedClosest.querySelector('.ctm__contentInnderTabsContent:not(.d-none) input[type="radio"]:checked');
+    let ctmChooseLabelFile = ctmClickedClosest.querySelector('.ctm__contentInnderTabsContent:not(.d-none) input[type="hidden"][name="properties[customLogo]"]');
+    let ctmGiftFreeLabel   = ctmClickedClosest.querySelector('.ctm__gift_sets_pro_label_area .ctm_gift_content:not(.d-none) input[type="radio"][name="freeLabel"]:checked');
+
+    if (ctmChooseTemplates) {
+      let ctmPersonalisedFields = ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('.customize-design .ctmPersonalisedFields');
+      let ctmLabelType = ctmChooseTemplates.dataset.checklabeltype;
+      let ctmIsTemplate = ctmChooseTemplates.dataset.istemplate;
+      let ctmIsTemplateType = ctmChooseTemplates.dataset.template_type;
+      // console.log("check ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling", )
+      let ctm__bottle = ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('#mockupBox .imgcontainer .ctm__bottle');
+      if (ctmLabelType == 'digital') {
+        const mockupBox = ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('#mockupBox')
+        if (mockupBox) {
+          mockupBox.classList.value = mockupBox.classList.value.replace(/^(?!label-mockup).*$/g, '');
+          const classes = Array.from(mockupBox.classList);
+          classes.forEach(cls => {
+            if (cls !== 'label-mockup') {
+              mockupBox.classList.remove(cls);
+            }
+          });
+        }
+
+        
+        if (ctm__bottle) ctm__bottle.src = ctm__bottle.dataset.ctm_digital_bottle_img;
+
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('.ctmContentAreaColors').forEach(colorElem => {
+          colorElem.classList.add('d-none');
+          colorElem.classList.remove('d-md-flex');
+        });
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('#mockupBox')
+        // ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('.customize-design .ctmPersonalisedFields')?.classList.add('ctm__label_digital')
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('#mockupBox .imgcontainer .nametrim').forEach(nameImg => {
+          // nameImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').src;
+          
+          if (ctmChooseTemplates.closest('.ctmChooseTemplates')) {
+            nameImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').dataset.ctmbottleimg;
+          } else {
+            nameImg.src = nameImg.dataset.defaultimg;
+          }
+          // nameImg.src = nameImg.dataset.defaultimgdigital;
+        });
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('#mockupBox .imgcontainer .date').forEach(dateImg => {
+          // dateImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').src;
+          dateImg.classList.add('d-none')
+          // dateImg.classList.remove('d-none')
+          // dateImg.src = dateImg.dataset.defaultimg;
+        });
+        
+      } else if (ctmIsTemplate == 'true' && ctmIsTemplateType == 'foil') {
+        if (ctm__bottle) ctm__bottle.src =  ctmChooseTemplates.dataset.is_label_bottle_digital == 'true' ? ctm__bottle.dataset.ctm_digital_bottle_img :  ctm__bottle.dataset.ctm_foil_bottle_img;
+        // ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('#mockupBox').classList.add(`${ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img')?.dataset.orgimgcolors}`)
+        const mockupBox = ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('#mockupBox')
+        if (mockupBox) {
+          mockupBox.classList.value = mockupBox.classList.value.replace(/^(?!label-mockup).*$/g, '');
+          const classes = Array.from(mockupBox.classList);
+          classes.forEach(cls => {
+            if (cls !== 'label-mockup') {
+              mockupBox.classList.remove(cls);
+            }
+          });
+  
+          // let ctmPersonalisedFields = ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector('.customize-design .ctmPersonalisedFields');
+          // if (ctmPersonalisedFields.classList.contains('ctm__label_digital')) ctmPersonalisedFields.classList.remove('ctm__label_digital') 
+          const className = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img')?.dataset.orgimgcolors.split(' ');
+          console.error("check className colors : ", ...className);
+          ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector(`.ctm_personalise_color input[type="radio"][name="Names Colour"]:is(${className.map(color => `[data-lab_color="${color}"]`)})`).checked = true
+          ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelector(`.ctm_personalise_color input[type="radio"][name="Comment Colour"]:is(${className.map(color => `[data-lab_color="${color}"]`)})`).checked = true
+          // :is(${className.map(color => `[data-lab_color="${color}"]`)})
+          // const classes = className.split(' ');
+          mockupBox.classList.add(...className);
+          
+          ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('#mockupBox .imgcontainer .nametrim').forEach(nameImg => {
+            // nameImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').src;
+            
+            if (ctmChooseTemplates.closest('.ctmChooseTemplates')) {
+              nameImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').dataset.ctmbottleimg;
+            }
+            ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('.ctmContentAreaColors').forEach(colorElem => {
+              colorElem.classList.remove('d-none');
+              colorElem.classList.add('d-md-flex');
+            });
+          });
+          ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('#mockupBox .imgcontainer .date').forEach(dateImg => {
+            // dateImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').src;
+            dateImg.classList.remove('d-none')
+            dateImg.src =  ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img')?.dataset.ctmbottledateimg;
+          });
+        }
+      } else {
+        
+        // if(ctmPersonalisedFields) if (ctmPersonalisedFields.classList.contains('ctm__label_digital')) ctmPersonalisedFields.classList.remove('ctm__label_digital');
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('.ctmContentAreaColors').forEach(colorElem => {
+          colorElem.classList.remove('d-none');
+          colorElem.classList.add('d-md-flex');
+          colorElem.src = colorElem.dataset.defaultimg;
+        });
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('#mockupBox .imgcontainer .date').forEach(dateImg => {
+          // dateImg.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').src;0
+          dateImg.classList.remove('d-none')
+          dateImg.src = dateImg.dataset.defaultimg;
+        });
+        ctmChooseTemplates.closest('.ctm__tab_content_area').nextElementSibling.querySelectorAll('#mockupBox .imgcontainer .nametrim').forEach(nametrim => {
+          // nametrim.src = ctmChooseTemplates.closest('.ctmChooseTemplates').querySelector('img').src;
+          nametrim.classList.remove('d-none')
+          nametrim.src = nametrim.dataset.defaultimg;
+        });
+      }
+    }
+
+    if (ctmChooseTemplates || ctmChooseLabelFile) {
+      if (ctmChooseLabelFile && ctmChooseLabelFile.value !== '' && ctmChooseTemplates) {
+        // console.log("object checking what is ctmChooseLabelFile && ctmChooseLabelFile.value !== '' && ctmChooseTemplates: ", ctmChooseTemplates)
+        // console.log("object checking what is ctmChooseTemplates?.dataset.is_pro_label_item: ", JSON.parse(ctmChooseTemplates?.dataset.is_pro_label_item))        
+
+        let ctmLabelProperties = {
+          // 'id': ctmChooseTemplates?.value,
+          'quantity': ctmChooseTemplates?.dataset.ctm_quantity,
+          'pirce': ctmChooseTemplates?.dataset.price,
+          'price_no_currency': ctmChooseTemplates?.dataset.ctm_price_no_currency,
+          // 'title': ctmChooseTemplates?.dataset.label_name,
+          'type': ctmChooseTemplates?.dataset.type,
+          'title': ctmChooseTemplates?.dataset.ctmprotitle ? ctmChooseTemplates?.dataset.ctmprotitle : ctmChooseTemplates?.dataset.type,
+          ...(ctmChooseTemplates?.dataset.is_pro_item == true ? { 'id': ctmChooseTemplates?.value } : { 'value': ctmChooseTemplates?.value }),
+          ...(JSON.parse(ctmChooseTemplates?.dataset.is_pro_label_item) == true ? { 'id': ctmChooseTemplates?.value } : ''),
+        }
+        let tempFileUrl = ctmChooseLabelFile.value.split('/');
+        // let fileName = tempFileUrl[tempFileUrl.length - 1];
+        let fileName = ctmClickedClosest.querySelector('.ctm__contentInnderTabsContent:not(.d-none) .cl-upload--wrapper fieldset.filepond--file-wrapper legend').innerHTML;
+        let ctmLabelfile = {
+          // 'Custom Label Image': ctmChooseLabelFile.value,
+          'Custom Label Image': fileName,
+          'FileName': fileName,
+        }
+        console.error("checkiung ctmChooseTemplates?.dataset.is_pro_item : ", ctmChooseTemplates?.dataset);
+        
+        if (existingStepIndexProperties !== -1) {
+          // Update the existing step's properties
+          // ctmCollectDataArr.stepData.properties = [ctmLabelProperties];
+          // console.error("checkiung ctmChooseTemplates existingStepIndexProperties : ", (existingStepIndexProperties !== -1));
+          // console.error("checkiung ctmLabelfile : ", ctmLabelfile);
+          // console.error("checkiung ctmLabelProperties : ", ctmLabelProperties);
+          // console.error("checkiung ctmChooseTemplates?.dataset : ", ctmChooseTemplates?.dataset);
+          stepData.properties.push(ctmLabelfile)
+          if (ctmChooseTemplates?.dataset.is_pro_item) {
+            console.error("checkiung (ctmChooseTemplates?.dataset.is_pro_item == true) : ", (ctmChooseTemplates?.dataset.is_pro_item == true));
+            stepData.items.push(ctmLabelProperties)
+          } else if (ctmChooseTemplates?.dataset.is_pro_label_item) {
+            console.error("checkiung (ctmChooseTemplates?.dataset.is_pro_label_item == true) : ", (ctmChooseTemplates?.dataset.is_pro_label_item == true));
+            stepData.items.push(ctmLabelProperties)
+          } else {
+            stepData.properties.push(ctmLabelProperties)
+          }
+          ctmCollectDataArr.push(stepData);
+          ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        } else {
+          // console.error("checkiung ctmChooseTemplates existingStepIndexProperties else : ", (existingStepIndexProperties !== -1));
+          // console.error("checkiung ctmLabelfile else : ", ctmLabelfile);
+          // console.error("checkiung ctmLabelProperties else : ", ctmLabelProperties);
+          stepData.properties.push(ctmLabelfile)
+          stepData.items.push(ctmLabelProperties)
+          ctmCollectDataArr.push(stepData);
+          ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        }
+      } else if (ctmChooseLabelFile && ctmChooseLabelFile.value !== '') {
+        // console.log("object checking what is ctmChooseTemplates : ", ctmChooseTemplates)
+        // console.log("check file step :- ", ctmChooseLabelFile);
+        let tempFileUrl = ctmChooseLabelFile.value.split('/');
+        let fileName = ctmClickedClosest.querySelector('.ctm__contentInnderTabsContent:not(.d-none) .cl-upload--wrapper fieldset.filepond--file-wrapper legend').innerHTML;
+        let ctmLabelProperties = {
+          // 'Custom Label Image': ctmChooseLabelFile.value,
+          'Custom Label Image': fileName,
+          'FileName': fileName,
+        }
+        if (existingStepIndexProperties !== -1) {
+          // Update the existing step's properties
+          // ctmCollectDataArr.stepData.properties = [ctmLabelProperties];
+          stepData.properties.push(ctmLabelProperties)
+          ctmCollectDataArr.push(stepData);
+          ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        } else {
+          stepData.properties.push(ctmLabelProperties)
+          ctmCollectDataArr.push(stepData);
+          ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        }
+      } else if (ctmGiftFreeLabel && ctmChooseTemplates) {
+        // console.log("object checking what is ctmGiftFreeLabel && ctmChooseTemplates : ",ctmGiftFreeLabel, ctmChooseTemplates)
+        // console.log("check file step :- ", ctmChooseLabelFile);
+        let ctmLabelProperties = {
+          // 'Label': ctmGiftFreeLabel.value,
+          [ctmChooseTemplates?.dataset.ctmprotitle ? ctmChooseTemplates?.dataset.ctmprotitle : ctmChooseTemplates?.dataset.type]: ctmGiftFreeLabel.value,
+        }
+        
+        // let ctmLabelitems = {
+        //   'title': ctmChooseTemplates?.dataset.label_name,
+        //   // 'id': ctmChooseTemplates?.value,
+        //   ...(ctmChooseTemplates?.dataset.value !== undefined ? { 'id': ctmChooseTemplates?.dataset.value } : {}),
+        //   'pirce': ctmChooseTemplates?.dataset.price,
+        //   'price_no_currency': ctmChooseTemplates?.dataset.ctm_price_no_currency,
+        //   'type': ctmChooseTemplates?.dataset.type,
+        //   // 'value': ctmChooseTemplates?.dataset.ctm_value,
+        //   ...(ctmChooseTemplates?.dataset.ctm_quantity !== undefined ? { 'quantity': ctmChooseTemplates?.dataset.ctm_quantity } : {}),
+        //   ...(ctmChooseTemplates?.dataset.ctm_value !== undefined ? { 'value': ctmChooseTemplates?.dataset.ctm_value } : { 'id': ctmChooseTemplates?.value }),
+        //   ...(ctmChooseTemplates?.dataset.is_pro_item == true ? { 'id': ctmChooseTemplates?.value, 'is_pro_item': ctmChooseTemplates?.dataset.is_pro_item } : { 'value': ctmChooseTemplates?.value, 'is_pro_item': ctmChooseTemplates?.dataset.is_pro_item  }),
+        //   // 'quantity': ctmChooseTemplates?.dataset.ctm_quantity,
+        // }
+
+        // if (existingStepIndexItems !== -1) {
+        //   // Update the existing step's properties
+        //   // ctmCollectDataArr.stepData.properties = [ctmLabelProperties];
+        //   stepData.items.push(ctmLabelitems)
+        //   ctmCollectDataArr.push(stepData);
+        //   ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        // } else {
+        //   stepData.items.push(ctmLabelitems)
+        //   ctmCollectDataArr.push(stepData);
+        //   ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        // }
+
+        if (existingStepIndexProperties !== -1) {
+          // Update the existing step's properties
+          // ctmCollectDataArr.stepData.properties = [ctmLabelProperties];
+          stepData.properties.push(ctmLabelProperties)
+          // ctmCollectDataArr.push(stepData);
+          // ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        } else {
+          stepData.properties.push(ctmLabelProperties)
+          // ctmCollectDataArr.push(stepData);
+          // ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        }
+        const existingStepIndex = ctmCollectDataArr.findIndex((step) => step.step === stepData.step);
+
+        if (existingStepIndex !== -1) {
+          ctmCollectDataArr[existingStepIndex] = stepData;
+        } else {
+          ctmCollectDataArr.push(stepData);
+        }
+        ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+      } else if (ctmChooseTemplates) {
+        // console.log("first ctmChooseTemplates checking : ", ctmChooseTemplates)
+        let ctmLabelProperties = {
+          'title': ctmChooseTemplates?.dataset.ctmprotitle ? ctmChooseTemplates?.dataset.ctmprotitle : ctmChooseTemplates?.dataset.type,
+          // 'id': ctmChooseTemplates?.value,
+          ...(ctmChooseTemplates?.dataset.value !== undefined ? { 'id': ctmChooseTemplates?.dataset.value } : {}),
+          'pirce': ctmChooseTemplates?.dataset.price,
+          'price_no_currency': ctmChooseTemplates?.dataset.ctm_price_no_currency,
+          'type': ctmChooseTemplates?.dataset.type,
+          // 'value': ctmChooseTemplates?.dataset.ctm_value,
+          ...(ctmChooseTemplates?.dataset.ctm_quantity !== undefined ? { 'quantity': ctmChooseTemplates?.dataset.ctm_quantity } : {}),
+          ...(ctmChooseTemplates?.dataset.ctm_value !== undefined ? { 'value': ctmChooseTemplates?.dataset.ctm_value } : { 'id': ctmChooseTemplates?.value }),
+          ...(ctmChooseTemplates?.dataset.is_pro_item == true ? { 'id': ctmChooseTemplates?.value, 'is_pro_item': ctmChooseTemplates?.dataset.is_pro_item } : { 'value': ctmChooseTemplates?.value, 'is_pro_item': ctmChooseTemplates?.dataset.is_pro_item  }),
+          // 'quantity': ctmChooseTemplates?.dataset.ctm_quantity,
+        }
+            
+        if (ctmClickedClosest.classList.contains('ctm__gift_sets_pro_label_area')) {
+          // ctmCollectDataArr
+          let ctmGiftFileInput = ctmClickedClosest.querySelector('.ctm__contentInnderTabsgiftLabelContent .ctm_gift_content input[name*="properties"]');
+          if (ctmGiftFileInput && ctmGiftFileInput.value != '') {
+
+            let fileName = ctmGiftFileInput.closest('.cl-upload--wrapper').querySelector('fieldset.filepond--file-wrapper legend').innerHTML;
+
+            let ctmLabelProperties = {
+              // 'Gift set label': ctmGiftFileInput.value,
+              'Custom Label Image': fileName,
+            }
+            // console.log("first ctmGiftFileInput check : ", ctmGiftFileInput)
+            stepData.properties.push(ctmLabelProperties)
+          }
+          // console.log("checking stepData : ", stepData)
+        }
+
+        if (existingStepIndexProperties !== -1) {
+          // Update the existing step's properties
+          if (ctmChooseTemplates?.dataset.ctm_quantity) {
+            stepData.items.push(ctmLabelProperties)
+          } else {
+            stepData.properties.push(ctmLabelProperties)
+          }
+          ctmCollectDataArr.push(stepData);
+          ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        } else {
+          
+          if (ctmChooseTemplates?.dataset.ctm_quantity) {
+            stepData.items.push(ctmLabelProperties)
+          } else {
+            stepData.properties.push(ctmLabelProperties)
+          }
+          ctmCollectDataArr.push(stepData);
+          ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+        }
+        // console.log("check ctmChooseTemplates :- ", ctmChooseTemplates)
+        
+      } else if (existingStepIndexProperties !== -1) {
+        // Remove the step from the properties array if there are no properties
+        ctmCollectDataArr.properties.splice(existingStepIndexProperties, 1);
+      }
+    }
+    // Step2 data collecton is ends from here
+
+    // Step3 data collecton is begins from here
+    // console.log("check parent contains hidden or not :- ", ctmClickedClosest)
+    // console.log("check parent contains hidden or not :- ", ctmClickedClosest.classList.contains('ctm__personalise_content_area'))
+    if (ctmClickedClosest.classList.contains('ctm__personalise_content_area')) {
+      // let ctmPersonaliseNonRadio = document.querySelectorAll('.ctm__tab_content_area.ctm__personalise_content_area:not(.d-none) input:not([type="radio"])');
+      // let ctmPersonaliseRadios = document.querySelectorAll('.ctm__tab_content_area.ctm__personalise_content_area:not(.d-none) .ctmContentAreaColors:not(.d-none) input[type="radio"]:checked');
+      let ctmPersonaliseNonRadio = ctmClickedClosest.querySelectorAll('input:not([type="radio"])');
+      let ctmPersonaliseRadios = ctmClickedClosest.querySelectorAll('.ctmContentAreaColors:not(.d-none) input[type="radio"]:checked');
+      // console.log("check ctmPersonaliseNonRadio :- ", ctmPersonaliseNonRadio)
+      // console.log("check ctmPersonaliseRadios :- ", ctmPersonaliseRadios)
+      stepData.properties = [...ctmPersonaliseNonRadio].filter(input => input.value.trim() !== '').map(input => ({ [input.name]: input.value }));
+      stepData.properties = [...stepData.properties, ...[...ctmPersonaliseRadios].map(input => ({ [input.name]: input.value }))];
+
+      // console.log("Non-Radio Values:", nonRadioValues);
+      // console.log("Radio Values:", radioValues);
+      // console.log("stepData Values:", stepData);
+      ctmCollectDataArr.push(stepData);
+      ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+    }
+    // Step3 data collecton is ends from here
+    
+    
+    // Step4 data collecton is begins from here
+    // let ctmExtrasData =  document.querySelectorAll('.ctm__tab_content_area.ctm__extras_content_area:not(.d-none) input[type="radio"]:checked');
+    if (ctmClickedClosest.classList.contains('ctm__extras_content_area')) {
+      let ctmExtrasData =  ctmClickedClosest.querySelectorAll('input[type="radio"]:checked');
+      // console.log("object extras step :- ", ctmClickedClosest)
+
+      ctmExtrasData.forEach((extras)=>{
+        // console.log(extras.dataset)
+        if (extras.dataset.type == 'product') {
+          stepData.items.push({
+            id: extras.value,
+            name: extras.name,
+            quantity: extras.dataset.ctm_quantity,
+            price: extras.dataset.ctm_price,
+            price_no_currency: extras.dataset.ctm_price_no_currency,
+            type: extras.dataset.type,
+            title: extras.dataset.ctm_title
+          });
+        } else {
+          stepData.properties.push({
+            name: extras.name,
+            type: extras.dataset.type,
+            // title: extras.dataset.ctm_title
+          });
+        }
+      })
+
+      // console.log("object check extras stepdata :- ", stepData)
+      ctmCollectDataArr.push(stepData);
+        
+      ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+    }
+    // Step4 data collecton is ends from here
+
+    // Step5 data collecton is begins from here
+    if (ctmClickedClosest.classList.contains('ctm__details_content_area')) {
+      let ctmDetailData =  ctmClickedClosest.querySelectorAll('.ctm_form_contact_fields input');
+      // console.log("check object step5 ctmDetailData : ",ctmDetailData)
+      ctmDetailData.forEach((input, i) => {
+        // let newObj = {
+        //   [input.name]: input.value
+        // };
+        if (input.value) {
+          stepData.properties.push({
+            [input.name]: input.value
+          });
+        }
+      });
+      ctmCollectDataArr.push(stepData);
+        
+      ctmCollectDataArr.sort((a, b) => Number(a.step) - Number(b.step));
+      // console.log("check nextElementSiblings", ctmClickedClosest.nextElementSibling)
+      if (ctmClickedClosest.nextElementSibling.classList.contains('ctm__summary')) {
+        
+      }
+    }
+    // Step5 data collecton is ends from here
+
+    console.table('ctmCollectDataArr check :- ', ctmCollectDataArr)
+    
+    if(ctmCollectDataArr.length > 0 ){
+      let proStep = ctmCollectDataArr[0];
+      flowExtraAreaProQtyCal(proStep);
+    }
+
+    ctmCollectDataArr.forEach( i => { i.items.forEach( it => { if( it.id == "33176702746710" ){ hideLabelApp() } }) })
+
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const headingEl = document.querySelector('h3.rdc-m-0');
+  if (headingEl) {
+    headingEl.style.textTransform = "uppercase";
+  }
+});
