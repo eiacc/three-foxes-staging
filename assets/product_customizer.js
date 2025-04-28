@@ -1,4 +1,4 @@
-console.log('prod customzier')
+// console.log('prod customzier')
 // the total price
 let totalPrice = 0; 
 /**
