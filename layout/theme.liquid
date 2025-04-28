@@ -116,8 +116,10 @@
 
     {%- render 'icons', icon: 'defs' -%}
     <script src="{{ 'simulate-clear-cache.js' | asset_url }}" defer="defer"></script>
-    
+    <script src="{{ 'product_customizer.js' | asset_url }}" defer="defer"></script>
+    {% comment %}
     {{ 'custom_mw.js' | asset_url | script_tag }}
+    {% endcomment %}
     {{ 'rdc.js' | asset_url | script_tag }}
     <script src="https://assets.cloudlift.app/api/assets/upload.js?shop=three-foxes-pty-ltd.myshopify.com"></script>
     {% if ctm_pages == 'favours-custom-' or ctm_pages == 'foxtails-custom' %}
