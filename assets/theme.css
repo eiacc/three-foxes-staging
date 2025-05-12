@@ -13,45 +13,6 @@
 
 /* ******************* SK TOUCH UPS & OVERRIDES *******************************/
 
-/* FORCE TEXT COLOR FOR .LIQUID BLOCKS */
-[data-text-color="3fd-orange"],
-[data-text-color="3fd-orange"] * {
-  color: #F78007 !important;
-}
-[data-text-color="3fd-red"],
-[data-text-color="3fd-red"] * {
-  color: #87231C !important;
-}
-[data-text-color="3fd-creme"],
-[data-text-color="3fd-creme"] * {
-  color: #F7F2EE !important;
-}
-
-/* FORCE BACKGROUND COLOR FOR BLOG */
-.blog--root {
-  background-color: #F7F2EE;
-}
-
-/* FORCE BACKGROUND COLOR FOR BLOG BLOCKS */
-.article--root{
-  background-color: #F7F2EE;
-}
-
-.article-comments--root{
-  background-color: #F7F2EE;
-}
-
-.article--recents-root{
-  background-color: #F7F2EE;
-}
-
-.article--navigation-root{
-  background-color: #F7F2EE;
-}
-
-
-
-
 
 /* SPECIFICALLY MAKE "UPLOAD YOUR ARTWORK" in caps */
 
@@ -66,16 +27,7 @@ button.ctm_tab_content_prev_btn {
   height: 43px !important;
 }
 
-/* Force cart background color */
-body,
-.layout--template,
-.cart--root,
-.cart-page--root {
-  background-color: #F7F2EE !important;
-}
-
 .btn--primary {
-  background-color: #87231C;
   color: blue;
   padding: 12px 24px;
   border-radius: 4px;
