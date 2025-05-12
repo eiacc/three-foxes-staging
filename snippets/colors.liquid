@@ -1,12 +1,17 @@
 {%- style -%}
-[data-text-color="accent_1"] {
-  color: {{ settings.color--accent-1 -}};
+[data-text-color="accent_1"],
+.btn--primary,
+[data-text-color="3fd-red"],
+[data-text-color="3fd-red"] path {
+  color: {{ settings.color--accent-1 -}}!important;
 }
-  
-[data-text-color="accent_2"] {
+
+[data-text-color="accent_2"],
+[data-text-color="3fd-orange"],
+[data-text-color="3fd-orange"] path {
   color: {{ settings.color--accent-2 -}};
 }
-  
+
 [data-text-color=" "] {
   color: {{ settings.color--body -}}
 }
@@ -18,5 +23,24 @@
 .carousel--root .stacked-text--root:hover [data-text-color],
 .carousel--root .stacked-text--root:hover ~ .carousel--dot-container [data-text-color] {
   color: #fff!important;
+}
+
+/* light colors */
+body,
+.layout--template,
+.cart--root,
+.cart-page--root,
+.article--root,
+.article-comments--root,
+.article--recents-root,
+.article--navigation-root,
+.blog--root {
+  background-color: {{ settings.bg-color--light }};
+  background: {{ settings.bg-color--light }};
+}
+
+[data-text-color="3fd-creme"],
+[data-text-color="3fd-creme"] * {
+  color: {{ settings.bg-color--light }} !important;
 }
 {%- endstyle -%}
