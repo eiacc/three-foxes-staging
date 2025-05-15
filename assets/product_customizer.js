@@ -1070,6 +1070,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
           updateTemplateView(templateViewDigital, digitalMap);
           customizerInstance.change(e)
         }
+
+        let temp_idx = -1;
+
+        const hasItem = ctmCollectDataArr.some((obj, idx) => {
+          if (obj.step === '2') {
+            temp_idx = idx;
+            return true;
+          }
+          return false;
+        });
+
+        if (!hasItem) return;
+        
+        const _type = e.target.getAttribute('data-product-type')
+        const _typeSelector = document.querySelector(`.jtzuya-templates__tab-selections.jtzuya-templates__tab-selections--${_type} .jtzuya-template__tab-selection--active`)
+        
+        if (!_typeSelector) return;
+        ctmCollectDataArr[temp_idx].items[0].title = _typeSelector.textContent; // replace with actual new name
       });
     });
   }
@@ -1694,6 +1712,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (window.customizerVariantIds) {
       // let labelsArr = ['39282293735510', '39282295308374', '33176702746710', '33184610582614', '33184610549846', '41867343429718', '41867343462486', '41867343495254' ];
       const labelsArr = window.customizerVariantIds.split(',')
+      labelsArr.push('39282293735510')// digital
+      labelsArr.push('39282295308374')// premium
       cartItemArray.map(i => {
         if (labelsArr.includes(i.id)) {
           cust_label_item = i.id
